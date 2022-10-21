@@ -1,1 +1,1 @@
-import './bootstrap';
+import "jquery/dist/jquery.min";

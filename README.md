@@ -8,6 +8,6 @@
 - `FLUSH PRIVILEGES;`
 4. Wpisz `npm install`
 5. Wpisz `npx mix`
-6. Wpisz `php arstisan migrate --seed`
+6. Wpisz `php artisan migrate --seed`
 7. Wpisz `php artisan serve`
 8. Gotowe

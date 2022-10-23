@@ -17,7 +17,7 @@
 @foreach($tickets as $ticket)
 <tr>
 
-    <td>{{$ticket->temat}}</td>
+    <td><a href="ticket/{{$ticket->id}}">{{$ticket->temat}}</a></td>
     <td>{{$ticket->opis}}</td>
     <td>{{$ticket->termin}}</td>
     <td>{{$ticket->priorytet}}</td>
@@ -28,6 +28,7 @@
 
 </tbody>
 
-
-
 </table>
+
+
+<a href="ticket/create">Stwórz sprawę</a>

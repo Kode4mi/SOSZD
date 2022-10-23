@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\MainController;
+use App\Http\Controllers\TicketsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [MainController::class, 'index']);
+Route::get('/', function () {
+   return redirect('/tickets');
+});
+
+Route::get('/tickets', [TicketsController::class, 'index']);
+
+Route::get('/ticket/create', [TicketsController::class, 'create']);
+
+Route::get('/ticket/{ticket}', [TicketsController::class, 'show']);
+
+

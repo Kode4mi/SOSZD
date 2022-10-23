@@ -1,0 +1,13 @@
+LISTA STRON:
+USER:
+/login
+/users
+/user/create
+/user/edit/{id}
+/account
+
+TICKETS:
+/tickets
+/ticket/create
+/ticket/{id}
+

@@ -25,4 +25,19 @@ class TicketsController extends Controller
             'ticket' => $ticket,
         ]);
     }
+
+    function store(Request $request)
+    {
+        $formFields = $request->validate([
+            'temat' => 'required',
+            'opis' => 'required',
+            'termin' => 'required',
+            'priorytet' => 'required',
+        ]);
+
+        Ticket::create($formFields);
+
+        return redirect('tickets');
+    }
+
 }

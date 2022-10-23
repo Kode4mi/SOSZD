@@ -24,4 +24,6 @@ Route::get('/ticket/create', [TicketsController::class, 'create']);
 
 Route::get('/ticket/{ticket}', [TicketsController::class, 'show']);
 
+Route::post('ticket', [TicketsController::class, 'store']);
+
 

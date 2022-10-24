@@ -3,9 +3,10 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use JetBrains\PhpStorm\ArrayShape;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Ticket>
+ * @extends Factory
  */
 class TicketFactory extends Factory
 {
@@ -14,12 +15,13 @@ class TicketFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
+    #[ArrayShape(['temat' => "string", 'opis' => "string", 'termin' => "string", 'priorytet' => "int"])]
+    public function definition(): array
     {
         return [
             'temat' => $this->faker->title,
             'opis' => $this->faker->sentence,
-            'termin' => date("Y-m-d H:i:s", strtotime('+1 day', time())),
+            'termin' => date("Y-m-d H:i:s", strtotime('+1 day')),
             'priorytet' => $this->faker->numberBetween(1,4),
         ];
     }

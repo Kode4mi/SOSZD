@@ -3,30 +3,32 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ticket;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class TicketsController extends Controller
 {
-    function index()
+    public function index(): View
     {
         return view('tickets/index', [
             'tickets' => Ticket::sortable()->simplePaginate(20),
         ]);
     }
 
-    function create()
+    public function create(): View
     {
         return view('tickets/create');
     }
 
-    function show(Ticket $ticket)
+    public function show(Ticket $ticket): View
     {
         return view('tickets/show', [
             'ticket' => $ticket,
         ]);
     }
 
-    function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $formFields = $request->validate([
             'temat' => 'required',

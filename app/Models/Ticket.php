@@ -9,6 +9,7 @@ use Kyslik\ColumnSortable\Sortable;
 /**
  * @method static create(array $formFields)
  * @method static latest()
+ * @method static sortable()
  */
 class Ticket extends Model
 {
@@ -16,6 +17,6 @@ class Ticket extends Model
 
     protected $fillable = ['temat', 'opis', 'termin', 'priorytet'];
 
-    public $sortable = ['temat', 'opis', 'termin', 'priorytet'];
+    public array $sortable = ['temat', 'opis', 'termin', 'priorytet'];
 
 }

@@ -1,0 +1,52 @@
+name: Laravel
+
+on: push
+
+jobs:
+  phpunit:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_USER: soszd-admin
+          MYSQL_PASSWORD: admin
+          MYSQL_DATABASE: soszd_db
+          MYSQL_ROOT_PASSWORD: root
+          DB_PORT: ${{ job.services.mysql.ports[3306] }}
+        ports:
+          - 33306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+
+    - name: Verify MySQL connection
+      run: |
+        mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -usoszd-admin -padmin -e "SHOW DATABASES"
+
+    - name: Install dependencies
+      run: |
+        php --version
+        composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+        chmod -R 777 storage bootstrap/cache
+
+    - name: Boot Laravel application
+      run: |
+        php -r "file_exists('.env') || copy('.env.example', '.env');"
+        php artisan key:generate
+        php artisan --version
+
+    - name: Execute PHPUnit tests
+      env:
+        DB_CONNECTION: mysql
+        DB_DATABASE: soszd_db
+        DB_PORT: 33306
+        DB_USER: soszd-admin
+        DB_PASSWORD: admin
+      run: |
+        php artisan migrate:fresh --seed
+        php artisan test

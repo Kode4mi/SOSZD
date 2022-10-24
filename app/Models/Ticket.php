@@ -10,6 +10,7 @@ use Kyslik\ColumnSortable\Sortable;
  * @method static create(array $formFields)
  * @method static latest()
  * @method static sortable()
+ * @method static where(string $column, string $value)
  */
 class Ticket extends Model
 {

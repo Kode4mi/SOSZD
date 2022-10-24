@@ -1,14 +1,16 @@
 @extends('templates.layout')
 
+@if($tickets->count())
+
 <table>
 
     <thead>
 
     <tr>
-        <th>Temat</th>
-        <th>Opis</th>
-        <th>Termin</th>
-        <th>Priorytet</th>
+        <th>@sortablelink('temat')</th>
+        <th>@sortablelink('opis')</th>
+        <th>@sortablelink('termin')</th>
+        <th>@sortablelink('priorytet')</th>
     </tr>
 
     </thead>
@@ -30,5 +32,8 @@
 
 </table>
 
+<p> {{$tickets->links()}} </p>
 
-<a href="ticket/create">Stwórz sprawę</a>
+@endif
+
+<a href="{{url('ticket/create')}}">Stwórz sprawę</a>

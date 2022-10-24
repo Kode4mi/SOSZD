@@ -10,7 +10,7 @@ class TicketsController extends Controller
     function index()
     {
         return view('tickets/index', [
-            'tickets' => Ticket::all(),
+            'tickets' => Ticket::sortable()->simplePaginate(20),
         ]);
     }
 

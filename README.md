@@ -1,3 +1,10 @@
+<img src="./public/images/logo.png " data-canonical-src="./public/images/logo.png" width="400" />
+
+
+## System Obiegu SZkolnych Dokumentów
+Wykonana we frameworku Laravel aplikacja pomagająca w zarządzaniu, udostępnianiu i przetwarzaniu dokumentów szkolnych. Dzięki niebywałym umiejętnościom zespołu szkół technicznych stworzyliśmy fantastyczny system wspomagający pracę oświaty.
+
+
 ## Instalacja
 1. Pobierz <a href="https://getcomposer.org/">Composera</a>
 2. Wpisz w konsole w lokalizacji projektu `composer install`
@@ -11,3 +18,9 @@
 6. Wpisz `php artisan migrate --seed`
 7. Wpisz `php artisan serve`
 8. Gotowe
+
+## Autorzy
+- Michał Szajner
+- Mikołaj Szokaluk
+- Mariusz Wakuła
+- Jan Ślepaczuk

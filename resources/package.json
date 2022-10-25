@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "-": "^0.0.1",
-    "autoprefixer": "^10.4.12",
-    "loader": "^2.1.1",
-    "postcss-loader": "^7.0.1",
-    "sass": "^1.55.0"
-  }
-}

@@ -1,1 +1,82 @@
-@import "~bootstrap";
+$main-background:#D7FFF1;
+$logo_background:#508470;
+$sidebar-background:#FFFFFF;
+$header-background:#4BA68D;
+$so-color:#8CD790;
+$szd-color:#FFFFFF;
+$primary_font: 'Cabin';
+$primary_font_size: 75px;
+
+@import '~bootstrap';
+@import "/node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+
+.navbar{
+    float:left;
+    width:18vw;
+    font:$primary_font;
+    display:contents inline;
+
+    &__logo{
+    margin-top:-1vh;
+    height:16vh;
+    width:18vw;
+    display:block;
+    
+    background-color:$logo-background;
+    box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
+    
+    font-size:$primary_font_size;
+    text-align: center;
+    font-style: normal;
+    font-weight: 600;
+}
+
+    &__nazwa_1{
+        color:$so_color;
+    }
+
+    &__nazwa_2{
+        color:$szd_color;
+    }
+
+    &__sidebar{
+        width:18vw;
+        height:83vh;
+        background-color:$sidebar-background;
+    }
+
+    &__sidebar--button{
+        margin-left:auto;
+        margin-right:auto;
+        display:block;
+        width:15vw;
+        height:8vh;
+
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+        filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.25));
+        border-radius: 10px;
+        border:0px;
+        
+        font-family:"Cabin";
+        text-align:center;
+        font-weight: 400;
+        font-size: 36px;
+    }
+
+    &__sidebar--button1{
+        margin-top:3vw;
+    }
+}
+
+.header{
+    display:flex;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: $header-background;
+    height:9vh;
+}
+
+.main{
+    height:91vh;
+    background-color:$main-background;
+}

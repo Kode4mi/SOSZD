@@ -1,5 +1,6 @@
 @extends('templates.layout')
 
+<!-- 
 <table>
 
     <thead>
@@ -31,4 +32,5 @@
 </table>
 
 
-<a href="ticket/create">Stwórz sprawę</a>
+<a href="ticket/create">Stwórz sprawę</a> -->
+

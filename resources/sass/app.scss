@@ -1,1 +1,129 @@
-@import "~bootstrap";
+$main-background:#D7FFF1;
+$logo_background:#508470;
+$sidebar-background:#FFFFFF;
+$header-background:#4BA68D;
+$so-color:#8CD790;
+$szd-color:#FFFFFF;
+$primary_font: Cabin;
+$primary_font_size: 75px;
+
+@import '~bootstrap';
+@import "~@fontsource/cabin/700.css";
+@import "~@fontsource/cabin/400.css";
+@import "/node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.navbar{
+    height: 100vh;
+    position: fixed;
+    width:18vw;
+
+    padding: 0;
+    top:0;
+    bottom: 0;
+    left: 0;
+    font-family:$primary_font;
+
+    flex-direction: column;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    box-sizing: border-box;
+
+    &__logo{
+    height:18%;
+    width:18vw;
+    display:block;
+
+    background-color:$logo-background;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25);
+
+    font-size:$primary_font_size;
+    text-align: center;
+    font-style: normal;
+    font-weight: 600;
+
+        &--img {
+            margin: auto;
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+    }
+
+    &__sidebar{
+        width:18vw;
+        height:82%;
+        background-color:$sidebar-background;
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: column;
+
+            li {
+                margin: 1rem;
+            }
+
+        }
+
+
+    }
+
+    &__nazwa_1{
+        color:$so_color;
+    }
+
+    &__nazwa_2{
+        color:$szd_color;
+    }
+
+    &__sidebar--button{
+        margin-right: auto;
+        margin-left: auto;
+        display:block;
+        width:15vw;
+        height:8vh;
+
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+        filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.25));
+        border-radius: 10px;
+        border:0;
+
+        font-family: "Cabin", serif;
+        text-align: center;
+        font-weight: 400;
+        font-size: 36px;
+    }
+
+    &__sidebar--button1{
+        margin-top:3vw;
+    }
+}
+
+.header{
+    display:flex;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: $header-background;
+    height:9vh;
+}
+
+.main{
+    height:91vh;
+    background-color:$main-background;
+}

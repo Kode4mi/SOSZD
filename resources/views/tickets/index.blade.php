@@ -1,7 +1,10 @@
 @extends('templates.layout')
 
-@if($tickets->count())
 
+
+<!-- 
+
+@if($tickets->count())
 <table>
 
     <thead>
@@ -35,5 +38,5 @@
 <p> {{$tickets->links()}} </p>
 
 @endif
+<a href="{{url('ticket/create')}}">Stwórz sprawę</a> -->
 
-<a href="{{url('ticket/create')}}">Stwórz sprawę</a>

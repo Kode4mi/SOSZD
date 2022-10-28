@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('tickets_files', static function (Blueprint $table) {
             $table->id();
             $table->unsignedbigInteger('tickets_id');
-            $table->foreign('tickets_id')->references('id')->on('tickets');  // tworzenie klucza obcego do tabeli 'tickets'
+            $table->foreign('tickets_id')->references('id')->on('tickets')->onDelete('cascade')->onUpdate('cascade');;  // tworzenie klucza obcego do tabeli 'tickets'
             
             $table->string('file_name');
         });
@@ -29,9 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('tickets_files',function (Blueprint $table){
-            $table->dropForeign(['tickets_id']);
-        });
         Schema::dropIfExists('tickets_files');
     }
 };

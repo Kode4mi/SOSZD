@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('priorytet');
 
             $table->unsignedbigInteger('sender_id');
-            $table->foreign('sender_id')->references('id')->on('users');  // tworzenie klucza obcego do tabeli 'users'
+            $table->foreign('sender_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');  // tworzenie klucza obcego do tabeli 'users'
 
             $table->timestamps();
         });
@@ -34,12 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        // tu trzeba zobaczyć czy ma być to czy dropIfExists
-        //
-        // Schema::table('tickets',function (Blueprint $table){
-        //     $table->dropForeign(['sender_id']);
-        // });
-
         Schema::dropIfExists('tickets');
     }
 };

@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', static function (Blueprint $table) {
+        Schema::create('tickets_files', static function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('position');
-            $table->string('email');
-            $table->string('password');
+            $table->unsignedbigInteger('tickets_id');
+            $table->foreign('tickets_id')->references('id')->on('tickets')->onDelete('cascade')->onUpdate('cascade');;  // tworzenie klucza obcego do tabeli 'tickets'
+            
+            $table->string('file_name');
         });
     }
 
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('tickets_files');
     }
 };

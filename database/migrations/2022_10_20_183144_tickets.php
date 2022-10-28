@@ -19,6 +19,10 @@ return new class extends Migration
             $table->text('opis');
             $table->dateTime('termin');
             $table->integer('priorytet');
+
+            $table->unsignedbigInteger('sender_id');
+            $table->foreign('sender_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');  // tworzenie klucza obcego do tabeli 'users'
+
             $table->timestamps();
         });
     }

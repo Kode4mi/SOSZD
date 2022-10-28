@@ -16,8 +16,8 @@ class Ticket extends Model
 {
     use HasFactory, Sortable;
 
-    protected $fillable = ['temat', 'opis', 'termin', 'priorytet'];
+    protected $fillable = ['title', 'description', 'deadline', 'priority', 'sender_id'];
 
-    public array $sortable = ['temat', 'opis', 'termin', 'priorytet'];
+    public array $sortable = ['title', 'description', 'deadline', 'priority'];
 
 }

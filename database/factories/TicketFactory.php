@@ -15,14 +15,15 @@ class TicketFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    #[ArrayShape(['temat' => "string", 'opis' => "string", 'termin' => "string", 'priorytet' => "int"])]
+    #[ArrayShape(['title' => "string", 'description' => "string", 'deadline' => "string", 'priority' => "int", "sender_id" => "int"])]
     public function definition(): array
     {
         return [
-            'temat' => $this->faker->title,
-            'opis' => $this->faker->sentence,
-            'termin' => date("Y-m-d H:i:s", strtotime('+1 day')),
-            'priorytet' => $this->faker->numberBetween(1,4),
+            'title' => $this->faker->title,
+            'description' => $this->faker->sentence,
+            'deadline' => date("Y-m-d H:i:s", strtotime('+1 day')),
+            'priority' => $this->faker->numberBetween(1,4),
+            'sender_id' => 1,
         ];
     }
 }

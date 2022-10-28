@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedbigInteger('replies_id');
             $table->foreign('replies_id')->references('id')->on('replies')->onDelete('cascade')->onUpdate('cascade');;  // tworzenie klucza obcego do tabeli 'replies'
-            
             $table->string('file_name');
+            $table->timestamps();
         });
     }
 

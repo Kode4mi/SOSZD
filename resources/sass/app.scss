@@ -126,4 +126,11 @@ $primary_font_size: 75px;
 .main{
     height:91vh;
     background-color:$main-background;
+    width: 100vw;
+
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
 }

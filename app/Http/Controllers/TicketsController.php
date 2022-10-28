@@ -31,11 +31,16 @@ class TicketsController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $formFields = $request->validate([
-            'temat' => 'required',
-            'opis' => 'required',
-            'termin' => 'required',
-            'priorytet' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'deadline' => 'required',
+            'priority' => 'required',
         ]);
+
+        $formFields += [
+            //TODO 'sender_id' => auth()->user()->id, <-- to jak zrobimy logowanie
+            'sender_id' => 1,
+        ];
 
         Ticket::create($formFields);
 

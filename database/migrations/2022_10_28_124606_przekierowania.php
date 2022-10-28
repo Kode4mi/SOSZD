@@ -38,6 +38,6 @@ return new class extends Migration
         //     $table->dropForeign(['users_id']);
         // });
         
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('redirects');
     }
 };

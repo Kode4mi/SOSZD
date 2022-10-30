@@ -13,7 +13,15 @@
 
 @include('partials._navbar')
 
-<div class="header"></div>
+<div class="header">
+
+
+  
+  <div class="header__logged-user">Mikołaj Rej</div>
+  <div class="header__largefont"><i class="fa-solid fa-a fa-3x"></i></div>
+  <div class="header__smallfont"><i class="fa-solid fa-a fa-2xs"></i></div>
+  <div class="header__contrast"><i class="fa-solid fa-circle-half-stroke fa-3x"></i></div>
+</div>
 <div class="main">
 
     @yield('content')

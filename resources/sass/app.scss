@@ -2,12 +2,13 @@ $main-background:#D7FFF1;
 $logo_background:#508470;
 $sidebar-background:#FFFFFF;
 $header-background:#4BA68D;
+$user-background:#FFFFFF;
 $so-color:#8CD790;
 $szd-color:#FFFFFF;
 $primary_font: Cabin;
 $primary_font_size: 75px;
 
-@import '~bootstrap';
+@import "~bootstrap";
 @import "~@fontsource/cabin/700.css";
 @import "~@fontsource/cabin/400.css";
 @import "/node_modules/@fortawesome/fontawesome-free/css/all.min.css";
@@ -27,6 +28,7 @@ $primary_font_size: 75px;
     top:0;
     bottom: 0;
     left: 0;
+
     font-family:$primary_font;
 
     flex-direction: column;
@@ -39,9 +41,10 @@ $primary_font_size: 75px;
     height:18%;
     width:18vw;
     display:block;
+    z-index:1;
 
     background-color:$logo-background;
-    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 8px 8px rgba(0, 0, 0,0.25);
 
     font-size:$primary_font_size;
     text-align: center;
@@ -51,10 +54,10 @@ $primary_font_size: 75px;
         &--img {
             margin: auto;
             display: flex;
-            height: 100%;
             justify-content: center;
             align-items: center;
             box-sizing: border-box;
+            height: 100%;
         }
     }
 
@@ -115,15 +118,91 @@ $primary_font_size: 75px;
     }
 }
 
+
+
 .header{
-    display:flex;
+    display:flexbox;
     box-sizing: border-box;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     background-color: $header-background;
     height:9vh;
+
+    &__logged-user{
+        margin-top:1.8vh;
+        margin-right: 1.5vw;
+        border-radius:25px;
+        float:right;
+        width:9vw;
+        height:5.5vh;
+        text-align: center;
+        padding-right:1vw;
+        padding-left:1vw;
+        font-style: normal;
+        font-weight: 600;
+        font-size:19px;
+        background-color:$user-background;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    &__smallfont{
+        margin-top:1.5vh;
+        margin-right: 1.5vw;
+        border-radius:25px;
+        float:right;
+        width:4vw;
+        height:6vh;
+        text-align: center;
+        font-size:3em;
+        background-color:$user-background;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    &__largefont{
+        margin-top:1.5vh;
+        margin-right: 1.5vw;
+        border-radius:25px;
+        float:right;
+        width:4vw;
+        height:6vh;
+        text-align: center;
+        font-size:15px;
+        background-color:$user-background;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    &__contrast{
+        margin-top:1.5vh;
+        margin-right: 1.5vw;
+        border-radius:25px;
+        float:right;
+        width:4vw;
+        height:6vh;
+        text-align: center;
+        font-size:15px;
+        background-color:$user-background;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+    }
 }
+
+
 
 .main{
     height:91vh;
     background-color:$main-background;
 }
+

@@ -40,14 +40,14 @@ class TicketTest extends TestCase
     public function test_ticket_store() : void
     {
         $ticket = Ticket::factory()->make([
-            'temat' => 'Testowy4444'
+            'title' => 'Testowy4444'
         ]);
 
         $response = $this->post('/ticket', $ticket->toArray());
 
         $response->assertRedirect('/tickets');
 
-        $ticket = Ticket::where('temat', 'Testowy4444');
+        $ticket = Ticket::where('title', 'Testowy4444');
 
         $ticket->delete();
     }

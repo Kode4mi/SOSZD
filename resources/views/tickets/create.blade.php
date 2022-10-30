@@ -7,31 +7,31 @@
 @csrf
 
 <label>Temat:
-    <input type="text" name="temat" value="{{old('temat')}}">
+    <input type="text" name="title" value="{{old('title')}}">
 </label><br>
 
-    @error('temat')
+    @error('title')
     <p>{{$message}}</p>
     @enderror
 
 <label>Opis:
-    <textarea name="opis" value="{{old('opis')}}"> </textarea>
+    <textarea name="description" value="{{old('description')}}"> </textarea>
 </label><br>
 
-    @error('opis')
+    @error('description')
     <p>{{$message}}</p>
     @enderror
 
 <label>Termin:
-    <input type="datetime-local" name="termin" value="{{date('Y-m-d')}}T{{date('H:i')}}">
+    <input type="datetime-local" name="deadline" value="{{date('Y-m-d')}}T{{date('H:i')}}">
 </label><br>
 
-    @error('termin')
+    @error('deadline')
     <p>{{$message}}</p>
     @enderror
 
 <label>Priorytet:
-    <select name="priorytet">
+    <select name="priority">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -39,7 +39,7 @@
     </select>
 </label>
 <br>
-    @error('priorytet')
+    @error('priority')
     <p>{{$message}}</p>
     @enderror
 

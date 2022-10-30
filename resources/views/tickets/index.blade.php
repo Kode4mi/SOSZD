@@ -1,19 +1,16 @@
 @extends('templates.layout')
 
-
-
-<!-- 
-
+@section('content')
 @if($tickets->count())
 <table>
 
     <thead>
 
     <tr>
-        <th>@sortablelink('temat')</th>
-        <th>@sortablelink('opis')</th>
-        <th>@sortablelink('termin')</th>
-        <th>@sortablelink('priorytet')</th>
+        <th> @sortablelink('temat')</th>
+        <th> @sortablelink('opis')</th>
+        <th> @sortablelink('termin')</th>
+        <th> @sortablelink('priorytet')</th>
     </tr>
 
     </thead>
@@ -22,10 +19,10 @@
 @foreach($tickets as $ticket)
 <tr>
 
-    <td><a href="ticket/{{$ticket->id}}">{{$ticket->temat}}</a></td>
-    <td>{{$ticket->opis}}</td>
-    <td>{{$ticket->termin}}</td>
-    <td>{{$ticket->priorytet}}</td>
+    <td><a href="ticket/{{$ticket->id}}">{{$ticket->title}}</a></td>
+    <td>{{$ticket->description}}</td>
+    <td>{{$ticket->deadline}}</td>
+    <td>{{$ticket->priority}}</td>
 
 
 </tr>
@@ -38,5 +35,6 @@
 <p> {{$tickets->links()}} </p>
 
 @endif
-<a href="{{url('ticket/create')}}">Stwórz sprawę</a> -->
+<a href="{{url('ticket/create')}}">Stwórz sprawę</a>
 
+@endsection

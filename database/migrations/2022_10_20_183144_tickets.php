@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('tickets', static function (Blueprint $table) {
             $table->id();
-            $table->string('temat');
-            $table->text('opis');
-            $table->dateTime('termin');
-            $table->integer('priorytet');
+            $table->string('title');
+            $table->text('description');
+            $table->dateTime('deadline');
+            $table->integer('priority');
+            $table->unsignedbigInteger('sender_id');
+            $table->foreign('sender_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');  // tworzenie klucza obcego do tabeli 'users'
             $table->timestamps();
         });
     }

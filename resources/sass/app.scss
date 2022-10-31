@@ -3,10 +3,11 @@ $logo_background:#508470;
 $sidebar-background:#FFFFFF;
 $header-background:#4BA68D;
 $user-background:#FFFFFF;
+$frame-background:#FFFFFF;
 $so-color:#8CD790;
 $szd-color:#FFFFFF;
 $primary_font: Cabin;
-$primary_font_size: 75px;
+$primary_font_size: 4.7rem;
 
 @import "~bootstrap";
 @import "~@fontsource/cabin/700.css";
@@ -121,7 +122,6 @@ $primary_font_size: 75px;
 
 
 .header{
-    display:flexbox;
     box-sizing: border-box;
     background-color: $header-background;
     height:9vh;
@@ -211,5 +211,24 @@ $primary_font_size: 75px;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+
+    &__h1{
+        margin-right:30vw;
+        margin-bottom:1vw;
+        font-size:3.5rem;
+    }
+
+    &__frame{
+        background-color:$frame-background;
+        width:fit-content;
+        height:fit-content;
+        box-shadow: -10px 10px 10px rgba(0, 0, 0, 0.25);
+        border-radius: 20px;
+        width:70vw;
+        margin-left:17.5vw;
+        padding:1vw;
+    }
+
+
 }
 

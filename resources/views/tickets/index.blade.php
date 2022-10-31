@@ -14,6 +14,7 @@
     </tr>
 
     </thead>
+ 
 <tbody>
 
 @foreach($tickets as $ticket)

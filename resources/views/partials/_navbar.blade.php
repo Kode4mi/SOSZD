@@ -1,7 +1,7 @@
 <div class="navbar">
-    <div class="navbar__logo">
+    <div class="navbar__logo" id="navbar-logo">
         <div class="navbar__logo--img">
-            <span class="navbar__nazwa_1">so</span><span class="navbar__nazwa_2">SZD</span>
+            <span class="navbar__nazwa_1" id="navbar__nazwa1">so</span><span class="navbar__nazwa_2">SZD</span>
         </div>
     </div>
     <div class="navbar__sidebar">

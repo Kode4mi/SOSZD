@@ -7,10 +7,10 @@
     <thead>
 
     <tr>
-        <th> @sortablelink('temat')</th>
-        <th> @sortablelink('opis')</th>
-        <th> @sortablelink('termin')</th>
-        <th> @sortablelink('priorytet')</th>
+        <th>@sortablelink('temat')</th>
+        <th>@sortablelink('opis')</th>
+        <th>@sortablelink('termin')</th>
+        <th>@sortablelink('priorytet')</th>
     </tr>
 
     </thead>

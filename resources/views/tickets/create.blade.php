@@ -1,5 +1,6 @@
 @extends('templates.layout')
 
+@section('content')
 <h1>Tworzenie sprawy</h1>
 
 <form action="/ticket" method="POST">
@@ -46,3 +47,5 @@
 <button type="submit">Zatwierdź</button>
 
 </form>
+
+@endsection

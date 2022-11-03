@@ -24,7 +24,7 @@
     @enderror
 
 <label>Hasło:
-    <input type="password" name="password" value="{{old('password')}}">
+    <input type="password" name="password">
 </label><br>
 
     @error('password')
@@ -32,7 +32,7 @@
     @enderror
 
 <label>Potwierdź hasło:
-    <input type="password" name="confirm-password" value="{{old('confirm-password')}}">
+    <input type="password" name="confirm-password">
 </label><br>
 
     @error('confirm-password')

@@ -12,9 +12,9 @@
         <th>@sortablelink('termin')</th>
         <th>@sortablelink('priorytet')</th>
     </tr>
-
-    </thead>
  
+    </thead>
+
 <tbody>
 
 @foreach($tickets as $ticket)
@@ -36,6 +36,6 @@
 <p> {{$tickets->links()}} </p>
 
 @endif
-<a href="{{url('ticket/create')}}">Stwórz sprawę</a>
+
 
 @endsection

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\TicketsController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,5 +26,7 @@ Route::get('/ticket/create', [TicketsController::class, 'create']);
 Route::get('/ticket/{ticket}', [TicketsController::class, 'show']);
 
 Route::post('ticket', [TicketsController::class, 'store']);
+
+Route::get('/user/edit', [UsersController::class, 'edit']);
 
 

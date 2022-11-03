@@ -4,10 +4,14 @@ $sidebar-background:#FFFFFF;
 $header-background:#4BA68D;
 $user-background:#FFFFFF;
 $frame-background:#FFFFFF;
+$button-background:#508470;
+$logo_background_hover:#385C4E;
+$button-color:#FFFFFF;
 $so-color:#8CD790;
 $szd-color:#FFFFFF;
 $primary_font: Cabin;
 $primary_font_size: 4.7rem;
+$button-border-radius: 15px;
 
 @import "~bootstrap";
 @import "~@fontsource/cabin/700.css";
@@ -18,6 +22,10 @@ $primary_font_size: 4.7rem;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+a{
+    text-decoration: none; 
 }
 
 .navbar{
@@ -66,6 +74,11 @@ $primary_font_size: 4.7rem;
                 text-decoration: none;
             }
         }
+
+        &--img:hover{
+            background-color:$logo_background_hover;
+
+        }
     }
 
     &__sidebar{
@@ -102,6 +115,7 @@ $primary_font_size: 4.7rem;
         color:$szd_color;
     }
 
+
     &__sidebar--button{
         margin-right: auto;
         margin-left: auto;
@@ -118,6 +132,10 @@ $primary_font_size: 4.7rem;
         text-align: center;
         font-weight: 400;
         font-size: 36px;
+    }
+
+    &__sidebar--button:hover{
+        background-color:#CDCDCD;
     }
 
     &__sidebar--button1{
@@ -203,6 +221,10 @@ $primary_font_size: 4.7rem;
         align-items: center;
         box-sizing: border-box;
     }
+
+    i:hover{
+        cursor:pointer;
+    }
 }
 
 
@@ -225,14 +247,42 @@ $primary_font_size: 4.7rem;
     }
 
     &__frame{
+        font-family:$primary_font;
         background-color:$frame-background;
-        width:fit-content;
-        height:fit-content;
+        height:74vh;
         box-shadow: -10px 10px 10px rgba(0, 0, 0, 0.25);
         border-radius: 20px;
         width:70vw;
         margin-left:17.5vw;
         padding:1vw;
+        line-height: 24px;
+
+
+        th{
+        padding-bottom:2vh;
+        }
+
+        td
+        {
+        padding-right:5vw;
+        }
+
+        thead{
+        font-style: normal;
+        font-weight: 700;
+        font-size: 28px;
+        }
+
+        tbody{
+        font-size: 18px;
+        }
+        
+        a{
+            text-decoration:none;
+            color:#000000;
+        }
+
+
     }
 
 

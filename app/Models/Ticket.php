@@ -20,4 +20,14 @@ class Ticket extends Model
 
     public array $sortable = ['title', 'description', 'deadline', 'priority'];
 
+    public function scopeFilter($query, array $filters): void
+    {
+        if ($filters['search'] ?? false) {
+            $query->where('title', 'like', '%' . request('search') . '%')
+                ->orWhere('description', 'like', '%' . request('search') . '%')
+                ->orWhere('deadline', 'like', '%' . request('search') . '%');
+        }
+    }
+
+
 }

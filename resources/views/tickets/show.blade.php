@@ -6,3 +6,4 @@
     <p>{{$ticket->termin}}</p>
     <p>{{$ticket->priorytet}}</p>
 @endsection
+

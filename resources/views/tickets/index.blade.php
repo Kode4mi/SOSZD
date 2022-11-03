@@ -45,5 +45,10 @@
 
 @endif
 <a href="{{url('ticket/create')}}">Stwórz sprawę</a>
+<!-- 
+    Dla testu czy działa 
+    <a href="{{url('user/edit')}}">Edytuj użytkownika</a>
+-->
+
 
 @endsection

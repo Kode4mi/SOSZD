@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\TicketsController;
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,12 +19,14 @@ Route::get('/', static function () {
    return redirect('/tickets');
 });
 
-Route::get('/tickets', [TicketsController::class, 'index']);
+Route::get('/tickets', [TicketController::class, 'index']);
 
-Route::get('/ticket/create', [TicketsController::class, 'create']);
+Route::get('/ticket/create', [TicketController::class, 'create']);
 
-Route::get('/ticket/{ticket}', [TicketsController::class, 'show']);
+Route::get('/ticket/{ticket}', [TicketController::class, 'show']);
 
-Route::post('ticket', [TicketsController::class, 'store']);
+Route::post('ticket', [TicketController::class, 'store']);
+
+Route::get('/user/edit', [UserController::class, 'edit']);
 
 

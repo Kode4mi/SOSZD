@@ -2,14 +2,6 @@
 
 @section('content')
 @if($tickets->count())
-    <form action="/tickets" id="search_form">
-        <input class="form-control search w-25" type="search" aria-label="Wyszukaj" name="search"
-               @if(request('search' ?? null))
-                   value="{{request('search')}}"
-               @endif
-        />
-        <button class="btn-outline-success btn-search" type="submit">Wyszukaj</button>
-    </form>
 <table>
 
     <thead>
@@ -22,7 +14,7 @@
     </tr>
  
     </thead>
-
+ 
 <tbody>
 
 @foreach($tickets as $ticket)
@@ -44,10 +36,6 @@
 <p> {{$tickets->links()}} </p>
 
 @endif
-<!-- 
-    Dla testu czy działa 
-    <a href="{{url('user/edit')}}">Edytuj użytkownika</a>
--->
-
+<a href="{{url('ticket/create')}}">Stwórz sprawę</a>
 
 @endsection

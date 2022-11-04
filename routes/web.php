@@ -15,9 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Redirect z '/' do '/tickets'
+
 Route::get('/', static function () {
    return redirect('tickets');
 });
+
+// Ticket
 
 Route::get('tickets', [TicketController::class, 'index'])->middleware('auth');
 
@@ -27,6 +31,8 @@ Route::get('ticket/{ticket}', [TicketController::class, 'show'])->middleware('au
 
 Route::post('ticket', [TicketController::class, 'store'])->middleware('auth');
 
+// User
+
 Route::post('users/authenticate', [UserController::class, 'authenticate'])->middleware('guest');
 
 Route::post('logout', [UserController::class, 'logout'])->middleware('auth');
@@ -35,3 +41,4 @@ Route::get('user/edit', [UserController::class, 'edit'])->middleware('auth');
 
 Route::get('login', [UserController::class, 'login'])->middleware('guest')->name('login');
 
+Route::post('/user', [UserController::class, 'update'])->middleware('auth');

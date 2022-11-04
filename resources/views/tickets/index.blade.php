@@ -2,6 +2,8 @@
 
 @section('content')
 @if($tickets->count())
+<x-main-title>Aktualne sprawy: </x-main-title>
+    <main>
 
     <form action="/tickets" id="search_form">
         <input class="form-control search w-25" type="search" aria-label="Wyszukaj" name="search"
@@ -44,7 +46,9 @@
 </table>
 
 <p> {{$tickets->links()}} </p>
-
+    </main>
+        @else
+            <x-main-title>Brak spraw</x-main-title>
 @endif
 
 @endsection

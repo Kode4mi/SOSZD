@@ -16,12 +16,8 @@
 @include('partials._header')
 
 <div class="main" id="main">
-<h1 class="main__h1">Aktualne sprawy:</h1>
-<div class="main__frame">
-    @yield('content')
-</div>
 
-    
+    @yield('content')
 
 </div>
 </body>

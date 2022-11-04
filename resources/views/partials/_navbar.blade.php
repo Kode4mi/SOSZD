@@ -13,7 +13,11 @@
                 <a class="main__frame--create_ticket_button" href="{{url('ticket/create')}}"> <button class="navbar__sidebar--button">Nowa Sprawa</button></a>
             </li>
             <li>
-                <button class="navbar__sidebar--button">Użytkownicy</button>
+                @if(auth()->user()->role === 'admin')
+                    <button class="navbar__sidebar--button">Użytkownicy</button>
+                @else
+                    <button class="navbar__sidebar--button">Konto</button>
+                @endif
             </li>
             <li>
                 <form action="/logout" method="POST"> @csrf @method("POST") <button type="submit" class="navbar__sidebar--button">Wyloguj</button> </form>

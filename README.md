@@ -19,6 +19,10 @@ Wykonana we frameworku Laravel aplikacja pomagająca w zarządzaniu, udostępnia
 7. Wpisz `.\start`
 8. Gotowe
 
+## Dane logowania testowych użytkowników:
+
+- admin email: `soszd@admin.pl` hasło: `admin` 
+
 ## Autorzy
 - Michał Szajner
 - Mikołaj Szokaluk

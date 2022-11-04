@@ -8,7 +8,7 @@
         @csrf
 
         <label>Imie:
-            <input type="text" name="first_name" value="{{old('first_name')}}">
+            <input type="text" name="first_name" value="{{auth()->user()->first_name}}">
         </label><br>
 
             @error('first_name')
@@ -16,10 +16,10 @@
             @enderror
 
         <label>Nazwisko:
-            <input type="text" name="Last_name" value="{{old('Last_name')}}">
+            <input type="text" name="last_name" value="{{auth()->user()->last_name}}">
         </label><br>
 
-            @error('Last_name')
+            @error('last_name')
             <p>{{$message}}</p>
             @enderror
 
@@ -32,14 +32,16 @@
             @enderror
 
         <label>Potwierdź hasło:
-            <input type="password" name="confirm-password">
+            <input type="password" name="password_confirmation">
         </label><br>
 
-            @error('confirm-password')
+            @error('password_confirmation')
             <p>{{$message}}</p>
             @enderror
 
         <button type="submit">Zatwierdź</button>
+
+            <p class="mt-2"><a href="/change-password">Zmień hasło</a></p>
 
         </form>
     </main>

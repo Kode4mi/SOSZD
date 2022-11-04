@@ -16,17 +16,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', static function () {
-   return redirect('/tickets');
+   return redirect('tickets');
 });
 
-Route::get('/tickets', [TicketController::class, 'index']);
+Route::get('tickets', [TicketController::class, 'index'])->middleware('auth');
 
-Route::get('/ticket/create', [TicketController::class, 'create']);
+Route::get('ticket/create', [TicketController::class, 'create'])->middleware('auth');
 
-Route::get('/ticket/{ticket}', [TicketController::class, 'show']);
+Route::get('ticket/{ticket}', [TicketController::class, 'show'])->middleware('auth');
 
-Route::post('ticket', [TicketController::class, 'store']);
+Route::post('ticket', [TicketController::class, 'store'])->middleware('auth');
 
-Route::get('/user/edit', [UserController::class, 'edit']);
+Route::post('users/authenticate', [UserController::class, 'authenticate'])->middleware('guest');
 
+Route::post('logout', [UserController::class, 'logout'])->middleware('auth');
+
+Route::get('user/edit', [UserController::class, 'edit'])->middleware('auth');
+
+Route::get('login', [UserController::class, 'login'])->middleware('guest')->name('login');
 

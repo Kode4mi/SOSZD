@@ -70,4 +70,39 @@ class UserController extends Controller
         return redirect()->back()->with('message', 'Hasło niepoprawne');
     }
 
+    public function editPassword(): View
+    {
+        return view('user.password-change');
+    }
+
+    public function updatePassword(Request $request): RedirectResponse
+    {
+        /* @var User $user */
+        $user = auth()->user();
+
+        $formFields = $request->validate([
+            'old_password' => 'required',
+            'password' => ['required', 'confirmed'],
+        ]);
+
+
+        if(!Hash::check($formFields['old_password'], $user->password))
+        {
+            return redirect()->back()->with('message', 'Stare hasło niepoprawne');
+        }
+
+        if(Hash::check($formFields['password'], $user->password))
+        {
+            return redirect()->back()->with('message', 'Nowe hasło musi być inne niż stare');
+        }
+
+        unset($formFields['old_password']);
+
+        $formFields['password'] = bcrypt($formFields['password']);
+
+        $user->update($formFields);
+
+        return redirect()->back()->with('message', 'Zmieniono hasło');
+    }
+
 }

@@ -12,7 +12,7 @@ class MainTest extends TestCase
     {
         $response = $this->get('/');
 
-        $response->assertRedirect('/tickets');
+        $response->assertRedirect('/login');
     }
 
 }

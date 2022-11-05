@@ -19,10 +19,10 @@
     <thead>
 
     <tr>
-        <th>@sortablelink('temat')</th>
-        <th>@sortablelink('opis')</th>
-        <th>@sortablelink('termin')</th>
-        <th>@sortablelink('priorytet')</th>
+        <th>@sortablelink('title', 'Tytuł')</th>
+        <th>@sortablelink('description', 'Opis')</th>
+        <th>@sortablelink('deadline', 'Termin')</th>
+        <th>@sortablelink('priority', 'Priorytet')</th>
     </tr>
 
     </thead>

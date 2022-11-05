@@ -38,8 +38,7 @@ class TicketController extends Controller
         ]);
 
         $formFields += [
-            //TODO 'sender_id' => auth()->user()->id, <-- to jak zrobimy logowanie
-            'sender_id' => 1,
+            'sender_id' => auth()->user()->id,
         ];
 
         Ticket::create($formFields);

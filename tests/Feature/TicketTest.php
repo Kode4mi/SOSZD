@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Ticket;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -11,7 +12,9 @@ class TicketTest extends TestCase
 {
     public function test_tickets_status(): void
     {
-        $response = $this->get('/tickets');
+        $user = User::factory()->make();
+
+        $response = $this->actingAs($user)->get('/tickets');
 
         $response->assertSuccessful();
         $response->assertViewIs('tickets.index');
@@ -19,9 +22,11 @@ class TicketTest extends TestCase
 
     public function test_ticket_status(): void
     {
+        $user = User::factory()->make();
+
         $ticket = Ticket::factory()->create();
 
-        $response = $this->get('/ticket/'.$ticket->id);
+        $response = $this->actingAs($user)->get('/ticket/'.$ticket->id);
 
         $response->assertSuccessful();
         $response->assertViewIs('tickets.show');
@@ -31,7 +36,9 @@ class TicketTest extends TestCase
 
     public function test_ticket_create_status(): void
     {
-        $response = $this->get('/ticket/create');
+        $user = User::factory()->make();
+
+        $response = $this->actingAs($user)->get('/ticket/create');
 
         $response->assertSuccessful();
         $response->assertViewIs('tickets.create');
@@ -39,11 +46,13 @@ class TicketTest extends TestCase
 
     public function test_ticket_store() : void
     {
+        $user = User::factory()->make();
+
         $ticket = Ticket::factory()->make([
             'title' => 'Testowy4444'
         ]);
 
-        $response = $this->post('/ticket', $ticket->toArray());
+        $response = $this->actingAs($user)->post('/ticket', $ticket->toArray());
 
         $response->assertRedirect('/tickets');
 

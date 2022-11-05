@@ -15,18 +15,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Redirect z '/' do '/tickets'
+
 Route::get('/', static function () {
-   return redirect('/tickets');
+   return redirect('tickets');
 });
 
-Route::get('/tickets', [TicketController::class, 'index']);
+// Ticket
 
-Route::get('/ticket/create', [TicketController::class, 'create']);
+Route::get('tickets', [TicketController::class, 'index'])->middleware('auth');
 
-Route::get('/ticket/{ticket}', [TicketController::class, 'show']);
+Route::get('ticket/create', [TicketController::class, 'create'])->middleware('auth');
 
-Route::post('ticket', [TicketController::class, 'store']);
+Route::get('ticket/{ticket}', [TicketController::class, 'show'])->middleware('auth');
 
-Route::get('/user/edit', [UserController::class, 'edit']);
+Route::post('ticket', [TicketController::class, 'store'])->middleware('auth');
 
+// User
 
+Route::post('users/authenticate', [UserController::class, 'authenticate'])->middleware('guest');
+
+Route::post('logout', [UserController::class, 'logout'])->middleware('auth');
+
+Route::get('user/edit', [UserController::class, 'edit'])->middleware('auth');
+
+Route::get('login', [UserController::class, 'login'])->middleware('guest')->name('login');
+
+Route::post('/user', [UserController::class, 'update'])->middleware('auth');
+
+Route::get('/change-password', [UserController::class, 'editPassword'])->middleware('auth');
+
+Route::post('/change-password', [UserController::class, 'updatePassword'])->middleware('auth');

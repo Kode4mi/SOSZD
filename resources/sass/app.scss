@@ -1,17 +1,24 @@
-$main-background:#D7FFF1;
-$logo_background:#508470;
-$sidebar-background:#FFFFFF;
-$header-background:#4BA68D;
-$user-background:#FFFFFF;
-$frame-background:#FFFFFF;
-$button-background:#508470;
-$logo_background_hover:#385C4E;
-$button-color:#FFFFFF;
-$so-color:#8CD790;
-$szd-color:#FFFFFF;
+$main-background: #D7FFF1;
+$logo_background: #508470;
+$sidebar-background: #FFFFFF;
+$header-background: #4BA68D;
+$user-background: #FFFFFF;
+$frame-background: #FFFFFF;
+$button-background: #508470;
+$logo_background_hover: #385C4E;
+$button-color: #FFFFFF;
+$so-color: #8CD790;
+$szd-color: #FFFFFF;
 $primary_font: Cabin;
 $primary_font_size: 4.7rem;
 $button-border-radius: 15px;
+
+//kolory do logowania
+$backgroundGreen: #D7FFF1;
+$lightGreen: #8CD790;
+$darkGreen: #4BA68D;
+$darkerGreen: #285943;
+
 
 @import "~bootstrap";
 @import "~@fontsource/cabin/700.css";
@@ -24,21 +31,25 @@ $button-border-radius: 15px;
     box-sizing: border-box;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
-.navbar{
+img {
+    width: 100%;
+}
+
+.navbar {
     height: 100vh;
     position: fixed;
-    width:18vw;
+    width: 18vw;
 
     padding: 0;
-    top:0;
+    top: 0;
     bottom: 0;
     left: 0;
 
-    font-family:$primary_font;
+    font-family: $primary_font;
 
     flex-direction: column;
     display: flex;
@@ -46,21 +57,21 @@ a{
     align-items: flex-start;
     box-sizing: border-box;
 
-    &__logo{
-    height:18%;
-    width:18vw;
-    display:block;
-    z-index:1;
+    &__logo {
+        height: 18%;
+        width: 18vw;
+        display: block;
+        z-index: 1;
 
 
 
-    background-color:$logo-background;
-    box-shadow: 0px 8px 8px rgba(0, 0, 0,0.25);
+        background-color: $logo-background;
+        box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
 
-    font-size:$primary_font_size;
-    text-align: center;
-    font-style: normal;
-    font-weight: 600;
+        font-size: $primary_font_size;
+        text-align: center;
+        font-style: normal;
+        font-weight: 600;
 
         &--img {
             margin: auto;
@@ -75,16 +86,16 @@ a{
             }
         }
 
-        &--img:hover{
-            background-color:$logo_background_hover;
+        &--img:hover {
+            background-color: $logo_background_hover;
 
         }
     }
 
-    &__sidebar{
-        width:18vw;
-        height:82%;
-        background-color:$sidebar-background;
+    &__sidebar {
+        width: 18vw;
+        height: 82%;
+        background-color: $sidebar-background;
 
         ul {
             list-style: none;
@@ -107,26 +118,26 @@ a{
 
     }
 
-    &__nazwa_1{
-        color:$so_color;
+    &__nazwa_1 {
+        color: $so_color;
     }
 
-    &__nazwa_2{
-        color:$szd_color;
+    &__nazwa_2 {
+        color: $szd_color;
     }
 
 
-    &__sidebar--button{
+    &__sidebar--button {
         margin-right: auto;
         margin-left: auto;
-        display:block;
-        width:15vw;
-        height:8vh;
+        display: block;
+        width: 15vw;
+        height: 8vh;
 
         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
         filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.25));
         border-radius: 10px;
-        border:0;
+        border: 0;
 
         font-family: "Cabin", serif;
         text-align: center;
@@ -134,36 +145,36 @@ a{
         font-size: 36px;
     }
 
-    &__sidebar--button:hover{
-        background-color:#CDCDCD;
+    &__sidebar--button:hover {
+        background-color: #CDCDCD;
     }
 
-    &__sidebar--button1{
-        margin-top:3vw;
+    &__sidebar--button1 {
+        margin-top: 3vw;
     }
 }
 
 
 
-.header{
+.header {
     box-sizing: border-box;
     background-color: $header-background;
-    height:9vh;
+    height: 9vh;
 
-    &__logged-user{
-        margin-top:1.8vh;
+    &__logged-user {
+        margin-top: 1.8vh;
         margin-right: 1.5vw;
-        border-radius:25px;
-        float:right;
-        width:9vw;
-        height:5.5vh;
+        border-radius: 25px;
+        float: right;
+        width: 9vw;
+        height: 5.5vh;
         text-align: center;
-        padding-right:1vw;
-        padding-left:1vw;
+        padding-right: 1vw;
+        padding-left: 1vw;
         font-style: normal;
         font-weight: 600;
-        font-size:19px;
-        background-color:$user-background;
+        font-size: 19px;
+        background-color: $user-background;
 
         display: flex;
         justify-content: center;
@@ -171,16 +182,16 @@ a{
         box-sizing: border-box;
     }
 
-    &__smallfont{
-        margin-top:1.5vh;
+    &__smallfont {
+        margin-top: 1.5vh;
         margin-right: 1.5vw;
-        border-radius:25px;
-        float:right;
-        width:4vw;
-        height:6vh;
+        border-radius: 25px;
+        float: right;
+        width: 4vw;
+        height: 6vh;
         text-align: center;
-        font-size:3em;
-        background-color:$user-background;
+        font-size: 3em;
+        background-color: $user-background;
 
         display: flex;
         justify-content: center;
@@ -188,16 +199,16 @@ a{
         box-sizing: border-box;
     }
 
-    &__largefont{
-        margin-top:1.5vh;
+    &__largefont {
+        margin-top: 1.5vh;
         margin-right: 1.5vw;
-        border-radius:25px;
-        float:right;
-        width:4vw;
-        height:6vh;
+        border-radius: 25px;
+        float: right;
+        width: 4vw;
+        height: 6vh;
         text-align: center;
-        font-size:15px;
-        background-color:$user-background;
+        font-size: 15px;
+        background-color: $user-background;
 
         display: flex;
         justify-content: center;
@@ -205,16 +216,16 @@ a{
         box-sizing: border-box;
     }
 
-    &__contrast{
-        margin-top:1.5vh;
+    &__contrast {
+        margin-top: 1.5vh;
         margin-right: 1.5vw;
-        border-radius:25px;
-        float:right;
-        width:4vw;
-        height:6vh;
+        border-radius: 25px;
+        float: right;
+        width: 4vw;
+        height: 6vh;
         text-align: center;
-        font-size:15px;
-        background-color:$user-background;
+        font-size: 15px;
+        background-color: $user-background;
 
         display: flex;
         justify-content: center;
@@ -222,16 +233,16 @@ a{
         box-sizing: border-box;
     }
 
-    i:hover{
-        cursor:pointer;
+    i:hover {
+        cursor: pointer;
     }
 }
 
 
 
-.main{
-    height:91vh;
-    background-color:$main-background;
+.main {
+    height: 91vh;
+    background-color: $main-background;
     width: 100vw;
 
     flex-direction: column;
@@ -240,46 +251,45 @@ a{
     align-items: center;
     box-sizing: border-box;
 
-    .main__h1{
-        margin-right:30vw;
-        margin-bottom:1vw;
-        font-size:3.5rem;
+    .main__h1 {
+        margin-right: 30vw;
+        margin-bottom: 1vw;
+        font-size: 3.5rem;
     }
 
-    main{
-        font-family:$primary_font;
-        background-color:$frame-background;
-        height:74vh;
+    main {
+        font-family: $primary_font;
+        background-color: $frame-background;
+        height: 74vh;
         box-shadow: -10px 10px 10px rgba(0, 0, 0, 0.25);
         border-radius: 20px;
-        width:70vw;
-        margin-left:17.5vw;
-        padding:1vw;
+        width: 70vw;
+        margin-left: 17.5vw;
+        padding: 1vw;
         line-height: 24px;
 
 
-        th{
-        padding-bottom:2vh;
+        th {
+            padding-bottom: 2vh;
         }
 
-        td
-        {
-        padding-right:5vw;
+        td {
+            padding-right: 5vw;
         }
 
-        thead{
-        font-style: normal;
-        font-weight: 700;
-        font-size: 28px;
+        thead {
+            font-style: normal;
+            font-weight: 700;
+            font-size: 28px;
         }
 
-        tbody{
-        font-size: 18px;
+        tbody {
+            font-size: 18px;
         }
 
-        a{
-            text-decoration:none;
-            color:#000000;
+        a {
+            text-decoration: none;
+            color: #000000;
         }
 
 
@@ -288,3 +298,108 @@ a{
 
 }
 
+.login {
+    background-color: $backgroundGreen;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+
+    &__form {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 2fr 3fr 1fr 2fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+
+        text-align: center;
+
+        width: 69vw;
+        height: 72vh;
+
+        background-color: $darkGreen;
+        border-radius: 1.8vh;
+        filter: drop-shadow(-10px 10px 10px rgba(0, 0, 0, 0.25));
+    }
+
+    &__iconbox {
+        height: 7vh;
+        width: 20vh;
+
+        align-self: flex-end;
+        margin-right: 1vw;
+        margin-top: 1vw;
+
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__icon {
+        background-color: $darkerGreen;
+        height: 6vh;
+        width: 6vh;
+        border-radius: 2vh;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        color: white;
+        font-size: 0.5rem;
+    }
+
+    &__smallfont {
+        font-size: 1.1rem;
+    }
+
+
+
+    &__logo {
+        width: 17vw;
+    }
+
+    &__inputbox {
+        width: 100%;
+        height: 14vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__input {
+        background: #FFFFFF;
+        height: 5vh;
+        width: 50vw;
+        font-size: 1rem;
+        padding: 0 1vw;
+        box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 2vh;
+        border: none;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &__button {
+        width: 20vh;
+        height: 8vh;
+        color: #ffffff;
+        font-size: 1.5rem;
+        font-weight: 600;
+
+        background: #8CD790;
+        box-shadow: -8px 8px 8px rgba(0, 0, 0, 0.25);
+        border: none;
+        border-radius: 2vh;
+    }
+
+    &__center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+}

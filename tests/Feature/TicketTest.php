@@ -46,7 +46,9 @@ class TicketTest extends TestCase
 
     public function test_ticket_store() : void
     {
-        $user = User::factory()->make();
+        $user = User::factory()->create([
+            'first_name' => "Kunegunda"
+        ]);
 
         $ticket = Ticket::factory()->make([
             'title' => 'Testowy4444'
@@ -57,7 +59,9 @@ class TicketTest extends TestCase
         $response->assertRedirect('/tickets');
 
         $ticket = Ticket::where('title', 'Testowy4444');
+        $user = User::where('first_name', 'Kunegunda');
 
         $ticket->delete();
+        $user->delete();
     }
 }

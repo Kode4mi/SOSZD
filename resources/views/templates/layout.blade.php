@@ -11,18 +11,10 @@
     <script src="{{ asset('js/app.js') }}"></script>
 </head>
 <body>
-
+    
 @include('partials._navbar')
 @include('partials._header')
+@include('partials._main')
 
-<div class="main" id="main">
-<h1 class="main__h1">Aktualne sprawy:</h1>
-<div class="main__frame">
-    @yield('content')
-</div>
-
-    
-
-</div>
 </body>
 </html>

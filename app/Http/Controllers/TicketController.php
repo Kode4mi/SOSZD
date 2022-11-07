@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ticket;
+use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -13,6 +14,7 @@ class TicketController extends Controller
     {
         return view('tickets/index', [
             'tickets' => Ticket::sortable()->filter(request(['search']))->simplePaginate(20),
+            'users' => User::class,
         ]);
     }
 

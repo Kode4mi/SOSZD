@@ -10,7 +10,6 @@ $button-color: #FFFFFF;
 $so-color: #8CD790;
 $szd-color: #FFFFFF;
 $primary_font: Cabin;
-$primary_font_size: 4.7rem;
 $button-border-radius: 15px;
 
 //kolory do logowania
@@ -37,6 +36,27 @@ a {
 
 img {
     width: 100%;
+}
+
+//1920 x 1080
+//1366 x 768
+
+:root {
+    overflow: hidden;
+
+    font-size: 16px;
+
+    @media (max-width: 1538px) {
+        font-size: 12px;
+    }
+
+    @media (max-width: 1367px) {
+        font-size: 10px;
+    }
+
+    @media (max-width: 1025px) {
+        font-size: 8px;
+    }
 }
 
 .navbar {
@@ -68,7 +88,7 @@ img {
         background-color: $logo-background;
         box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
 
-        font-size: $primary_font_size;
+        font-size: 4.7rem;
         text-align: center;
         font-style: normal;
         font-weight: 600;
@@ -142,7 +162,7 @@ img {
         font-family: "Cabin", serif;
         text-align: center;
         font-weight: 400;
-        font-size: 36px;
+        font-size: 2.25rem;
     }
 
     &__sidebar--button:hover {
@@ -173,7 +193,7 @@ img {
         padding-left: 1vw;
         font-style: normal;
         font-weight: 600;
-        font-size: 19px;
+        font-size: 1.1875rem;
         background-color: $user-background;
 
         display: flex;
@@ -190,7 +210,7 @@ img {
         width: 4vw;
         height: 6vh;
         text-align: center;
-        font-size: 3em;
+        font-size: 3rem;
         background-color: $user-background;
 
         display: flex;
@@ -207,7 +227,7 @@ img {
         width: 4vw;
         height: 6vh;
         text-align: center;
-        font-size: 15px;
+        font-size: 0.9375;
         background-color: $user-background;
 
         display: flex;
@@ -224,7 +244,7 @@ img {
         width: 4vw;
         height: 6vh;
         text-align: center;
-        font-size: 15px;
+        font-size: 0.9375rem;
         background-color: $user-background;
 
         display: flex;
@@ -274,17 +294,21 @@ img {
         }
 
         td {
-            padding-right: 5vw;
+            padding-right: 2vw;
         }
 
         thead {
             font-style: normal;
             font-weight: 700;
-            font-size: 28px;
+            font-size: 1.75rem;
         }
 
         tbody {
-            font-size: 18px;
+            font-size: 1.1rem;
+        }
+
+        tr {
+            height: 2.7vh;
         }
 
         a {
@@ -401,5 +425,19 @@ img {
         flex-direction: column;
         align-items: center;
         width: 100%;
+    }
+}
+
+.searchbar {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 3.5vh;
+
+    &__input {
+        height: 100%;
+    }
+
+    &__button {
+        height: 100%;
     }
 }

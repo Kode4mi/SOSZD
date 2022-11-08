@@ -12,6 +12,10 @@ use Laravel\Sanctum\HasApiTokens;
 /**
  * @method static where(string $column, string $value)
  * @method static find(int $id)
+ * @method static sortable()
+ * @property string $password
+ * @property integer $id
+ * @property string $email
  */
 class User extends Authenticatable
 {
@@ -60,5 +64,5 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    
+
 }

@@ -1,4 +1,4 @@
-<img src="./public/images/logo.png " data-canonical-src="./public/images/logo.png" width="400" />
+<img src="./public/images/logo.png " data-canonical-src="./public/images/logo.png" width="400" alt="Logo SOSZD" />
 
 
 ## System Obiegu SZkolnych Dokumentów
@@ -14,7 +14,7 @@ Wykonana we frameworku Laravel aplikacja pomagająca w zarządzaniu, udostępnia
 - `GRANT ALL PRIVILEGES ON *.* TO 'soszd-admin'@'localhost';`
 - `FLUSH PRIVILEGES;`
 4. Wpisz `npm install`
-5. Wpisz `npx mix`
+5. Wpisz `npx run dev`
 6. Wpisz `.\r`
 7. Wpisz `.\start`
 8. Gotowe

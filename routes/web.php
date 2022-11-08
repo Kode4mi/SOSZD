@@ -21,30 +21,43 @@ Route::get('/', static function () {
    return redirect('login');
 });
 
+Route::middleware(['auth'])->group(function () {
+
 // Ticket
 
-Route::get('tickets', [TicketController::class, 'index'])->middleware('auth');
+    Route::get('tickets', [TicketController::class, 'index']);
 
-Route::get('ticket/create', [TicketController::class, 'create'])->middleware('auth');
+    Route::get('ticket/create', [TicketController::class, 'create']);
 
-Route::get('ticket/{ticket}', [TicketController::class, 'show'])->middleware('auth');
+    Route::get('ticket/{ticket}', [TicketController::class, 'show']);
 
-Route::post('ticket', [TicketController::class, 'store'])->middleware('auth');
+    Route::post('ticket', [TicketController::class, 'store']);
 
 // User
 
-Route::post('users/authenticate', [UserController::class, 'authenticate'])->middleware('guest');
+    Route::post('logout', [UserController::class, 'logout']);
 
-Route::post('logout', [UserController::class, 'logout'])->middleware('auth');
+    Route::get('user/edit', [UserController::class, 'edit']);
 
-Route::get('user/edit', [UserController::class, 'edit'])->middleware('auth');
+    Route::post('user', [UserController::class, 'update']);
 
-Route::get('login', [UserController::class, 'login'])->middleware('guest')->name('login');
+    Route::get('change-password', [UserController::class, 'editPassword']);
 
-Route::post('user', [UserController::class, 'update'])->middleware('auth');
+    Route::post('change-password', [UserController::class, 'updatePassword']);
 
-Route::get('change-password', [UserController::class, 'editPassword'])->middleware('auth');
+    Route::middleware(['admin'])->group(function () {
 
-Route::post('change-password', [UserController::class, 'updatePassword'])->middleware('auth');
+        Route::get('users', [UserController::class, 'index']);
 
-Route::get('user/user_table', [UserController::class, 'user_table'])->middleware('auth');
+    });
+});
+
+//Logowanie
+
+Route::middleware(['guest'])->group(function () {
+
+    Route::get('login', [UserController::class, 'login'])->name('login');
+
+    Route::post('users/authenticate', [UserController::class, 'authenticate']);
+
+});

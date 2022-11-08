@@ -5,7 +5,7 @@
 <x-main-title>Użytkownicy:</x-main-title>
     <main>
 
-    <form action="/user/user_table" id="search_form">    
+    <form action="/users" id="search_form">
         <input class="form-control search w-25" type="search" aria-label="Wyszukaj" name="search"
                 @if(request('search' ?? null))
                 value="{{request('search')}}"
@@ -20,7 +20,7 @@
 
     <tr>
         <th>@sortablelink('last_name', 'Dane')</th>
-        <!-- 
+        <!--
             ewentaulnie w oddzielnych polach jako:
 
 

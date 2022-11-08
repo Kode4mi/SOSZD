@@ -24,6 +24,16 @@
             <div class="login__center">
                 <button type="submit" class="login__button">Zaloguj</button>
             </div>
+
+            <div class="login__errorpanel">
+                @error('password')
+                <p class="login__errormessage">{{$message}}</p>
+                @enderror
+
+                @error('email')
+                <p class="login__errormessage">{{$message}}</p>
+                @enderror
+            </div>
         </form>
     </div>
 @endsection

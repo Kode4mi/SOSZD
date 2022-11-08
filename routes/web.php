@@ -47,4 +47,4 @@ Route::get('change-password', [UserController::class, 'editPassword'])->middlewa
 
 Route::post('change-password', [UserController::class, 'updatePassword'])->middleware('auth');
 
-Route::get('user/user_table', [UserController::class, 'user_table'])->middleware('auth');
+Route::get('users', [UserController::class, 'index'])->middleware('auth');

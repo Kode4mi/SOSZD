@@ -14,7 +14,7 @@
             </li>
             <li>
                 @if(auth()->user()->role === 'admin')
-                    <button class="navbar__sidebar--button">Użytkownicy</button>
+                    <form action="/users" method="GET"><button class="navbar__sidebar--button">Użytkownicy</button></form>
                 @else
                     <form action="/user/edit" method="GET"><button class="navbar__sidebar--button">Konto</button></form>
                 @endif

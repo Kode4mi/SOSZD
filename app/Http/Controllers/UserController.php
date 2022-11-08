@@ -14,6 +14,7 @@ class UserController extends Controller
     {
         return view('/user/edit');
     }
+    
 
     public function login(): View
     {
@@ -105,4 +106,10 @@ class UserController extends Controller
         return redirect()->back()->with('message', 'Zmieniono hasło');
     }
 
+    public function user_table(): View
+    {
+        return view('/user/user_table',[
+            'users' => User::sortable()->filter(request(['search']))->simplePaginate(20)
+        ]);
+    }
 }

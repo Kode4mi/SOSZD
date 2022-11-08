@@ -293,22 +293,22 @@ img {
         }
 
 
-        &--topic, &--deadline{
+        .topic, .deadline{
             padding:3px;
             border-radius: 15px;
             width:25vw;
         }
 
-        &--topic{
+        .topic{
             margin-left:0.7vw;
         }
 
-        &--deadline{
+        .deadline{
             margin-left:0.5vw;
             margin-top:1vh;
         }
 
-        &--content{
+        .content{
             margin-left:0.5vw;
             padding:5px;
             border-radius: 15px;
@@ -316,7 +316,7 @@ img {
             height:52vh;
         }
 
-        &--select{
+        .select{
             margin-top:1vh;
             border-radius: 15px;
         }

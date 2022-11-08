@@ -11,7 +11,7 @@
 @csrf
 
 <label>Temat:
-    <input type="text" name="title" class="main__frame--topic" value="{{old('title')}}">
+    <input type="text" name="title" class="topic" value="{{old('title')}}">
 </label><br>
 
     @error('title')
@@ -19,7 +19,7 @@
     @enderror
 
     <label>Termin:
-        <input type="datetime-local" name="deadline" class="main__frame--deadline" value="{{date('Y-m-d')}}T{{date('H:i')}}">
+        <input type="datetime-local" name="deadline" class="deadline" value="{{date('Y-m-d')}}T{{date('H:i')}}">
     </label><br>
 
     @error('deadline')
@@ -27,7 +27,7 @@
     @enderror
 
     <label>Priorytet:
-        <select class="main__frame--select" name="priority">
+        <select class="select" name="priority">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -41,7 +41,7 @@
     @enderror
 
 <label class="label_opis">Opis: <br/>
-    <textarea name="description" class="main__frame--content" value="{{old('description')}}"> </textarea>
+    <textarea name="description" class="content" value="{{old('description')}}"> </textarea>
 </label><br>
 
     @error('description')

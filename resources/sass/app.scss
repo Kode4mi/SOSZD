@@ -293,6 +293,38 @@ img {
         }
 
 
+        &--topic, &--deadline{
+            padding:3px;
+            border-radius: 15px;
+            width:25vw;
+        }
+
+        &--topic{
+            margin-left:0.7vw;
+        }
+
+        &--deadline{
+            margin-left:0.5vw;
+            margin-top:1vh;
+        }
+
+        &--content{
+            margin-left:0.5vw;
+            padding:5px;
+            border-radius: 15px;
+            width:64vw;
+            height:52vh;
+        }
+
+        &--select{
+            margin-top:1vh;
+            border-radius: 15px;
+        }
+
+        .label_opis{
+            margin-top:1vh;
+        }
+
     }
 
 

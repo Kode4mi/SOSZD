@@ -1,9 +1,12 @@
 @extends('templates.layout')
 
 @section('content')
-    <p>{{$ticket->temat}}</p>
-    <p>{{$ticket->opis}}</p>
-    <p>{{$ticket->termin}}</p>
-    <p>{{$ticket->priorytet}}</p>
+    <x-main-title>Sprawa pt. {{$ticket->title}} </x-main-title>
+    <main>
+        <p>{{$ticket->title}}</p>
+        <p>{{$ticket->description}}</p>
+        <p>{{$ticket->deadline}}</p>
+        <p>{{$ticket->priority}}</p>
+    </main>
 @endsection
 

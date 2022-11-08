@@ -1,46 +1,48 @@
 @extends('templates.layout')
 
 @section('content')
-<h1>Użytkownicy</h1>
+    <x-main-title>Edycja użytkownika: </x-main-title>
+    <main>
+        <form action="/user" method="POST">
 
-<form action="/user" method="POST">
+        @csrf
 
-@csrf
+        <label>Imie:
+            <input type="text" name="first_name" value="{{auth()->user()->first_name}}">
+        </label><br>
 
-<label>Imie:
-    <input type="text" name="first_name" value="{{old('first_name')}}">
-</label><br>
+            @error('first_name')
+            <p>{{$message}}</p>
+            @enderror
 
-    @error('first_name')
-    <p>{{$message}}</p>
-    @enderror
+        <label>Nazwisko:
+            <input type="text" name="last_name" value="{{auth()->user()->last_name}}">
+        </label><br>
 
-<label>Nazwisko:
-    <input type="text" name="Last_name" value="{{old('Last_name')}}">
-</label><br>
+            @error('last_name')
+            <p>{{$message}}</p>
+            @enderror
 
-    @error('Last_name')
-    <p>{{$message}}</p>
-    @enderror
+        <label>Hasło:
+            <input type="password" name="password">
+        </label><br>
 
-<label>Hasło:
-    <input type="password" name="password">
-</label><br>
+            @error('password')
+            <p>{{$message}}</p>
+            @enderror
 
-    @error('password')
-    <p>{{$message}}</p>
-    @enderror
+        <label>Potwierdź hasło:
+            <input type="password" name="password_confirmation">
+        </label><br>
 
-<label>Potwierdź hasło:
-    <input type="password" name="confirm-password">
-</label><br>
+            @error('password_confirmation')
+            <p>{{$message}}</p>
+            @enderror
 
-    @error('confirm-password')
-    <p>{{$message}}</p>
-    @enderror
+        <button type="submit">Zatwierdź</button>
 
-<button type="submit">Zatwierdź</button>
+            <p class="mt-2"><a href="/change-password">Zmień hasło</a></p>
 
-</form>
-
+        </form>
+    </main>
 @endsection

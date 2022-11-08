@@ -1,5 +1,5 @@
 <div class="header" id="header">
-    <div class="header__logged-user">Mikołaj Rej</div>
+    <div class="header__logged-user">{{auth()->user()->first_name}} {{auth()->user()->last_name}}</div>
     <div class="header__largefont"><i class="fa-solid fa-a fa-3x"></i></div>
     <div class="header__smallfont"><i class="fa-solid fa-a fa-2xs"></i></div>
     <div class="header__contrast" ><i class="fa-solid fa-circle-half-stroke fa-3x" onClick="contrastToggle()"></i></div>
@@ -9,7 +9,7 @@
   var contrast=0;
 
   function contrastToggle(){
- 
+
     if(contrast==0)
     {
     document.getElementById("navbar__nazwa1").style.color="#29FFF4";
@@ -30,6 +30,6 @@
     document.getElementById("main").style.color="#000000"
     contrast=0;
     }
-    
+
   }
 </script>

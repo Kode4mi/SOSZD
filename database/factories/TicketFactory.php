@@ -19,8 +19,8 @@ class TicketFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->title,
-            'description' => $this->faker->sentence,
+            'title' => $this->faker->sentence,
+            'description' => $this->faker->paragraph,
             'deadline' => date("Y-m-d H:i:s", strtotime('+1 day')),
             'priority' => $this->faker->numberBetween(1,4),
             'sender_id' => 1,

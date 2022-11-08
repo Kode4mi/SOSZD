@@ -54,8 +54,7 @@ class UserController extends Controller
         $user = auth()->user();
 
         $formFields = $request->validate([
-            'first_name' => ['required', 'min:3'],
-            'last_name' => ['required', 'min:3'],
+            'email' => ['required', 'email'],
             'password' => ['required', 'confirmed'],
         ]);
 

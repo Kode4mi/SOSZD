@@ -39,8 +39,11 @@ class TicketController extends Controller
             'priority' => 'required',
         ]);
 
+        /* @var User $user */
+        $user = auth()->user();
+
         $formFields += [
-            'sender_id' => auth()->user()->id,
+            'sender_id' => $user->id,
         ];
 
         Ticket::create($formFields);

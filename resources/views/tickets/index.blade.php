@@ -5,13 +5,13 @@
 <x-main-title>Aktualne sprawy: </x-main-title>
     <main>
 
-    <form action="/tickets" id="search_form">
-        <input class="form-control search w-25" type="search" aria-label="Wyszukaj" name="search"
+    <form action="/tickets" id="search_form" class="searchbar">
+        <input class="form-control search w-25 searchbar__input" type="search" aria-label="Wyszukaj" name="search"
                @if(request('search' ?? null))
                value="{{request('search')}}"
             @endif
         />
-        <button class="btn-outline-success btn-search" type="submit">   <i class="fa-solid fa-magnifying-glass"></i>    </button>
+        <button class="btn-outline-success btn-search searchbar__button" type="submit">   <i class="fa-solid fa-magnifying-glass"></i>    </button>
     </form>
 
 <table>

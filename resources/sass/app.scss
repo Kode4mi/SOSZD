@@ -288,13 +288,24 @@ img {
         padding: 1vw;
         line-height: 24px;
 
-
-        th {
-            padding-bottom: 2vh;
+        table,
+        thead,
+        tbody,
+        th,
+        td,
+        tr {
+            display: block;
         }
 
-        td {
-            padding-right: 2vw;
+        table {
+            height: 85%;
+            width: 100%;
+
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 7fr;
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
         }
 
         thead {
@@ -305,10 +316,15 @@ img {
 
         tbody {
             font-size: 1.1rem;
+            overflow: auto;
         }
 
         tr {
-            height: 2.7vh;
+            display: grid;
+            grid-template-columns: 5fr repeat(2, 3fr) 1fr;
+            grid-template-rows: 1fr;
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
         }
 
         a {
@@ -370,14 +386,12 @@ img {
         align-items: center;
 
         color: white;
-        font-size: 0.5rem;
+        font-size: 0.7rem;
     }
 
     &__smallfont {
-        font-size: 1.1rem;
+        font-size: 1.9rem;
     }
-
-
 
     &__logo {
         width: 17vw;
@@ -396,7 +410,7 @@ img {
         background: #FFFFFF;
         height: 5vh;
         width: 50vw;
-        font-size: 1rem;
+        font-size: 1.1rem;
         padding: 0 1vw;
         box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 2vh;
@@ -411,7 +425,7 @@ img {
         width: 20vh;
         height: 8vh;
         color: #ffffff;
-        font-size: 1.5rem;
+        font-size: 1.7rem;
         font-weight: 600;
 
         background: #8CD790;

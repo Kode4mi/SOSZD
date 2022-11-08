@@ -3,7 +3,7 @@
 @section('content')
     <x-main-title>Tworzenie sprawy: </x-main-title>
 
-<main>
+<main class="create-ticket">
 
 
 <form action="/ticket" method="POST">
@@ -11,7 +11,7 @@
 @csrf
 
 <label>Temat:
-    <input type="text" name="title" class="topic" value="{{old('title')}}">
+    <input type="text" name="title" class="create-ticket--topic" value="{{old('title')}}">
 </label><br>
 
     @error('title')
@@ -19,7 +19,7 @@
     @enderror
 
     <label>Termin:
-        <input type="datetime-local" name="deadline" class="deadline" value="{{date('Y-m-d')}}T{{date('H:i')}}">
+        <input type="datetime-local" name="deadline" class="create-ticket--deadline" value="{{date('Y-m-d')}}T{{date('H:i')}}">
     </label><br>
 
     @error('deadline')
@@ -27,7 +27,7 @@
     @enderror
 
     <label>Priorytet:
-        <select class="select" name="priority">
+        <select class="create-ticket--select" name="priority">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -41,7 +41,7 @@
     @enderror
 
 <label class="label_opis">Opis: <br/>
-    <textarea name="description" class="content" value="{{old('description')}}"> </textarea>
+    <textarea name="description" class="create-ticket--content"> {{old('description')}} </textarea>
 </label><br>
 
     @error('description')

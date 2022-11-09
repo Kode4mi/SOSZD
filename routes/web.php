@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -59,5 +60,10 @@ Route::middleware(['guest'])->group(function () {
     Route::get('login', [UserController::class, 'login'])->name('login');
 
     Route::post('users/authenticate', [UserController::class, 'authenticate']);
+
+    Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPassword']);
+    Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPassword']);
+    Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPassword']);
+    Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPassword']);
 
 });

@@ -23,7 +23,7 @@
             </div>
             <div class="login__center">
                 <button type="submit" class="login__button">Zaloguj</button>
-                <a class="mt-4" href="/forget-password"> Nie pamiętasz hasła?</a>
+                <a class="mt-4" href="/forget-password">Nie pamiętasz hasła?</a>
             </div>
 
             <div class="login__errorpanel">

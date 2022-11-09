@@ -16,33 +16,13 @@ $button-border-radius: 15px;
 $backgroundGreen: #D7FFF1;
 $lightGreen: #8CD790;
 $darkGreen: #4BA68D;
-$darkerGreen: #285943;
-
-@import "~bootstrap";
-@import "~@fontsource/cabin/700.css";
-@import "~@fontsource/cabin/400.css";
-@import "/node_modules/@fortawesome/fontawesome-free/css/all.min.css";
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-a {
-    text-decoration: none;
-}
-
-img {
-    width: 100%;
-}
+$darkerGreen: #285942;
 
 //1920 x 1080
 //1366 x 768
 
 :root {
     overflow: hidden;
-
     font-size: 16px;
 
     @media (max-width: 1538px) {
@@ -81,8 +61,6 @@ img {
         width: 18vw;
         display: block;
         z-index: 1;
-
-
 
         background-color: $logo-background;
         box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25);

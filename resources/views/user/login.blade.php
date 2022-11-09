@@ -10,7 +10,7 @@
                     <div class="login__largefont login__icon"><i class="fa-solid fa-a fa-3x"></i></div>
                     <div class="login__smallfont login__icon"><i class="fa-solid fa-a fa-2xs"></i></div>
                     <div class="login__contrast login__icon" ><i class="fa-solid fa-circle-half-stroke fa-3x" onClick="contrastToggle()"></i></div>
-                </div> 
+                </div>
             </div>
             <div class="login__center">
                 <div class="login__logo">
@@ -23,6 +23,7 @@
             </div>
             <div class="login__center">
                 <button type="submit" class="login__button">Zaloguj</button>
+                <a class="mt-4" href="/forget-password"> Nie pamiętasz hasła?</a>
             </div>
 
             <div class="login__errorpanel">

@@ -12,7 +12,7 @@ class TicketController extends Controller
 {
     public function index(): View
     {
-        return view('tickets/index', [
+        return view('tickets.index', [
             'tickets' => Ticket::sortable()->filter(request(['search']))->simplePaginate(20),
             'users' => User::class,
         ]);
@@ -20,12 +20,12 @@ class TicketController extends Controller
 
     public function create(): View
     {
-        return view('tickets/create');
+        return view('tickets.create');
     }
 
     public function show(Ticket $ticket): View
     {
-        return view('tickets/show', [
+        return view('tickets.show', [
             'ticket' => $ticket,
         ]);
     }

@@ -17,7 +17,7 @@ class UserTest extends TestCase
         $response = $this->actingAs($user)->get('/user/edit');
 
         $response->assertSuccessful();
-        $response->assertViewIs('.user.edit'); // bez kropki wypierdala błąd :)
+        $response->assertViewIs('user.edit'); // bez kropki wypierdala błąd :)
     }
 
 }

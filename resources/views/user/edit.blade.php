@@ -1,25 +1,20 @@
 @extends('templates.layout')
 
 @section('content')
-    <x-main-title>Edycja użytkownika: </x-main-title>
+    <x-main-title>Zmień swoje dane </x-main-title>
     <main>
+
+        <h3>Zmień swój email</h3>
+
         <form action="/user" method="POST">
 
         @csrf
 
-        <label>Imie:
-            <input type="text" name="first_name" value="{{auth()->user()->first_name}}">
+        <label>Email:
+            <input type="text" name="email" value="{{auth()->user()->email}}">
         </label><br>
 
-            @error('first_name')
-            <p>{{$message}}</p>
-            @enderror
-
-        <label>Nazwisko:
-            <input type="text" name="last_name" value="{{auth()->user()->last_name}}">
-        </label><br>
-
-            @error('last_name')
+            @error('email')
             <p>{{$message}}</p>
             @enderror
 

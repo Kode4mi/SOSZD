@@ -19,6 +19,8 @@ Wykonana we frameworku Laravel aplikacja pomagająca w zarządzaniu, udostępnia
 7. Wpisz `.\start`
 8. Gotowe
 
+#### Włączenie kolejowania emaili `php artisan queue:work` 
+
 ## Dane logowania testowych użytkowników:
 
 - admin email: `admin@soszd.pl` hasło: `admin` 

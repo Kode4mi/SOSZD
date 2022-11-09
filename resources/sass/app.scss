@@ -16,33 +16,13 @@ $button-border-radius: 15px;
 $backgroundGreen: #D7FFF1;
 $lightGreen: #8CD790;
 $darkGreen: #4BA68D;
-$darkerGreen: #285943;
-
-@import "~bootstrap";
-@import "~@fontsource/cabin/700.css";
-@import "~@fontsource/cabin/400.css";
-@import "/node_modules/@fortawesome/fontawesome-free/css/all.min.css";
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-a {
-    text-decoration: none;
-}
-
-img {
-    width: 100%;
-}
+$darkerGreen: #285942;
 
 //1920 x 1080
 //1366 x 768
 
 :root {
     overflow: hidden;
-
     font-size: 16px;
 
     @media (max-width: 1538px) {
@@ -81,8 +61,6 @@ img {
         width: 18vw;
         display: block;
         z-index: 1;
-
-
 
         background-color: $logo-background;
         box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25);
@@ -173,8 +151,6 @@ img {
     }
 }
 
-
-
 .header {
     box-sizing: border-box;
     background-color: $header-background;
@@ -257,8 +233,6 @@ img {
     }
 }
 
-
-
 .main {
     height: 91vh;
     background-color: $main-background;
@@ -287,13 +261,24 @@ img {
         padding: 1vw;
         line-height: 24px;
 
-
-        th {
-            padding-bottom: 2vh;
+        table,
+        thead,
+        tbody,
+        th,
+        td,
+        tr {
+            display: block;
         }
 
-        td {
-            padding-right: 2vw;
+        table {
+            height: 85%;
+            width: 100%;
+
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 7fr;
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
         }
 
         thead {
@@ -304,10 +289,15 @@ img {
 
         tbody {
             font-size: 1.1rem;
+            overflow: auto;
         }
 
         tr {
-            height: 2.7vh;
+            display: grid;
+            grid-template-columns: 7fr repeat(2, 3fr) 1fr;
+            grid-template-rows: 1fr;
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
         }
 
         a {
@@ -323,36 +313,38 @@ img {
 }
 
 .create-ticket {
-    &--topic, &--deadline{
-        padding:3px;
+
+    &--topic,
+    &--deadline {
+        padding: 3px;
         border-radius: 15px;
-        width:25vw;
+        width: 25vw;
     }
 
-    &--topic{
-        margin-left:0.7vw;
+    &--topic {
+        margin-left: 0.7vw;
     }
 
-    &--deadline{
-        margin-left:0.5vw;
-        margin-top:1vh;
+    &--deadline {
+        margin-left: 0.5vw;
+        margin-top: 1vh;
     }
 
-    &--content{
-        margin-left:0.5vw;
-        padding:5px;
+    &--content {
+        margin-left: 0.5vw;
+        padding: 5px;
         border-radius: 15px;
-        width:64vw;
-        height:52vh;
+        width: 64vw;
+        height: 52vh;
     }
 
-    &--select{
-        margin-top:1vh;
+    &--select {
+        margin-top: 1vh;
         border-radius: 15px;
     }
 
-    &--label_opis{
-        margin-top:1vh;
+    &--label_opis {
+        margin-top: 1vh;
     }
 
 }
@@ -405,14 +397,12 @@ img {
         align-items: center;
 
         color: white;
-        font-size: 0.5rem;
+        font-size: 0.7rem;
     }
 
     &__smallfont {
-        font-size: 1.1rem;
+        font-size: 1.9rem;
     }
-
-
 
     &__logo {
         width: 17vw;
@@ -431,7 +421,7 @@ img {
         background: #FFFFFF;
         height: 5vh;
         width: 50vw;
-        font-size: 1rem;
+        font-size: 1.1rem;
         padding: 0 1vw;
         box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 2vh;
@@ -446,7 +436,7 @@ img {
         width: 20vh;
         height: 8vh;
         color: #ffffff;
-        font-size: 1.5rem;
+        font-size: 1.7rem;
         font-weight: 600;
 
         background: #8CD790;
@@ -460,6 +450,22 @@ img {
         flex-direction: column;
         align-items: center;
         width: 100%;
+    }
+
+    &__error {
+        &panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        &message {
+            color: rgb(255, 170, 0);
+            font-weight: 500;
+            font-size: 1.2rem;
+            display: block;
+        }
     }
 }
 
@@ -476,4 +482,3 @@ img {
         height: 100%;
     }
 }
-

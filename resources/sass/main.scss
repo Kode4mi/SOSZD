@@ -1,0 +1,18 @@
+@import "~bootstrap";
+@import "~@fontsource/cabin/700.css";
+@import "~@fontsource/cabin/400.css";
+@import "/node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+}

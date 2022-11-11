@@ -4,7 +4,7 @@
     <x-main-title>Zmiana hasła: </x-main-title>
 
     <main>
-        <form action="/change-password" method="POST" class="w-full text-center mt-4">
+        <form action="/change-password" method="POST" class="w-full text-center mt-4 password_edit">
             @csrf
             @method('POST')
 

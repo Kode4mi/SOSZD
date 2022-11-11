@@ -6,12 +6,12 @@
 
         <h3>Zmień swój email</h3>
 
-        <form action="/user" method="POST">
+        <form action="/user" method="POST" class="user_edit">
 
         @csrf
 
         <label>Email:
-            <input type="text" name="email" value="{{auth()->user()->email}}">
+            <input type="text" class="user_edit__email" name="email" value="{{auth()->user()->email}}">
         </label><br>
 
             @error('email')
@@ -19,7 +19,7 @@
             @enderror
 
         <label>Hasło:
-            <input type="password" name="password">
+            <input type="password" class="user_edit__password" name="password">
         </label><br>
 
             @error('password')
@@ -27,14 +27,14 @@
             @enderror
 
         <label>Potwierdź hasło:
-            <input type="password" name="password_confirmation">
+            <input type="password" class="user_edit__password-confirm" name="password_confirmation">
         </label><br>
 
             @error('password_confirmation')
             <p>{{$message}}</p>
             @enderror
 
-        <button type="submit">Zatwierdź</button>
+        <button type="submit" class="user_edit__submit-button">Zatwierdź</button>
 
             <p class="mt-2"><a href="/change-password">Zmień hasło</a></p>
 

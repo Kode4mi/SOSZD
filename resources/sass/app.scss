@@ -285,6 +285,7 @@ $darkerGreen: #285942;
             font-style: normal;
             font-weight: 700;
             font-size: 1.75rem;
+            margin-top:2vh;
         }
 
         tbody {
@@ -305,15 +306,15 @@ $darkerGreen: #285942;
             color: #000000;
         }
 
-
-
     }
+    
 
 
 }
 
 .create-ticket {
-
+    //border:1px gray solid; !!!DO DYSKUSJI CZY LEPIEJ 
+    
     &--topic,
     &--deadline {
         padding: 3px;
@@ -322,10 +323,12 @@ $darkerGreen: #285942;
     }
 
     &--topic {
+        border:1px gray solid;
         margin-left: 0.7vw;
     }
 
     &--deadline {
+        border:1px gray solid;
         margin-left: 0.5vw;
         margin-top: 1vh;
     }
@@ -345,6 +348,14 @@ $darkerGreen: #285942;
 
     &--label_opis {
         margin-top: 1vh;
+    }
+
+    button{
+        background-color:$button-background;
+        color:$button-color;
+        border:none;
+        border-radius:15px;
+        padding:0.3rem 0.5rem 0.3rem 0.5rem;
     }
 
 }
@@ -476,9 +487,55 @@ $darkerGreen: #285942;
 
     &__input {
         height: 100%;
+        border-radius:15px 0px 0px 15px;
     }
 
     &__button {
         height: 100%;
+        width:2vw;
+        border-radius:0px 15px 15px 0px;
+        border: 1px gray solid;
+    }
+}
+
+.user_edit{
+    input{
+        display:block;
+        border-radius:15px;
+        border:1px gray solid;
+        padding:0.5vh;
+    }
+
+    label{
+        margin-top:0.5vh;
+    }
+
+    &__submit-button{
+        margin-top:1vh;
+        color:$button-color;
+        background-color:$button-background;
+        border-radius:15px;
+        border:none;
+        padding:0.3rem 0.5rem 0.3rem 0.5rem;
+    }
+}
+
+.password_edit{
+    text-align:center;
+
+    input{
+        display:block;
+        margin: auto;
+        border-radius:15px;
+        border:1px gray solid;
+        padding:0.5vh;
+    }
+
+    button{
+        color:$button-color;
+        background-color:$button-background;
+        border-radius:15px;
+        border:none;
+        padding:0.6rem 0.9rem 0.6rem 0.9rem;
     }
 }

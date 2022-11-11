@@ -54,8 +54,7 @@ class UserController extends Controller
         $user = auth()->user();
 
         $formFields = $request->validate([
-            'first_name' => ['required', 'min:3'],
-            'last_name' => ['required', 'min:3'],
+            'email' => ['required', 'email'],
             'password' => ['required', 'confirmed'],
         ]);
 
@@ -106,9 +105,9 @@ class UserController extends Controller
         return redirect()->back()->with('message', 'Zmieniono hasło');
     }
 
-    public function user_table(): View
+    public function index(): View
     {
-        return view('/user/user_table',[
+        return view('user.index',[
             'users' => User::sortable()->filter(request(['search']))->simplePaginate(20)
         ]);
     }

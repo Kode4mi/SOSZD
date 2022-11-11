@@ -6,29 +6,28 @@
   </div>
 
 <script>
-  var contrast=0;
+  var contrast=false;
 
   function contrastToggle(){
 
-    if(contrast==0)
-    {
-    document.getElementById("navbar__nazwa1").style.color="#29FFF4";
-    document.getElementById("navbar-logo").style.backgroundColor="#000000";
-    document.getElementById("header").style.backgroundColor="#000000";
-    document.getElementById("header").style.color="#29FFF4";
-    document.getElementById("main").style.backgroundColor="#FFFFFF"
-    document.getElementById("main").style.color="#0000FF"
-    contrast=1;
+    if(contrast==false){
+    $("#navbar__nazwa1").css("color,","#29FFF4");
+    $("#navbar-logo").css("background-color","#000000");
+    $("#header").css("background-color","#000000");
+    $("#header").css("color","#29FFF4");
+    $("#main").css("background-color","#FFFFFF");
+    $("#main").css("color","#0000FF");
+    contrast=true;
     }
-    else if(contrast==1)
+    else if(contrast==true)
     {
-    document.getElementById("navbar__nazwa1").style.color="#8CD790";
-    document.getElementById("navbar-logo").style.backgroundColor="#508470";
-    document.getElementById("header").style.backgroundColor="#4BA68D";
-    document.getElementById("header").style.color="#000000";
-    document.getElementById("main").style.backgroundColor="#D7FFF1"
-    document.getElementById("main").style.color="#000000"
-    contrast=0;
+    $("#navbar__nazwa1").css("color","#8CD790");
+    $("#navbar-logo").css("background-color","#508470");
+    $("#header").css("background-color","#4BA68D");
+    $("#header").css("color","#000000");
+    $("#main").css("background-color","#D7FFF1");
+    $("#main").css("color","#000000");
+    contrast=false;
     }
 
   }

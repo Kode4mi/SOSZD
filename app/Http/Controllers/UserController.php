@@ -26,8 +26,12 @@ class UserController extends Controller
         $formFields = $request->validate(
             [
                 'email' => ['required', 'email'],
-                'password' => ['required']
-            ]);
+                'password' => ['required'],
+            ],
+            [
+                'password.required' => 'Pole hasło jest wymagane.'
+            ]
+        );
 
         if (auth()->attempt($formFields)) {
             $request->session()->regenerate();
@@ -35,7 +39,7 @@ class UserController extends Controller
             return redirect('tickets')->with('message', 'Pomyślnie zalogowano');
         }
 
-        return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
+        return back()->withErrors(['email' => __('auth.failed')])->onlyInput('email');
     }
 
     public function logout(Request $request): RedirectResponse
@@ -67,7 +71,7 @@ class UserController extends Controller
             return redirect()->back()->with('message', 'Zmieniono dane użytkownika');
         }
 
-        return redirect()->back()->with('message', 'Hasło niepoprawne');
+        return redirect()->back()->withErrors(['password' => __('auth.password')]);
     }
 
     public function editPassword(): View

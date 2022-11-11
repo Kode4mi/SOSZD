@@ -22,7 +22,10 @@ class ForgotPasswordController extends Controller
     {
         $request->validate([
             'email' => 'required|email|exists:users',
-        ]);
+            ],
+            [
+                'exists' => __('passwords.user')
+            ]);
 
         $token = Str::random(64);
 
@@ -34,7 +37,7 @@ class ForgotPasswordController extends Controller
 
         dispatch(new forgetPasswordEmailJob($token, $request->email));
 
-        return back()->with('message', 'Wysłaliśmy email z linkiem resetującym hasło!');
+        return back()->with('message', __('passwords.sent'));
     }
 
     public function showResetPassword($token) : View {
@@ -47,7 +50,14 @@ class ForgotPasswordController extends Controller
         $request->validate([
             'email' => 'required|email|exists:users',
             'password' => 'required|confirmed',
-        ]);
+        ],
+        [
+            'exists' => __('passwords.user')
+        ],
+            [
+             'password' => __('app.password')
+            ]
+        );
 
         $updatePassword = DB::table('password_resets')
             ->where([
@@ -57,15 +67,15 @@ class ForgotPasswordController extends Controller
             ->first();
 
         if(!$updatePassword){
-            return redirect()->back()->with('message', 'Nie właściwy token!');
+            return redirect()->back()->withErrors(['email' =>__('passwords.token')]);
         }
 
         User::where('email', $request->email)
             ->update(['password' => bcrypt($request->password)]);
 
-        DB::table('password_resets')->where(['email'=> $request->email])->delete();
+        DB::table('password_resets')->where(['email' => $request->email])->delete();
 
-        return redirect('/login')->with('message', 'Twoje hasło zostało zmienione!');
+        return redirect('/login')->with('message', __('passwords.reset'));
     }
 
 }

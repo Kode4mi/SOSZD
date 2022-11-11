@@ -28,15 +28,16 @@ class UserController extends Controller
                 'email' => ['required', 'email'],
                 'password' => ['required'],
             ],
+            [],
             [
-                'password.required' => 'Pole hasło jest wymagane.'
+                'password' => __('app.password')
             ]
         );
 
         if (auth()->attempt($formFields)) {
             $request->session()->regenerate();
 
-            return redirect('tickets')->with('message', 'Pomyślnie zalogowano');
+            return redirect('tickets')->with('message', __('app.login'));
         }
 
         return back()->withErrors(['email' => __('auth.failed')])->onlyInput('email');
@@ -49,7 +50,7 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/')->with('message', 'Pomyślnie wylogowano');
+        return redirect('/login')->with('message', __('app.logout'));
     }
 
     public function update(Request $request): RedirectResponse
@@ -60,7 +61,12 @@ class UserController extends Controller
         $formFields = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required', 'confirmed'],
-        ]);
+        ],
+        [],
+            [
+                'password' => __('app.password')
+            ]
+        );
 
         if(Hash::check($formFields['password'], $user->password))
         {
@@ -68,7 +74,7 @@ class UserController extends Controller
 
             $user->update($formFields);
 
-            return redirect()->back()->with('message', 'Zmieniono dane użytkownika');
+            return redirect()->back()->with('message', __('app.user.edit'));
         }
 
         return redirect()->back()->withErrors(['password' => __('auth.password')]);
@@ -87,17 +93,23 @@ class UserController extends Controller
         $formFields = $request->validate([
             'old_password' => 'required',
             'password' => ['required', 'confirmed'],
-        ]);
+        ], [],
+            [
+                'old_password' => 'Stare hasło',
+                'password' => __('app.password')
+            ]
+        );
+
 
 
         if(!Hash::check($formFields['old_password'], $user->password))
         {
-            return redirect()->back()->with('message', 'Stare hasło niepoprawne');
+            return redirect()->back()->with('message', __('app.old_password'));
         }
 
         if(Hash::check($formFields['password'], $user->password))
         {
-            return redirect()->back()->with('message', 'Nowe hasło musi być inne niż stare');
+            return redirect()->back()->with('message', __('app.new_password'));
         }
 
         unset($formFields['old_password']);
@@ -106,7 +118,7 @@ class UserController extends Controller
 
         $user->update($formFields);
 
-        return redirect()->back()->with('message', 'Zmieniono hasło');
+        return redirect()->back()->with('message', __('app.password_change'));
     }
 
     public function index(): View

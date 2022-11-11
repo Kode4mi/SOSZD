@@ -18,22 +18,39 @@ $lightGreen: #8CD790;
 $darkGreen: #4BA68D;
 $darkerGreen: #285942;
 
-//1920 x 1080
-//1366 x 768
-
 :root {
     overflow: hidden;
     font-size: 16px;
 
-    @media (max-width: 1538px) {
+    @media (max-width: 1850px) {
+        font-size: 15px;
+    }
+
+    @media (max-width: 1750px) {
+        font-size: 14px;
+    }
+
+    @media (max-width: 1650px) {
+        font-size: 13px;
+    }
+
+    @media (max-width: 1550px) {
         font-size: 12px;
     }
 
-    @media (max-width: 1367px) {
+    @media (max-width: 1450px) {
+        font-size: 11px;
+    }
+
+    @media (max-width: 1350px) {
         font-size: 10px;
     }
 
-    @media (max-width: 1025px) {
+    @media (max-width: 1200px) {
+        font-size: 9px;
+    }
+
+    @media (max-width: 1050px) {
         font-size: 8px;
     }
 }

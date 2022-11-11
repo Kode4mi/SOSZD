@@ -155,6 +155,10 @@ $darkerGreen: #285942;
     box-sizing: border-box;
     background-color: $header-background;
     height: 9vh;
+    
+    input[type='checkbox']{
+        display:none;
+    }
 
     &__logged-user {
         margin-top: 1.8vh;

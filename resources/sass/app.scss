@@ -372,6 +372,13 @@ $darkerGreen: #285942;
         background-color: $darkGreen;
         border-radius: 1.8vh;
         filter: drop-shadow(-10px 10px 10px rgba(0, 0, 0, 0.25));
+
+        &--forgetpassword {
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 2fr 1fr 1fr 1.5fr;
+            grid-column-gap: 0;
+            grid-row-gap: 0;
+        }
     }
 
     &__iconbox {
@@ -443,6 +450,10 @@ $darkerGreen: #285942;
         box-shadow: -8px 8px 8px rgba(0, 0, 0, 0.25);
         border: none;
         border-radius: 2vh;
+
+        &--forgetpassword {
+            width: 40vh;
+        }
     }
 
     &__center {
@@ -450,6 +461,18 @@ $darkerGreen: #285942;
         flex-direction: column;
         align-items: center;
         width: 100%;
+    }
+
+    &__remindpassword {
+        width: 50vw;
+        text-align: left;
+        padding: .8vh;
+        color: #00000099;
+        font-size: 1rem;
+
+        &:hover {
+            color: #000000;
+        }
     }
 
     &__error {

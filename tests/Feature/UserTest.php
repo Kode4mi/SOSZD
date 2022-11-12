@@ -86,6 +86,7 @@ class UserTest extends TestCase
 
         $response->assertRedirect('/tickets');
         $this->assertAuthenticatedAs($user);
+        $user->delete();
     }
 
     public function test_user_authenticate_status_wrong_pass(): void
@@ -104,6 +105,7 @@ class UserTest extends TestCase
         $this->assertTrue(session()->hasOldInput('email'));
         $this->assertFalse(session()->hasOldInput('password'));
         $this->assertGuest();
+        $user->delete();
     }
 
 }

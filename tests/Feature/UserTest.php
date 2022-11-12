@@ -13,8 +13,7 @@ class UserTest extends TestCase
     /*
         Do zrobienia:
 
-        login 
-        authenticate
+        login
         logout
         update - na późńiej
         update_pass
@@ -76,29 +75,35 @@ class UserTest extends TestCase
 
     public function test_user_authenticate_status(): void
     {
-        $user = User::factory()->create();
-
-        $response = $this->post('/login',[
-            'email' => $user->email,
-            'password' => 'password',
+        $user = User::factory()->create([
+            'password' => bcrypt($password = 'haslo-maslo'),
         ]);
-        
-        // albo z emailem albo z hasłem jest coś zjebane, bo jakby nie logowało 
 
-        $response->assertRedirect('tickets');
-        $user->delete();
+        $response = $this->post('/users/authenticate', [
+            'email' => $user->email,
+            'password' => $password,
+        ]);
+
+        $response->assertRedirect('/tickets');
+        $this->assertAuthenticatedAs($user);
     }
 
     public function test_user_authenticate_status_wrong_pass(): void
     {
-        $response = $this->post('/login',[
-            'email' => 'twojstary@soszd.pl',
-            'password' => "2"
+        $user = User::factory()->create([
+            'password' => bcrypt('haslo-maslo'),
         ]);
-        
-        // albo z emailem albo z hasłem jest coś zjebane - tu to wogóle szkoda strzępić ryja
 
-        $response->assertRedirect('login');
+        $response = $this->from('/login')->post('/users/authenticate', [
+            'email' => $user->email,
+            'password' => 'zle-haslo',
+        ]);
+
+        $response->assertRedirect('/login');
+        $response->assertSessionHasErrors('email');
+        $this->assertTrue(session()->hasOldInput('email'));
+        $this->assertFalse(session()->hasOldInput('password'));
+        $this->assertGuest();
     }
 
 }

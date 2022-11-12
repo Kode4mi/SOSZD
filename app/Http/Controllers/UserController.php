@@ -12,13 +12,13 @@ class UserController extends Controller
 {
     public function edit(): View
     {
-        return view('/user/edit');
+        return view('user.edit');
     }
 
 
     public function login(): View
     {
-        return view('/user/login');
+        return view('user.login');
     }
 
     public function authenticate(Request $request): RedirectResponse

@@ -14,7 +14,7 @@ Wykonana we frameworku Laravel aplikacja pomagająca w zarządzaniu, udostępnia
 - `GRANT ALL PRIVILEGES ON *.* TO 'soszd-admin'@'localhost';`
 - `FLUSH PRIVILEGES;`
 4. Wpisz `npm install`
-5. Wpisz `npx run dev`
+5. Wpisz `npm run dev`
 6. Wpisz `.\r`
 7. Wpisz `.\start`
 8. Gotowe

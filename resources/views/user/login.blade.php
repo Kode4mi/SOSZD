@@ -17,13 +17,15 @@
                     <img src="{{asset('images/logo-lepsze.png')}}" alt="logo">
                 </div>
             </div>
-            <div class="login__inputbox">
-                <input type="text" name="email" class="login__input" placeholder="Login">
-                <input type="password" name="password" class="login__input" placeholder="Hasło">
+            <div class="login__center">
+                <div class="login__inputbox">
+                    <input type="text" name="email" class="login__input" placeholder="Login">
+                    <input type="password" name="password" class="login__input" placeholder="Hasło">
+                </div>
+                <a class="login__remindpassword" href="/forget-password">Nie pamiętasz hasła?</a>
             </div>
             <div class="login__center">
                 <button type="submit" class="login__button">Zaloguj</button>
-                <a class="mt-4" href="/forget-password">Nie pamiętasz hasła?</a>
             </div>
 
             <div class="login__errorpanel">

@@ -18,7 +18,7 @@
 
 @yield('cont')
 
-<div class="fixed-top start-50">{{session('message')}}</div>
+@include('partials._message')
 
 </body>
 </html>

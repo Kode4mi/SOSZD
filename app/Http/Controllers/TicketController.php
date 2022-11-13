@@ -12,20 +12,20 @@ class TicketController extends Controller
 {
     public function index(): View
     {
-        return view('tickets/index', [
-            'tickets' => Ticket::sortable()->filter(request(['search']))->simplePaginate(20),
+        return view('tickets.index', [
+            'tickets' => Ticket::sortable()->filter(request(['search']))->simplePaginate(12),
             'users' => User::class,
         ]);
     }
 
     public function create(): View
     {
-        return view('tickets/create');
+        return view('tickets.create');
     }
 
     public function show(Ticket $ticket): View
     {
-        return view('tickets/show', [
+        return view('tickets.show', [
             'ticket' => $ticket,
         ]);
     }
@@ -37,7 +37,15 @@ class TicketController extends Controller
             'description' => 'required',
             'deadline' => 'required',
             'priority' => 'required',
-        ]);
+        ],
+        [],
+            [
+                'title' => __('app.title'),
+                'description' => __('app.description'),
+                'deadline' => __('app.deadline'),
+                'priority' => __('app.priority')
+            ]
+        );
 
         /* @var User $user */
         $user = auth()->user();
@@ -48,7 +56,7 @@ class TicketController extends Controller
 
         Ticket::create($formFields);
 
-        return redirect('tickets');
+        return redirect('tickets')->with('message', __('app.ticket.create'));
     }
 
 }

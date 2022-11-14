@@ -391,7 +391,7 @@ $darkerGreen: #285942;
     &__form {
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 2fr 3fr 1fr 2fr;
+        grid-template-rows: 1fr 2fr 3fr 1fr 1fr;
         grid-column-gap: 0;
         grid-row-gap: 0;
 
@@ -403,6 +403,13 @@ $darkerGreen: #285942;
         background-color: $darkGreen;
         border-radius: 1.8vh;
         filter: drop-shadow(-10px 10px 10px rgba(0, 0, 0, 0.25));
+
+
+        @media (max-aspect-ratio: 1/1) {
+            width: 100vw;
+            height: 100vh;
+            border-radius: 0;
+        }
 
         &--forgetpassword {
             grid-template-columns: 1fr;
@@ -422,6 +429,10 @@ $darkerGreen: #285942;
 
         display: flex;
         justify-content: space-between;
+
+        @media (max-aspect-ratio: 1/1) {
+            width: 0vw;
+        }
     }
 
     &__icon {
@@ -436,14 +447,28 @@ $darkerGreen: #285942;
 
         color: white;
         font-size: 0.7rem;
+
+        @media (max-aspect-ratio: 1/1) {
+            width: 8vh;
+            height: 8vh;
+            font-size: 1.4rem;
+        }
     }
 
     &__smallfont {
         font-size: 1.9rem;
+
+        @media (max-aspect-ratio: 1/1) {
+            font-size: 3.8rem;
+        }
     }
 
     &__logo {
         width: 17vw;
+
+        @media (max-aspect-ratio: 1/1) {
+            width: 80vw;
+        }
     }
 
     &__inputbox {
@@ -453,6 +478,10 @@ $darkerGreen: #285942;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
+
+        @media (max-aspect-ratio: 1/1) {
+            height: 28vh;
+        }
     }
 
     &__input {
@@ -467,6 +496,12 @@ $darkerGreen: #285942;
 
         &:focus {
             outline: none;
+        }
+
+        @media (max-aspect-ratio: 1/1) {
+            width: 80vw;
+            height: 10vh;
+            font-size: 2rem;
         }
     }
 
@@ -484,6 +519,14 @@ $darkerGreen: #285942;
 
         &--forgetpassword {
             width: 40vh;
+
+            @media (max-aspect-ratio: 1/1) {
+                height: 16vh;
+            }
+        }
+
+        @media (max-aspect-ratio: 1/1) {
+            font-size: 3.4rem;
         }
     }
 
@@ -504,6 +547,11 @@ $darkerGreen: #285942;
         &:hover {
             color: #000000;
         }
+
+        @media (max-aspect-ratio: 1/1) {
+            font-size: 2rem;
+            text-align: center;
+        }
     }
 
     &__error {
@@ -519,6 +567,10 @@ $darkerGreen: #285942;
             font-weight: 500;
             font-size: 1.2rem;
             display: block;
+
+            @media (max-aspect-ratio: 1/1) {
+                font-size: 2rem;
+            }
         }
     }
 }

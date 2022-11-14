@@ -391,7 +391,7 @@ $darkerGreen: #285942;
     &__form {
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 2fr 3fr 1fr 1fr;
+        grid-template-rows: 1fr 2fr 3fr 1fr 2fr;
         grid-column-gap: 0;
         grid-row-gap: 0;
 
@@ -409,6 +409,7 @@ $darkerGreen: #285942;
             width: 100vw;
             height: 100vh;
             border-radius: 0;
+            grid-template-rows: 1fr 2fr 3fr 1fr 1fr;
         }
 
         &--forgetpassword {

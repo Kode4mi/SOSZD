@@ -635,5 +635,20 @@ $darkerGreen: #285942;
         border: none;
         padding: 0.6rem 0.9rem 0.6rem 0.9rem;
     }
-
 }
+
+.flash-message {
+    width: 100%;
+}
+
+.flash-message-content  {
+    margin: auto;
+    font-size: 1.5rem;
+    width: fit-content;
+    padding: 1rem 1.5rem;
+    background-color: #1b803f;
+    border-radius: 1rem;
+    color: white;
+    z-index: 5;
+}
+

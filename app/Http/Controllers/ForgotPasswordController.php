@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 
@@ -44,10 +45,17 @@ class ForgotPasswordController extends Controller
     public function submitResetPassword(Request $request) : RedirectResponse
     {
 
-        $request->validate([
+        $formFields = $request->validate([
             'email' => 'required|email|exists:users',
             'password' => 'required|confirmed',
         ]);
+
+        $user = User::where('email', $request->email)->first();
+
+        if(Hash::check($formFields['password'], $user->password))
+        {
+            return redirect()->back()->with('message', __('app.new_password'));
+        }
 
         $updatePassword = DB::table('password_resets')
             ->where([
@@ -60,8 +68,7 @@ class ForgotPasswordController extends Controller
             return redirect()->back()->with('message', 'Nie właściwy token!');
         }
 
-        User::where('email', $request->email)
-            ->update(['password' => bcrypt($request->password)]);
+        $user->update(['password' => bcrypt($request->password)]);
 
         DB::table('password_resets')->where(['email'=> $request->email])->delete();
 

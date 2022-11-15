@@ -13,6 +13,9 @@
                 <a class="main__frame--create_ticket_button" href="{{url('ticket/create')}}"> <button class="navbar__sidebar--button">Nowa Sprawa</button></a>
             </li>
             <li>
+                <a class="main__frame--archive_button" href="{{url('/archives')}}"> <button class="navbar__sidebar--button">Archiwum</button></a>
+            </li>
+            <li>
                 @if(auth()->user()->role === 'admin')
                     <form action="/users" method="GET"><button class="navbar__sidebar--button">Użytkownicy</button></form>
                 @else

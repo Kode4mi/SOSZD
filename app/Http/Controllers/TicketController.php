@@ -13,7 +13,15 @@ class TicketController extends Controller
     public function index(): View
     {
         return view('tickets.index', [
-            'tickets' => Ticket::sortable()->filter(request(['search']))->simplePaginate(12),
+            'tickets' => Ticket::sortable()->where('active', 1)->filter(request(['search']))->simplePaginate(12),
+            'users' => User::class,
+        ]);
+    }
+
+    public function archives(): View
+    {
+        return view('tickets.index', [
+            'tickets' => Ticket::sortable()->where('active', 0)->filter(request(['search']))->simplePaginate(12),
             'users' => User::class,
         ]);
     }
@@ -58,5 +66,36 @@ class TicketController extends Controller
 
         return redirect('tickets')->with('message', __('app.ticket.create'));
     }
+
+    public function archive(Request $request) : RedirectResponse {
+
+        $formFields = $request->validate([
+           'id' => 'required'
+        ]);
+
+        $ticket = Ticket::find($formFields['id']);
+
+        $ticket->update([
+           'active' => 0,
+        ]);
+
+        return redirect()->back()->with('message', 'Zarchiwizowano sprawę/sprawy');
+    }
+
+    public function unarchive(Request $request) : RedirectResponse {
+
+        $formFields = $request->validate([
+            'id' => 'required'
+        ]);
+
+        $ticket = Ticket::find($formFields['id']);
+
+        $ticket->update([
+            'active' => 1,
+        ]);
+
+        return redirect()->back()->with('message', 'Przywrócono sprawę/sprawy');
+    }
+
 
 }

@@ -26,6 +26,10 @@ Route::middleware(['auth'])->group(function () {
 
 // Ticket
 
+    Route::put('archive', [TicketController::class, 'archive']);
+
+    Route::put('unarchive', [TicketController::class, 'unarchive']);
+
     Route::get('tickets', [TicketController::class, 'index']);
 
     Route::get('ticket/create', [TicketController::class, 'create']);
@@ -33,6 +37,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('ticket/{ticket}', [TicketController::class, 'show']);
 
     Route::post('ticket', [TicketController::class, 'store']);
+
+    Route::get('archives', [TicketController::class, 'archives']);
+
 
 // User
 

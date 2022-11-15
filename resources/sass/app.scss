@@ -298,8 +298,8 @@ $darkerGreen: #285942;
             display: grid;
             grid-template-columns: 1fr;
             grid-template-rows: 1fr 7fr;
-            grid-column-gap: 0px;
-            grid-row-gap: 0px;
+            grid-column-gap: 0;
+            grid-row-gap: 0;
         }
 
         thead {

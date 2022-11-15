@@ -30,10 +30,11 @@
 <tbody>
 
 @foreach($tickets as $ticket)
-<tr>
+<tr class="ticket-row">
 
-    <td><a href="ticket/{{$ticket->id}}">
+    <td><a href="ticket/{{$ticket->id}}" class="ticket-title">
             {{$ticket->title}}
+            <input type="hidden" value="{{$ticket->id}}" class="id">
         </a></td>
     <td>
 
@@ -47,7 +48,6 @@
     <td>{{$ticket->deadline}}</td>
     <td>{{$ticket->priority}}</td>
 
-
 </tr>
 @endforeach
 
@@ -60,5 +60,39 @@
         @else
             <x-main-title>Brak spraw</x-main-title>
 @endif
+
+<form action='/archive' method='POST' id="ticket-form">
+    @csrf
+    @method("PUT")
+</form>
+
+
+<script>
+
+    $(".ticket-row").draggable({
+        helper: function () {
+            return $('<div></div>').append($(this).find('.ticket-title').clone());
+        }
+    });
+
+    $(".navbar__sidebar--button").droppable({
+        accept: '.ticket-row',
+        drop: function(event, ui) {sendArchiveForm(event, ui) },
+    });
+
+    function sendArchiveForm(event, ui) {
+        let draggable = ui.draggable;
+        const obj = draggable.clone();
+        const id = obj.find('.id').val();
+
+        const form = $("#ticket-form");
+
+        form.append(" <input type='hidden' name='id' value=" + id + " />");
+
+        form.submit();
+    }
+
+</script>
+
 
 @endsection

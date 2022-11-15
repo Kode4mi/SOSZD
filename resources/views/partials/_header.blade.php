@@ -14,7 +14,7 @@
 
   function contrastToggle(){
 
-    if(contrast==false){
+    if(!contrast){
     $("#navbar__nazwa1").css("color,","#29FFF4");
     $("#navbar-logo").css("background-color","#000000");
     $("#header").css("background-color","#000000");
@@ -23,7 +23,7 @@
     $("#main").css("color","#0000FF");
     contrast=true;
     }
-    else if(contrast==true)
+    else if(contrast)
     {
     $("#navbar__nazwa1").css("color","#8CD790");
     $("#navbar-logo").css("background-color","#508470");

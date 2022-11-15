@@ -18,6 +18,12 @@ $lightGreen: #8CD790;
 $darkGreen: #4BA68D;
 $darkerGreen: #285942;
 
+//zmienne dla wersji PC
+$navbarWidth: 18vw;
+
+//zmienne dla wersji mobilnej
+$navbarMobileWidth: 100vw;
+
 :root {
     overflow: hidden;
     font-size: 16px;
@@ -56,9 +62,21 @@ $darkerGreen: #285942;
 }
 
 .navbar {
+
     height: 100vh;
     position: fixed;
-    width: 18vw;
+    width: $navbarWidth;
+    transition: .3s;
+
+    @media (max-aspect-ratio: 1/1) {
+        width: $navbarMobileWidth;
+        left: -100vw;
+
+        &--moved {
+            left: 0;
+        }
+
+    }
 
     padding: 0;
     top: 0;
@@ -75,9 +93,13 @@ $darkerGreen: #285942;
 
     &__logo {
         height: 18%;
-        width: 18vw;
+        width: $navbarWidth;
         display: block;
         z-index: 1;
+
+        @media (max-aspect-ratio: 1/1) {
+            width: $navbarMobileWidth;
+        }
 
         background-color: $logo-background;
         box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25);
@@ -107,9 +129,13 @@ $darkerGreen: #285942;
     }
 
     &__sidebar {
-        width: 18vw;
+        width: $navbarWidth;
         height: 82%;
         background-color: $sidebar-background;
+
+        @media (max-aspect-ratio: 1/1) {
+            width: $navbarMobileWidth;
+        }
 
         ul {
             list-style: none;
@@ -148,12 +174,17 @@ $darkerGreen: #285942;
         width: 15vw;
         height: 8vh;
 
+        @media (max-aspect-ratio: 1/1) {
+            width: 80vw;
+        }
+
         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
         filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.25));
         border-radius: 10px;
         border: 0;
 
-        font-family: "Cabin", serif;
+        font-family: "Cabin",
+        serif;
         text-align: center;
         font-weight: 400;
         font-size: 2.25rem;
@@ -165,6 +196,21 @@ $darkerGreen: #285942;
 
     &__sidebar--button1 {
         margin-top: 3vw;
+    }
+
+    &__hamburger {
+        @media (max-aspect-ratio: 1/1) {
+            z-index: 2;
+            position: fixed;
+            top: 1vh;
+            left: 1vh;
+            height: 7vh;
+            width: 7vh;
+            font-size: 4rem;
+            display: block;
+        }
+
+        display: none;
     }
 }
 
@@ -432,7 +478,7 @@ $darkerGreen: #285942;
         justify-content: space-between;
 
         @media (max-aspect-ratio: 1/1) {
-            width: 0vw;
+            width: 50vw;
         }
     }
 

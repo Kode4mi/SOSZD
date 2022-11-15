@@ -21,6 +21,7 @@
     "dependencies": {
         "@fontsource/cabin": "^4.5.9",
         "@fortawesome/fontawesome-free": "^6.2.0",
+        "alpinejs": "^3.10.5",
         "autoprefixer": "^10.4.12",
         "bootstrap": "^5.2.2",
         "cssloader": "^1.1.1",

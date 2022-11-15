@@ -61,7 +61,12 @@
             <x-main-title>Brak spraw</x-main-title>
 @endif
 
-<form action='/archive' method='POST' id="ticket-form">
+<form action='/archive' method='POST' id="ticket-form-archive">
+    @csrf
+    @method("PUT")
+</form>
+
+<form action='/unarchive' method='POST' id="ticket-form-unarchive">
     @csrf
     @method("PUT")
 </form>
@@ -75,17 +80,23 @@
         }
     });
 
-    $(".navbar__sidebar--button").droppable({
+    $(".main__frame--archive_button").droppable({
         accept: '.ticket-row',
-        drop: function(event, ui) {sendArchiveForm(event, ui) },
+        drop: function(event, ui) {sendArchiveForm(event, ui, "archive") },
     });
 
-    function sendArchiveForm(event, ui) {
+    $(".navbar__sidebar--button1").droppable({
+        accept: '.ticket-row',
+        drop: function(event, ui) {sendArchiveForm(event, ui, "unarchive") },
+    });
+
+
+    function sendArchiveForm(event, ui, str) {
         let draggable = ui.draggable;
         const obj = draggable.clone();
         const id = obj.find('.id').val();
 
-        const form = $("#ticket-form");
+        const form = $("#ticket-form-"+str);
 
         form.append(" <input type='hidden' name='id' value=" + id + " />");
 

@@ -316,7 +316,7 @@ $darkerGreen: #285942;
 
         tr {
             display: grid;
-            grid-template-columns: 7fr repeat(2, 3fr) 1fr;
+            grid-template-columns: 7fr repeat(2, 3fr) 1.5fr;
             grid-template-rows: 1fr;
             grid-column-gap: 0px;
             grid-row-gap: 0px;
@@ -333,8 +333,8 @@ $darkerGreen: #285942;
 }
 
 .create-ticket {
-    //border:1px gray solid; !!!DO DYSKUSJI CZY LEPIEJ
 
+    //border:1px gray solid; !!!DO DYSKUSJI CZY LEPIEJ
     &--topic,
     &--deadline {
         padding: 3px;
@@ -358,7 +358,8 @@ $darkerGreen: #285942;
         padding: 5px;
         border-radius: 15px;
         width: 64vw;
-        height: 52vh;
+        height: 42vh;
+        resize:none;
     }
 
     &--select {

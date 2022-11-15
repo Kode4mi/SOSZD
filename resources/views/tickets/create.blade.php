@@ -39,7 +39,7 @@
     @error('priority')
     <p>{{$message}}</p>
     @enderror
-
+<br />
 <label class="label_opis">Opis: <br/>
     <textarea name="description" class="create-ticket--content"> {{old('description')}} </textarea>
 </label><br>

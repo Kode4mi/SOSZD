@@ -327,6 +327,10 @@ $darkerGreen: #285942;
             color: #000000;
         }
 
+        .submit_password:hover{
+            background-color:darken($button-background,15);
+        }
+
     }
 
 
@@ -377,6 +381,10 @@ $darkerGreen: #285942;
         border: none;
         border-radius: 15px;
         padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+    }
+
+    button:hover {
+        background-color: darken($button-background,10);
     }
 
 }
@@ -593,6 +601,11 @@ $darkerGreen: #285942;
         border-radius: 0px 15px 15px 0px;
         border: 1px gray solid;
     }
+
+    &__button:hover {
+    filter:brightness(70%);
+    }
+
 }
 
 .user_edit {
@@ -614,6 +627,10 @@ $darkerGreen: #285942;
         border-radius: 15px;
         border: none;
         padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+    }
+
+    &__submit-button:hover {
+        background-color: darken($button-background,10);
     }
 
 }

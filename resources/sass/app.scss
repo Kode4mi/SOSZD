@@ -540,6 +540,10 @@ $darkerGreen: #285942;
         }
     }
 
+    &__button:hover{
+        background: darken(#8CD790,10);
+    }
+
     &__center {
         display: flex;
         flex-direction: column;

@@ -316,7 +316,7 @@ $darkerGreen: #285942;
 
         tr {
             display: grid;
-            grid-template-columns: 7fr repeat(2, 3fr) 1fr;
+            grid-template-columns: 7fr repeat(2, 3fr) 1.5fr;
             grid-template-rows: 1fr;
             grid-column-gap: 0px;
             grid-row-gap: 0px;
@@ -579,5 +579,5 @@ $darkerGreen: #285942;
         border:none;
         padding:0.6rem 0.9rem 0.6rem 0.9rem;
     }
-
+}
 }

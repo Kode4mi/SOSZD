@@ -18,22 +18,39 @@ $lightGreen: #8CD790;
 $darkGreen: #4BA68D;
 $darkerGreen: #285942;
 
-//1920 x 1080
-//1366 x 768
-
 :root {
     overflow: hidden;
     font-size: 16px;
 
-    @media (max-width: 1538px) {
+    @media (max-width: 1850px) {
+        font-size: 15px;
+    }
+
+    @media (max-width: 1750px) {
+        font-size: 14px;
+    }
+
+    @media (max-width: 1650px) {
+        font-size: 13px;
+    }
+
+    @media (max-width: 1550px) {
         font-size: 12px;
     }
 
-    @media (max-width: 1367px) {
+    @media (max-width: 1450px) {
+        font-size: 11px;
+    }
+
+    @media (max-width: 1350px) {
         font-size: 10px;
     }
 
-    @media (max-width: 1025px) {
+    @media (max-width: 1200px) {
+        font-size: 9px;
+    }
+
+    @media (max-width: 1050px) {
         font-size: 8px;
     }
 }
@@ -385,6 +402,13 @@ $darkerGreen: #285942;
         background-color: $darkGreen;
         border-radius: 1.8vh;
         filter: drop-shadow(-10px 10px 10px rgba(0, 0, 0, 0.25));
+
+        &--forgetpassword {
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 2fr 1fr 1fr 1.5fr;
+            grid-column-gap: 0;
+            grid-row-gap: 0;
+        }
     }
 
     &__iconbox {
@@ -456,6 +480,10 @@ $darkerGreen: #285942;
         box-shadow: -8px 8px 8px rgba(0, 0, 0, 0.25);
         border: none;
         border-radius: 2vh;
+
+        &--forgetpassword {
+            width: 40vh;
+        }
     }
 
     &__center {
@@ -463,6 +491,18 @@ $darkerGreen: #285942;
         flex-direction: column;
         align-items: center;
         width: 100%;
+    }
+
+    &__remindpassword {
+        width: 50vw;
+        text-align: left;
+        padding: .8vh;
+        color: #00000099;
+        font-size: 1rem;
+
+        &:hover {
+            color: #000000;
+        }
     }
 
     &__error {
@@ -520,7 +560,6 @@ $darkerGreen: #285942;
         border:none;
         padding:0.3rem 0.5rem 0.3rem 0.5rem;
     }
-}
 
 .password_edit{
     text-align:center;
@@ -540,4 +579,5 @@ $darkerGreen: #285942;
         border:none;
         padding:0.6rem 0.9rem 0.6rem 0.9rem;
     }
+
 }

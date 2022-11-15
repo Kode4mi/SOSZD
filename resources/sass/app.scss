@@ -357,7 +357,8 @@ $darkerGreen: #285942;
         padding: 5px;
         border-radius: 15px;
         width: 64vw;
-        height: 52vh;
+        height: 42vh;
+        resize:none;
     }
 
     &--select {
@@ -579,5 +580,5 @@ $darkerGreen: #285942;
         border:none;
         padding:0.6rem 0.9rem 0.6rem 0.9rem;
     }
-}
+  } 
 }

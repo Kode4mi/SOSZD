@@ -24,4 +24,18 @@
             </li>
         </ul>
     </aside>
+
+    <!-- tymczasowo to tutaj dodaje bo nie wiem zbytnio gdzie -->
+    <div class="navbar__hamburger">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <script>
+        const hamburger = document.querySelector(".navbar__hamburger");
+        const navbar = document.querySelector(".navbar");
+        hamburger.addEventListener("click", ()=>{
+            navbar.classList.toggle("navbar--moved");
+        });
+
+    </script>
 </nav>

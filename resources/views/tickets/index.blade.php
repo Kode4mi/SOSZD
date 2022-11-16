@@ -19,6 +19,7 @@
     <thead>
 
     <tr>
+        <th></th>
         <th>@sortablelink('title', 'Tytuł')</th>
         <th>@sortablelink('sender_id', 'Nadawca')</th>
         <th>@sortablelink('deadline', 'Termin')</th>
@@ -31,11 +32,18 @@
 
 @foreach($tickets as $ticket)
 <tr class="ticket-row">
-
-    <td><a href="ticket/{{$ticket->id}}" class="ticket-title">
+    <td>
+        <label class="table-checkbox">
+            <input type="checkbox" class="table-checkbox--input" value="{{$ticket->id}}">
+            <span class="table-checkbox--checkmark"></span>
+        </label>
+    </td>
+    <td>
+        <a href="ticket/{{$ticket->id}}" class="ticket-title">
             {{$ticket->title}}
             <input type="hidden" value="{{$ticket->id}}" class="id">
-        </a></td>
+        </a>
+    </td>
     <td>
 
         @php
@@ -102,6 +110,13 @@
 
         form.submit();
     }
+
+    $('.table-checkbox--input').change(function () {
+        console.log($(this).val());
+        if ($(this).is(':checked')) {
+            console.log('checked');
+        }
+    })
 
 </script>
 

@@ -19,7 +19,7 @@
     <thead>
 
     <tr>
-        <th></th>
+        <th><i class="fa-solid fa-pen ticket-edit"></i></th>
         <th>@sortablelink('title', 'Tytuł')</th>
         <th>@sortablelink('sender_id', 'Nadawca')</th>
         <th>@sortablelink('deadline', 'Termin')</th>
@@ -116,7 +116,15 @@
         if ($(this).is(':checked')) {
             console.log('checked');
         }
-    })
+    });
+
+    $('.ticket-edit').click(function () {
+
+        console.log('essa');
+
+        $('<div>siema</div>').append($(this).find('div'));
+
+    });
 
 </script>
 

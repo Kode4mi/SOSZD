@@ -34,6 +34,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('ticket', [TicketController::class, 'store']);
 
+    Route::get('ticket/redirect/{ticket}', [TicketController::class, 'redirection']);
+
 // User
 
     Route::post('logout', [UserController::class, 'logout']);

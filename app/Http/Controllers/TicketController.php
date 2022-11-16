@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TicketController extends Controller
 {
@@ -57,6 +58,16 @@ class TicketController extends Controller
         Ticket::create($formFields);
 
         return redirect('tickets')->with('message', __('app.ticket.create'));
+    }
+
+    public function redirection(Ticket $ticket): View
+    {
+        $user = DB::select('select id, first_name, last_name from users');
+
+        return view('tickets.redirection', [
+            'ticket' => $ticket,
+            'users' => $user,
+        ]);
     }
 
 }

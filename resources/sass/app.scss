@@ -82,6 +82,7 @@ $navbarMobileWidth: 100vw;
     top: 0;
     bottom: 0;
     left: 0;
+    z-index: 2;
 
     font-family: $primary_font;
 
@@ -219,80 +220,47 @@ $navbarMobileWidth: 100vw;
     background-color: $header-background;
     height: 9vh;
 
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+
     input[type='checkbox'] {
         display: none;
     }
 
-    &__logged-user {
-        margin-top: 1.8vh;
+    &__icon {
+        margin-top: 1.5vh;
         margin-right: 1.5vw;
-        border-radius: 25px;
-        float: right;
-        width: 9vw;
-        height: 5.5vh;
+        border-radius: 2vh;
+        width: 6vh;
+        height: 6vh;
         text-align: center;
+        background-color: $user-background;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__logged-user {
+        width: 20vh;
         padding-right: 1vw;
         padding-left: 1vw;
         font-style: normal;
         font-weight: 600;
         font-size: 1.1875rem;
-        background-color: $user-background;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-sizing: border-box;
     }
 
     &__smallfont {
-        margin-top: 1.5vh;
-        margin-right: 1.5vw;
-        border-radius: 25px;
-        float: right;
-        width: 4vw;
-        height: 6vh;
-        text-align: center;
         font-size: 3rem;
-        background-color: $user-background;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-sizing: border-box;
     }
 
     &__largefont {
-        margin-top: 1.5vh;
-        margin-right: 1.5vw;
-        border-radius: 25px;
-        float: right;
-        width: 4vw;
-        height: 6vh;
-        text-align: center;
         font-size: 0.93rem;
-        background-color: $user-background;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-sizing: border-box;
     }
 
     &__contrast {
-        margin-top: 1.5vh;
-        margin-right: 1.5vw;
-        border-radius: 25px;
-        float: right;
-        width: 4vw;
-        height: 6vh;
-        text-align: center;
         font-size: 0.9375rem;
-        background-color: $user-background;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-sizing: border-box;
     }
 
     i:hover {
@@ -303,19 +271,28 @@ $navbarMobileWidth: 100vw;
 .main {
     height: 91vh;
     background-color: $main-background;
-    width: 100vw;
+    width: calc(100vw - $navbarWidth);
+    position: fixed;
+    right: 0;
+    z-index: 1;
 
-    flex-direction: column;
     display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    box-sizing: border-box;
+    align-content: center;
 
-    .main__h1 {
-        margin-right: 30vw;
+    @media (max-aspect-ratio: 1/1) {
+        width: 100vw;
+    }
+
+    &__h1 {
+        align-self: flex-start;
         margin-bottom: 1vw;
         font-size: 3.5rem;
     }
+
 
     main {
         font-family: $primary_font;
@@ -323,8 +300,7 @@ $navbarMobileWidth: 100vw;
         height: 74vh;
         box-shadow: -10px 10px 10px rgba(0, 0, 0, 0.25);
         border-radius: 20px;
-        width: 70vw;
-        margin-left: 17.5vw;
+        width: 90%;
         padding: 1vw;
         line-height: 24px;
 
@@ -688,7 +664,7 @@ $navbarMobileWidth: 100vw;
     width: 100%;
 }
 
-.flash-message-content  {
+.flash-message-content {
     margin: auto;
     font-size: 1.5rem;
     width: fit-content;
@@ -698,4 +674,3 @@ $navbarMobileWidth: 100vw;
     color: white;
     z-index: 5;
 }
-

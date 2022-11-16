@@ -3,6 +3,7 @@
 /public/js
 /public/css
 /public/storage
+/public/mix-manifest.json
 /storage/*.key
 /vendor
 .env.backup
@@ -14,3 +15,5 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+local.bat
+

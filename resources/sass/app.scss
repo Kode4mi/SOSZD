@@ -219,80 +219,47 @@ $navbarMobileWidth: 100vw;
     background-color: $header-background;
     height: 9vh;
 
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+
     input[type='checkbox'] {
         display: none;
     }
 
-    &__logged-user {
-        margin-top: 1.8vh;
+    &__icon {
+        margin-top: 1.5vh;
         margin-right: 1.5vw;
-        border-radius: 25px;
-        float: right;
-        width: 9vw;
-        height: 5.5vh;
+        border-radius: 2vh;
+        width: 6vh;
+        height: 6vh;
         text-align: center;
+        background-color: $user-background;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__logged-user {
+        width: 20vh;
         padding-right: 1vw;
         padding-left: 1vw;
         font-style: normal;
         font-weight: 600;
         font-size: 1.1875rem;
-        background-color: $user-background;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-sizing: border-box;
     }
 
     &__smallfont {
-        margin-top: 1.5vh;
-        margin-right: 1.5vw;
-        border-radius: 25px;
-        float: right;
-        width: 4vw;
-        height: 6vh;
-        text-align: center;
         font-size: 3rem;
-        background-color: $user-background;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-sizing: border-box;
     }
 
     &__largefont {
-        margin-top: 1.5vh;
-        margin-right: 1.5vw;
-        border-radius: 25px;
-        float: right;
-        width: 4vw;
-        height: 6vh;
-        text-align: center;
         font-size: 0.93rem;
-        background-color: $user-background;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-sizing: border-box;
     }
 
     &__contrast {
-        margin-top: 1.5vh;
-        margin-right: 1.5vw;
-        border-radius: 25px;
-        float: right;
-        width: 4vw;
-        height: 6vh;
-        text-align: center;
         font-size: 0.9375rem;
-        background-color: $user-background;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-sizing: border-box;
     }
 
     i:hover {
@@ -687,7 +654,7 @@ $navbarMobileWidth: 100vw;
     width: 100%;
 }
 
-.flash-message-content  {
+.flash-message-content {
     margin: auto;
     font-size: 1.5rem;
     width: fit-content;
@@ -697,4 +664,3 @@ $navbarMobileWidth: 100vw;
     color: white;
     z-index: 5;
 }
-

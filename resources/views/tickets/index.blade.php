@@ -34,7 +34,7 @@
 <tr class="ticket-row">
     <td>
         <label class="table-checkbox">
-            <input type="checkbox" class="table-checkbox--input" value="{{$ticket->id}}">
+            <input type="checkbox" class="table-checkbox--input" name="id[]" value="{{$ticket->id}}" form="ticket-form-archive">
             <span class="table-checkbox--checkmark"></span>
         </label>
     </td>
@@ -63,14 +63,11 @@
 
 </table>
 <div class="table-footer">
-    <p class="table-footer--links"> {{$tickets->links()}} </p>
+    {{$tickets->links()}}
     <span>
-        <form action="/archive" method="PUT">
-
-            <button type="submit"> </button>
-
-            </button>
-        </form>
+        <button type="submit" class="table-footer--button" form="ticket-form-archive">
+            <i class="fa-solid fa-folder-closed"></i>
+        </button>
     </span>
 </div>
     </main>
@@ -128,9 +125,12 @@
     });
 
     $('.ticket-select-all').click(function () {
+        let checkbox = $('.table-checkbox--input');
 
-        $('.table-checkbox--input').prop('checked', true);
-
+        if(checkbox.prop('checked'))
+            checkbox.prop('checked', false);
+        else
+            checkbox.prop('checked', true);
     });
 
 </script>

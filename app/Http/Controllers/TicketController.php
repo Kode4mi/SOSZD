@@ -73,11 +73,13 @@ class TicketController extends Controller
            'id' => 'required'
         ]);
 
-        $ticket = Ticket::find($formFields['id']);
+        foreach ($formFields['id'] as $id) {
+            $ticket = Ticket::find($id);
 
-        $ticket->update([
-           'active' => 0,
-        ]);
+            $ticket->update([
+                'active' => 0,
+            ]);
+        }
 
         return redirect()->back()->with('message', 'Zarchiwizowano sprawę/sprawy');
     }

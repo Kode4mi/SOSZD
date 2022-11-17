@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Redirect;
 use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
@@ -62,11 +63,12 @@ class TicketController extends Controller
 
     public function redirection(Ticket $ticket): View
     {
-        $user = DB::select('select id, first_name, last_name from users');
+        $users = User::with('redirects')->get(['id', 'first_name', 'last_name']);
 
         return view('tickets.redirection', [
             'ticket' => $ticket,
-            'users' => $user,
+            'users' => $users,
+            'redirects' => Redirect::where('ticket_id', $ticket->id)->get(),
         ]);
     }
 

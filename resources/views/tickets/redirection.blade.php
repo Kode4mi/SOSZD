@@ -24,11 +24,13 @@
     <br>
 
 <label class="label_adresat">Adresaci: <br/>
-
-
     <select name="reciever">
         @foreach($users as $user)
-            <option> {{$user->first_name}} {{$user->last_name}} </option>
+            @foreach($redirects as $redirect)
+                @if($user->id !== $redirect->user_id)
+                    <option value="{{$user->id}}"> {{$user->first_name}} {{$user->last_name}} </option>
+                @endif
+            @endforeach
         @endforeach
     </select>
 </label><br>

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Redirect;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use \App\Models\Ticket;
@@ -39,6 +40,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'uzytkownik@soszd.pl',
             'password' => '$2y$10$4K2iVZ.fQxYBf/oX9IwvP.K59AAt//78pkOqtEYAcwNa81g1/RepC',
         ]);
+
+        Redirect::factory()->create();
 
     }
 }

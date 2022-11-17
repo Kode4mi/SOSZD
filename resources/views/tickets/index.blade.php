@@ -19,7 +19,7 @@
     <thead>
 
     <tr>
-        <th><i class="fa-solid fa-pen ticket-edit"></i></th>
+        <th><i class="fa-solid fa-pen-to-square ticket-select-all"></i></th>
         <th>@sortablelink('title', 'Tytuł')</th>
         <th>@sortablelink('sender_id', 'Nadawca')</th>
         <th>@sortablelink('deadline', 'Termin')</th>
@@ -62,8 +62,17 @@
 </tbody>
 
 </table>
+<div class="table-footer">
+    <p class="table-footer--links"> {{$tickets->links()}} </p>
+    <span>
+        <form action="/archive" method="PUT">
 
-<p> {{$tickets->links()}} </p>
+            <button type="submit"> </button>
+
+            </button>
+        </form>
+    </span>
+</div>
     </main>
         @else
             <x-main-title>Brak spraw</x-main-title>
@@ -118,11 +127,9 @@
         }
     });
 
-    $('.ticket-edit').click(function () {
+    $('.ticket-select-all').click(function () {
 
-        console.log('essa');
-
-        $('<div>siema</div>').append($(this).find('div'));
+        $('.table-checkbox--input').prop('checked', true);
 
     });
 

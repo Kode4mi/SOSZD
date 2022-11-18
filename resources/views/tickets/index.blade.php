@@ -106,7 +106,7 @@
             }
         });
 
-        $(".main__frame--archive_button").droppable({
+        $(".navbar__sidebar--button_archive").droppable({
             accept: '.ticket-row',
             drop: function (event, ui) {
                 sendArchiveForm(event, ui, "archive")
@@ -128,7 +128,7 @@
 
             const form = $("#ticket-form-" + str);
 
-            form.append(" <input type='hidden' name='id' value=" + id + " />");
+            form.append(" <input type='hidden' name='id[]' value=" + id + " />");
 
             form.submit();
         }

@@ -17,6 +17,8 @@ class TicketTest extends TestCase
         $response = $this->actingAs($user)->get('/tickets');
 
         $response->assertSuccessful();
+        $response->assertViewHas('title', "Aktualne sprawy");
+        $response->assertViewHas('form', "archive");
         $response->assertViewIs('tickets.index');
     }
 

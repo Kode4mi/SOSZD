@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArchiveController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
@@ -19,16 +20,12 @@ use Illuminate\Support\Facades\Route;
 // Redirect z '/' do '/login'
 
 Route::get('/', static function () {
-   return redirect('login');
+    return redirect('login');
 });
 
 Route::middleware(['auth'])->group(function () {
 
 // Ticket
-
-    Route::put('archive', [TicketController::class, 'archive']);
-
-    Route::put('unarchive', [TicketController::class, 'unarchive']);
 
     Route::get('tickets', [TicketController::class, 'index']);
 
@@ -38,7 +35,13 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('ticket', [TicketController::class, 'store']);
 
-    Route::get('archives', [TicketController::class, 'archives']);
+// Archive
+
+    Route::get('archives', [ArchiveController::class, 'index']);
+
+    Route::put('archive', [ArchiveController::class, 'archive']);
+
+    Route::put('unarchive', [ArchiveController::class, 'unarchive']);
 
 
 // User

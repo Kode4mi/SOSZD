@@ -340,8 +340,8 @@ $navbarMobileWidth: 100vw;
             display: grid;
             grid-template-columns: 0.5fr 7fr repeat(2, 3fr) 1.5fr;
             grid-template-rows: 1fr;
-            grid-column-gap: 0px;
-            grid-row-gap: 0px;
+            grid-column-gap: 0;
+            grid-row-gap: 0;
         }
 
         a {
@@ -625,13 +625,13 @@ $navbarMobileWidth: 100vw;
 
     &__input {
         height: 100%;
-        border-radius: 15px 0px 0px 15px;
+        border-radius: 15px 0 0 15px;
     }
 
     &__button {
         height: 100%;
         width: 2vw;
-        border-radius: 0px 15px 15px 0px;
+        border-radius: 0 15px 15px 0;
         border: 1px gray solid;
     }
 }
@@ -758,7 +758,10 @@ $navbarMobileWidth: 100vw;
     height: 10px;
     border: solid white;
     border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+
+.ticket-select-all {
+    cursor: pointer;
 }

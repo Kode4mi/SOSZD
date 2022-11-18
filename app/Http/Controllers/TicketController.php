@@ -23,19 +23,6 @@ class TicketController extends Controller
         ]);
     }
 
-    public function archives(): View
-    {
-        $title = "Zarchiwizowane sprawy";
-        $form = "unarchive";
-
-        return view('tickets.index', [
-            'tickets' => Ticket::sortable()->where('active', 0)->filter(request(['search']))->simplePaginate(12),
-            'users' => User::class,
-            'title' => $title,
-            'form' => $form
-        ]);
-    }
-
     public function create(): View
     {
         return view('tickets.create');
@@ -76,40 +63,5 @@ class TicketController extends Controller
 
         return redirect('tickets')->with('message', __('app.ticket.create'));
     }
-
-    public function archive(Request $request) : RedirectResponse {
-
-        $formFields = $request->validate([
-           'id' => 'required'
-        ]);
-
-        foreach ($formFields['id'] as $id) {
-            $ticket = Ticket::find($id);
-
-            $ticket->update([
-                'active' => 0,
-            ]);
-        }
-
-        return redirect()->back()->with('message', 'Zarchiwizowano sprawę/sprawy');
-    }
-
-    public function unarchive(Request $request) : RedirectResponse {
-
-        $formFields = $request->validate([
-            'id' => 'required'
-        ]);
-
-        foreach ($formFields['id'] as $id) {
-            $ticket = Ticket::find($id);
-
-            $ticket->update([
-                'active' => 1,
-            ]);
-        }
-
-        return redirect()->back()->with('message', 'Przywrócono sprawę/sprawy');
-    }
-
 
 }

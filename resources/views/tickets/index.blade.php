@@ -6,7 +6,7 @@
         <main>
 
             <form action="/tickets" id="search_form" class="searchbar">
-                <input class="form-control search w-25 searchbar__input" type="search" aria-label="Wyszukaj"
+                <input class="form-control  searchbar__input" type="search" aria-label="Wyszukaj"
                        name="search"
                        @if(request('search' ?? null))
                            value="{{request('search')}}"
@@ -21,7 +21,7 @@
                 <thead>
 
                 <tr>
-                    <th><i class="fa-solid fa-pen-to-square ticket-select-all" title="Zaznacz wszystko"></i></th>
+                    <th><i class="fa-solid fa-pen-to-square ticket__select-all" title="Zaznacz wszystko"></i></th>
                     <th>@sortablelink('title', 'Tytuł')</th>
                     <th>@sortablelink('sender_id', 'Nadawca')</th>
                     <th>@sortablelink('deadline', 'Termin')</th>
@@ -33,21 +33,21 @@
                 <tbody>
 
                 @foreach($tickets as $ticket)
-                    <tr class="ticket-row">
-                        <td>
+                    <tr class="ticket__row">
+                        <td class="ticket__checkbox">
                             <label class="table-checkbox">
                                 <input type="checkbox" class="table-checkbox--input" name="id[]" value="{{$ticket->id}}"
-                                       form="ticket-form-{{$form}}">
+                                       form="ticket__form-{{$form}}">
                                 <span class="table-checkbox--checkmark"></span>
                             </label>
                         </td>
-                        <td>
+                        <td class="ticket__title">
                             <a href="ticket/{{$ticket->id}}" class="ticket-title">
                                 {{$ticket->title}}
                                 <input type="hidden" value="{{$ticket->id}}" class="id">
                             </a>
                         </td>
-                        <td>
+                        <td class="ticket__sender">
 
                             @php
                                 /* @var User $users */
@@ -56,8 +56,8 @@
                             {{$user->first_name}}
                             {{$user->last_name}}
                         </td>
-                        <td>{{$ticket->deadline}}</td>
-                        <td>{{$ticket->priority}}</td>
+                        <td class="ticket__deadline">{{$ticket->deadline}}</td>
+                        <td class="ticket__priority">{{$ticket->priority}}</td>
 
                     </tr>
                 @endforeach
@@ -140,7 +140,7 @@
             }
         });
 
-        $('.ticket-select-all').click(function () {
+        $('.ticket__select-all').click(function () {
             let checkbox = $('.table-checkbox--input');
 
             if (checkbox.prop('checked'))

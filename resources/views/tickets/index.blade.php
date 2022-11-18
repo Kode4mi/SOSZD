@@ -88,6 +88,10 @@
 
 <script>
 
+    if(!$('.table-footer--links')[0])    {
+        $('.table-footer').css('justify-content', 'flex-end');
+    }
+
     $(".ticket-row").draggable({
         helper: function () {
             return $('<div></div>').append($(this).find('.ticket-title').clone());

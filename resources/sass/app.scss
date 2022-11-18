@@ -350,8 +350,8 @@ $navbarMobileWidth: 100vw;
         }
 
         .table-footer {
-            display:flex;
-            justify-content:space-between;
+            display: flex;
+            justify-content: space-between;
             width: 100%;
 
             .table-footer--button {
@@ -400,7 +400,7 @@ $navbarMobileWidth: 100vw;
         border-radius: 15px;
         width: 64vw;
         height: 42vh;
-        resize:none;
+        resize: none;
     }
 
     &--select {
@@ -729,12 +729,12 @@ $navbarMobileWidth: 100vw;
 }
 
 /* On mouse-over, add a grey background color */
-.table-checkbox:hover input ~ .table-checkbox--checkmark {
+.table-checkbox:hover input~.table-checkbox--checkmark {
     background-color: #ccc;
 }
 
 /* When the checkbox is checked, add a blue background */
-.table-checkbox input:checked ~ .table-checkbox--checkmark {
+.table-checkbox input:checked~.table-checkbox--checkmark {
     background-color: #2196F3;
 }
 
@@ -746,7 +746,7 @@ $navbarMobileWidth: 100vw;
 }
 
 /* Show the checkmark when checked */
-.table-checkbox input:checked ~ .table-checkbox--checkmark:after {
+.table-checkbox input:checked~.table-checkbox--checkmark:after {
     display: block;
 }
 

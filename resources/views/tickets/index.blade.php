@@ -2,7 +2,7 @@
 
 @section('content')
 @if($tickets->count())
-<x-main-title>Aktualne sprawy: </x-main-title>
+<x-main-title>{{$title}}: </x-main-title>
     <main>
 
     <form action="/tickets" id="search_form" class="searchbar">
@@ -34,7 +34,7 @@
 <tr class="ticket-row">
     <td>
         <label class="table-checkbox">
-            <input type="checkbox" class="table-checkbox--input" name="id[]" value="{{$ticket->id}}" form="ticket-form-archive">
+            <input type="checkbox" class="table-checkbox--input" name="id[]" value="{{$ticket->id}}" form="ticket-form-{{$form}}">
             <span class="table-checkbox--checkmark"></span>
         </label>
     </td>
@@ -65,7 +65,7 @@
 <div class="table-footer">
     {{$tickets->links()}}
     <span>
-        <button type="submit" class="table-footer--button" form="ticket-form-archive">
+        <button type="submit" class="table-footer--button" form="ticket-form-{{$form}}">
             <i class="fa-solid fa-folder-closed"></i>
         </button>
     </span>
@@ -75,16 +75,10 @@
             <x-main-title>Brak spraw</x-main-title>
 @endif
 
-<form action='/archive' method='POST' id="ticket-form-archive">
+<form action='/{{$form}}' method='POST' id="ticket-form-{{$form}}">
     @csrf
     @method("PUT")
 </form>
-
-<form action='/unarchive' method='POST' id="ticket-form-unarchive">
-    @csrf
-    @method("PUT")
-</form>
-
 
 <script>
 

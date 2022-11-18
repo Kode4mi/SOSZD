@@ -12,17 +12,27 @@ class TicketController extends Controller
 {
     public function index(): View
     {
+        $title = "Aktualne sprawy";
+        $form = "archive";
+
         return view('tickets.index', [
             'tickets' => Ticket::sortable()->where('active', 1)->filter(request(['search']))->simplePaginate(12),
             'users' => User::class,
+            'title' => $title,
+            'form' => $form
         ]);
     }
 
     public function archives(): View
     {
+        $title = "Zarchiwizowane sprawy";
+        $form = "unarchive";
+
         return view('tickets.index', [
             'tickets' => Ticket::sortable()->where('active', 0)->filter(request(['search']))->simplePaginate(12),
             'users' => User::class,
+            'title' => $title,
+            'form' => $form
         ]);
     }
 
@@ -90,11 +100,13 @@ class TicketController extends Controller
             'id' => 'required'
         ]);
 
-        $ticket = Ticket::find($formFields['id']);
+        foreach ($formFields['id'] as $id) {
+            $ticket = Ticket::find($id);
 
-        $ticket->update([
-            'active' => 1,
-        ]);
+            $ticket->update([
+                'active' => 1,
+            ]);
+        }
 
         return redirect()->back()->with('message', 'Przywrócono sprawę/sprawy');
     }

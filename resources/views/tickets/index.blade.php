@@ -34,7 +34,7 @@
 
                 @foreach($tickets as $ticket)
                     <tr class="ticket__row">
-                        <td class="ticket__checkbox">
+                        <td class="table">
                             <label class="table-checkbox">
                                 <input type="checkbox" class="table-checkbox--input" name="id[]" value="{{$ticket->id}}"
                                        form="ticket__form-{{$form}}">
@@ -66,11 +66,9 @@
 
             </table>
             <div class="table-footer">
-
-
                 {{$tickets->links()}}
                 <div>
-                    <button type="submit" class="table-footer--button" form="ticket-form-{{$form}}"
+                    <button type="submit" class="table-footer--button" form="ticket__form-{{$form}}"
                             @if($form === "archive")
                                 title="Dodaj do archiwum"
                             @else
@@ -89,7 +87,7 @@
         <x-main-title>Brak spraw</x-main-title>
     @endif
 
-    <form action='/{{$form}}' method='POST' id="ticket-form-{{$form}}">
+    <form action='/{{$form}}' method='POST' id="ticket__form-{{$form}}">
         @csrf
         @method("PUT")
     </form>
@@ -100,21 +98,21 @@
             $('.table-footer').css('justify-content', 'flex-end');
         }
 
-        $(".ticket-row").draggable({
+        $(".ticket__row").draggable({
             helper: function () {
                 return $('<div></div>').append($(this).find('.ticket-title').clone());
             }
         });
 
         $(".navbar__sidebar--button_archive").droppable({
-            accept: '.ticket-row',
+            accept: '.ticket__row',
             drop: function (event, ui) {
                 sendArchiveForm(event, ui, "archive")
             },
         });
 
         $(".navbar__sidebar--button1").droppable({
-            accept: '.ticket-row',
+            accept: '.ticket__row',
             drop: function (event, ui) {
                 sendArchiveForm(event, ui, "unarchive")
             },
@@ -126,19 +124,12 @@
             const obj = draggable.clone();
             const id = obj.find('.id').val();
 
-            const form = $("#ticket-form-" + str);
+            const form = $("#ticket__form-" + str);
 
             form.append(" <input type='hidden' name='id[]' value=" + id + " />");
 
             form.submit();
         }
-
-        $('.table-checkbox--input').change(function () {
-            console.log($(this).val());
-            if ($(this).is(':checked')) {
-                console.log('checked');
-            }
-        });
 
         $('.ticket__select-all').click(function () {
             let checkbox = $('.table-checkbox--input');

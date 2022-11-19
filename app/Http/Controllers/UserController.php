@@ -100,8 +100,6 @@ class UserController extends Controller
             ]
         );
 
-
-
         if(!Hash::check($formFields['old_password'], $user->password))
         {
             return redirect()->back()->with('message', __('app.old_password'));
@@ -127,4 +125,30 @@ class UserController extends Controller
             'users' => User::sortable()->filter(request(['search']))->simplePaginate(20)
         ]);
     }
+
+    public function register() : View
+    {
+        return view('user.create');
+    }
+
+    public function store(Request $request) : RedirectResponse
+    {
+        $formFields = $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => ['required','email'],
+            'role' => 'nullable',
+        ]);
+
+        if(!isset($formFields["role"])) {
+            $formFields += ["role" => "nauczyciel"];
+        }
+
+        $formFields += ["password" => "nie ustawiono"];
+
+        User::create($formFields);
+
+        return redirect('/users')->with('message', "Stworzono nowego użytkownika");
+    }
+
 }

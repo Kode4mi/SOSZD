@@ -50,7 +50,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('user/edit', [UserController::class, 'edit']);
 
-    Route::post('user', [UserController::class, 'update']);
+    Route::get('user/register', [UserController::class, 'register']);
+
+    Route::put('user', [UserController::class, 'update']);
+
+    Route::post('user', [UserController::class, 'store']);
 
     Route::get('change-password', [UserController::class, 'editPassword']);
 

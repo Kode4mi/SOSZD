@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\newUserEmailJob;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -146,7 +148,11 @@ class UserController extends Controller
 
         $formFields += ["password" => "nie ustawiono"];
 
-        User::create($formFields);
+        $user = User::create($formFields);
+
+        $token = Str::random(64);
+
+        dispatch(new newUserEmailJob($token, $user->email));
 
         return redirect('/users')->with('message', "Stworzono nowego użytkownika");
     }

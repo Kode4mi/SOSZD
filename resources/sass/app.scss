@@ -363,6 +363,11 @@ $navbarMobileWidth: 100vw;
             color: #000000;
         }
 
+        .submit_password:hover{
+            background-color:darken($button-background,15);
+        }
+
+            
         .table-footer {
             display: flex;
             justify-content: space-between;
@@ -382,10 +387,9 @@ $navbarMobileWidth: 100vw;
             }
         }
 
-    }
-
-
 }
+
+
 
 .create-ticket {
 
@@ -432,6 +436,10 @@ $navbarMobileWidth: 100vw;
         border: none;
         border-radius: 15px;
         padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+    }
+
+    button:hover {
+        background-color: darken($button-background,10);
     }
 
 }
@@ -587,6 +595,10 @@ $navbarMobileWidth: 100vw;
         }
     }
 
+    &__button:hover{
+        background: darken(#8CD790,10);
+    }
+
     &__center {
         display: flex;
         flex-direction: column;
@@ -657,6 +669,11 @@ $navbarMobileWidth: 100vw;
             width: 10vw;
         }
     }
+
+    &__button:hover {
+    filter:brightness(70%);
+    }
+
 }
 
 .user_edit {
@@ -678,6 +695,10 @@ $navbarMobileWidth: 100vw;
         border-radius: 15px;
         border: none;
         padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+    }
+
+    &__submit-button:hover {
+        background-color: darken($button-background,10);
     }
 
 }
@@ -706,17 +727,22 @@ $navbarMobileWidth: 100vw;
     width: 100%;
 }
 
-.flash-message-content {
-    margin: auto;
-    font-size: 1.5rem;
-    width: fit-content;
-    padding: 1rem 1.5rem;
-    background-color: #1b803f;
-    border-radius: 1rem;
-    color: white;
-    z-index: 5;
-}
+.flash-message-content  {
+    $bgColor:#53c180;
+    $accentColor:darken($bgColor,35);
 
+    display: flex;
+    height:7vh;
+    align-items: center;
+    background-color:$bgColor;
+    color:white;
+    font-size:1.2rem;
+    font-family:$primary_font;
+
+    box-shadow:0 0 15px 5px rgba(0, 0, 0, 0.25);
+
+    width: fit-content;
+}
 
 .table {
 

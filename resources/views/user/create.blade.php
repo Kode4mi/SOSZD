@@ -10,7 +10,7 @@
             @method("POST")
 
             <label>
-                Imie: <input type="text" name="first_name" />
+                Imie: <input type="text" name="first_name" value="{{old('first_name')}}" />
             </label> <br>
 
             @error('first_name')
@@ -18,7 +18,7 @@
             @enderror
 
             <label>
-                Nazwisko: <input type="text" name="last_name" />
+                Nazwisko: <input type="text" name="last_name" value="{{old('last_name')}}" />
             </label> <br>
 
             @error('last_name')
@@ -26,7 +26,7 @@
             @enderror
 
             <label>
-                Email: <input type="text" name="email" />
+                Email: <input type="text" name="email" value="{{old('email')}}" />
             </label> <br>
 
             @error('email')

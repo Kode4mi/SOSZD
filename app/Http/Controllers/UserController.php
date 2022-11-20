@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -138,7 +140,7 @@ class UserController extends Controller
         $formFields = $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => ['required','email'],
+            'email' => ['required','email','unique:users'],
             'role' => 'nullable',
         ]);
 
@@ -148,13 +150,51 @@ class UserController extends Controller
 
         $formFields += ["password" => "nie ustawiono"];
 
-        $user = User::create($formFields);
-
         $token = Str::random(64);
 
-        dispatch(new newUserEmailJob($token, $user->email));
+        DB::table('password_resets')->insert([
+            'email' => $formFields['email'],
+            'token' => $token,
+            'created_at' => Carbon::now()
+        ]);
+
+        dispatch(new newUserEmailJob($token, $formFields['email']));
+
+        $user = User::create($formFields);
 
         return redirect('/users')->with('message', "Stworzono nowego użytkownika");
     }
+
+    public function showCreatePassword($token) : View {
+        return view('user.new-user', ['token' => $token]);
+    }
+
+    public function submitCreatePassword(Request $request) : RedirectResponse
+    {
+        $formFields = $request->validate([
+            'password' => 'required|confirmed',
+            'token' => 'required',
+        ],
+            [
+                'password' => __('app.password')
+            ]
+        );
+
+        $createPassword = DB::table('password_resets')
+            ->where(['token' => $formFields['token']])
+            ->first();
+
+        if(!$createPassword){
+            return redirect()->back()->withErrors(['email' =>__('passwords.token')]);
+        }
+
+        User::where('email', $createPassword->email)
+            ->update(['password' => bcrypt($formFields['password'])]);
+
+        DB::table('password_resets')->where(['token' => $formFields['token']])->delete();
+
+        return redirect('/login')->with('message', __('passwords.reset'));
+    }
+
 
 }

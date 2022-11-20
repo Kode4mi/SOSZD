@@ -80,4 +80,7 @@ Route::middleware(['guest'])->group(function () {
     Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPassword']);
     Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPassword']);
 
+    Route::get('create-password/{token}', [UserController::class, 'showCreatePassword']);
+    Route::put('create-password', [UserController::class, 'submitCreatePassword']);
+
 });

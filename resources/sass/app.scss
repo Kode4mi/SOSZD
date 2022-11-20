@@ -336,7 +336,7 @@ $navbarMobileWidth: 100vw;
             font-size: 1.75rem;
             margin-top: 2vh;
 
-            &>tr {
+            & > tr {
                 display: grid;
                 grid-template-columns: 0.5fr 7fr repeat(2, 3fr) 1.5fr;
                 grid-template-rows: 1fr;
@@ -363,11 +363,11 @@ $navbarMobileWidth: 100vw;
             color: #000000;
         }
 
-        .submit_password:hover{
-            background-color:darken($button-background,15);
+        .submit_password:hover {
+            background-color: darken($button-background, 15);
         }
 
-            
+
         .table-footer {
             display: flex;
             justify-content: space-between;
@@ -387,8 +387,8 @@ $navbarMobileWidth: 100vw;
             }
         }
 
+    }
 }
-
 
 
 .create-ticket {
@@ -439,7 +439,7 @@ $navbarMobileWidth: 100vw;
     }
 
     button:hover {
-        background-color: darken($button-background,10);
+        background-color: darken($button-background, 10);
     }
 
 }
@@ -595,8 +595,8 @@ $navbarMobileWidth: 100vw;
         }
     }
 
-    &__button:hover{
-        background: darken(#8CD790,10);
+    &__button:hover {
+        background: darken(#8CD790, 10);
     }
 
     &__center {
@@ -671,7 +671,7 @@ $navbarMobileWidth: 100vw;
     }
 
     &__button:hover {
-    filter:brightness(70%);
+        filter: brightness(70%);
     }
 
 }
@@ -698,7 +698,7 @@ $navbarMobileWidth: 100vw;
     }
 
     &__submit-button:hover {
-        background-color: darken($button-background,10);
+        background-color: darken($button-background, 10);
     }
 
 }
@@ -727,13 +727,20 @@ $navbarMobileWidth: 100vw;
     width: 100%;
 }
 
-.flash-message-content  {
+.flash-message-content {
     $bgColor:#53c180;
     $accentColor:darken($bgColor,35);
 
     display: flex;
     height:7vh;
     align-items: center;
+
+    margin: auto;
+    padding:1.5vw;
+    border-left:5px solid $accentColor;
+    border-radius:0.25vw;
+    z-index: 5;
+
     background-color:$bgColor;
     color:white;
     font-size:1.2rem;
@@ -786,17 +793,17 @@ $navbarMobileWidth: 100vw;
         }
 
         /* On mouse-over, add a grey background color */
-        &:hover input~.table-checkbox--checkmark {
+        &:hover input ~ .table-checkbox--checkmark {
             background-color: #ccc;
         }
 
         /* When the checkbox is checked, add a blue background */
-        & input:checked~.table-checkbox--checkmark {
+        & input:checked ~ .table-checkbox--checkmark {
             background-color: #2196F3;
         }
 
         /* Show the checkmark when checked */
-        & input:checked~.table-checkbox--checkmark:after {
+        & input:checked ~ .table-checkbox--checkmark:after {
             display: block;
         }
 
@@ -831,12 +838,13 @@ $navbarMobileWidth: 100vw;
             display: grid;
             grid-template-columns: 1fr 6fr 1fr;
             grid-template-rows: 1fr auto;
-            grid-column-gap: 0px;
-            grid-row-gap: 0px;
+            grid-column-gap: 0;
+            grid-row-gap: 0;
         }
     }
 
-    &__checkbox {}
+    &__checkbox {
+    }
 
     &__title {
         @media (max-aspect-ratio: 1/1) {

@@ -20,6 +20,7 @@ Wykonana we frameworku Laravel aplikacja pomagająca w zarządzaniu, udostępnia
 8. Gotowe
 
 #### Włączenie kolejowania emaili `php artisan queue:work` 
+#### Włączenie serwera na localnym ip `.\local` po uwczesnym skonfigurowaniu z `local.example.bat`
 
 ## Dane logowania testowych użytkowników:
 

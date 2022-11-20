@@ -18,6 +18,12 @@ $lightGreen: #8CD790;
 $darkGreen: #4BA68D;
 $darkerGreen: #285942;
 
+//zmienne dla wersji PC
+$navbarWidth: 18vw;
+
+//zmienne dla wersji mobilnej
+$navbarMobileWidth: 100vw;
+
 :root {
     overflow: hidden;
     font-size: 16px;
@@ -56,14 +62,27 @@ $darkerGreen: #285942;
 }
 
 .navbar {
+
     height: 100vh;
     position: fixed;
-    width: 18vw;
+    width: $navbarWidth;
+    transition: .3s;
+
+    @media (max-aspect-ratio: 1/1) {
+        width: $navbarMobileWidth;
+        left: -100vw;
+
+        &--moved {
+            left: 0;
+        }
+
+    }
 
     padding: 0;
     top: 0;
     bottom: 0;
     left: 0;
+    z-index: 2;
 
     font-family: $primary_font;
 
@@ -75,9 +94,13 @@ $darkerGreen: #285942;
 
     &__logo {
         height: 18%;
-        width: 18vw;
+        width: $navbarWidth;
         display: block;
         z-index: 1;
+
+        @media (max-aspect-ratio: 1/1) {
+            width: $navbarMobileWidth;
+        }
 
         background-color: $logo-background;
         box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25);
@@ -107,9 +130,13 @@ $darkerGreen: #285942;
     }
 
     &__sidebar {
-        width: 18vw;
+        width: $navbarWidth;
         height: 82%;
         background-color: $sidebar-background;
+
+        @media (max-aspect-ratio: 1/1) {
+            width: $navbarMobileWidth;
+        }
 
         ul {
             list-style: none;
@@ -148,12 +175,17 @@ $darkerGreen: #285942;
         width: 15vw;
         height: 8vh;
 
+        @media (max-aspect-ratio: 1/1) {
+            width: 80vw;
+        }
+
         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
         filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.25));
         border-radius: 10px;
         border: 0;
 
-        font-family: "Cabin", serif;
+        font-family: "Cabin",
+        serif;
         text-align: center;
         font-weight: 400;
         font-size: 2.25rem;
@@ -166,6 +198,21 @@ $darkerGreen: #285942;
     &__sidebar--button1 {
         margin-top: 3vw;
     }
+
+    &__hamburger {
+        @media (max-aspect-ratio: 1/1) {
+            z-index: 2;
+            position: fixed;
+            top: 1vh;
+            left: 1vh;
+            height: 7vh;
+            width: 7vh;
+            font-size: 4rem;
+            display: block;
+        }
+
+        display: none;
+    }
 }
 
 .header {
@@ -173,80 +220,47 @@ $darkerGreen: #285942;
     background-color: $header-background;
     height: 9vh;
 
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+
     input[type='checkbox'] {
         display: none;
     }
 
-    &__logged-user {
-        margin-top: 1.8vh;
+    &__icon {
+        margin-top: 1.5vh;
         margin-right: 1.5vw;
-        border-radius: 25px;
-        float: right;
-        width: 9vw;
-        height: 5.5vh;
+        border-radius: 2vh;
+        width: 6vh;
+        height: 6vh;
         text-align: center;
+        background-color: $user-background;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__logged-user {
+        width: 20vh;
         padding-right: 1vw;
         padding-left: 1vw;
         font-style: normal;
         font-weight: 600;
         font-size: 1.1875rem;
-        background-color: $user-background;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-sizing: border-box;
     }
 
     &__smallfont {
-        margin-top: 1.5vh;
-        margin-right: 1.5vw;
-        border-radius: 25px;
-        float: right;
-        width: 4vw;
-        height: 6vh;
-        text-align: center;
         font-size: 3rem;
-        background-color: $user-background;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-sizing: border-box;
     }
 
     &__largefont {
-        margin-top: 1.5vh;
-        margin-right: 1.5vw;
-        border-radius: 25px;
-        float: right;
-        width: 4vw;
-        height: 6vh;
-        text-align: center;
         font-size: 0.93rem;
-        background-color: $user-background;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-sizing: border-box;
     }
 
     &__contrast {
-        margin-top: 1.5vh;
-        margin-right: 1.5vw;
-        border-radius: 25px;
-        float: right;
-        width: 4vw;
-        height: 6vh;
-        text-align: center;
         font-size: 0.9375rem;
-        background-color: $user-background;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-sizing: border-box;
     }
 
     i:hover {
@@ -257,19 +271,28 @@ $darkerGreen: #285942;
 .main {
     height: 91vh;
     background-color: $main-background;
-    width: 100vw;
+    width: calc(100vw - $navbarWidth);
+    position: fixed;
+    right: 0;
+    z-index: 1;
 
-    flex-direction: column;
     display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    box-sizing: border-box;
+    align-content: center;
 
-    .main__h1 {
-        margin-right: 30vw;
+    @media (max-aspect-ratio: 1/1) {
+        width: 100vw;
+    }
+
+    &__h1 {
+        align-self: flex-start;
         margin-bottom: 1vw;
         font-size: 3.5rem;
     }
+
 
     main {
         font-family: $primary_font;
@@ -277,17 +300,20 @@ $darkerGreen: #285942;
         height: 74vh;
         box-shadow: -10px 10px 10px rgba(0, 0, 0, 0.25);
         border-radius: 20px;
-        width: 70vw;
-        margin-left: 17.5vw;
+        width: 90%;
         padding: 1vw;
         line-height: 24px;
+
+        @media (max-aspect-ratio: 1/1) {
+            height: 80vh;
+            width: 95%;
+        }
 
         table,
         thead,
         tbody,
         th,
-        td,
-        tr {
+        td {
             display: block;
         }
 
@@ -298,8 +324,10 @@ $darkerGreen: #285942;
             display: grid;
             grid-template-columns: 1fr;
             grid-template-rows: 1fr 7fr;
-            grid-column-gap: 0px;
-            grid-row-gap: 0px;
+            grid-column-gap: 0;
+            grid-row-gap: 0;
+
+
         }
 
         thead {
@@ -307,6 +335,17 @@ $darkerGreen: #285942;
             font-weight: 700;
             font-size: 1.75rem;
             margin-top: 2vh;
+
+            &>tr {
+                display: grid;
+                grid-template-columns: 0.5fr 7fr repeat(2, 3fr) 1.5fr;
+                grid-template-rows: 1fr;
+                grid-column-gap: 0;
+                grid-row-gap: 0;
+
+            }
+
+
         }
 
         tbody {
@@ -314,12 +353,9 @@ $darkerGreen: #285942;
             overflow: auto;
         }
 
-        tr {
-            display: grid;
-            grid-template-columns: 7fr repeat(2, 3fr) 1.5fr;
-            grid-template-rows: 1fr;
-            grid-column-gap: 0px;
-            grid-row-gap: 0px;
+        th {
+            display: flex;
+            flex-wrap: nowrap;
         }
 
         a {
@@ -331,10 +367,29 @@ $darkerGreen: #285942;
             background-color:darken($button-background,15);
         }
 
-    }
+            
+        .table-footer {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
 
+            .table-footer--button {
+                background: none;
+                border: none;
+
+                scale: 2;
+                margin-left: auto;
+                margin-right: 2vw;
+            }
+
+            .table-footer--links {
+                margin-right: auto;
+            }
+        }
 
 }
+
+
 
 .create-ticket {
 
@@ -363,7 +418,7 @@ $darkerGreen: #285942;
         border-radius: 15px;
         width: 64vw;
         height: 42vh;
-        resize:none;
+        resize: none;
     }
 
     &--select {
@@ -441,7 +496,7 @@ $darkerGreen: #285942;
         justify-content: space-between;
 
         @media (max-aspect-ratio: 1/1) {
-            width: 0vw;
+            width: 50vw;
         }
     }
 
@@ -592,18 +647,27 @@ $darkerGreen: #285942;
 .searchbar {
     display: flex;
     flex-wrap: nowrap;
-    height: 3.5vh;
+    height: 5vh;
+
+    @media (min-aspect-ratio: 1/1) {
+        width: 25%;
+        height: 3.5vh;
+    }
 
     &__input {
         height: 100%;
-        border-radius: 15px 0px 0px 15px;
+        border-radius: 15px 0 0 15px;
     }
 
     &__button {
         height: 100%;
         width: 2vw;
-        border-radius: 0px 15px 15px 0px;
+        border-radius: 0 15px 15px 0;
         border: 1px gray solid;
+
+        @media (max-aspect-ratio: 1/1) {
+            width: 10vw;
+        }
     }
 
     &__button:hover {
@@ -663,7 +727,6 @@ $darkerGreen: #285942;
     width: 100%;
 }
 
-
 .flash-message-content  {
     $bgColor:#53c180;
     $accentColor:darken($bgColor,35);
@@ -671,13 +734,6 @@ $darkerGreen: #285942;
     display: flex;
     height:7vh;
     align-items: center;
-
-    margin: auto;
-    padding:1.5vw;
-    border-left:5px solid $accentColor;
-    border-radius:0.25vw;
-    z-index: 5;
-
     background-color:$bgColor;
     color:white;
     font-size:1.2rem;
@@ -686,4 +742,140 @@ $darkerGreen: #285942;
     box-shadow:0 0 15px 5px rgba(0, 0, 0, 0.25);
 
     width: fit-content;
+}
+
+.table {
+
+    /* The container */
+    &-checkbox {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        /* Hide the browser's default checkbox */
+        &--input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        /* Create a custom checkbox */
+        &--checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #eee;
+
+            /* Create the checkmark/indicator (hidden when not checked) */
+            &:after {
+                content: "";
+                position: absolute;
+                display: none;
+            }
+        }
+
+        /* On mouse-over, add a grey background color */
+        &:hover input~.table-checkbox--checkmark {
+            background-color: #ccc;
+        }
+
+        /* When the checkbox is checked, add a blue background */
+        & input:checked~.table-checkbox--checkmark {
+            background-color: #2196F3;
+        }
+
+        /* Show the checkmark when checked */
+        & input:checked~.table-checkbox--checkmark:after {
+            display: block;
+        }
+
+    }
+
+    /* Style the checkmark/indicator */
+    & .table-checkbox--checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+}
+
+.ticket {
+    &__select-all {
+        cursor: pointer;
+    }
+
+    &__row {
+        display: grid;
+        grid-template-columns: 0.5fr 7fr repeat(2, 3fr) 1.5fr;
+        grid-template-rows: 1fr;
+        grid-column-gap: 0;
+        grid-row-gap: 0;
+
+        @media (max-aspect-ratio: 1/1) {
+            display: grid;
+            grid-template-columns: 1fr 6fr 1fr;
+            grid-template-rows: 1fr auto;
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+        }
+    }
+
+    &__checkbox {}
+
+    &__title {
+        @media (max-aspect-ratio: 1/1) {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+    }
+
+    &__sender {
+        @media (max-aspect-ratio: 1/1) {
+            font-size: 1.5rem;
+
+            grid-column: 2;
+            grid-row: 2;
+
+        }
+    }
+
+    &__deadline {
+
+        @media (max-aspect-ratio: 1/1) {
+            font-size: 1.2rem;
+            font-weight: bold;
+
+            display: flex;
+            white-space: nowrap;
+        }
+    }
+
+    &__priority {
+
+        @media (max-aspect-ratio: 1/1) {
+            font-size: 1.6rem;
+            font-weight: bold;
+            text-align: right;
+
+
+            grid-column: 3;
+            grid-row: 2;
+        }
+    }
 }

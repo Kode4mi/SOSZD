@@ -13,6 +13,9 @@
                 <a class="main__frame--create_ticket_button" href="{{url('ticket/create')}}"> <button class="navbar__sidebar--button">Nowa Sprawa</button></a>
             </li>
             <li>
+                <a class="main__frame--archive_button" href="{{url('/archives')}}"> <button class="navbar__sidebar--button navbar__sidebar--button_archive">Archiwum</button></a>
+            </li>
+            <li>
                 @if(auth()->user()->role === 'admin')
                     <form action="/users" method="GET"><button class="navbar__sidebar--button">Użytkownicy</button></form>
                 @else
@@ -24,4 +27,18 @@
             </li>
         </ul>
     </aside>
+
+    <!-- tymczasowo to tutaj dodaje bo nie wiem zbytnio gdzie -->
+    <div class="navbar__hamburger">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <script>
+        const hamburger = document.querySelector(".navbar__hamburger");
+        const navbar = document.querySelector(".navbar");
+        hamburger.addEventListener("click", ()=>{
+            navbar.classList.toggle("navbar--moved");
+        });
+
+    </script>
 </nav>

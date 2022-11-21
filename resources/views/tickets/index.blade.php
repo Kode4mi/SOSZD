@@ -20,7 +20,7 @@
 
                 <thead>
 
-                <tr>
+                <tr class="ticket__header-row">
                     <th class="ticket__select-all"><i class="fa-solid fa-pen-to-square " title="Zaznacz wszystko"></i>
                     </th>
                     <th class="ticket__sorter">@sortablelink('title', 'Tytuł')</th>

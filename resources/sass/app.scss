@@ -335,15 +335,6 @@ $navbarMobileWidth: 100vw;
             font-size: 1.75rem;
             margin-top: 2vh;
 
-            &>tr {
-                display: grid;
-                grid-template-columns: 0.5fr 7fr repeat(2, 3fr) 1.5fr;
-                grid-template-rows: 1fr;
-                grid-column-gap: 0;
-                grid-row-gap: 0;
-
-            }
-
 
         }
 
@@ -817,6 +808,15 @@ $navbarMobileWidth: 100vw;
 }
 
 .ticket {
+    &__header-row {
+        display: grid;
+        grid-template-columns: 0.5fr 7fr repeat(2, 3fr) 1.5fr;
+        grid-template-rows: 1fr;
+        grid-column-gap: 0;
+        grid-row-gap: 0;
+
+    }
+
     &__select-all {
         cursor: pointer;
 
@@ -930,5 +930,29 @@ $navbarMobileWidth: 100vw;
         @media (max-aspect-ratio: 1/1) {
             font-size: 1.8rem;
         }
+    }
+}
+
+.users {
+    &__header {
+        &-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr) 3fr;
+            grid-template-rows: 1fr;
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+        }
+
+        &-link {
+            display: block;
+        }
+    }
+
+    &__row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr) 3fr;
+        grid-template-rows: 1fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
     }
 }

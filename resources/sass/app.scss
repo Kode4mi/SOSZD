@@ -945,6 +945,30 @@ $navbarMobileWidth: 100vw;
 
         &-link {
             display: block;
+
+            @media (max-aspect-ratio: 1/1) {
+                display: none;
+            }
+        }
+    }
+
+    &__select-sorter {
+        display: none;
+
+        &-label {
+            white-space: nowrap;
+            margin-right: .5rem;
+        }
+
+        select {
+            border-width: .5px;
+            border-radius: 1rem;
+        }
+
+        @media (max-aspect-ratio: 1/1) {
+            display: flex;
+
+            grid-column: 3;
         }
     }
 
@@ -954,5 +978,38 @@ $navbarMobileWidth: 100vw;
         grid-template-rows: 1fr;
         grid-column-gap: 0px;
         grid-row-gap: 0px;
+
+        @media (max-aspect-ratio: 1/1) {
+            grid-template-columns: 1.5fr 1fr;
+            grid-template-rows: 1fr 1fr;
+
+            margin-bottom: 1rem;
+        }
+    }
+
+    &__name {
+        @media (max-aspect-ratio: 1/1) {
+            grid-row: 1;
+            grid-column: 1;
+
+            font-size: 2.2rem;
+        }
+    }
+
+    &__role {
+        @media (max-aspect-ratio: 1/1) {
+            grid-row: 2;
+            grid-column: 1;
+
+            font-size: 1.5rem;
+        }
+    }
+
+    &__email {
+        @media (max-aspect-ratio: 1/1) {
+            grid-row: 1;
+            grid-column: 2;
+            font-size: 1.5rem;
+        }
     }
 }

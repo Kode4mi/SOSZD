@@ -14,9 +14,14 @@ class TicketController extends Controller
 {
     public function index(): View
     {
+        $title = "Aktualne sprawy";
+        $form = "archive";
+
         return view('tickets.index', [
-            'tickets' => Ticket::sortable()->filter(request(['search']))->simplePaginate(12),
+            'tickets' => Ticket::sortable()->where('active', 1)->filter(request(['search']))->simplePaginate(12),
             'users' => User::class,
+            'title' => $title,
+            'form' => $form
         ]);
     }
 

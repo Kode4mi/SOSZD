@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class forgetPasswordEmail extends Mailable
+class newUserEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -28,14 +28,14 @@ class forgetPasswordEmail extends Mailable
     public function envelope() : Envelope
     {
         return new Envelope(
-            subject: 'Zmiana hasła w '.config('app.name'),
+            subject: 'Dostęp do konta w '.config('app.name'),
         );
     }
 
     public function content() : Content
     {
         return new Content(
-            markdown: 'emails.forget-password',
+            markdown: 'emails.new-user',
             with: [
                 'token' => $this->token,
             ],

@@ -17,6 +17,8 @@ class TicketTest extends TestCase
         $response = $this->actingAs($user)->get('/tickets');
 
         $response->assertSuccessful();
+        $response->assertViewHas('title', "Aktualne sprawy");
+        $response->assertViewHas('form', "archive");
         $response->assertViewIs('tickets.index');
     }
 
@@ -24,6 +26,7 @@ class TicketTest extends TestCase
     {
         $response = $this->get('/tickets');
 
+        $response->assertStatus(302);
         $response->assertRedirect('login');
     }
 
@@ -36,6 +39,7 @@ class TicketTest extends TestCase
         $response = $this->actingAs($user)->get('/ticket/'.$ticket->id);
 
         $response->assertSuccessful();
+
         $response->assertViewIs('tickets.show');
 
         $ticket->delete();
@@ -82,6 +86,7 @@ class TicketTest extends TestCase
         $response = $this->actingAs($user)->post('/ticket', $ticket->toArray());
 
         $response->assertRedirect('/tickets');
+        $response->assertSessionHasNoErrors();
 
         $ticket->delete();
         $user->delete();

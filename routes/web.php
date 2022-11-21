@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArchiveController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
@@ -19,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 // Redirect z '/' do '/login'
 
 Route::get('/', static function () {
-   return redirect('login');
+    return redirect('login');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -34,7 +35,14 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('ticket', [TicketController::class, 'store']);
 
-    Route::get('ticket/redirect/{ticket}', [TicketController::class, 'redirection']);
+// Archive
+
+    Route::get('archives', [ArchiveController::class, 'index']);
+
+    Route::put('archive', [ArchiveController::class, 'archive']);
+
+    Route::put('unarchive', [ArchiveController::class, 'unarchive']);
+
 
 // User
 
@@ -42,7 +50,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('user/edit', [UserController::class, 'edit']);
 
-    Route::post('user', [UserController::class, 'update']);
+    Route::get('user/register', [UserController::class, 'register']);
+
+    Route::put('user', [UserController::class, 'update']);
+
+    Route::post('user', [UserController::class, 'store']);
 
     Route::get('change-password', [UserController::class, 'editPassword']);
 
@@ -67,5 +79,8 @@ Route::middleware(['guest'])->group(function () {
     Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPassword']);
     Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPassword']);
     Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPassword']);
+
+    Route::get('create-password/{token}', [UserController::class, 'showCreatePassword']);
+    Route::put('create-password', [UserController::class, 'submitCreatePassword']);
 
 });

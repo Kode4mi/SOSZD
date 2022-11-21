@@ -20,7 +20,8 @@ return new class extends Migration
             $table->dateTime('deadline');
             $table->integer('priority');
             $table->unsignedbigInteger('sender_id');
-            $table->foreign('sender_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');  // tworzenie klucza obcego do tabeli 'users'
+            $table->foreign('sender_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }

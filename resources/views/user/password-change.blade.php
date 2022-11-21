@@ -36,7 +36,7 @@
             @enderror
 
             <p>
-                <button type="submit" class="mt-4">Zmień hasło</button>
+                <button type="submit" class="mt-4 submit_password">Zmień hasło</button>
             </p>
         </form>
     </main>

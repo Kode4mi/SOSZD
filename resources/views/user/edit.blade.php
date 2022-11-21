@@ -9,6 +9,7 @@
         <form action="/user" method="POST" class="user_edit">
 
         @csrf
+        @method("PUT")
 
         <label>Email:
             <input type="text" class="user_edit__email" name="email" value="{{auth()->user()->email}}">

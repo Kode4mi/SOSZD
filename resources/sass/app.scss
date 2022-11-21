@@ -304,12 +304,16 @@ $navbarMobileWidth: 100vw;
         padding: 1vw;
         line-height: 24px;
 
+        @media (max-aspect-ratio: 1/1) {
+            height: 80vh;
+            width: 95%;
+        }
+
         table,
         thead,
         tbody,
         th,
-        td,
-        tr {
+        td {
             display: block;
         }
 
@@ -322,6 +326,8 @@ $navbarMobileWidth: 100vw;
             grid-template-rows: 1fr 7fr;
             grid-column-gap: 0;
             grid-row-gap: 0;
+
+
         }
 
         thead {
@@ -329,6 +335,17 @@ $navbarMobileWidth: 100vw;
             font-weight: 700;
             font-size: 1.75rem;
             margin-top: 2vh;
+
+            &>tr {
+                display: grid;
+                grid-template-columns: 0.5fr 7fr repeat(2, 3fr) 1.5fr;
+                grid-template-rows: 1fr;
+                grid-column-gap: 0;
+                grid-row-gap: 0;
+
+            }
+
+
         }
 
         tbody {
@@ -336,18 +353,20 @@ $navbarMobileWidth: 100vw;
             overflow: auto;
         }
 
-        tr {
-            display: grid;
-            grid-template-columns: 0.5fr 7fr repeat(2, 3fr) 1.5fr;
-            grid-template-rows: 1fr;
-            grid-column-gap: 0;
-            grid-row-gap: 0;
+        th {
+            display: flex;
+            flex-wrap: nowrap;
         }
 
         a {
             text-decoration: none;
             color: #000000;
         }
+
+        .submit_password:hover {
+            background-color: darken($button-background, 15);
+        }
+
 
         .table-footer {
             display: flex;
@@ -369,9 +388,8 @@ $navbarMobileWidth: 100vw;
         }
 
     }
-
-
 }
+
 
 .create-ticket {
 
@@ -418,6 +436,10 @@ $navbarMobileWidth: 100vw;
         border: none;
         border-radius: 15px;
         padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+    }
+
+    button:hover {
+        background-color: darken($button-background, 10);
     }
 
 }
@@ -573,6 +595,10 @@ $navbarMobileWidth: 100vw;
         }
     }
 
+    &__button:hover {
+        background: darken(#8CD790, 10);
+    }
+
     &__center {
         display: flex;
         flex-direction: column;
@@ -621,7 +647,12 @@ $navbarMobileWidth: 100vw;
 .searchbar {
     display: flex;
     flex-wrap: nowrap;
-    height: 3.5vh;
+    height: 5vh;
+
+    @media (min-aspect-ratio: 1/1) {
+        width: 25%;
+        height: 3.5vh;
+    }
 
     &__input {
         height: 100%;
@@ -633,7 +664,16 @@ $navbarMobileWidth: 100vw;
         width: 2vw;
         border-radius: 0 15px 15px 0;
         border: 1px gray solid;
+
+        @media (max-aspect-ratio: 1/1) {
+            width: 10vw;
+        }
     }
+
+    &__button:hover {
+        filter: brightness(70%);
+    }
+
 }
 
 .user_edit {
@@ -655,6 +695,10 @@ $navbarMobileWidth: 100vw;
         border-radius: 15px;
         border: none;
         padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+    }
+
+    &__submit-button:hover {
+        background-color: darken($button-background, 10);
     }
 
 }
@@ -684,84 +728,161 @@ $navbarMobileWidth: 100vw;
 }
 
 .flash-message-content {
+    $bgColor: #53c180;
+    $accentColor: darken($bgColor, 35);
+
+    display: flex;
+    height: 7vh;
+    align-items: center;
+
     margin: auto;
-    font-size: 1.5rem;
-    width: fit-content;
-    padding: 1rem 1.5rem;
-    background-color: #1b803f;
-    border-radius: 1rem;
-    color: white;
+    padding: 1.5vw;
+    border-left: 5px solid $accentColor;
+    border-radius: 0.25vw;
     z-index: 5;
+
+    background-color: $bgColor;
+    color: white;
+    font-size: 1.2rem;
+    font-family: $primary_font;
+
+    box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.25);
+
+    width: fit-content;
 }
 
+.table {
 
-/* The container */
-.table-checkbox {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    /* The container */
+    &-checkbox {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        /* Hide the browser's default checkbox */
+        &--input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        /* Create a custom checkbox */
+        &--checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #eee;
+
+            /* Create the checkmark/indicator (hidden when not checked) */
+            &:after {
+                content: "";
+                position: absolute;
+                display: none;
+            }
+        }
+
+        /* On mouse-over, add a grey background color */
+        &:hover input~.table-checkbox--checkmark {
+            background-color: #ccc;
+        }
+
+        /* When the checkbox is checked, add a blue background */
+        & input:checked~.table-checkbox--checkmark {
+            background-color: #2196F3;
+        }
+
+        /* Show the checkmark when checked */
+        & input:checked~.table-checkbox--checkmark:after {
+            display: block;
+        }
+
+    }
+
+    /* Style the checkmark/indicator */
+    & .table-checkbox--checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
 }
 
-/* Hide the browser's default checkbox */
-.table-checkbox--input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-}
+.ticket {
+    &__select-all {
+        cursor: pointer;
+    }
 
-/* Create a custom checkbox */
-.table-checkbox--checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
-}
+    &__row {
+        display: grid;
+        grid-template-columns: 0.5fr 7fr repeat(2, 3fr) 1.5fr;
+        grid-template-rows: 1fr;
+        grid-column-gap: 0;
+        grid-row-gap: 0;
 
-/* On mouse-over, add a grey background color */
-.table-checkbox:hover input~.table-checkbox--checkmark {
-    background-color: #ccc;
-}
+        @media (max-aspect-ratio: 1/1) {
+            display: grid;
+            grid-template-columns: 1fr 6fr 1fr;
+            grid-template-rows: 1fr auto;
+            grid-column-gap: 0;
+            grid-row-gap: 0;
+        }
+    }
 
-/* When the checkbox is checked, add a blue background */
-.table-checkbox input:checked~.table-checkbox--checkmark {
-    background-color: #2196F3;
-}
+    &__checkbox {}
 
-/* Create the checkmark/indicator (hidden when not checked) */
-.table-checkbox--checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
+    &__title {
+        @media (max-aspect-ratio: 1/1) {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+    }
 
-/* Show the checkmark when checked */
-.table-checkbox input:checked~.table-checkbox--checkmark:after {
-    display: block;
-}
+    &__sender {
+        @media (max-aspect-ratio: 1/1) {
+            font-size: 1.5rem;
 
-/* Style the checkmark/indicator */
-.table-checkbox .table-checkbox--checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
+            grid-column: 2;
+            grid-row: 2;
 
-.ticket-select-all {
-    cursor: pointer;
+        }
+    }
+
+    &__deadline {
+
+        @media (max-aspect-ratio: 1/1) {
+            font-size: 1.2rem;
+            font-weight: bold;
+
+            display: flex;
+            white-space: nowrap;
+        }
+    }
+
+    &__priority {
+
+        @media (max-aspect-ratio: 1/1) {
+            font-size: 1.6rem;
+            font-weight: bold;
+            text-align: right;
+
+
+            grid-column: 3;
+            grid-row: 2;
+        }
+    }
 }

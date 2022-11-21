@@ -870,8 +870,6 @@ $navbarMobileWidth: 100vw;
         }
     }
 
-    &__checkbox {}
-
     &__title {
         @media (max-aspect-ratio: 1/1) {
             font-size: 2rem;
@@ -910,6 +908,27 @@ $navbarMobileWidth: 100vw;
 
             grid-column: 3;
             grid-row: 2;
+        }
+    }
+}
+
+.page {
+    @media (max-aspect-ratio: 1/1) {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    &-item {
+        @media (max-aspect-ratio: 1/1) {
+            width: 40vw;
+            text-align: center;
+        }
+    }
+
+    &-link {
+        @media (max-aspect-ratio: 1/1) {
+            font-size: 1.8rem;
         }
     }
 }

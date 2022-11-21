@@ -312,7 +312,6 @@ $navbarMobileWidth: 100vw;
         table,
         thead,
         tbody,
-        th,
         td {
             display: block;
         }
@@ -351,11 +350,6 @@ $navbarMobileWidth: 100vw;
         tbody {
             font-size: 1.1rem;
             overflow: auto;
-        }
-
-        th {
-            display: flex;
-            flex-wrap: nowrap;
         }
 
         a {
@@ -825,6 +819,39 @@ $navbarMobileWidth: 100vw;
 .ticket {
     &__select-all {
         cursor: pointer;
+
+        @media (max-aspect-ratio: 1/1) {
+            font-size: 3rem;
+        }
+    }
+
+    &__select-sorter {
+        display: none;
+
+        &-label {
+            white-space: nowrap;
+            margin-right: .5rem;
+        }
+
+        select {
+            border-width: .5px;
+            border-radius: 1rem;
+        }
+
+        @media (max-aspect-ratio: 1/1) {
+            display: flex;
+            justify-self: flex-end;
+            grid-column: 5;
+        }
+    }
+
+    &__sorter {
+        display: flex;
+        flex-wrap: nowrap;
+
+        @media (max-aspect-ratio: 1/1) {
+            display: none;
+        }
     }
 
     &__row {

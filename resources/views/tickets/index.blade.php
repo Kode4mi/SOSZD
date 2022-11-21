@@ -21,11 +21,25 @@
                 <thead>
 
                 <tr>
-                    <th><i class="fa-solid fa-pen-to-square ticket__select-all" title="Zaznacz wszystko"></i></th>
-                    <th>@sortablelink('title', 'Tytuł')</th>
-                    <th>@sortablelink('sender_id', 'Nadawca')</th>
-                    <th>@sortablelink('deadline', 'Termin')</th>
-                    <th>@sortablelink('priority', 'Priorytet')</th>
+                    <th class="ticket__select-all"><i class="fa-solid fa-pen-to-square " title="Zaznacz wszystko"></i></th>
+                    <th class="ticket__sorter">@sortablelink('title', 'Tytuł')</th>
+                    <th class="ticket__sorter">@sortablelink('sender_id', 'Nadawca')</th>
+                    <th class="ticket__sorter">@sortablelink('deadline', 'Termin')</th>
+                    <th class="ticket__sorter">@sortablelink('priority', 'Priorytet')</th>
+                    <th class="ticket__select-sorter">
+                        <label for="select-sort" class="ticket__select-sorter-label">Sortuj po:</label>
+                        <select name="select-sort">
+                            <option value="">Tytuł (Rosnąco)</option>
+                            <option value="">Tytuł (Malejąco)</option>
+                            <option value="">Nadawca (Rosnąco)</option>
+                            <option value="">Nadawca (Malejąco)</option>
+                            <option value="">Termin (Rosnąco)</option>
+                            <option value="">Termin (Malejąco)</option>
+                            <option value="">Priorytet (Rosnąco)</option>
+                            <option value="">Priorytet (Malejąco)</option>
+
+                        </select>
+                    </th>
                 </tr>
 
                 </thead>

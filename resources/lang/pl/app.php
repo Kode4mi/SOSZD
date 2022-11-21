@@ -17,12 +17,14 @@ return [
     'logout' => 'Pomyślnie wylogowano',
 
     'user' => [
+        'create' => "Stworzono nowego użytkownika",
         'edit' => 'Zmieniono dane użytkownika',
     ],
 
     'old_password' => 'Stare hasło niepoprawne',
     'new_password' => 'Nowe hasło musi być inne niż stare',
     'password_change' => 'Zmieniono hasło',
+    'password_set' => 'Ustawiono hasło',
 
     //Często wykorzystywane nazwy pól
 
@@ -30,6 +32,8 @@ return [
     'description' => 'opis',
     'password' => 'hasło',
     'name' => 'nazwa',
+    'first_name' => 'imie',
+    'last_name' => 'nazwisko',
 
 
     // SOSZD
@@ -40,5 +44,6 @@ return [
 
     'deadline' => 'termin',
     'priority' => 'priorytet',
+    'role' => 'rola',
 
 ];

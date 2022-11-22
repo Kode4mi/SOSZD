@@ -20,12 +20,26 @@
 
                 <thead>
 
-                <tr>
-                    <th><i class="fa-solid fa-pen-to-square ticket__select-all" title="Zaznacz wszystko"></i></th>
-                    <th>@sortablelink('title', 'Tytuł')</th>
-                    <th>@sortablelink('sender_id', 'Nadawca')</th>
-                    <th>@sortablelink('deadline', 'Termin')</th>
-                    <th>@sortablelink('priority', 'Priorytet')</th>
+                <tr class="ticket__header-row">
+                    <th class="ticket__select-all"><i class="fa-solid fa-pen-to-square " title="Zaznacz wszystko"></i>
+                    </th>
+                    <th class="ticket__sorter">@sortablelink('title', 'Tytuł')</th>
+                    <th class="ticket__sorter">@sortablelink('sender_id', 'Nadawca')</th>
+                    <th class="ticket__sorter">@sortablelink('deadline', 'Termin')</th>
+                    <th class="ticket__sorter">@sortablelink('priority', 'Priorytet')</th>
+                    <th class="ticket__select-sorter">
+                        <label for="select-sort" class="ticket__select-sorter-label">Sortuj po:</label>
+                        <select name="select-sort" id="select-sort">
+                            <option value="tickets?sort=title&direction=asc">Tytuł (Rosnąco)</option>
+                            <option value="tickets?sort=title&direction=desc">Tytuł (Malejąco)</option>
+                            <option value="tickets?sort=sender_id&direction=asc">Nadawca (Rosnąco)</option>
+                            <option value="tickets?sort=sender_id&direction=desc">Nadawca (Malejąco)</option>
+                            <option value="tickets?sort=deadline&direction=asc">Termin (Rosnąco)</option>
+                            <option value="tickets?sort=deadline&direction=desc">Termin (Malejąco)</option>
+                            <option value="tickets?sort=priority&direction=asc">Priorytet (Rosnąco)</option>
+                            <option value="tickets?sort=priority&direction=desc">Priorytet (Malejąco)</option>
+                        </select>
+                    </th>
                 </tr>
 
                 </thead>
@@ -145,6 +159,18 @@
                 checkbox.prop('checked', false);
             else
                 checkbox.prop('checked', true);
+        });
+
+        $('#select-sort').change(function () {
+            console.log($(this).prop('selectedIndex'));
+
+            $.cookie('sort', $(this).prop('selectedIndex'));
+
+            window.location = $(this).val();
+        });
+
+        $(function () {
+            $('#select-sort').prop('selectedIndex', $.cookie('sort'));
         });
 
     </script>

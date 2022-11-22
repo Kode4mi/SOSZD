@@ -46,8 +46,10 @@
         @endforeach
     </tbody>
 </table>
-@else
-<x-main-title>Brak użytkowników</x-main-title>
+        <a href="{{url('/user/register')}}">Stwórz nowego użytkownika</a>
+
+    @else
+        <x-main-title>Brak użytkowników</x-main-title>
 @endif
 
 @endsection

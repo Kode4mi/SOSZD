@@ -17,6 +17,7 @@ class UserTest extends TestCase
         logout
         update - na późńiej
         update_pass
+        create
     */
 
 

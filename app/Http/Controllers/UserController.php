@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\newUserEmailJob;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -62,14 +66,13 @@ class UserController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required', 'confirmed'],
         ],
-        [],
+            [],
             [
                 'password' => __('app.password')
             ]
         );
 
-        if(Hash::check($formFields['password'], $user->password))
-        {
+        if (Hash::check($formFields['password'], $user->password)) {
             unset($formFields['password']);
 
             $user->update($formFields);
@@ -100,15 +103,11 @@ class UserController extends Controller
             ]
         );
 
-
-
-        if(!Hash::check($formFields['old_password'], $user->password))
-        {
+        if (!Hash::check($formFields['old_password'], $user->password)) {
             return redirect()->back()->with('message', __('app.old_password'));
         }
 
-        if(Hash::check($formFields['password'], $user->password))
-        {
+        if (Hash::check($formFields['password'], $user->password)) {
             return redirect()->back()->with('message', __('app.new_password'));
         }
 
@@ -123,8 +122,81 @@ class UserController extends Controller
 
     public function index(): View
     {
-        return view('user.index',[
+        return view('user.index', [
             'users' => User::sortable()->filter(request(['search']))->simplePaginate(20)
         ]);
     }
+
+    public function register(): View
+    {
+        return view('user.create');
+    }
+
+    public function store(Request $request): RedirectResponse
+    {
+        $formFields = $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => ['required', 'email', 'unique:users'],
+            'role' => 'nullable',
+        ], [],
+            [
+                'first_name' => __('app.first_name'),
+                'last_name' => __('app.last_name'),
+                'role' => __('app.role'),
+            ]);
+
+        if (!isset($formFields["role"])) {
+            $formFields += ["role" => "nauczyciel"];
+        }
+
+        $formFields += ["password" => "nie ustawiono"];
+
+        $token = Str::random(64);
+
+        DB::table('password_resets')->insert([
+            'email' => $formFields['email'],
+            'token' => $token,
+            'created_at' => Carbon::now()
+        ]);
+
+        dispatch(new newUserEmailJob($token, $formFields['email']));
+
+        $user = User::create($formFields);
+
+        return redirect('/users')->with('message', __('app.user.create'));
+    }
+
+    public function showCreatePassword($token): View
+    {
+        return view('user.new-user', ['token' => $token]);
+    }
+
+    public function submitCreatePassword(Request $request): RedirectResponse
+    {
+        $formFields = $request->validate([
+            'password' => 'required|confirmed',
+            'token' => 'required',
+        ], [],
+            [
+                'password' => __('app.password')
+            ]);
+
+        $createPassword = DB::table('password_resets')
+            ->where(['token' => $formFields['token']])
+            ->first();
+
+        if (!$createPassword) {
+            return redirect()->back()->withErrors(['email' => __('passwords.token')]);
+        }
+
+        User::where('email', $createPassword->email)
+            ->update(['password' => bcrypt($formFields['password'])]);
+
+        DB::table('password_resets')->where(['token' => $formFields['token']])->delete();
+
+        return redirect('/login')->with('message', __('app.password_set'));
+    }
+
+
 }

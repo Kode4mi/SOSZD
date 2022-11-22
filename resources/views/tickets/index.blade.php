@@ -70,7 +70,14 @@
                             {{$user->first_name}}
                             {{$user->last_name}}
                         </td>
-                        <td class="ticket__deadline">{{$ticket->deadline}}</td>
+                        <td class="ticket__deadline
+                        @if($ticket->deadline < date("Y-m-d H:i"))
+                            color-red
+                        @endif
+                        "
+                        >
+                            {{$ticket->dateFormat()}}
+                        </td>
                         <td class="ticket__priority">{{$ticket->priority}}</td>
 
                     </tr>

@@ -50,7 +50,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('user/edit', [UserController::class, 'edit']);
 
-    Route::post('user', [UserController::class, 'update']);
+    Route::get('user/register', [UserController::class, 'register']);
+
+    Route::put('user', [UserController::class, 'update']);
+
+    Route::post('user', [UserController::class, 'store']);
 
     Route::get('change-password', [UserController::class, 'editPassword']);
 
@@ -75,5 +79,8 @@ Route::middleware(['guest'])->group(function () {
     Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPassword']);
     Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPassword']);
     Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPassword']);
+
+    Route::get('create-password/{token}', [UserController::class, 'showCreatePassword']);
+    Route::put('create-password', [UserController::class, 'submitCreatePassword']);
 
 });

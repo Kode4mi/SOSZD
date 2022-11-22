@@ -16,7 +16,7 @@ class TicketController extends Controller
         $form = "archive";
 
         return view('tickets.index', [
-            'tickets' => Ticket::sortable()->where('active', 1)->filter(request(['search']))->simplePaginate(12),
+            'tickets' => Ticket::sortable()->latest()->where('active', 1)->filter(request(['search']))->simplePaginate(12),
             'users' => User::class,
             'title' => $title,
             'form' => $form

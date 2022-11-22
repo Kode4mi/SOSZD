@@ -31,6 +31,7 @@ class User extends Authenticatable
         'last_name',
         'email',
         'password',
+        'role',
     ];
 
     public array $sortable = ['first_name', 'last_name', 'role', 'email'];

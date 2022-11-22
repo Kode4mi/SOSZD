@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Mail\forgetPasswordEmail;
+use App\Mail\newUserEmail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -11,7 +12,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 
-class forgetPasswordEmailJob implements ShouldQueue
+class newUserEmailJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -25,14 +26,21 @@ class forgetPasswordEmailJob implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($token, $email)
+    public function __construct(string $token, string $email)
     {
         $this->token = $token;
         $this->email = $email;
     }
 
-    public function handle() : void
+    /**
+     * Execute the job.
+     *
+     * @return void
+     */
+    public function handle()
     {
-        Mail::to($this->email)->send(new forgetPasswordEmail($this->token));
+        Mail::to($this->email)->send(new newUserEmail($this->token));
     }
+
+
 }

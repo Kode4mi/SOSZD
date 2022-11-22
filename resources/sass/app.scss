@@ -7,8 +7,6 @@ $frame-background: #FFFFFF;
 $button-background: #508470;
 $logo_background_hover: #385C4E;
 $button-color: #FFFFFF;
-$so-color: #8CD790;
-$szd-color: #FFFFFF;
 $primary_font: Cabin;
 $button-border-radius: 15px;
 
@@ -95,7 +93,9 @@ $navbarMobileWidth: 100vw;
     &__logo {
         height: 18%;
         width: $navbarWidth;
-        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         z-index: 1;
 
         @media (max-aspect-ratio: 1/1) {
@@ -111,12 +111,7 @@ $navbarMobileWidth: 100vw;
         font-weight: 600;
 
         &--img {
-            margin: auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-sizing: border-box;
-            height: 100%;
+            width: 60%;
 
             a {
                 text-decoration: none;
@@ -158,15 +153,6 @@ $navbarMobileWidth: 100vw;
 
 
     }
-
-    &__nazwa_1 {
-        color: $so_color;
-    }
-
-    &__nazwa_2 {
-        color: $szd_color;
-    }
-
 
     &__sidebar--button {
         margin-right: auto;

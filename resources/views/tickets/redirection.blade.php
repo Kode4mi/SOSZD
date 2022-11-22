@@ -1,12 +1,12 @@
 @extends('templates.layout')
 
 @section('content')
-<x-main-title>Przekazywanie sprawy: <br> {{$ticket->title}} </x-main-title>
+<x-main-title>Przekazywanie sprawy</x-main-title>
 
 <main class="redirect-ticket">
 
 
-<form action="/ticket" method="POST">
+<form action="/recirection" method="POST">
 
 @csrf
 
@@ -24,7 +24,7 @@
     <br>
 
 <label class="label_adresat">Adresaci: <br/>
-    <select name="user_id">
+    <select name="user_id[]" multiple>
         @foreach($users as $user)
             @if(!$redirects->isEmpty())
                 @foreach($redirects as $redirect)
@@ -42,6 +42,8 @@
     @error('user_id')
     <p>{{$message}}</p>
     @enderror
+
+    <input type="hidden" name="ticket_id" value="{{$ticket->id}}" />
 
 <button type="submit">Prześlij</button>
 

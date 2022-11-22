@@ -77,4 +77,29 @@ class TicketController extends Controller
         ]);
     }
 
+    public function redirection_store(Request $request): RedirectResponse
+    {
+        $formFields = $request->validate([
+            'user_id' => 'required'
+        ]);
+
+        $ticket = $request -> ticket_id;
+
+        
+
+        $users = $request->user_id;
+
+        foreach ($request->user_id as $users) {
+            // $formFields += [
+            //     'user_id' => $users,
+            //     'ticket_id' => $ticket
+            // ];
+    
+            $timestamp = date("Y-m-d H:i:s");  // godzina do tyłu jest tu chuj wie dlaczego
+            DB::insert('insert into redirects (ticket_id,user_id, created_at, updated_at) values (?,?,?,?)',[$ticket,$users,$timestamp,$timestamp]);
+        }
+
+    
+        return redirect('tickets')->with('message','Przekazano sprawę');
+    }
 }

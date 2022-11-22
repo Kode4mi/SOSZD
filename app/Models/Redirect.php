@@ -13,6 +13,8 @@ class Redirect extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['user_id','ticket_id'];
+
     public function ticket() : Relation
     {
         return $this->belongsTo(Ticket::class);

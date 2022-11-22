@@ -363,53 +363,75 @@ $navbarMobileWidth: 100vw;
 
 
 .create-ticket {
+    @media (max-aspect-ratio: 1/1) {
+        font-size: 1.6rem;
+    }
 
-    //border:1px gray solid; !!!DO DYSKUSJI CZY LEPIEJ
-    &--topic,
-    &--deadline {
+    &__form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+    }
+
+    &__label-opis {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__topic,
+    &__deadline {
         padding: 3px;
         border-radius: 15px;
         width: 25vw;
+
+        @media (max-aspect-ratio: 1/1) {
+            width: 100%;
+        }
     }
 
-    &--topic {
+    &__topic {
         border: 1px gray solid;
         margin-left: 0.7vw;
     }
 
-    &--deadline {
+    &__deadline {
         border: 1px gray solid;
         margin-left: 0.5vw;
         margin-top: 1vh;
     }
 
-    &--content {
-        margin-left: 0.5vw;
+    &__content {
         padding: 5px;
         border-radius: 15px;
-        width: 64vw;
-        height: 42vh;
+        width: 100%;
+        height: 48vh;
         resize: none;
+
+        @media (max-aspect-ratio: 1/1) {
+            height: 44vh;
+        }
     }
 
-    &--select {
+    &__select {
         margin-top: 1vh;
         border-radius: 15px;
     }
 
-    &--label_opis {
-        margin-top: 1vh;
-    }
-
-    button {
+    &__button {
         background-color: $button-background;
         color: $button-color;
         border: none;
         border-radius: 15px;
         padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+        width: 10vh;
+
+        @media (max-aspect-ratio: 1/1) {
+            width: 100%;
+        }
     }
 
-    button:hover {
+    &__button:hover {
         background-color: darken($button-background, 10);
     }
 

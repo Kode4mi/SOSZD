@@ -11,9 +11,10 @@ use Kyslik\ColumnSortable\Sortable;
 use Laravel\Sanctum\HasApiTokens;
 
 /**
- * @method static where(string $column, string $value)
+ * @method static where(string $column, mixed $value)
  * @method static find(int $id)
  * @method static sortable()
+ * @method static whereNotIn(string $column, mixed $value)
  * @property string $password
  * @property integer $id
  * @property string $email

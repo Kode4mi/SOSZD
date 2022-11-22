@@ -34,7 +34,7 @@ return [
     'name' => 'nazwa',
     'first_name' => 'imie',
     'last_name' => 'nazwisko',
-
+    'user_id' => 'użytkownik',
 
     // SOSZD
 
@@ -45,5 +45,7 @@ return [
     'deadline' => 'termin',
     'priority' => 'priorytet',
     'role' => 'rola',
+
+    'redirected_ticket' => 'Przekazano sprawę',
 
 ];

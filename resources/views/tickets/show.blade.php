@@ -8,8 +8,7 @@
         <p>{{$ticket->deadline}}</p>
         <p>{{$ticket->priority}}</p>
 
-        <!-- Tymczasowo zrobione żeby można było wejść -->
-        <p> <a href="redirect/{{$ticket->id}}">Prześlij sprawę</a></p>
+        <p> <a href="/redirect/{{$ticket->id}}">Prześlij sprawę</a></p>
     </main>
 @endsection
 

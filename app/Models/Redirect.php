@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 
 /**
  * @method static where(string $column, mixed $value)
+ * @method static create(array $formFields)
  */
 class Redirect extends Model
 {

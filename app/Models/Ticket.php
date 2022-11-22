@@ -12,6 +12,7 @@ use Kyslik\ColumnSortable\Sortable;
  * @method static latest()
  * @method static sortable()
  * @method static where(string $column, string $value)
+ * @method static find(mixed $ticket_id)
  */
 class Ticket extends Model
 {

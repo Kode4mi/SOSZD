@@ -45,7 +45,7 @@ class TicketController extends Controller
             'deadline' => 'required',
             'priority' => 'required',
         ],
-        [],
+            [],
             [
                 'title' => __('app.title'),
                 'description' => __('app.description'),
@@ -66,40 +66,5 @@ class TicketController extends Controller
         return redirect('tickets')->with('message', __('app.ticket.create'));
     }
 
-    public function redirection(Ticket $ticket): View
-    {
-        $users = User::with('redirects')->get(['id', 'first_name', 'last_name']);
 
-        return view('tickets.redirection', [
-            'ticket' => $ticket,
-            'users' => $users,
-            'redirects' => Redirect::where('ticket_id', $ticket->id)->get(),
-        ]);
-    }
-
-    public function redirection_store(Request $request): RedirectResponse
-    {
-        $formFields = $request->validate([
-            'user_id' => 'required'
-        ]);
-
-        $ticket = $request -> ticket_id;
-
-        
-
-        $users = $request->user_id;
-
-        foreach ($request->user_id as $users) {
-            // $formFields += [
-            //     'user_id' => $users,
-            //     'ticket_id' => $ticket
-            // ];
-    
-            $timestamp = date("Y-m-d H:i:s");  // godzina do tyłu jest tu chuj wie dlaczego
-            DB::insert('insert into redirects (ticket_id,user_id, created_at, updated_at) values (?,?,?,?)',[$ticket,$users,$timestamp,$timestamp]);
-        }
-
-    
-        return redirect('tickets')->with('message','Przekazano sprawę');
-    }
 }

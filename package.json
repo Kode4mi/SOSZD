@@ -26,6 +26,7 @@
         "bootstrap": "^5.2.2",
         "cssloader": "^1.1.1",
         "jquery": "^3.6.1",
+        "jquery.cookie": "^1.4.1",
         "jqueryui": "^1.11.1"
     }
 }

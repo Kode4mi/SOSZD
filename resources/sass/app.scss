@@ -7,8 +7,6 @@ $frame-background: #FFFFFF;
 $button-background: #508470;
 $logo_background_hover: #385C4E;
 $button-color: #FFFFFF;
-$so-color: #8CD790;
-$szd-color: #FFFFFF;
 $primary_font: Cabin;
 $button-border-radius: 15px;
 
@@ -95,7 +93,9 @@ $navbarMobileWidth: 100vw;
     &__logo {
         height: 18%;
         width: $navbarWidth;
-        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         z-index: 1;
 
         @media (max-aspect-ratio: 1/1) {
@@ -111,12 +111,7 @@ $navbarMobileWidth: 100vw;
         font-weight: 600;
 
         &--img {
-            margin: auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-sizing: border-box;
-            height: 100%;
+            width: 60%;
 
             a {
                 text-decoration: none;
@@ -158,15 +153,6 @@ $navbarMobileWidth: 100vw;
 
 
     }
-
-    &__nazwa_1 {
-        color: $so_color;
-    }
-
-    &__nazwa_2 {
-        color: $szd_color;
-    }
-
 
     &__sidebar--button {
         margin-right: auto;
@@ -312,7 +298,6 @@ $navbarMobileWidth: 100vw;
         table,
         thead,
         tbody,
-        th,
         td {
             display: block;
         }
@@ -336,26 +321,12 @@ $navbarMobileWidth: 100vw;
             font-size: 1.75rem;
             margin-top: 2vh;
 
-            & > tr {
-                display: grid;
-                grid-template-columns: 0.5fr 7fr repeat(2, 3fr) 1.5fr;
-                grid-template-rows: 1fr;
-                grid-column-gap: 0;
-                grid-row-gap: 0;
-
-            }
-
 
         }
 
         tbody {
             font-size: 1.1rem;
             overflow: auto;
-        }
-
-        th {
-            display: flex;
-            flex-wrap: nowrap;
         }
 
         a {
@@ -392,53 +363,75 @@ $navbarMobileWidth: 100vw;
 
 
 .create-ticket {
+    @media (max-aspect-ratio: 1/1) {
+        font-size: 1.6rem;
+    }
 
-    //border:1px gray solid; !!!DO DYSKUSJI CZY LEPIEJ
-    &--topic,
-    &--deadline {
+    &__form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+    }
+
+    &__label-opis {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__topic,
+    &__deadline {
         padding: 3px;
         border-radius: 15px;
         width: 25vw;
+
+        @media (max-aspect-ratio: 1/1) {
+            width: 100%;
+        }
     }
 
-    &--topic {
+    &__topic {
         border: 1px gray solid;
         margin-left: 0.7vw;
     }
 
-    &--deadline {
+    &__deadline {
         border: 1px gray solid;
         margin-left: 0.5vw;
         margin-top: 1vh;
     }
 
-    &--content {
-        margin-left: 0.5vw;
+    &__content {
         padding: 5px;
         border-radius: 15px;
-        width: 64vw;
-        height: 42vh;
+        width: 100%;
+        height: 48vh;
         resize: none;
+
+        @media (max-aspect-ratio: 1/1) {
+            height: 44vh;
+        }
     }
 
-    &--select {
+    &__select {
         margin-top: 1vh;
         border-radius: 15px;
     }
 
-    &--label_opis {
-        margin-top: 1vh;
-    }
-
-    button {
+    &__button {
         background-color: $button-background;
         color: $button-color;
         border: none;
         border-radius: 15px;
         padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+        width: 10vh;
+
+        @media (max-aspect-ratio: 1/1) {
+            width: 100%;
+        }
     }
 
-    button:hover {
+    &__button:hover {
         background-color: darken($button-background, 10);
     }
 
@@ -728,25 +721,25 @@ $navbarMobileWidth: 100vw;
 }
 
 .flash-message-content {
-    $bgColor:#53c180;
-    $accentColor:darken($bgColor,35);
+    $bgColor: #53c180;
+    $accentColor: darken($bgColor, 35);
 
     display: flex;
-    height:7vh;
+    height: 7vh;
     align-items: center;
 
     margin: auto;
-    padding:1.5vw;
-    border-left:5px solid $accentColor;
-    border-radius:0.25vw;
+    padding: 1.5vw;
+    border-left: 5px solid $accentColor;
+    border-radius: 0.25vw;
     z-index: 5;
 
-    background-color:$bgColor;
-    color:white;
-    font-size:1.2rem;
-    font-family:$primary_font;
+    background-color: $bgColor;
+    color: white;
+    font-size: 1.2rem;
+    font-family: $primary_font;
 
-    box-shadow:0 0 15px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.25);
 
     width: fit-content;
 }
@@ -793,17 +786,17 @@ $navbarMobileWidth: 100vw;
         }
 
         /* On mouse-over, add a grey background color */
-        &:hover input ~ .table-checkbox--checkmark {
+        &:hover input~.table-checkbox--checkmark {
             background-color: #ccc;
         }
 
         /* When the checkbox is checked, add a blue background */
-        & input:checked ~ .table-checkbox--checkmark {
+        & input:checked~.table-checkbox--checkmark {
             background-color: #2196F3;
         }
 
         /* Show the checkmark when checked */
-        & input:checked ~ .table-checkbox--checkmark:after {
+        & input:checked~.table-checkbox--checkmark:after {
             display: block;
         }
 
@@ -823,8 +816,50 @@ $navbarMobileWidth: 100vw;
 }
 
 .ticket {
+    &__header-row {
+        display: grid;
+        grid-template-columns: 0.5fr 7fr repeat(2, 3fr) 1.5fr;
+        grid-template-rows: 1fr;
+        grid-column-gap: 0;
+        grid-row-gap: 0;
+
+    }
+
     &__select-all {
         cursor: pointer;
+
+        @media (max-aspect-ratio: 1/1) {
+            font-size: 3rem;
+        }
+    }
+
+    &__select-sorter {
+        display: none;
+
+        &-label {
+            white-space: nowrap;
+            margin-right: .5rem;
+        }
+
+        select {
+            border-width: .5px;
+            border-radius: 1rem;
+        }
+
+        @media (max-aspect-ratio: 1/1) {
+            display: flex;
+            justify-self: flex-end;
+            grid-column: 5;
+        }
+    }
+
+    &__sorter {
+        display: flex;
+        flex-wrap: nowrap;
+
+        @media (max-aspect-ratio: 1/1) {
+            display: none;
+        }
     }
 
     &__row {
@@ -841,9 +876,6 @@ $navbarMobileWidth: 100vw;
             grid-column-gap: 0;
             grid-row-gap: 0;
         }
-    }
-
-    &__checkbox {
     }
 
     &__title {
@@ -884,6 +916,108 @@ $navbarMobileWidth: 100vw;
 
             grid-column: 3;
             grid-row: 2;
+        }
+    }
+}
+
+.page {
+    @media (max-aspect-ratio: 1/1) {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    &-item {
+        @media (max-aspect-ratio: 1/1) {
+            width: 40vw;
+            text-align: center;
+        }
+    }
+
+    &-link {
+        @media (max-aspect-ratio: 1/1) {
+            font-size: 1.8rem;
+        }
+    }
+}
+
+.users {
+    &__header {
+        &-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr) 3fr;
+            grid-template-rows: 1fr;
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+        }
+
+        &-link {
+            display: block;
+
+            @media (max-aspect-ratio: 1/1) {
+                display: none;
+            }
+        }
+    }
+
+    &__select-sorter {
+        display: none;
+
+        &-label {
+            white-space: nowrap;
+            margin-right: .5rem;
+        }
+
+        select {
+            border-width: .5px;
+            border-radius: 1rem;
+        }
+
+        @media (max-aspect-ratio: 1/1) {
+            display: flex;
+
+            grid-column: 3;
+        }
+    }
+
+    &__row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr) 3fr;
+        grid-template-rows: 1fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+
+        @media (max-aspect-ratio: 1/1) {
+            grid-template-columns: 1.5fr 1fr;
+            grid-template-rows: 1fr 1fr;
+
+            margin-bottom: 1rem;
+        }
+    }
+
+    &__name {
+        @media (max-aspect-ratio: 1/1) {
+            grid-row: 1;
+            grid-column: 1;
+
+            font-size: 2.2rem;
+        }
+    }
+
+    &__role {
+        @media (max-aspect-ratio: 1/1) {
+            grid-row: 2;
+            grid-column: 1;
+
+            font-size: 1.5rem;
+        }
+    }
+
+    &__email {
+        @media (max-aspect-ratio: 1/1) {
+            grid-row: 1;
+            grid-column: 2;
+            font-size: 1.5rem;
         }
     }
 }

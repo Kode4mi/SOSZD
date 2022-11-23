@@ -277,6 +277,10 @@ $navbarMobileWidth: 100vw;
         align-self: flex-start;
         margin-bottom: 1vw;
         font-size: 3.5rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width:70vw;
     }
 
 

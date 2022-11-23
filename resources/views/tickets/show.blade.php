@@ -7,6 +7,8 @@
         <p>{{$ticket->description}}</p>
         <p>{{$ticket->deadline}}</p>
         <p>{{$ticket->priority}}</p>
+
+        <p> <a href="/redirect/{{$ticket->id}}">Prześlij sprawę</a></p>
     </main>
 @endsection
 

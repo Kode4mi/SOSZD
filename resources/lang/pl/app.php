@@ -34,6 +34,7 @@ return [
     'name' => 'nazwa',
     'first_name' => 'imie',
     'last_name' => 'nazwisko',
+    'user_id' => 'użytkownik',
 
     'month' => [
         '1' => "styczeń",
@@ -60,5 +61,7 @@ return [
     'deadline' => 'termin',
     'priority' => 'priorytet',
     'role' => 'rola',
+
+    'redirected_ticket' => 'Przekazano sprawę',
 
 ];

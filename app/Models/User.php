@@ -4,15 +4,17 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOneOrMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Kyslik\ColumnSortable\Sortable;
 use Laravel\Sanctum\HasApiTokens;
 
 /**
- * @method static where(string $column, string $value)
+ * @method static where(string $column, mixed $value)
  * @method static find(int $id)
  * @method static sortable()
+ * @method static whereNotIn(string $column, mixed $value)
  * @property string $password
  * @property integer $id
  * @property string $email
@@ -65,5 +67,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function redirects() : HasOneOrMany
+    {
+        return $this->hasMany(Redirect::class);
+    }
 
 }

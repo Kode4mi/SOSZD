@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Redirect;
 use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TicketController extends Controller
 {
@@ -43,7 +45,7 @@ class TicketController extends Controller
             'deadline' => 'required',
             'priority' => 'required',
         ],
-        [],
+            [],
             [
                 'title' => __('app.title'),
                 'description' => __('app.description'),
@@ -63,5 +65,6 @@ class TicketController extends Controller
 
         return redirect('tickets')->with('message', __('app.ticket.create'));
     }
+
 
 }

@@ -5,6 +5,7 @@ namespace App\Models;
 use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOneOrMany;
 use Kyslik\ColumnSortable\Sortable;
 
 /**
@@ -12,6 +13,7 @@ use Kyslik\ColumnSortable\Sortable;
  * @method static latest()
  * @method static sortable()
  * @method static where(string $column, string $value)
+ * @method static find(mixed $ticket_id)
  * @property string $deadline
  */
 class Ticket extends Model
@@ -29,6 +31,11 @@ class Ticket extends Model
                 ->orWhere('description', 'like', '%' . request('search') . '%')
                 ->orWhere('deadline', 'like', '%' . request('search') . '%');
         }
+    }
+
+    public function redirects() : HasOneOrMany
+    {
+        return $this->hasOne(Redirect::class);
     }
 
     public function dateFormat() : String {

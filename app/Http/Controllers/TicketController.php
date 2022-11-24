@@ -56,7 +56,7 @@ class TicketController extends Controller
             ]
         );
 
-        if($formFields['files'] !== null) {
+        if($request->hasFile('files')) {
             $file_names = "";
 
             foreach ($formFields['files'] as $file) {

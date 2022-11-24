@@ -22,6 +22,7 @@ return new class extends Migration
             $table->unsignedbigInteger('sender_id');
             $table->foreign('sender_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->boolean('active')->default(true);
+            $table->string('files')->nullable();
             $table->timestamps();
         });
     }

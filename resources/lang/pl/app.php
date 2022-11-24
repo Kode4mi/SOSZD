@@ -30,6 +30,7 @@ return [
 
     'title' => 'tytuł',
     'description' => 'opis',
+    'files' => 'pliki',
     'password' => 'hasło',
     'name' => 'nazwa',
     'first_name' => 'imie',

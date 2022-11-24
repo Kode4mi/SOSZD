@@ -362,7 +362,41 @@ $navbarMobileWidth: 100vw;
             }
         }
 
+        .ticket {
+            
+        &__submit {
+            background-color: $button-background;
+            color: $button-color;
+            border: none;
+            border-radius: 15px;
+            padding: 0.5rem 0.5rem 0.3rem 0.5rem;
+            width: 15vh;
+        }
+
+        &__submit:hover{
+        background-color: darken($button-background, 10);
+        }
+
+        &__content{
+            height:49vh;
+        }
+
+        &__header{
+            display: flex;
+            justify-content: space-between;
+
+            &--priority{
+                margin-right:7vw;
+                margin-left:auto;
+            }
+        }
+
+        &__from, &__header, &__header-content, &__content{
+            font-size:1.2rem;
+        }
+
     }
+  }
 }
 
 

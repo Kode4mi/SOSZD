@@ -9,29 +9,10 @@
 </header>
 
 <script>
-  var contrast=false;
-
   function contrastToggle(){
-
-    if(!contrast){
-    $("#navbar__nazwa1").css("color,","#29FFF4");
-    $("#navbar-logo").css("background-color","#000000");
-    $("#header").css("background-color","#000000");
-    $("#header").css("color","#29FFF4");
-    $("#main").css("background-color","#FFFFFF");
-    $("#main").css("color","#0000FF");
-    contrast=true;
-    }
-    else if(contrast)
-    {
-    $("#navbar__nazwa1").css("color","#8CD790");
-    $("#navbar-logo").css("background-color","#508470");
-    $("#header").css("background-color","#4BA68D");
-    $("#header").css("color","#000000");
-    $("#main").css("background-color","#D7FFF1");
-    $("#main").css("color","#000000");
-    contrast=false;
-    }
-
+  $(".header").toggleClass("contrast");
+  $(".main").toggleClass("contrast");
+  $(".navbar__sidebar").toggleClass("contrast");
+  $(".navbar__logo").toggleClass("contrast");
   }
 </script>

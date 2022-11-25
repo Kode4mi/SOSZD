@@ -55,7 +55,8 @@ return [
     // SOSZD
 
     'ticket' => [
-        'create' => 'Stworzono nową sprawę'
+        'create' => 'Stworzono nową sprawę',
+        'access_denied' => 'Nie można odczytać tej sprawy!'
     ],
 
     'deadline' => 'termin',

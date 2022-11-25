@@ -40,13 +40,14 @@ class TicketController extends Controller
 
     public function show(Ticket $ticket): View | RedirectResponse
     {
+        /* @var User $user */
         $user = auth()->user();
 
         $redirect = Redirect::where('ticket_id', $ticket->id)->where('user_id', $user->id)->get();
 
-        if($redirect->isEmpty() && $user->role === "nauczyciel")
+        if($user->role === "nauczyciel" && $redirect->isEmpty())
         {
-            return redirect()->back()->with("message", "Nie można odczytać tej sprawy!");
+            return redirect("/tickets")->with("message", __('app.ticket.access_denied'));
         }
 
         Redirect::find($redirect[0]['id'])->update(['read' => true]);

@@ -44,13 +44,12 @@ class TicketController extends Controller
 
         $redirect = Redirect::where('ticket_id', $ticket->id)->where('user_id', $user->id)->get();
 
-
         if($redirect->isEmpty() && $user->role === "nauczyciel")
         {
             return redirect()->back()->with("message", "Nie można odczytać tej sprawy!");
         }
 
-//        $redirect->read = true;
+        Redirect::find($redirect[0]['id'])->update(['read' => true]);
 
         return view('tickets.show', [
             'ticket' => $ticket,

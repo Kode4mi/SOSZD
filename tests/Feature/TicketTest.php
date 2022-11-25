@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Redirect;
 use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -32,15 +33,38 @@ class TicketTest extends TestCase
 
     public function test_ticket_status(): void
     {
+        $user = User::factory()->create();
+
+        $ticket = Ticket::factory()->create();
+
+        $redirect = Redirect::factory()->create([
+           'ticket_id' => $ticket->id,
+           'user_id' => $user->id,
+        ]);
+
+        $response = $this->actingAs($user)->get('/ticket/'.$ticket->id);
+
+        $response->assertSuccessful();
+
+        $response->assertViewIs("tickets.show");
+
+        $user->delete();
+        $ticket->delete();
+        $redirect->delete();
+    }
+
+
+    public function test_ticket_status_when_not_in_ticket(): void
+    {
         $user = User::factory()->make();
 
         $ticket = Ticket::factory()->create();
 
         $response = $this->actingAs($user)->get('/ticket/'.$ticket->id);
 
-        $response->assertSuccessful();
+        $response->assertRedirect("/tickets");
 
-        $response->assertViewIs('tickets.show');
+        $response->assertSessionHas("message", "Nie można odczytać tej sprawy!");
 
         $ticket->delete();
     }

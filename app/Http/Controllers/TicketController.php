@@ -9,6 +9,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use function PHPUnit\Framework\isEmpty;
 
 class TicketController extends Controller
 {
@@ -16,9 +17,16 @@ class TicketController extends Controller
     {
         $title = "Aktualne sprawy";
         $form = "archive";
+        $ticket_id = [];
+
+        $tickets = Redirect::where("user_id", auth()->user()->id)->get('ticket_id');
+
+        for ($i = 0, $iMax = count($tickets); $i < $iMax; $i++) {
+            $ticket_id[$i] = $tickets[$i]["ticket_id"];
+        }
 
         return view('tickets.index', [
-            'tickets' => Ticket::sortable()->latest()->where('active', 1)->filter(request(['search']))->simplePaginate(12),
+            'tickets' => Ticket::sortable()->latest()->where('active', 1)->whereIn('id', $ticket_id)->filter(request(['search']))->simplePaginate(12),
             'users' => User::class,
             'title' => $title,
             'form' => $form
@@ -30,8 +38,20 @@ class TicketController extends Controller
         return view('tickets.create');
     }
 
-    public function show(Ticket $ticket): View
+    public function show(Ticket $ticket): View | RedirectResponse
     {
+        /* @var User $user */
+        $user = auth()->user();
+
+        $redirect = Redirect::where('ticket_id', $ticket->id)->where('user_id', $user->id)->get();
+
+        if($user->role === "nauczyciel" && $redirect->isEmpty())
+        {
+            return redirect("/tickets")->with("message", __('app.ticket.access_denied'));
+        }
+
+        Redirect::find($redirect[0]['id'])->update(['read' => true]);
+
         return view('tickets.show', [
             'ticket' => $ticket,
         ]);

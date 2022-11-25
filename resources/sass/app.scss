@@ -10,6 +10,16 @@ $button-color: #FFFFFF;
 $primary_font: Cabin;
 $button-border-radius: 15px;
 
+//kolory do kontrastu
+$main-background--contrast: black;
+$logo_background--contrast: black;
+$sidebar-background--contrast: black;
+$header-background--contrast: black;
+$user-background--contrast: black;
+$frame-background--contrast: black;
+$button-background--contrast: black;
+$logo_background_hover--contrast: black;
+
 //kolory do logowania
 $backgroundGreen: #D7FFF1;
 $lightGreen: #8CD790;
@@ -60,7 +70,6 @@ $navbarMobileWidth: 100vw;
 }
 
 .navbar {
-
     height: 100vh;
     position: fixed;
     width: $navbarWidth;
@@ -201,6 +210,29 @@ $navbarMobileWidth: 100vw;
     }
 }
 
+.navbar__sidebar.contrast{
+background-color: $sidebar-background--contrast;
+
+button{
+    background-color: $button-background--contrast;
+    color:white;
+}
+
+::selection {
+    background: rgb(59, 245, 245);
+  }
+
+}
+
+.navbar__logo.contrast{
+    background-color: $logo_background--contrast;
+    
+::selection {
+    background: rgb(59, 245, 245);
+ }
+
+}
+
 .header {
     box-sizing: border-box;
     background-color: $header-background;
@@ -254,6 +286,24 @@ $navbarMobileWidth: 100vw;
     }
 }
 
+.header.contrast {
+    background-color:$header-background--contrast ;
+
+    .header__icon{
+        background-color: black;
+        color:white;
+    }
+
+    i{
+        filter:contrast(0%);
+    }
+
+    ::selection {
+        background: rgb(59, 245, 245);
+      }
+    
+}
+
 .main {
     height: 91vh;
     background-color: $main-background;
@@ -277,6 +327,10 @@ $navbarMobileWidth: 100vw;
         align-self: flex-start;
         margin-bottom: 1vw;
         font-size: 3.5rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width:70vw;
     }
 
 
@@ -358,7 +412,88 @@ $navbarMobileWidth: 100vw;
             }
         }
 
+        .ticket {
+            
+        &__submit {
+            background-color: $button-background;
+            color: $button-color;
+            border: none;
+            border-radius: 15px;
+            padding: 0.5rem 0.5rem 0.3rem 0.5rem;
+            width: 15vh;
+        }
+
+        &__submit:hover{
+        background-color: darken($button-background, 10);
+        }
+
+        &__content{
+            height:49vh;
+        }
+
+        &__header{
+            display: flex;
+            justify-content: space-between;
+
+            &--priority{
+                margin-right:7vw;
+                margin-left:auto;
+            }
+        }
+
+        &__from, &__header, &__header-content, &__content{
+            font-size:1.2rem;
+        }
+
     }
+  }
+}
+
+.main.contrast{
+    background-color:$main-background--contrast;
+
+    .main__h1{
+        color:white;
+    }
+
+    main{
+        background-color: $frame-background--contrast;
+    }
+
+    table{
+        color:white;
+    }
+
+    a{
+        color:yellow;
+    }
+
+    .searchbar{
+        background-color: black;
+    }
+
+    .searchbar__input{
+        background-color: black;
+    }
+
+    .searchbar__button{
+        background-color: black;
+    }
+
+    .pagination{
+       span{
+        background-color:black;
+        color:white;
+       }
+
+       a{
+        background-color:black;
+       }
+    }
+
+    ::selection {
+        background: rgb(59, 245, 245);
+      }
 }
 
 

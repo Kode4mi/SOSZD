@@ -4,7 +4,7 @@
 <x-main-title>Tworzenie sprawy: </x-main-title>
 
 <main class="create-ticket">
-    <form action="/ticket" method="POST" class="create-ticket__form">
+    <form action="/ticket" method="POST" class="create-ticket__form" enctype="multipart/form-data">
         @csrf
 
         <label>Temat:
@@ -43,6 +43,15 @@
         @error('description')
         <p>{{$message}}</p>
         @enderror
+
+        <label class="">Załącznik:
+            <input type="file" name="files[]" class="" multiple value="{{old('files')}}">
+        </label>
+
+        @error('files')
+        <p>{{$message}}</p>
+        @enderror
+
 
         <button type="submit" class="create-ticket__button">Zatwierdź</button>
     </form>

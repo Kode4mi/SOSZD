@@ -73,15 +73,28 @@ class TicketController extends Controller
             'description' => 'required',
             'deadline' => 'required',
             'priority' => 'required',
+            'files' => 'nullable'
         ],
             [],
             [
                 'title' => __('app.title'),
                 'description' => __('app.description'),
                 'deadline' => __('app.deadline'),
-                'priority' => __('app.priority')
+                'priority' => __('app.priority'),
+                'files' => __('app.files')
             ]
         );
+
+        if($request->hasFile('files')) {
+            $file_names = "";
+
+            foreach ($formFields['files'] as $file) {
+                $file_names .= $file->store('files', 'public').";";
+            }
+
+            $formFields['files'] = $file_names;
+
+        }
 
         /* @var User $user */
         $user = auth()->user();

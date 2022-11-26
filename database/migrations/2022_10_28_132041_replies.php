@@ -14,7 +14,8 @@ return new class extends Migration
             $table->foreign('tickets_id')->references('id')->on('tickets')->onDelete('cascade')->onUpdate('cascade');  // tworzenie klucza obcego do tabeli 'tickets'
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');       // tworzenie klucza obcego do tabeli 'users'
-            $table->text('reply_content');
+            $table->text('message');
+            $table->string('files')->nullable();
             $table->timestamps();
         });
     }

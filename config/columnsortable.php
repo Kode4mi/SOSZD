@@ -88,7 +88,7 @@ return [
 
     /*
     inject title parameter in query strings, use null to turn injection off
-    example: 'inject_title' => 't' will result in ..user/?t="formatted title of sorted column"
+    example: 'inject_title' => 't' will result in ../user/?t="formatted title of sorted column"
      */
     'inject_title_as'               => null,
 

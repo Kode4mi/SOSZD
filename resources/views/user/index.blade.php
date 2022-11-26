@@ -21,7 +21,7 @@
             <!--ewentaulnie w oddzielnych polach jako:
                 <th>@sortablelink('first_name', 'Imie')</th>
                 <th>@sortablelink('last_name', 'Nazwisko')</th>-->
-            <th class="users__header-link">@sortablelink('role', 'Stanowisko')</th>    
+            <th class="users__header-link">@sortablelink('role', 'Stanowisko')</th>
             <th class="users__header-link">@sortablelink('email', 'E-mail')</th>
             <th class="users__select-sorter">
                         <label for="select-sort" class="users__select-sorter-label">Sortuj po:</label>
@@ -37,11 +37,11 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($users as $users)
+        @foreach($users as $user)
         <tr class="users__row">
-            <td class="users__name">{{$users->last_name}} {{$users->first_name}}</td>
-            <td class="users__role">{{$users->role}}</td>
-            <td class="users__email">{{$users->email}}</td>
+            <td class="users__name">{{$user->last_name}} {{$user->first_name}}</td>
+            <td class="users__role">{{$user->role}}</td>
+            <td class="users__email">{{$user->email}}</td>
         </tr>
         @endforeach
     </tbody>

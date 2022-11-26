@@ -14,7 +14,14 @@ use Kyslik\ColumnSortable\Sortable;
  * @method static sortable()
  * @method static where(string $column, string $value)
  * @method static find(mixed $ticket_id)
+ *
+ * @property integer $id
+ * @property string $title
+ * @property string $description
  * @property string $deadline
+ * @property integer $priority
+ * @property integer $sender_id
+ * @property integer $active
  */
 class Ticket extends Model
 {
@@ -38,6 +45,7 @@ class Ticket extends Model
         return $this->hasOne(Redirect::class);
     }
 
+    // Metoda zwracająca odpowiednio sformatowaną datę dla konkretnej sprawy
     public function dateFormat() : String {
         $date=date_create($this->deadline);
         $month = "miesiąc";

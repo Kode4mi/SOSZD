@@ -64,7 +64,7 @@
                         <td class="ticket__sender">
 
                             @php
-                                /* @var User $users */
+                                /* @var \App\Models\User $users */
                                 $user = $users::find($ticket->sender_id);
                             @endphp
                             {{$user->first_name}}

@@ -50,7 +50,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::put('unarchive', [ArchiveController::class, 'unarchive']);
 
-
 // User
 
     Route::post('logout', [UserController::class, 'logout']);
@@ -85,7 +84,7 @@ Route::middleware(['guest'])->group(function () {
     Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPassword']);
     Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPassword']);
     Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPassword']);
-    Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPassword']);
+    Route::post('reset-password/{token}', [ForgotPasswordController::class, 'submitResetPassword']);
 
     Route::get('create-password/{token}', [UserController::class, 'showCreatePassword']);
     Route::put('create-password', [UserController::class, 'submitCreatePassword']);

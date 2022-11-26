@@ -1,9 +1,8 @@
-<?php
+<?php /** @noinspection SpellCheckingInspection */
 
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 use JetBrains\PhpStorm\ArrayShape;
 use Illuminate\Support\Carbon;
 

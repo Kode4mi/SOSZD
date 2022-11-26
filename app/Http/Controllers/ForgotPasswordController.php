@@ -21,7 +21,7 @@ class ForgotPasswordController extends Controller
 
     public function submitForgetPassword(Request $request) : RedirectResponse
     {
-        $request->validate([
+        $formFields = $request->validate([
             'email' => 'required|email|exists:users',
             ],
             [
@@ -31,12 +31,12 @@ class ForgotPasswordController extends Controller
         $token = Str::random(64);
 
         DB::table('password_resets')->insert([
-            'email' => $request->email,
+            'email' => $formFields['email'],
             'token' => $token,
             'created_at' => Carbon::now()
         ]);
 
-        dispatch(new forgetPasswordEmailJob($token, $request->email));
+        dispatch(new forgetPasswordEmailJob($token, $formFields['email']));
 
         return back()->with('message', __('passwords.sent'));
     }
@@ -45,7 +45,7 @@ class ForgotPasswordController extends Controller
         return view('user.forget-password-link', ['token' => $token]);
     }
 
-    public function submitResetPassword(Request $request) : RedirectResponse
+    public function submitResetPassword(Request $request, string $token) : RedirectResponse
     {
 
         $formFields = $request->validate([
@@ -60,7 +60,7 @@ class ForgotPasswordController extends Controller
             ]
         );
 
-        $user = User::where('email', $request->email)->first();
+        $user = User::where('email', $formFields['email'])->first();
 
         if(Hash::check($formFields['password'], $user->password))
         {
@@ -69,8 +69,8 @@ class ForgotPasswordController extends Controller
 
         $updatePassword = DB::table('password_resets')
             ->where([
-                'email' => $request->email,
-                'token' => $request->token
+                'email' => $formFields['email'],
+                'token' => $token
             ])
             ->first();
 
@@ -78,9 +78,9 @@ class ForgotPasswordController extends Controller
             return redirect()->back()->withErrors(['email' =>__('passwords.token')]);
         }
 
-        $user->update(['password' => bcrypt($request->password)]);
+        $user->update(['password' => bcrypt($formFields['password'])]);
 
-        DB::table('password_resets')->where(['email' => $request->email])->delete();
+        DB::table('password_resets')->where(['email' => $formFields['email']])->delete();
 
         return redirect('/login')->with('message', __('passwords.reset'));
     }

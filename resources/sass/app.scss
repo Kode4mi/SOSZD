@@ -226,7 +226,7 @@ button{
 
 .navbar__logo.contrast{
     background-color: $logo_background--contrast;
-    
+
 ::selection {
     background: rgb(59, 245, 245);
  }
@@ -269,11 +269,11 @@ button{
         font-size: 1.1875rem;
     }
 
-    &__smallfont {
+    &__small-font {
         font-size: 3rem;
     }
 
-    &__largefont {
+    &__large-font {
         font-size: 0.93rem;
     }
 
@@ -301,7 +301,7 @@ button{
     ::selection {
         background: rgb(59, 245, 245);
       }
-    
+
 }
 
 .main {
@@ -413,7 +413,7 @@ button{
         }
 
         .ticket {
-            
+
         &__submit {
             background-color: $button-background;
             color: $button-color;
@@ -604,7 +604,7 @@ button{
             grid-template-rows: 1fr 2fr 3fr 1fr 1fr;
         }
 
-        &--forgetpassword {
+        &--forget-password {
             grid-template-columns: 1fr;
             grid-template-rows: 1fr 2fr 1fr 1fr 1.5fr;
             grid-column-gap: 0;
@@ -612,7 +612,7 @@ button{
         }
     }
 
-    &__iconbox {
+    &__icon-box {
         height: 7vh;
         width: 20vh;
 
@@ -648,7 +648,7 @@ button{
         }
     }
 
-    &__smallfont {
+    &__small-font {
         font-size: 1.9rem;
 
         @media (max-aspect-ratio: 1/1) {
@@ -664,7 +664,7 @@ button{
         }
     }
 
-    &__inputbox {
+    &__input-box {
         width: 100%;
         height: 14vh;
         display: flex;
@@ -710,7 +710,7 @@ button{
         border: none;
         border-radius: 2vh;
 
-        &--forgetpassword {
+        &--forget-password {
             width: 40vh;
 
             @media (max-aspect-ratio: 1/1) {
@@ -734,7 +734,7 @@ button{
         width: 100%;
     }
 
-    &__remindpassword {
+    &__remind-password {
         width: 50vw;
         text-align: left;
         padding: .8vh;
@@ -1082,8 +1082,8 @@ button{
             display: grid;
             grid-template-columns: repeat(2, 1fr) 3fr;
             grid-template-rows: 1fr;
-            grid-column-gap: 0px;
-            grid-row-gap: 0px;
+            grid-column-gap: 0;
+            grid-row-gap: 0;
         }
 
         &-link {
@@ -1119,8 +1119,8 @@ button{
         display: grid;
         grid-template-columns: repeat(2, 1fr) 3fr;
         grid-template-rows: 1fr;
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
+        grid-column-gap: 0;
+        grid-row-gap: 0;
 
         @media (max-aspect-ratio: 1/1) {
             grid-template-columns: 1.5fr 1fr;

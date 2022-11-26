@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection SpellCheckingInspection */
 
 namespace Database\Seeders;
 
@@ -6,16 +6,14 @@ namespace Database\Seeders;
 use App\Models\Redirect;
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use \App\Models\Ticket;
+use App\Models\Ticket;
 
 class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         User::factory(4)->create();
 

@@ -2,19 +2,18 @@
 
 namespace Database\Factories;
 
+use App\Models\Redirect;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Redirect>
+ * @extends Factory<Redirect>
  */
 class RedirectFactory extends Factory
 {
     /**
      * Define the model's default state.
-     *
-     * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             'ticket_id' => 2,

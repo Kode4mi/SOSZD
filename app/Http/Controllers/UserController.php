@@ -162,7 +162,7 @@ class UserController extends Controller
 
         dispatch(new newUserEmailJob($token, $formFields['email']));
 
-        $user = User::create($formFields);
+        User::create($formFields);
 
         return redirect('/users')->with('message', __('app.user.create'));
     }

@@ -8,8 +8,6 @@ use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use function PHPUnit\Framework\isEmpty;
 
 class TicketController extends Controller
 {
@@ -17,16 +15,27 @@ class TicketController extends Controller
     {
         $title = "Aktualne sprawy";
         $form = "archive";
-        $ticket_id = [];
 
-        $tickets = Redirect::where("user_id", auth()->user()->id)->get('ticket_id');
+        /* @var User $user */
+        $user = auth()->user();
 
-        for ($i = 0, $iMax = count($tickets); $i < $iMax; $i++) {
-            $ticket_id[$i] = $tickets[$i]["ticket_id"];
+        if($user->role === "nauczyciel") {
+            $ticket_id = [];
+
+            $tickets = Redirect::where("user_id", $user->id)->get('ticket_id');
+
+            for ($i = 0, $iMax = count($tickets); $i < $iMax; $i++) {
+                $ticket_id[$i] = $tickets[$i]["ticket_id"];
+            }
+
+            $tickets = Ticket::sortable()->latest()->where('active', 1)->whereIn('id', $ticket_id)->filter(request(['search']))->simplePaginate(12);
+        }
+        else {
+            $tickets = Ticket::sortable()->latest()->where('active', 1)->filter(request(['search']))->simplePaginate(12);
         }
 
         return view('tickets.index', [
-            'tickets' => Ticket::sortable()->latest()->where('active', 1)->whereIn('id', $ticket_id)->filter(request(['search']))->simplePaginate(12),
+            'tickets' => $tickets,
             'users' => User::class,
             'title' => $title,
             'form' => $form
@@ -42,15 +51,15 @@ class TicketController extends Controller
     {
         /* @var User $user */
         $user = auth()->user();
+        if($user->role === "nauczyciel") {
+            $redirect = Redirect::where('ticket_id', $ticket->id)->where('user_id', $user->id)->get();
 
-        $redirect = Redirect::where('ticket_id', $ticket->id)->where('user_id', $user->id)->get();
+            if ($redirect->isEmpty()) {
+                return redirect("/tickets")->with("message", __('app.ticket.access_denied'));
+            }
 
-        if($user->role === "nauczyciel" && $redirect->isEmpty())
-        {
-            return redirect("/tickets")->with("message", __('app.ticket.access_denied'));
+            Redirect::find($redirect[0]['id'])->update(['read' => true]);
         }
-
-        Redirect::find($redirect[0]['id'])->update(['read' => true]);
 
         return view('tickets.show', [
             'ticket' => $ticket,

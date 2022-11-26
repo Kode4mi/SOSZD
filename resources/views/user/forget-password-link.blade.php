@@ -4,7 +4,7 @@
 
     <main>
 
-        <form action="/reset-password" method="POST" class="w-full text-center mt-5">
+        <form action="/reset-password/{{$token}}" method="POST" class="w-full text-center mt-5">
             @csrf
             @method('POST')
 
@@ -35,8 +35,6 @@
             @error('password_confirmation')
             <p class="text-red-500 text-xs mt-1">{{$message}}</p>
             @enderror
-
-            <input type="hidden" name="token" value="{{$token}}">
 
             <p>
                 <button type="submit" class="mt-4">Zmień hasło</button>

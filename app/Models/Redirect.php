@@ -9,6 +9,12 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 /**
  * @method static where(string $column, mixed $value)
  * @method static create(array $formFields)
+ * @method static find(integer $id)
+ *
+ * @property integer $id
+ * @property integer $ticket_id
+ * @property integer $user_id
+ * @property boolean $read
  */
 class Redirect extends Model
 {

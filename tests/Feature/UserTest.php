@@ -2,10 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Models\Ticket;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class UserTest extends TestCase
@@ -15,7 +12,7 @@ class UserTest extends TestCase
 
         login
         logout
-        update - na późńiej
+        update - na później
         update_pass
         create
     */
@@ -64,7 +61,7 @@ class UserTest extends TestCase
         $response = $this->actingAs($user)->get('/users');
 
         $response->assertSuccessful();
-        $response->assertViewIs('user.index','');
+        $response->assertViewIs('user.index');
         $user->delete();
     }
     public function test_user_index_status_not_auth(): void
@@ -77,7 +74,7 @@ class UserTest extends TestCase
     public function test_user_authenticate_status(): void
     {
         $user = User::factory()->create([
-            'password' => bcrypt($password = 'haslo-maslo'),
+            'password' => bcrypt($password = 'password-butter'),
         ]);
 
         $response = $this->post('/users/authenticate', [
@@ -93,12 +90,12 @@ class UserTest extends TestCase
     public function test_user_authenticate_status_wrong_pass(): void
     {
         $user = User::factory()->create([
-            'password' => bcrypt('haslo-maslo'),
+            'password' => bcrypt('password-butter'),
         ]);
 
         $response = $this->from('/login')->post('/users/authenticate', [
             'email' => $user->email,
-            'password' => 'zle-haslo',
+            'password' => 'bad-password',
         ]);
 
         $response->assertRedirect('/login');

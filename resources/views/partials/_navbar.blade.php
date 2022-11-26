@@ -1,7 +1,7 @@
 <nav class="navbar">
     <div class="navbar__logo" id="navbar-logo">
         <div class="navbar__logo--img">
-            <a href="{{url('/tickets')}}">  <img src="{{asset('images/logo-lepsze.png')}}" alt="soSZD logo"> </a>
+            <a href="{{url('/tickets')}}">  <img src="{{asset('images/logo-small.png')}}" alt="soSZD logo"> </a>
         </div>
     </div>
     <aside class="navbar__sidebar">
@@ -28,7 +28,7 @@
         </ul>
     </aside>
 
-    <!-- tymczasowo to tutaj dodaje bo nie wiem zbytnio gdzie -->
+    <!-- tymczasowo to tutaj dodaje, bo nie wiem zbytnio gdzie -->
     <div class="navbar__hamburger">
         <i class="fa-solid fa-bars"></i>
     </div>

@@ -1,4 +1,9 @@
-<?php
+<?php /** @noinspection PhpClassConstantAccessedViaChildClassInspection */
+/** @noinspection PhpClassConstantAccessedViaChildClassInspection */
+/** @noinspection PhpClassConstantAccessedViaChildClassInspection */
+/** @noinspection PhpClassConstantAccessedViaChildClassInspection */
+
+/** @noinspection PhpClassConstantAccessedViaChildClassInspection */
 
 namespace App\Http\Middleware;
 

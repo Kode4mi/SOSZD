@@ -16,8 +16,8 @@ class RedirectFactory extends Factory
     public function definition(): array
     {
         return [
-            'ticket_id' => 2,
-            'user_id' => 2,
+            'ticket_id' => $this->faker->numberBetween(1, 20),
+            'user_id' => $this->faker->numberBetween(1,6),
         ];
     }
 }

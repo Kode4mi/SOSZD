@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
             'password' => '$2y$10$4K2iVZ.fQxYBf/oX9IwvP.K59AAt//78pkOqtEYAcwNa81g1/RepC',
         ]);
 
-        Redirect::factory()->create();
+        Redirect::factory(15)->create();
 
     }
 }

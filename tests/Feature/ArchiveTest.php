@@ -40,7 +40,7 @@ class ArchiveTest extends TestCase
         $ticket2 = Ticket::factory()->create();
 
         $response = $this->from('/tickets')->actingAs($user)->put('/archive', [
-            'id' => [0 => $ticket1->id, 1 => $ticket2->id],
+            'id' => [$ticket1->id, $ticket2->id],
         ]);
 
         $response->assertSessionHasNoErrors();

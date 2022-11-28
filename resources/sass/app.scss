@@ -89,7 +89,7 @@ $navbarMobileWidth: 100vw;
     top: 0;
     bottom: 0;
     left: 0;
-    z-index: 2;
+    z-index: 0;
 
     font-family: $primary_font;
 
@@ -125,11 +125,6 @@ $navbarMobileWidth: 100vw;
             a {
                 text-decoration: none;
             }
-        }
-
-        &--img:hover {
-            background-color: $logo_background_hover;
-
         }
     }
 
@@ -210,26 +205,26 @@ $navbarMobileWidth: 100vw;
     }
 }
 
-.navbar__sidebar.contrast{
-background-color: $sidebar-background--contrast;
+.navbar__sidebar.contrast {
+    background-color: $sidebar-background--contrast;
 
-button{
-    background-color: $button-background--contrast;
-    color:white;
+    button {
+        background-color: $button-background--contrast;
+        color: white;
+    }
+
+    ::selection {
+        background: rgb(59, 245, 245);
+    }
+
 }
 
-::selection {
-    background: rgb(59, 245, 245);
-  }
-
-}
-
-.navbar__logo.contrast{
+.navbar__logo.contrast {
     background-color: $logo_background--contrast;
 
-::selection {
-    background: rgb(59, 245, 245);
- }
+    ::selection {
+        background: rgb(59, 245, 245);
+    }
 
 }
 
@@ -287,20 +282,20 @@ button{
 }
 
 .header.contrast {
-    background-color:$header-background--contrast ;
+    background-color: $header-background--contrast ;
 
-    .header__icon{
+    .header__icon {
         background-color: black;
-        color:white;
+        color: white;
     }
 
-    i{
-        filter:contrast(0%);
+    i {
+        filter: contrast(0%);
     }
 
     ::selection {
         background: rgb(59, 245, 245);
-      }
+    }
 
 }
 
@@ -325,12 +320,12 @@ button{
 
     &__h1 {
         align-self: flex-start;
-        margin-bottom: 1vw;
+        padding-bottom: 1vh;
         font-size: 3.5rem;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        width:70vw;
+        width: 70vw;
     }
 
 
@@ -414,86 +409,89 @@ button{
 
         .ticket {
 
-        &__submit {
-            background-color: $button-background;
-            color: $button-color;
-            border: none;
-            border-radius: 15px;
-            padding: 0.5rem 0.5rem 0.3rem 0.5rem;
-            width: 15vh;
-        }
-
-        &__submit:hover{
-        background-color: darken($button-background, 10);
-        }
-
-        &__content{
-            height:49vh;
-        }
-
-        &__header{
-            display: flex;
-            justify-content: space-between;
-
-            &--priority{
-                margin-right:7vw;
-                margin-left:auto;
+            &__submit {
+                background-color: $button-background;
+                color: $button-color;
+                border: none;
+                border-radius: 15px;
+                padding: 0.5rem 0.5rem 0.3rem 0.5rem;
+                width: 15vh;
             }
-        }
 
-        &__from, &__header, &__header-content, &__content{
-            font-size:1.2rem;
-        }
+            &__submit:hover {
+                background-color: darken($button-background, 10);
+            }
 
+            &__content {
+                height: 49vh;
+            }
+
+            &__header {
+                display: flex;
+                justify-content: space-between;
+
+                &--priority {
+                    margin-right: 7vw;
+                    margin-left: auto;
+                }
+            }
+
+            &__from,
+            &__header,
+            &__header-content,
+            &__content {
+                font-size: 1.2rem;
+            }
+
+        }
     }
-  }
 }
 
-.main.contrast{
-    background-color:$main-background--contrast;
+.main.contrast {
+    background-color: $main-background--contrast;
 
-    .main__h1{
-        color:white;
+    .main__h1 {
+        color: white;
     }
 
-    main{
+    main {
         background-color: $frame-background--contrast;
     }
 
-    table{
-        color:white;
+    table {
+        color: white;
     }
 
-    a{
-        color:yellow;
+    a {
+        color: yellow;
     }
 
-    .searchbar{
+    .searchbar {
         background-color: black;
     }
 
-    .searchbar__input{
+    .searchbar__input {
         background-color: black;
     }
 
-    .searchbar__button{
+    .searchbar__button {
         background-color: black;
     }
 
-    .pagination{
-       span{
-        background-color:black;
-        color:white;
-       }
+    .pagination {
+        span {
+            background-color: black;
+            color: white;
+        }
 
-       a{
-        background-color:black;
-       }
+        a {
+            background-color: black;
+        }
     }
 
     ::selection {
         background: rgb(59, 245, 245);
-      }
+    }
 }
 
 

@@ -91,6 +91,10 @@ $navbarMobileWidth: 100vw;
     left: 0;
     z-index: 0;
 
+    @media (max-aspect-ratio: 1/1) {
+        z-index: 2;
+    }
+
     font-family: $primary_font;
 
     flex-direction: column;

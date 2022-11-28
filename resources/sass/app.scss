@@ -1053,24 +1053,72 @@ $navbarMobileWidth: 100vw;
     }
 }
 
-.page {
-    @media (max-aspect-ratio: 1/1) {
+.page-navigator {
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    &__current-page {
+        background-color: #204a3f;
+        color: white;
+        border-radius: 3vh;
+
+        min-width: 6vh;
+        height: 6vh;
+
         display: flex;
         justify-content: center;
+        align-items: center;
+
+    }
+
+    &__links-list {
+        height: 100%;
+        width: 30%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        list-style: none;
+
+        @media (max-aspect-ratio: 1/1) {
+            width: 100%;
+        }
+    }
+
+    &__inner-link {
         width: 100%;
+        text-align: center;
+        line-height: 100%;
     }
 
-    &-item {
-        @media (max-aspect-ratio: 1/1) {
-            width: 40vw;
-            text-align: center;
+    &__link {
+        background-color: #97cbbc;
+        color: #777;
+
+        border-radius: 3vh;
+
+        min-width: 6vh;
+        height: 6vh;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &--active {
+            background-color: #4BA68D;
+            color: #000000;
         }
     }
 
-    &-link {
-        @media (max-aspect-ratio: 1/1) {
-            font-size: 1.8rem;
-        }
+    &__dot {
+        background-color: #377e6b;
+        color: white;
+        border-radius: .5vh;
+        // background-color: #D7FFF1;
+
+        min-width: 1vh;
+        height: 1vh;
     }
 }
 

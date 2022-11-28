@@ -14,5 +14,6 @@
       $(".main").toggleClass("contrast");
       $(".navbar__sidebar").toggleClass("contrast");
       $(".navbar__logo").toggleClass("contrast");
+      $(".page-navigator").toggleClass("contrast");
   });
 </script>

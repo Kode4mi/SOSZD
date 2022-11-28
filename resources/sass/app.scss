@@ -478,14 +478,19 @@ $navbarMobileWidth: 100vw;
         background-color: black;
     }
 
-    .pagination {
-        span {
+    .page-navigator {
+        &__link {
             background-color: black;
-            color: white;
+            border: 2px solid yellow;
         }
 
-        a {
+        &__dot {
+            background-color: yellow;
+        }
+
+        &__current-page {
             background-color: black;
+            border: 2px solid yellow;
         }
     }
 

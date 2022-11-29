@@ -2,7 +2,7 @@
 
 @section('cont')
 <div class="login">
-<form method="POST" action="users/authenticate" class= "login__form">
+<form method="POST" action="/reset-password/{{$token}}" action="users/authenticate class= "login__form">
             @csrf
             @method("POST")
             <div class="login__center">

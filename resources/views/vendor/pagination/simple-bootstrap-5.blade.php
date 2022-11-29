@@ -1,27 +1,41 @@
 @if ($paginator->hasPages())
-    <nav role="navigation" aria-label="Pagination Navigation" class="table-footer--links page">
-        <ul class="pagination">
+    <nav role="navigation" aria-label="Pagination Navigation" class="table-footer--links page-navigator">
+        <ul class="page-navigator__links-list">
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
-                <li class="page-item disabled" aria-disabled="true">
-                    <span class="page-link">{!! __('pagination.previous') !!}</span>
+                <li class="page-navigator__link" aria-disabled="true">
+                    <span>
+                        <i class="fa-solid fa-angle-left"></i>
+                    </span>
                 </li>
             @else
-                <li class="page-item">
-                    <a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev">
-                        {!! __('pagination.previous') !!}
+                <li class="page-navigator__link page-navigator__link--active">
+                    <a class="page-navigator__inner-link" href="{{ $paginator->previousPageUrl() }}" rel="prev">
+                        <i class="fa-solid fa-angle-left"></i>
                     </a>
                 </li>
+                <span class="page-navigator__dot"></span>
             @endif
+
+                <li class="page-navigator__current-page">
+                    <span>
+                        {{$paginator->currentPage()}}
+                    </span>
+                </li>
 
             {{-- Next Page Link --}}
             @if ($paginator->hasMorePages())
-                <li class="page-item">
-                    <a class="page-link" href="{{ $paginator->nextPageUrl() }}" rel="next">{!! __('pagination.next') !!}</a>
+                <span class="page-navigator__dot"></span>
+                <li class="page-navigator__link page-navigator__link--active">
+                    <a class="page-navigator__inner-link" href="{{ $paginator->nextPageUrl() }}" rel="next">
+                        <i class="fa-solid fa-angle-right"></i>
+                    </a>
                 </li>
             @else
-                <li class="page-item disabled" aria-disabled="true">
-                    <span class="page-link">{!! __('pagination.next') !!}</span>
+                <li class="page-navigator__link" aria-disabled="true">
+                    <span>
+                        <i class="fa-solid fa-angle-right"></i>
+                    </span>
                 </li>
             @endif
         </ul>

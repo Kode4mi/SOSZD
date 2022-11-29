@@ -679,8 +679,16 @@ $navbarMobileWidth: 100vw;
         align-items: center;
         justify-content: space-between;
 
+        &--password-reset {
+            height: 21vh;
+        }
+
         @media (max-aspect-ratio: 1/1) {
             height: 28vh;
+
+            &--password-reset {
+                height: 36vh;
+            }
         }
     }
 
@@ -716,6 +724,10 @@ $navbarMobileWidth: 100vw;
         box-shadow: -8px 8px 8px rgba(0, 0, 0, 0.25);
         border: none;
         border-radius: 2vh;
+
+        &--reset-password {
+            width: 30vh;
+        }
 
         &--forget-password {
             width: 40vh;
@@ -759,7 +771,7 @@ $navbarMobileWidth: 100vw;
     }
 
     &__error {
-        &panel {
+        &-panel {
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;

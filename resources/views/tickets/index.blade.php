@@ -135,23 +135,24 @@
                     sendArchiveForm(event, ui, "unarchive")
                 },
             });
+
+            function sendArchiveForm(event, ui, str) {
+                let draggable = ui.draggable;
+                const obj = draggable.clone();
+                const id = obj.find('.id').val();
+
+                const form = $("#ticket__form-" + str);
+
+                form.append(" <input type='hidden' name='id[]' value=" + id + " />");
+
+                form.submit();
+            }
+
         }
 
 
         if (!document.querySelectorAll('.table-footer--links')[0]) {
             document.querySelector('.table-footer').style.justifyContent = 'flex-end';
-        }
-
-        function sendArchiveForm(event, ui, str) {
-            let draggable = ui.draggable;
-            const obj = draggable.clone();
-            const id = obj.find('.id').val();
-
-            const form = $("#ticket__form-" + str);
-
-            form.append(" <input type='hidden' name='id[]' value=" + id + " />");
-
-            form.submit();
         }
 
         let flagChecked = false;
@@ -165,17 +166,22 @@
             flagChecked = !flagChecked;
         });
 
-        $('#select-sort').change(function () {
-            console.log($(this).prop('selectedIndex'));
+        const selectSort = document.getElementById("select-sort");
 
-            $.cookie('sort', $(this).prop('selectedIndex'));
+        selectSort.addEventListener("change", () => {
 
-            window.location = $(this).val();
+            document.cookie = "sort="+selectSort.selectedIndex;
+
+            window.location = selectSort.value;
         });
 
-        $(function () {
-            $('#select-sort').prop('selectedIndex', $.cookie('sort'));
-        });
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+        selectSort.selectedIndex = getCookie("sort");
 
     </script>
 

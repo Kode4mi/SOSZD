@@ -113,32 +113,34 @@
         @method("PUT")
     </form>
 
-    <script>
+    <script type="text/javascript">
 
-        if (!$('.table-footer--links')[0]) {
-            $('.table-footer').css('justify-content', 'flex-end');
+        if(!isMobile) {
+            $(".ticket__row").draggable({
+                helper: function () {
+                    return $('<div></div>').append($(this).find('.ticket-title').clone());
+                }
+            });
+
+            $(".navbar__sidebar--button_archive").droppable({
+                accept: '.ticket__row',
+                drop: function (event, ui) {
+                    sendArchiveForm(event, ui, "archive")
+                },
+            });
+
+            $(".navbar__sidebar--button1").droppable({
+                accept: '.ticket__row',
+                drop: function (event, ui) {
+                    sendArchiveForm(event, ui, "unarchive")
+                },
+            });
         }
 
-        $(".ticket__row").draggable({
-            helper: function () {
-                return $('<div></div>').append($(this).find('.ticket-title').clone());
-            }
-        });
 
-        $(".navbar__sidebar--button_archive").droppable({
-            accept: '.ticket__row',
-            drop: function (event, ui) {
-                sendArchiveForm(event, ui, "archive")
-            },
-        });
-
-        $(".navbar__sidebar--button1").droppable({
-            accept: '.ticket__row',
-            drop: function (event, ui) {
-                sendArchiveForm(event, ui, "unarchive")
-            },
-        });
-
+        if (!document.querySelectorAll('.table-footer--links')[0]) {
+            document.querySelector('.table-footer').style.justifyContent = 'flex-end';
+        }
 
         function sendArchiveForm(event, ui, str) {
             let draggable = ui.draggable;
@@ -152,13 +154,15 @@
             form.submit();
         }
 
-        $('.ticket__select-all').click(function () {
-            let checkbox = $('.table-checkbox--input');
+        let flagChecked = false;
+        document.querySelector('.ticket__select-all').addEventListener("click", function () {
+            let checkboxes = document.querySelectorAll('.table-checkbox--input');
 
-            if (checkbox.prop('checked'))
-                checkbox.prop('checked', false);
-            else
-                checkbox.prop('checked', true);
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = !flagChecked;
+            });
+
+            flagChecked = !flagChecked;
         });
 
         $('#select-sort').change(function () {

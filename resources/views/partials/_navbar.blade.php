@@ -1,7 +1,7 @@
 <nav class="navbar">
     <div class="navbar__logo" id="navbar-logo">
         <div class="navbar__logo--img">
-            <a href="{{url('/tickets')}}">  <img src="{{asset('images/logo-small.png')}}" alt="soSZD logo"> </a>
+            <a href="{{url('/tickets')}}">  <img src="{{asset('images/logo-smallest.png')}}" alt="soSZD logo"> </a>
         </div>
     </div>
     <aside class="navbar__sidebar">
@@ -33,7 +33,7 @@
         <i class="fa-solid fa-bars"></i>
     </div>
 
-    <script>
+    <script type="text/javascript">
         const hamburger = document.querySelector(".navbar__hamburger");
         const navbar = document.querySelector(".navbar");
         hamburger.addEventListener("click", ()=>{

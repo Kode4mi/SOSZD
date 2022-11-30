@@ -8,7 +8,7 @@
     <div class="header__icon header__logged-user">{{auth()->user()->first_name}} {{auth()->user()->last_name}}</div>
 </header>
 
-<script>
+<script type="text/javascript">
 
   document.querySelector('.contrast-button').addEventListener("click", function contrastToggle() {
       document.querySelector(".header").classList.toggle("contrast");

@@ -113,32 +113,34 @@
         @method("PUT")
     </form>
 
-    <script>
+    <script type="text/javascript">
+
+        if(!isMobile) {
+            $(".ticket__row").draggable({
+                helper: function () {
+                    return $('<div></div>').append($(this).find('.ticket-title').clone());
+                }
+            });
+
+            $(".navbar__sidebar--button_archive").droppable({
+                accept: '.ticket__row',
+                drop: function (event, ui) {
+                    sendArchiveForm(event, ui, "archive")
+                },
+            });
+
+            $(".navbar__sidebar--button1").droppable({
+                accept: '.ticket__row',
+                drop: function (event, ui) {
+                    sendArchiveForm(event, ui, "unarchive")
+                },
+            });
+        }
+
 
         if (!$('.table-footer--links')[0]) {
             $('.table-footer').css('justify-content', 'flex-end');
         }
-
-        $(".ticket__row").draggable({
-            helper: function () {
-                return $('<div></div>').append($(this).find('.ticket-title').clone());
-            }
-        });
-
-        $(".navbar__sidebar--button_archive").droppable({
-            accept: '.ticket__row',
-            drop: function (event, ui) {
-                sendArchiveForm(event, ui, "archive")
-            },
-        });
-
-        $(".navbar__sidebar--button1").droppable({
-            accept: '.ticket__row',
-            drop: function (event, ui) {
-                sendArchiveForm(event, ui, "unarchive")
-            },
-        });
-
 
         function sendArchiveForm(event, ui, str) {
             let draggable = ui.draggable;
@@ -157,8 +159,7 @@
             let checkboxes = document.querySelectorAll('.table-checkbox--input');
 
             checkboxes.forEach(checkbox => {
-                if(flagChecked) checkbox.checked = false;
-                else checkbox.checked = true;
+                checkbox.checked = !flagChecked;
             });
 
             flagChecked = !flagChecked;

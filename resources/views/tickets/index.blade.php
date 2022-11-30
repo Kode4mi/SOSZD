@@ -138,8 +138,8 @@
         }
 
 
-        if (!$('.table-footer--links')[0]) {
-            $('.table-footer').css('justify-content', 'flex-end');
+        if (!document.querySelectorAll('.table-footer--links')[0]) {
+            document.querySelector('.table-footer').style.justifyContent = 'flex-end';
         }
 
         function sendArchiveForm(event, ui, str) {

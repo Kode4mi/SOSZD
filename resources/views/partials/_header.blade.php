@@ -9,11 +9,12 @@
 </header>
 
 <script>
-  $('.contrast-button').click(function contrastToggle() {
-      $(".header").toggleClass("contrast");
-      $(".main").toggleClass("contrast");
-      $(".navbar__sidebar").toggleClass("contrast");
-      $(".navbar__logo").toggleClass("contrast");
-      $(".page-navigator").toggleClass("contrast");
+
+  document.querySelector('.contrast-button').addEventListener("click", function contrastToggle() {
+      document.querySelector(".header").classList.toggle("contrast");
+      document.querySelector(".main").classList.toggle("contrast");
+      document.querySelector(".navbar__sidebar").classList.toggle("contrast");
+      document.querySelector(".navbar__logo").classList.toggle("contrast");
+      document.querySelector(".page-navigator").classList.toggle("contrast");
   });
 </script>

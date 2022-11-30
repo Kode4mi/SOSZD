@@ -152,13 +152,16 @@
             form.submit();
         }
 
-        $('.ticket__select-all').click(function () {
-            let checkbox = $('.table-checkbox--input');
+        let flagChecked = false;
+        document.querySelector('.ticket__select-all').addEventListener("click", function () {
+            let checkboxes = document.querySelectorAll('.table-checkbox--input');
 
-            if (checkbox.prop('checked'))
-                checkbox.prop('checked', false);
-            else
-                checkbox.prop('checked', true);
+            checkboxes.forEach(checkbox => {
+                if(flagChecked) checkbox.checked = false;
+                else checkbox.checked = true;
+            });
+
+            flagChecked = !flagChecked;
         });
 
         $('#select-sort').change(function () {

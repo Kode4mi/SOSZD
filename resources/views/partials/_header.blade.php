@@ -16,5 +16,6 @@
       document.querySelector(".navbar__sidebar").classList.toggle("contrast");
       document.querySelector(".navbar__logo").classList.toggle("contrast");
       document.querySelector(".page-navigator").classList.toggle("contrast");
+      document.querySelector(".flash-message-content").classList.toggle("contrast");
   });
 </script>

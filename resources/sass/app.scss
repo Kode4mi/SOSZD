@@ -11,14 +11,7 @@ $primary_font: Cabin;
 $button-border-radius: 15px;
 
 //kolory do kontrastu
-$main-background--contrast: black;
-$logo_background--contrast: black;
-$sidebar-background--contrast: black;
-$header-background--contrast: black;
-$user-background--contrast: black;
-$frame-background--contrast: black;
-$button-background--contrast: black;
-$logo_background_hover--contrast: black;
+$background_contrast: black;
 
 //kolory do logowania
 $backgroundGreen: #D7FFF1;
@@ -210,11 +203,17 @@ $navbarMobileWidth: 100vw;
 }
 
 .navbar__sidebar.contrast {
-    background-color: $sidebar-background--contrast;
+    background-color: $background_contrast;
 
     button {
-        background-color: $button-background--contrast;
+        background-color: $background_contrast;
         color: white;
+        border: 1px solid white;
+    }
+
+    button:hover {
+        background-color: white;
+        color:black;
     }
 
     ::selection {
@@ -224,12 +223,15 @@ $navbarMobileWidth: 100vw;
 }
 
 .navbar__logo.contrast {
-    background-color: $logo_background--contrast;
+    background-color: $background_contrast;
 
     ::selection {
         background: rgb(59, 245, 245);
     }
+}
 
+.navbar__logo.contrast:hover {
+    background-color: lighten($background_contrast, 20%);
 }
 
 .header {
@@ -286,7 +288,7 @@ $navbarMobileWidth: 100vw;
 }
 
 .header.contrast {
-    background-color: $header-background--contrast ;
+    background-color: $background_contrast ;
 
     .header__icon {
         background-color: black;
@@ -294,7 +296,7 @@ $navbarMobileWidth: 100vw;
     }
 
     i {
-        filter: contrast(0%);
+        filter: invert(0%);
     }
 
     ::selection {
@@ -452,14 +454,14 @@ $navbarMobileWidth: 100vw;
 }
 
 .main.contrast {
-    background-color: $main-background--contrast;
+    background-color: $background_contrast;
 
     .main__h1 {
         color: white;
     }
 
     main {
-        background-color: $frame-background--contrast;
+        background-color: $background_contrast;
     }
 
     table {
@@ -472,9 +474,15 @@ $navbarMobileWidth: 100vw;
 
     .searchbar {
         background-color: black;
+
+        i{
+            filter:invert(100%);
+        }
+
     }
 
     .searchbar__input {
+        color:white;
         background-color: black;
     }
 
@@ -496,11 +504,64 @@ $navbarMobileWidth: 100vw;
             background-color: black;
             border: 2px solid yellow;
         }
+    
+        &__link:hover, &__dot:hover, &__current-page:hover {
+            background-color: lighten($background_contrast,20%);
+        }
+    
     }
 
     ::selection {
         background: rgb(59, 245, 245);
     }
+
+    .ticket {
+        color:white;
+
+        &__submit {
+            background-color: $background_contrast;
+            border: 1px solid white;
+        }
+
+        &__submit:hover {
+            background-color: ligthen($background_contrast,20%);
+            border: 1px solid white;
+        }
+
+    }
+
+    .create-ticket {
+        label {
+            color:white;
+        }
+
+        &__topic, &__deadline, &__select, &__content {
+            background-color: $background_contrast;
+            color:white;
+            border: solid 1px white;
+        }
+
+        &__content {
+            border: solid 1px white;
+            font-weight:bold;
+        }
+    
+        &__button {
+            background-color: $background_contrast;
+            border: 1px solid white;
+        }
+
+        &__button:hover {
+            background-color: lighten($background_contrast,100%);
+            color:black;
+        }
+
+        ::selection {
+            background-color:rgb(59, 245, 245);
+        }
+
+    }
+
 }
 
 
@@ -791,6 +852,50 @@ $navbarMobileWidth: 100vw;
     }
 }
 
+.login.contrast {
+    background-color: $background_contrast;
+
+    form {
+        border:3px solid white;
+        background-color: $background_contrast;
+    }
+    
+    .login__button {
+        background-color: $background_contrast;
+        border:solid 3px white;
+    }
+
+    .login__button:hover {
+        background-color: white;
+        color:black;
+    }
+    
+    .login__icon {
+        background-color: $background_contrast;
+        border: 2px solid white;
+    }
+
+    .login__input {
+        background-color: white;
+        color:black;
+        font-weight:bold;
+    }
+
+    .login__input::placeholder {
+        color:black;
+    }
+
+    .login__remind-password{
+        color:rgb(255, 230, 0);
+    }
+
+    ::selection {
+        background: rgb(59, 245, 245);
+    }
+
+
+}
+
 .searchbar {
     display: flex;
     flex-wrap: nowrap;
@@ -896,6 +1001,13 @@ $navbarMobileWidth: 100vw;
     box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.25);
 
     width: fit-content;
+}
+
+.flash-message-content.contrast{
+    background-color: white;
+    border-left: 5px solid rgb(255, 230, 0);
+    font-weight:bold;
+    color: black;
 }
 
 .table {
@@ -1141,6 +1253,15 @@ $navbarMobileWidth: 100vw;
         min-width: 1vh;
         height: 1vh;
     }
+
+    &__link:hover, &__dot:hover {
+        background-color: lighten(#4BA68D, 20%);
+    }
+
+    &__current-page:hover{
+        background-color: darken(#204a3f,5%);
+    }
+
 }
 
 .users {

@@ -39,4 +39,13 @@
             </div>
         </form>
     </div>
+
+    <script type="text/javascript">
+        document.querySelector('.login__contrast').addEventListener("click", function contrastToggle() {
+        document.querySelector(".login").classList.toggle("contrast");
+        document.querySelector(".flash-message-content").classList.toggle("contrast");
+        });
+        </script>
+
 @endsection
+

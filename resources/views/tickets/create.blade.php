@@ -44,16 +44,18 @@
         <p>{{$message}}</p>
         @enderror
 
-        <label class="">Załącznik:
-            <input type="file" name="files[]" class="" multiple value="{{old('files')}}">
-        </label>
+        <div class="create-ticket__bottom-container">
+            <button type="submit" class="create-ticket__button">Zatwierdź</button>
 
-        @error('files')
-        <p>{{$message}}</p>
-        @enderror
+            <label class="create-ticket__input-file create-ticket__label-file">
+                <i class="fa-solid fa-paperclip"></i>
+                <input type="file" name="files[]" class="create-ticket__input-file" multiple value="{{old('files')}}">
+            </label>
 
-
-        <button type="submit" class="create-ticket__button">Zatwierdź</button>
+            @error('files')
+            <p>{{$message}}</p>
+            @enderror
+        </div>
     </form>
 </main>
 

@@ -61,8 +61,27 @@ class TicketController extends Controller
             Redirect::find($redirect[0]['id'])->update(['read' => true]);
         }
 
+        $redirects = Redirect::where('ticket_id', $ticket->id)->get(['user_id', 'read'])->toArray();
+
+        $i = 0;
+        $users = [];
+
+        foreach($redirects as $redirect) {
+            $users[$i] = ['user_id' => $redirect['user_id'], 'read' => $redirect['read']];
+            $i++;
+        }
+
+        $i = 0;
+
+        foreach($users as $user) {
+            $userData = User::where("id", $user['user_id'])->first(['first_name', 'last_name'])->toArray();
+            $users[$i] += $userData;
+            $i++;
+        }
+
         return view('tickets.show', [
             'ticket' => $ticket,
+            'users' => $users
         ]);
     }
 

@@ -2,7 +2,7 @@
 
 @section('content')
     <x-main-title>Zmień swoje dane </x-main-title>
-    <main>
+    <main class="edit_account">
 
         <h3>Zmień swój email</h3>
 

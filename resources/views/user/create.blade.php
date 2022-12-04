@@ -2,7 +2,7 @@
 
 @section('content')
     <x-main-title>Dodaj nowego użytkownika: </x-main-title>
-    <main>
+    <main class="user_main">
 
         <form method="POST" action="/user">
 
@@ -10,7 +10,7 @@
             @method("POST")
 
             <label>
-                Imie: <input type="text" name="first_name" value="{{old('first_name')}}" />
+                Imie: <input type="text" name="first_name" class="first_name" value="{{old('first_name')}}" />
             </label> <br>
 
             @error('first_name')
@@ -18,7 +18,7 @@
             @enderror
 
             <label>
-                Nazwisko: <input type="text" name="last_name" value="{{old('last_name')}}" />
+                Nazwisko: <input type="text" name="last_name" class="last_name" value="{{old('last_name')}}" />
             </label> <br>
 
             @error('last_name')
@@ -26,7 +26,7 @@
             @enderror
 
             <label>
-                Email: <input type="text" name="email" value="{{old('email')}}" />
+                Email: <input type="text" name="email" class="email" value="{{old('email')}}" />
             </label> <br>
 
             @error('email')
@@ -41,7 +41,7 @@
             <p>{{$message}}</p>
             @enderror
 
-            <button type="submit">
+            <button type="submit" class="user_submit">
                 Stwórz nowego użytkownika
             </button>
 

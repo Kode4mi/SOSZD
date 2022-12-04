@@ -456,6 +456,20 @@ $navbarMobileWidth: 100vw;
 .main.contrast {
     background-color: $background_contrast;
 
+    .user_submit {
+        background-color: $background_contrast;
+        border: 1px solid white;
+    }
+
+    .user_submit:hover {
+        background-color: white;
+        color:black;
+    }
+
+    label, p {
+        color:white;
+    }
+
     .main__h1 {
         color: white;
     }
@@ -561,52 +575,47 @@ $navbarMobileWidth: 100vw;
         }
 
     }
-
 }
 
+.user_main {
+    margin-top:1vh;
+    
+    input {
+        padding-left:0.5vw;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        border-radius: 15px;
+        border: 1px solid gray;
+    }
+
+    label {
+        margin-top:1vh;
+    }
+
+    input[type=checkbox] {
+        display:inline;
+    }
+
+    .user_submit {
+        margin-top:2vh;
+        background-color: $button-background;
+        color: $button-color;
+        border: none;
+        border-radius: 15px;
+        padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+        width: 25vh;
+    }
+
+    .user_submit:hover { 
+        background-color: darken($button-background,10%);
+    }
+
+}
 
 .create-ticket {
     @media (max-aspect-ratio: 1/1) {
         font-size: 1.6rem;
-    }
-
-    &__bottom-container {
-        display: flex;
-        width: 30vh;
-        height: 100%;
-        justify-content: space-between;
-
-        @media (max-aspect-ratio: 1/1) {
-            width: 100%;
-        }
-    }
-
-    &__label-file {
-        width: fit-content;
-
-        @media (max-aspect-ratio: 1/1) {
-            width: 45%;
-            height: 5vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    }
-
-    &__input-file {
-        color: $button-color;
-        background-color: rgb(125, 169, 125);
-        border-radius: 15px;
-        padding: 0.3rem 0.5rem 0.3rem 0.5rem;
-
-        input {
-            border-radius: 0 15px 15px 0;
-            width: 15vh;
-        }
-
-        ::-webkit-file-upload-button {
-            display: none;
-        }
     }
 
     &__form {
@@ -669,7 +678,7 @@ $navbarMobileWidth: 100vw;
         width: 10vh;
 
         @media (max-aspect-ratio: 1/1) {
-            width: 45%;
+            width: 100%;
         }
     }
 

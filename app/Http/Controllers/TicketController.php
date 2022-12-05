@@ -79,9 +79,12 @@ class TicketController extends Controller
             $i++;
         }
 
+        $sender = User::where("id", $ticket->sender_id)->first(['first_name', 'last_name']);
+
         return view('tickets.show', [
             'ticket' => $ticket,
-            'users' => $users
+            'users' => $users,
+            'sender' => $sender
         ]);
     }
 

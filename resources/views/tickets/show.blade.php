@@ -12,20 +12,31 @@
             </div>
         </div>
         <hr />
-        <p class="ticket__from">Od: </p>
+        <p class="ticket__from">Od:
+
+            {{$sender->first_name}}
+            {{$sender->last_name}}
+
+        </p>
         <hr />
         <p class="ticket__header-content">Treść:</p>
         <p class="ticket__content">{{$ticket->description}}</p>
 
         <p class="">
-            @foreach($users as $user)
-            {{$user["first_name"]}} {{$user["last_name"]}}
-                @if($user['read'] === 0)
-                    <i class="fa-sharp fa-solid fa-paper-plane"></i>
-                @else
-                    <i class="fa-sharp fa-solid fa-envelope-open"></i>
-                @endif
-            @endforeach
+            @if($ticket->sender_id === auth()->user()->id)
+                @foreach($users as $user)
+                {{$user["first_name"]}} {{$user["last_name"]}}
+                    @if($user['read'] === 1)
+                        <i class="fa-sharp fa-solid fa-envelope-open" title="Otwarto"></i>
+{{--                    @elseif(odpowiedz === true)--}}
+{{--                        <i class="fa-sharp fa-solid fa-envelope-dot"></i>--}}
+                    @else
+                        <i class="fa-sharp fa-solid fa-paper-plane" title="Wysłano"></i>
+                    @endif
+                @endforeach
+            @else
+                <i class="fa-sharp fa-solid fa-reply" title="Odpowiedz"></i>
+            @endif
         </p>
 
         @if(auth()->user()->id === $ticket->sender_id)

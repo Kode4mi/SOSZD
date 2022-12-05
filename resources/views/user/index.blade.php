@@ -46,7 +46,7 @@
         @endforeach
     </tbody>
 </table>
-        <a href="{{url('/user/register')}}">Stwórz nowego użytkownika</a>
+       <button class="user_button"> <a href="{{url('/user/register')}}">Stwórz nowego użytkownika</a> </button>
 
     @else
         <x-main-title>Brak użytkowników</x-main-title>

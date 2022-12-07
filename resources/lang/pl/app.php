@@ -37,6 +37,9 @@ return [
     'last_name' => 'nazwisko',
     'user_id' => 'użytkownik',
 
+    'cant_do_that' => 'Nie możesz tego zrobić',
+    'access_denied' => 'Nie masz do tego dostępu',
+
     'month' => [
         "brak danych",
         "styczeń",
@@ -66,5 +69,12 @@ return [
     'role' => 'rola',
 
     'redirected_ticket' => 'Przekazano sprawę',
+
+    'reply' => [
+        'sent' => 'Odpowiedź pomyślnie przesłana',
+    ],
+
+    'archive' => 'Zarchiwizowano sprawę/sprawy',
+    'un_archive' => 'Przywrócono sprawę/sprawy',
 
 ];

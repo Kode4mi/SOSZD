@@ -134,7 +134,7 @@ class UserController extends Controller
             return view('user.create');
         }
 
-        return redirect('tickets')->with('message', "Nie masz do tego dostępu");
+        return redirect('tickets')->with('message', __('app.access_denied'));
     }
 
     public function store(Request $request): RedirectResponse
@@ -173,7 +173,7 @@ class UserController extends Controller
         return redirect('/users')->with('message', __('app.user.create'));
         }
 
-        return redirect('tickets')->with('message', "Nie masz do tego dostępu");
+        return redirect('tickets')->with('message', __('app.access_denied'));
     }
 
     public function showCreatePassword($token): View

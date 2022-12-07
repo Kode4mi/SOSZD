@@ -26,18 +26,27 @@
             @if($ticket->sender_id === auth()->user()->id)
                 @foreach($users as $user)
                 {{$user["first_name"]}} {{$user["last_name"]}}
-                    @if($user['read'] === 1)
-                        <i class="fa-sharp fa-solid fa-envelope-open" title="Otwarto"></i>
-{{--                    @elseif(odpowiedz === true)--}}
-{{--                        <i class="fa-sharp fa-solid fa-envelope-dot"></i>--}}
+
+                @php
+
+                $redirect = App\Models\Redirect::where('ticket_id', $ticket->id)->where('user_id', $user['id'])->first();
+
+                @endphp
+
+                    @if($redirect->hasReply())
+                        <a href="{{url('reply/'.$redirect->id)}}"><i class="fa-sharp fa-solid fa-envelope-circle-check" title="Odpowiedź"></i></a>
                     @else
-                        <i class="fa-sharp fa-solid fa-paper-plane" title="Wysłano"></i>
+                        @if($user['read'] === 1)
+                            <i class="fa-sharp fa-solid fa-envelope-open" title="Otwarto"></i>
+                        @else
+                            <i class="fa-sharp fa-solid fa-paper-plane" title="Wysłano"></i>
+                        @endif
                     @endif
                 @endforeach
             @else
                 @unless($redirect === null)
                     @unless($redirect->hasReply())
-                        <a href=" {{url('reply/'.$redirect['id'])}} "> <i class="fa-sharp fa-solid fa-reply" title="Odpowiedz"></i> </a>
+                        <a href=" {{url('reply/create/'.$redirect['id'])}} "> <i class="fa-sharp fa-solid fa-reply" title="Odpowiedz"></i> </a>
                     @else
                         <span>Odpowiedź została już wysłana</span>
                     @endunless

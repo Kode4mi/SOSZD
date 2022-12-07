@@ -76,7 +76,7 @@ class TicketController extends Controller
         $i = 0;
 
         foreach($users as $user) {
-            $userData = User::where("id", $user['user_id'])->first(['first_name', 'last_name'])->toArray();
+            $userData = User::where("id", $user['user_id'])->first(['id', 'first_name', 'last_name'])->toArray();
             $users[$i] += $userData;
             $i++;
         }

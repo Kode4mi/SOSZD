@@ -20,7 +20,7 @@ class ReplyController extends Controller
                 'ticket' => Ticket::find($redirect->ticket_id),
             ]);
         }
-        return redirect('tickets')->with('message', 'Nie możesz tego zrobić');
+        return redirect('tickets')->with('message', __('app.cant_do_that'));
     }
 
     public function store(Request $request, Redirect $redirect) : RedirectResponse
@@ -45,10 +45,10 @@ class ReplyController extends Controller
 
             Reply::create($formFields);
 
-            return redirect("tickets")->with("message", "Odpowiedź pomyślnie przesłana");
+            return redirect("tickets")->with("message", __('app.reply.sent'));
         }
 
-        return redirect("tickets")->with("message", 'Nie możesz tego zrobić');
+        return redirect("tickets")->with("message", __('app.cant_do_that'));
     }
 
 }

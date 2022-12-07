@@ -125,6 +125,10 @@ $navbarMobileWidth: 100vw;
         }
     }
 
+    &__logo:hover {
+        background-color: darken($logo_background, 20%);
+    }
+
     &__sidebar {
         width: $navbarWidth;
         height: 82%;
@@ -262,9 +266,9 @@ $navbarMobileWidth: 100vw;
     }
 
     &__logged-user {
-        width: 20vh;
-        padding-right: 1vw;
-        padding-left: 1vw;
+        width: fit-content;
+        padding-right: 1rem;
+        padding-left: 1rem;
         font-style: normal;
         font-weight: 600;
         font-size: 1.1875rem;
@@ -419,9 +423,10 @@ $navbarMobileWidth: 100vw;
                 background-color: $button-background;
                 color: $button-color;
                 border: none;
+                height:fit-content;
                 border-radius: 15px;
                 padding: 0.5rem 0.5rem 0.3rem 0.5rem;
-                width: 15vh;
+                width: fit-content;
             }
 
             &__submit:hover {
@@ -611,6 +616,7 @@ $navbarMobileWidth: 100vw;
         }
     
         &__button {
+            width:fit-content;
             background-color: $background_contrast;
             border: 1px solid white;
         }
@@ -725,7 +731,7 @@ $navbarMobileWidth: 100vw;
         border: none;
         border-radius: 15px;
         padding: 0.3rem 0.5rem 0.3rem 0.5rem;
-        width: 10vh;
+        width:fit-content;
 
         @media (max-aspect-ratio: 1/1) {
             width: 100%;
@@ -1182,11 +1188,10 @@ $navbarMobileWidth: 100vw;
 .ticket {
     &__header-row {
         display: grid;
-        grid-template-columns: 0.5fr 7fr repeat(2, 3fr) 1.5fr;
+        grid-template-columns: 0.5fr 7fr 3fr 2fr 2.5fr;
         grid-template-rows: 1fr;
         grid-column-gap: 0;
         grid-row-gap: 0;
-
     }
 
     &__select-all {
@@ -1225,6 +1230,7 @@ $navbarMobileWidth: 100vw;
             display: none;
         }
     }
+
 
     &__row {
         display: grid;

@@ -9,6 +9,7 @@
 </header>
 
 <script type="text/javascript">
+  var root = document.querySelector(":root");
 
   document.querySelector('.contrast-button').addEventListener("click", function contrastToggle() {
       document.querySelector(".header").classList.toggle("contrast");
@@ -18,4 +19,13 @@
       document.querySelector(".page-navigator").classList.toggle("contrast");
       document.querySelector(".flash-message-content").classList.toggle("contrast");
   });
+
+  document.querySelector('.header__large-font').addEventListener("click", function increaseFontSize() {
+    root.style.fontSize = root.style.fontSize="1.3rem";
+  });
+
+  document.querySelector('.header__small-font').addEventListener("click", function decreaseFontSize() {
+    root.style.fontSize = root.style.fontSize="1rem";
+  });
+
 </script>

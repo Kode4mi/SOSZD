@@ -1,7 +1,7 @@
 @extends('templates.layout')
 
 @section('content')
-    <x-main-title>Przekazywanie sprawy</x-main-title>
+    <x-main-title>Odpowiedz na sprawę</x-main-title>
 
     <main class="redirect-ticket">
 

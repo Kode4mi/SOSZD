@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Relation;
 
 /**
  * @method static where(string $column, mixed $value)
@@ -21,4 +22,9 @@ class Reply extends Model
     use HasFactory;
 
     protected $fillable = ['redirect_id', 'message', 'files'];
+
+    public function redirect() : Relation
+    {
+        return $this->belongsTo(Redirect::class);
+    }
 }

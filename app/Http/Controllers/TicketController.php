@@ -83,6 +83,8 @@ class TicketController extends Controller
 
         $sender = User::where("id", $ticket->sender_id)->first(['first_name', 'last_name']);
 
+        $redirect = Redirect::where('ticket_id', $ticket['id'])->where('user_id', auth()->user()->id)->first();
+
         return view('tickets.show', [
             'ticket' => $ticket,
             'users' => $users,

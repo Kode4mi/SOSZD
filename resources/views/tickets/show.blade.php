@@ -36,7 +36,11 @@
                 @endforeach
             @else
                 @unless($redirect === null)
-                <a href=" {{url('reply/'.$redirect['id'])}} "> <i class="fa-sharp fa-solid fa-reply" title="Odpowiedz"></i> </a>
+                    @unless($redirect->hasReply())
+                        <a href=" {{url('reply/'.$redirect['id'])}} "> <i class="fa-sharp fa-solid fa-reply" title="Odpowiedz"></i> </a>
+                    @else
+                        <span>Odpowiedź została już wysłana</span>
+                    @endunless
                 @endunless
             @endif
         </p>

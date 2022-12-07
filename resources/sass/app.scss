@@ -217,7 +217,7 @@ $navbarMobileWidth: 100vw;
 
     button:hover {
         background-color: white;
-        color:black;
+        color: black;
     }
 
     ::selection {
@@ -259,7 +259,7 @@ $navbarMobileWidth: 100vw;
         height: 6vh;
         text-align: center;
         background-color: $user-background;
-        padding:1.6rem;
+        padding: 1.6rem;
 
         display: flex;
         justify-content: center;
@@ -364,7 +364,7 @@ $navbarMobileWidth: 100vw;
 
         tr a {
             text-decoration: none;
-            color:black;
+            color: black;
         }
 
         table {
@@ -424,7 +424,7 @@ $navbarMobileWidth: 100vw;
                 background-color: $button-background;
                 color: $button-color;
                 border: none;
-                height:fit-content;
+                height: fit-content;
                 border-radius: 15px;
                 padding: 0.5rem 0.5rem 0.3rem 0.5rem;
                 width: fit-content;
@@ -453,7 +453,7 @@ $navbarMobileWidth: 100vw;
             &__header-content,
             &__content {
                 font-size: 1.2rem;
-                color:black;
+                color: black;
             }
 
         }
@@ -461,20 +461,20 @@ $navbarMobileWidth: 100vw;
     }
 
     a {
-        color:white;
+        color: white;
     }
-    
- .user_button {
-    background-color: $button-background;
-    color:white;
-    text-decoration: none;
-    border-radius: 15px;
-    padding: 0.5rem 0.5rem 0.3rem 0.5rem;
-}
 
-.user_button:hover {
-    background-color: darken($button-background,10);
-}
+    .user_button {
+        background-color: $button-background;
+        color: white;
+        text-decoration: none;
+        border-radius: 15px;
+        padding: 0.5rem 0.5rem 0.3rem 0.5rem;
+    }
+
+    .user_button:hover {
+        background-color: darken($button-background, 10);
+    }
 
 }
 
@@ -482,16 +482,16 @@ $navbarMobileWidth: 100vw;
     background-color: $background_contrast;
 
     .edit_account {
-        color:white;
+        color: white;
 
         button {
-        border:1px solid white;
-        background-color: $background_contrast;
+            border: 1px solid white;
+            background-color: $background_contrast;
         }
 
-        button:hover { 
-        background-color: white;
-        color:black;
+        button:hover {
+            background-color: white;
+            color: black;
         }
 
     }
@@ -503,24 +503,25 @@ $navbarMobileWidth: 100vw;
 
     .user_button {
         background-color: $background_contrast;
-        color:white;
+        color: white;
         text-decoration: none;
         border-radius: 15px;
         padding: 0.5rem 0.5rem 0.3rem 0.5rem;
         border: 1px solid white;
     }
-    
+
     .user_button:hover {
-        background-color: lighten($background_contrast,10);
+        background-color: lighten($background_contrast, 10);
     }
 
     .user_submit:hover {
         background-color: white;
-        color:black;
+        color: black;
     }
 
-    label, p {
-        color:white;
+    label,
+    p {
+        color: white;
     }
 
     .main__h1 {
@@ -542,14 +543,14 @@ $navbarMobileWidth: 100vw;
     .searchbar {
         background-color: black;
 
-        i{
-            filter:invert(100%);
+        i {
+            filter: invert(100%);
         }
 
     }
 
     .searchbar__input {
-        color:white;
+        color: white;
         background-color: black;
     }
 
@@ -571,11 +572,13 @@ $navbarMobileWidth: 100vw;
             background-color: black;
             border: 2px solid yellow;
         }
-    
-        &__link:hover, &__dot:hover, &__current-page:hover {
-            background-color: lighten($background_contrast,20%);
+
+        &__link:hover,
+        &__dot:hover,
+        &__current-page:hover {
+            background-color: lighten($background_contrast, 20%);
         }
-    
+
     }
 
     ::selection {
@@ -583,7 +586,7 @@ $navbarMobileWidth: 100vw;
     }
 
     .ticket {
-        color:white;
+        color: white;
 
         &__submit {
             background-color: $background_contrast;
@@ -591,54 +594,57 @@ $navbarMobileWidth: 100vw;
         }
 
         &__submit:hover {
-            background-color: ligthen($background_contrast,20%);
+            background-color: ligthen($background_contrast, 20%);
             border: 1px solid white;
         }
     }
 
     .ticket__header {
-        color:white;
+        color: white;
     }
 
     .create-ticket {
         label {
-            color:white;
+            color: white;
         }
 
-        &__topic, &__deadline, &__select, &__content {
+        &__topic,
+        &__deadline,
+        &__select,
+        &__content {
             background-color: $background_contrast;
-            color:white;
+            color: white;
             border: solid 1px white;
         }
 
         &__content {
             border: solid 1px white;
-            font-weight:bold;
+            font-weight: bold;
         }
-    
+
         &__button {
-            width:fit-content;
+            width: fit-content;
             background-color: $background_contrast;
             border: 1px solid white;
         }
 
         &__button:hover {
-            background-color: lighten($background_contrast,100%);
-            color:black;
+            background-color: lighten($background_contrast, 100%);
+            color: black;
         }
 
         ::selection {
-            background-color:rgb(59, 245, 245);
+            background-color: rgb(59, 245, 245);
         }
 
     }
 }
 
 .user_main {
-    margin-top:1vh;
-    
+    margin-top: 1vh;
+
     input {
-        padding-left:0.5vw;
+        padding-left: 0.5vw;
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: repeat(4, 1fr);
@@ -647,15 +653,15 @@ $navbarMobileWidth: 100vw;
     }
 
     label {
-        margin-top:1vh;
+        margin-top: 1vh;
     }
 
     input[type=checkbox] {
-        display:inline;
+        display: inline;
     }
 
     .user_submit {
-        margin-top:2vh;
+        margin-top: 2vh;
         background-color: $button-background;
         color: $button-color;
         border: none;
@@ -664,8 +670,8 @@ $navbarMobileWidth: 100vw;
         width: 25vh;
     }
 
-    .user_submit:hover { 
-        background-color: darken($button-background,10%);
+    .user_submit:hover {
+        background-color: darken($button-background, 10%);
     }
 
 }
@@ -732,7 +738,7 @@ $navbarMobileWidth: 100vw;
         border: none;
         border-radius: 15px;
         padding: 0.3rem 0.5rem 0.3rem 0.5rem;
-        width:fit-content;
+        width: fit-content;
 
         @media (max-aspect-ratio: 1/1) {
             width: 100%;
@@ -961,20 +967,20 @@ $navbarMobileWidth: 100vw;
     background-color: $background_contrast;
 
     form {
-        border:3px solid white;
+        border: 3px solid white;
         background-color: $background_contrast;
     }
-    
+
     .login__button {
         background-color: $background_contrast;
-        border:solid 3px white;
+        border: solid 3px white;
     }
 
     .login__button:hover {
         background-color: white;
-        color:black;
+        color: black;
     }
-    
+
     .login__icon {
         background-color: $background_contrast;
         border: 2px solid white;
@@ -982,16 +988,16 @@ $navbarMobileWidth: 100vw;
 
     .login__input {
         background-color: white;
-        color:black;
-        font-weight:bold;
+        color: black;
+        font-weight: bold;
     }
 
     .login__input::placeholder {
-        color:black;
+        color: black;
     }
 
-    .login__remind-password{
-        color:rgb(255, 230, 0);
+    .login__remind-password {
+        color: rgb(255, 230, 0);
     }
 
     ::selection {
@@ -1108,10 +1114,10 @@ $navbarMobileWidth: 100vw;
     width: fit-content;
 }
 
-.flash-message-content.contrast{
+.flash-message-content.contrast {
     background-color: white;
     border-left: 5px solid rgb(255, 230, 0);
-    font-weight:bold;
+    font-weight: bold;
     color: black;
 }
 
@@ -1359,12 +1365,13 @@ $navbarMobileWidth: 100vw;
         height: 1vh;
     }
 
-    &__link:hover, &__dot:hover {
+    &__link:hover,
+    &__dot:hover {
         background-color: lighten(#4BA68D, 20%);
     }
 
-    &__current-page:hover{
-        background-color: darken(#204a3f,5%);
+    &__current-page:hover {
+        background-color: darken(#204a3f, 5%);
     }
 
 }

@@ -21,11 +21,19 @@
   });
 
   document.querySelector('.header__large-font').addEventListener("click", function increaseFontSize() {
-    root.style.fontSize = root.style.fontSize="1.3rem";
+    const rootX  = document.querySelector(":root");
+    let fontSizeOfRoot = window.getComputedStyle(rootX, null).getPropertyValue('font-size');
+    fontSizeOfRoot = parseFloat(fontSizeOfRoot);
+    if(fontSizeOfRoot < 20)
+    rootX.style.fontSize = (fontSizeOfRoot + 1)+"px";
   });
 
   document.querySelector('.header__small-font').addEventListener("click", function decreaseFontSize() {
-    root.style.fontSize = root.style.fontSize="1rem";
+    const rootX  = document.querySelector(":root");
+    let fontSizeOfRoot = window.getComputedStyle(rootX, null).getPropertyValue('font-size');
+    fontSizeOfRoot = parseFloat(fontSizeOfRoot);
+    if(fontSizeOfRoot > 6)
+    rootX.style.fontSize = (fontSizeOfRoot - 1) +"px";
   });
 
 </script>

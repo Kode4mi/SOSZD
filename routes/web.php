@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArchiveController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\RedirectController;
+use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +42,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('redirect/{ticket}', [RedirectController::class, 'index']);
 
     Route::post('redirect/{ticket}', [RedirectController::class, 'store']);
+
+// Reply
+
+    Route::get('reply/{redirect}', [ReplyController::class, 'create']);
+
+    Route::post('reply/{redirect}', [ReplyController::class, 'store']);
 
 // Archive
 

@@ -10,10 +10,8 @@ return new class extends Migration
     {
         Schema::create('replies', static function (Blueprint $table) {
             $table->id();
-            $table->unsignedbigInteger('ticket_id');
-            $table->foreign('ticket_id')->references('id')->on('tickets')->onDelete('cascade')->onUpdate('cascade');  // tworzenie klucza obcego do tabeli 'tickets'
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');       // tworzenie klucza obcego do tabeli 'users'
+            $table->unsignedBigInteger('redirect_id');
+            $table->foreign('redirect_id')->references('id')->on('redirects')->onDelete('cascade')->onUpdate('cascade');       // tworzenie klucza obcego do tabeli 'users'
             $table->text('message');
             $table->string('files')->nullable();
             $table->timestamps();

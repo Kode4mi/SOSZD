@@ -35,7 +35,9 @@
                     @endif
                 @endforeach
             @else
-                <i class="fa-sharp fa-solid fa-reply" title="Odpowiedz"></i>
+                @unless($redirect === null)
+                <a href=" {{url('reply/'.$redirect['id'])}} "> <i class="fa-sharp fa-solid fa-reply" title="Odpowiedz"></i> </a>
+                @endunless
             @endif
         </p>
 

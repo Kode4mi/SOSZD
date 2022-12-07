@@ -49,6 +49,8 @@ class TicketController extends Controller
 
     public function show(Ticket $ticket): View | RedirectResponse
     {
+        $redirect = "";
+
         /* @var User $user */
         $user = auth()->user();
         if($user->role === "nauczyciel") {
@@ -58,10 +60,10 @@ class TicketController extends Controller
                 return redirect("/tickets")->with("message", __('app.ticket.access_denied'));
             }
 
-            Redirect::find($redirect[0]['id'])->update(['read' => true]);
+            $redirect = Redirect::find($redirect[0]['id'])->update(['read' => true]);
         }
 
-        $redirects = Redirect::where('ticket_id', $ticket->id)->get(['user_id', 'read'])->toArray();
+        $redirects = Redirect::where('ticket_id', $ticket->id)->get(['id', 'user_id', 'read'])->toArray();
 
         $i = 0;
         $users = [];
@@ -84,7 +86,8 @@ class TicketController extends Controller
         return view('tickets.show', [
             'ticket' => $ticket,
             'users' => $users,
-            'sender' => $sender
+            'sender' => $sender,
+            'redirect' => $redirect,
         ]);
     }
 

@@ -20,5 +20,5 @@ class Reply extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['ticket_id', 'user_id', 'message', 'files'];
+    protected $fillable = ['redirect_id', 'message', 'files'];
 }

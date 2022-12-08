@@ -22,6 +22,15 @@
         <p class="ticket__header-content">Treść:</p>
         <p class="ticket__content">{{$ticket->description}}</p>
 
+        @unless($ticket->files === null)
+        <p class="">Załączniki:</p>
+
+{{--            @foreach($ticket->getFiles() as $file)--}}
+{{--                <a href="{{Illuminate\Support\Facades\Storage::disk('local')->getDriver()->read("public/".$file)}}"> Plik </a>--}}
+{{--            @endforeach--}}
+        @endunless
+
+
         <p class="">
             @if($ticket->sender_id === auth()->user()->id)
                 @foreach($users as $user)
@@ -30,11 +39,12 @@
                 @php
 
                 $redirect = App\Models\Redirect::where('ticket_id', $ticket->id)->where('user_id', $user['id'])->first();
+                $reply = \App\Models\Reply::where('redirect_id', $redirect->id)->first();
 
                 @endphp
 
                     @if($redirect->hasReply())
-                        <a href="{{url('reply/'.$redirect->id)}}"><i class="fa-sharp fa-solid fa-envelope-circle-check" title="Odpowiedź"></i></a>
+                        <a href="{{url('reply/'.$reply->id)}}"><i class="fa-sharp fa-solid fa-envelope-circle-check" title="Odpowiedź"></i></a>
                     @else
                         @if($user['read'] === 1)
                             <i class="fa-sharp fa-solid fa-envelope-open" title="Otwarto"></i>

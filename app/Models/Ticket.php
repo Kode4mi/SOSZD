@@ -66,4 +66,14 @@ class Ticket extends Model
         };
     }
 
+    public function getFiles(): array
+    {
+        $files = explode(";", $this->files);
+        $count = count($files);
+
+        unset($files[$count-1]);
+
+        return $files;
+    }
+
 }

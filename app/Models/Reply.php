@@ -12,8 +12,7 @@ use Illuminate\Database\Eloquent\Relations\Relation;
  * @method static find(integer $id)
  *
  * @property integer $id
- * @property integer $ticket_id
- * @property integer $user_id
+ * @property integer $redirect_id
  * @property string $message
  * @property string $files
  */

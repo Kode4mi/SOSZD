@@ -45,7 +45,7 @@ Route::middleware(['auth'])->group(function () {
 
 // Reply
 
-    Route::get('reply/{redirect}', [ReplyController::class, 'show']);
+    Route::get('reply/{reply}', [ReplyController::class, 'show']);
 
     Route::get('reply/create/{redirect}', [ReplyController::class, 'create']);
 

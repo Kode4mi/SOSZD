@@ -455,15 +455,20 @@ $navbarMobileWidth: 100vw;
     }
 
     a {
-        color:white;
+        color:black;
     }
-    
+
  .user_button {
     background-color: $button-background;
     color:white;
     text-decoration: none;
     border-radius: 15px;
     padding: 0.5rem 0.5rem 0.3rem 0.5rem;
+
+     a {
+         color: white;
+     }
+
 }
 
 .user_button:hover {
@@ -483,7 +488,7 @@ $navbarMobileWidth: 100vw;
         background-color: $background_contrast;
         }
 
-        button:hover { 
+        button:hover {
         background-color: white;
         color:black;
         }
@@ -503,7 +508,7 @@ $navbarMobileWidth: 100vw;
         padding: 0.5rem 0.5rem 0.3rem 0.5rem;
         border: 1px solid white;
     }
-    
+
     .user_button:hover {
         background-color: lighten($background_contrast,10);
     }
@@ -565,11 +570,11 @@ $navbarMobileWidth: 100vw;
             background-color: black;
             border: 2px solid yellow;
         }
-    
+
         &__link:hover, &__dot:hover, &__current-page:hover {
             background-color: lighten($background_contrast,20%);
         }
-    
+
     }
 
     ::selection {
@@ -609,7 +614,7 @@ $navbarMobileWidth: 100vw;
             border: solid 1px white;
             font-weight:bold;
         }
-    
+
         &__button {
             background-color: $background_contrast;
             border: 1px solid white;
@@ -629,7 +634,7 @@ $navbarMobileWidth: 100vw;
 
 .user_main {
     margin-top:1vh;
-    
+
     input {
         padding-left:0.5vw;
         display: grid;
@@ -657,7 +662,7 @@ $navbarMobileWidth: 100vw;
         width: 25vh;
     }
 
-    .user_submit:hover { 
+    .user_submit:hover {
         background-color: darken($button-background,10%);
     }
 
@@ -957,7 +962,7 @@ $navbarMobileWidth: 100vw;
         border:3px solid white;
         background-color: $background_contrast;
     }
-    
+
     .login__button {
         background-color: $background_contrast;
         border:solid 3px white;
@@ -967,7 +972,7 @@ $navbarMobileWidth: 100vw;
         background-color: white;
         color:black;
     }
-    
+
     .login__icon {
         background-color: $background_contrast;
         border: 2px solid white;

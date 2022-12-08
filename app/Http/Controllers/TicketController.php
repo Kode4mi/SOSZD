@@ -28,7 +28,7 @@ class TicketController extends Controller
                 $ticket_id[$i] = $tickets[$i]["ticket_id"];
             }
 
-            $tickets = Ticket::sortable()->latest()->where('active', 1)->whereIn('id', $ticket_id)->filter(request(['search']))->simplePaginate(12);
+            $tickets = Ticket::sortable()->latest()->where('active', 1)->whereIn('id', $ticket_id)->orWhere('sender_id', $user->id)->filter(request(['search']))->simplePaginate(12);
         }
         else {
             $tickets = Ticket::sortable()->latest()->where('active', 1)->filter(request(['search']))->simplePaginate(12);
@@ -56,11 +56,15 @@ class TicketController extends Controller
         if($user->role === "nauczyciel") {
             $redirect = Redirect::where('ticket_id', $ticket->id)->where('user_id', $user->id)->get();
 
-            if ($redirect->isEmpty()) {
+            if($ticket->sender_id === $user->id) {
+                $redirect = "";
+            }
+            else if ($redirect->isEmpty()) {
                 return redirect("/tickets")->with("message", __('app.ticket.access_denied'));
             }
-
-            $redirect = Redirect::find($redirect[0]['id'])->update(['read' => true]);
+            else {
+                $redirect = Redirect::find($redirect[0]['id'])->update(['read' => true]);
+            }
         }
 
         $redirects = Redirect::where('ticket_id', $ticket->id)->get(['id', 'user_id', 'read'])->toArray();

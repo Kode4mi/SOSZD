@@ -89,6 +89,9 @@ class TicketController extends Controller
 
         $redirect = Redirect::where('ticket_id', $ticket['id'])->where('user_id', auth()->user()->id)->first();
 
+        if($users === []) {
+            $users = User::whereNot('id', auth()->user()->id)->get(['id', 'first_name', 'last_name']);
+        }
         return view('tickets.show', [
             'ticket' => $ticket,
             'users' => $users,

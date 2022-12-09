@@ -22,6 +22,9 @@
         <p class="ticket__header-content">Treść:</p>
         <p class="ticket__content">{{$ticket->description}}</p>
 
+
+
+
         @unless($ticket->files === null)
         <p class="">Załączniki:</p>
 
@@ -34,7 +37,10 @@
 
 
         <p class="">
-            @if($ticket->sender_id === auth()->user()->id)
+
+            @if(!is_array($users))
+                <x-redirect-form :$ticket :$users></x-redirect-form>
+            @elseif($ticket->sender_id === auth()->user()->id && is_array($users))
                 @foreach($users as $user)
                 {{$user["first_name"]}} {{$user["last_name"]}}
 
@@ -66,7 +72,7 @@
             @endif
         </p>
 
-        @if(auth()->user()->id === $ticket->sender_id)
+        @if(auth()->user()->id === $ticket->sender_id && $redirect !== null)
             <div> <a href="/redirect/{{$ticket->id}}"> <button class="ticket__submit">Prześlij sprawę </button></a> </div>
         @endif
     </main>

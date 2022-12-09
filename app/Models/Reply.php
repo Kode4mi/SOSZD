@@ -26,4 +26,15 @@ class Reply extends Model
     {
         return $this->belongsTo(Redirect::class);
     }
+
+    public function getFiles(): array
+    {
+        $files = explode(";", $this->files);
+        $count = count($files);
+
+        unset($files[$count-1]);
+
+        return $files;
+    }
+
 }

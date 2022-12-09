@@ -134,9 +134,9 @@ class TicketController extends Controller
             'sender_id' => $user->id,
         ];
 
-        Ticket::create($formFields);
+        $ticket = Ticket::create($formFields);
 
-        return redirect('tickets')->with('message', __('app.ticket.create'));
+        return redirect("ticket/$ticket->id")->with('message', __('app.ticket.create'));
     }
 
 

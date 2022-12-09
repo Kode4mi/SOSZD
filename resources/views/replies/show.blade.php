@@ -22,6 +22,15 @@
         <p class="ticket__header-content">Treść:</p>
         <p class="ticket__content">{{$reply->message}}</p>
 
+        @unless($reply->files === null)
+            <p class="">Załączniki:</p>
+
+            @foreach($reply->getFiles() as $file)
+                <a href="{{asset("storage/".$file)}}" style="color: black;">Plik
+                    {{--                    <img src="{{asset("storage/".$file)}}" alt="Załącznik" width="100px"/>--}}
+                </a>
+            @endforeach
+        @endunless
 
 
     </main>

@@ -15,7 +15,10 @@ class ReplyController extends Controller
 
     public function create(Redirect $redirect) : RedirectResponse|View
     {
-        if((!$redirect->hasReply() && auth()->user()->id === $redirect->user_id) || auth()->user()->role === "admin") {
+        /** @var User $user */
+        $user = auth()->user();
+
+        if((!$redirect->hasReply() && $user->id === $redirect->user_id) || $user->role === "admin") {
             return View('replies.create', [
                 'redirect' => $redirect,
                 'ticket' => Ticket::find($redirect->ticket_id),
@@ -26,7 +29,10 @@ class ReplyController extends Controller
 
     public function store(Request $request, Redirect $redirect) : RedirectResponse
     {
-        if ((!$redirect->hasReply() && auth()->user()->id === $redirect->user_id) || auth()->user()->role === "admin") {
+        /** @var User $user */
+        $user = auth()->user();
+
+        if ((!$redirect->hasReply() && $user->id === $redirect->user_id) || $user->role === "admin") {
             $formFields = $request->validate([
                 'message' => 'required',
                 'files' => 'nullable',

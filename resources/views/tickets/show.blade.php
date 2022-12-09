@@ -25,9 +25,11 @@
         @unless($ticket->files === null)
         <p class="">Załączniki:</p>
 
-{{--            @foreach($ticket->getFiles() as $file)--}}
-{{--                <a href="{{Illuminate\Support\Facades\Storage::disk('local')->getDriver()->read("public/".$file)}}"> Plik </a>--}}
-{{--            @endforeach--}}
+            @foreach($ticket->getFiles() as $file)
+                <a href="{{asset("storage/".$file)}}" style="color: black;">Plik
+{{--                    <img src="{{asset("storage/".$file)}}" alt="Załącznik" width="100px"/>--}}
+                </a>
+            @endforeach
         @endunless
 
 

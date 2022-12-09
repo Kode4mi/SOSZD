@@ -15,7 +15,7 @@ class RedirectController extends Controller
     {
         $redirect = Redirect::where('ticket_id', $ticket->id)->distinct()->get('user_id');
 
-        $users = User::whereNotIn('id', $redirect)->get(['id', 'first_name', 'last_name']);
+        $users = User::whereNotIn('id', $redirect)->whereNot('id', auth()->user()->id)->get(['id', 'first_name', 'last_name']);
 
         return view('tickets.redirection', [
             'ticket' => $ticket,

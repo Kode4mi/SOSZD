@@ -13,12 +13,12 @@ use Illuminate\View\View;
 class ReplyController extends Controller
 {
 
-    public function create(Redirect $redirect) : RedirectResponse|View
+    public function create(Redirect $redirect): RedirectResponse|View
     {
         /** @var User $user */
         $user = auth()->user();
 
-        if((!$redirect->hasReply() && $user->id === $redirect->user_id) || $user->role === "admin") {
+        if ((!$redirect->hasReply() && $user->id === $redirect->user_id) || $user->role === "admin") {
             return View('replies.create', [
                 'redirect' => $redirect,
                 'ticket' => Ticket::find($redirect->ticket_id),
@@ -27,7 +27,7 @@ class ReplyController extends Controller
         return redirect('tickets')->with('message', __('app.cant_do_that'));
     }
 
-    public function store(Request $request, Redirect $redirect) : RedirectResponse
+    public function store(Request $request, Redirect $redirect): RedirectResponse
     {
         /** @var User $user */
         $user = auth()->user();
@@ -58,7 +58,8 @@ class ReplyController extends Controller
         return redirect("tickets")->with("message", __('app.cant_do_that'));
     }
 
-    public function show(Reply $reply) : View {
+    public function show(Reply $reply): View
+    {
 
         $redirect = Redirect::find($reply->redirect_id)->first();
 

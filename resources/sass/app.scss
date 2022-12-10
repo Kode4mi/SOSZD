@@ -430,6 +430,10 @@ $navbarMobileWidth: 100vw;
 
             &__content {
                 height: 49vh;
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+
             }
 
             &__header {

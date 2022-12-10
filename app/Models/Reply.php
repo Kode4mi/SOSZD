@@ -22,17 +22,18 @@ class Reply extends Model
 
     protected $fillable = ['redirect_id', 'message', 'files'];
 
-    public function redirect() : Relation
+    public function redirect(): Relation
     {
         return $this->belongsTo(Redirect::class);
     }
 
+    // Tablica z załącznikami z odpowiedzi
     public function getFiles(): array
     {
         $files = explode(";", $this->files);
         $count = count($files);
 
-        unset($files[$count-1]);
+        unset($files[$count - 1]);
 
         return $files;
     }

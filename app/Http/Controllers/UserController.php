@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\newUserEmailJob;
+use App\Models\Redirect;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -127,44 +128,52 @@ class UserController extends Controller
         ]);
     }
 
-    public function register(): View
+    public function register(): View|RedirectResponse
     {
-        return view('user.create');
+        if (auth()->user()->role === "admin") {
+            return view('user.create');
+        }
+
+        return redirect('tickets')->with('message', __('app.access_denied'));
     }
 
     public function store(Request $request): RedirectResponse
     {
-        $formFields = $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => ['required', 'email', 'unique:users'],
-            'role' => 'nullable',
-        ], [],
-            [
-                'first_name' => __('app.first_name'),
-                'last_name' => __('app.last_name'),
-                'role' => __('app.role'),
+        if (auth()->user()->role === "admin") {
+            $formFields = $request->validate([
+                'first_name' => 'required',
+                'last_name' => 'required',
+                'email' => ['required', 'email', 'unique:users'],
+                'role' => 'nullable',
+            ], [],
+                [
+                    'first_name' => __('app.first_name'),
+                    'last_name' => __('app.last_name'),
+                    'role' => __('app.role'),
+                ]);
+
+            if (!isset($formFields["role"])) {
+                $formFields += ["role" => "nauczyciel"];
+            }
+
+            $formFields += ["password" => "nie ustawiono"];
+
+            $token = Str::random(64);
+
+            DB::table('password_resets')->insert([
+                'email' => $formFields['email'],
+                'token' => $token,
+                'created_at' => Carbon::now()
             ]);
 
-        if (!isset($formFields["role"])) {
-            $formFields += ["role" => "nauczyciel"];
+            dispatch(new newUserEmailJob($token, $formFields['email']));
+
+            User::create($formFields);
+
+            return redirect('/users')->with('message', __('app.user.create'));
         }
 
-        $formFields += ["password" => "nie ustawiono"];
-
-        $token = Str::random(64);
-
-        DB::table('password_resets')->insert([
-            'email' => $formFields['email'],
-            'token' => $token,
-            'created_at' => Carbon::now()
-        ]);
-
-        dispatch(new newUserEmailJob($token, $formFields['email']));
-
-        User::create($formFields);
-
-        return redirect('/users')->with('message', __('app.user.create'));
+        return redirect('tickets')->with('message', __('app.access_denied'));
     }
 
     public function showCreatePassword($token): View

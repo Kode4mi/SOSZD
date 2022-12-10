@@ -38,7 +38,7 @@ class ArchiveController extends Controller
             }
         }
 
-        return redirect()->back()->with('message', 'Zarchiwizowano sprawę/sprawy');
+        return redirect()->back()->with('message', __('app.archive'));
     }
 
     public function unarchive(Request $request) : RedirectResponse {
@@ -57,6 +57,6 @@ class ArchiveController extends Controller
             }
         }
 
-        return redirect()->back()->with('message', 'Przywrócono sprawę/sprawy');
+        return redirect()->back()->with('message', __('app.un_archive'));
     }
 }

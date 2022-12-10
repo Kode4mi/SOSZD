@@ -40,21 +40,22 @@ class Ticket extends Model
         }
     }
 
-    public function redirects() : HasOneOrMany
+    public function redirects(): HasOneOrMany
     {
         return $this->hasOne(Redirect::class);
     }
 
     // Metoda zwracająca odpowiednio sformatowaną datę dla konkretnej sprawy
-    public function dateFormat() : String {
-        $date=date_create($this->deadline);
+    public function dateFormat(): string
+    {
+        $date = date_create($this->deadline);
         $month = "miesiąc";
         $today = new DateTime("today");
 
-        $diff = $today->diff( $date );
-        $diffDays = (integer)$diff->format( "%R%a" );
+        $diff = $today->diff($date);
+        $diffDays = (integer)$diff->format("%R%a");
 
-        for($i = 1; (string)$i <= date_format($date, "m"); $i++) {
+        for ($i = 1; (string)$i <= date_format($date, "m"); $i++) {
             $month = __("app.month.$i");
         }
 
@@ -64,6 +65,17 @@ class Ticket extends Model
             +1 => "Jutro o " . date_format($date, "H:i"),
             default => date_format($date, "d ") . $month . date_format($date, " y") . "r.",
         };
+    }
+
+    // Tablica z załącznikami ze sprawy
+    public function getFiles(): array
+    {
+        $files = explode(";", $this->files);
+        $count = count($files);
+
+        unset($files[$count - 1]);
+
+        return $files;
     }
 
 }

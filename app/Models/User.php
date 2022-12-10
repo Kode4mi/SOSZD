@@ -16,6 +16,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static sortable()
  * @method static whereNotIn(string $column, mixed $value)
  * @method static create(array $formFields)
+ * @method static whereNot(string $column, mixed $value)
  *
  * @property integer $id
  * @property string $first_name

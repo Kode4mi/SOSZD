@@ -14,8 +14,10 @@ class RedirectTest extends TestCase
     public function test_redirect_status_auth() : void
     {
 
-        $user = User::factory()->make();
-        $ticket = Ticket::factory()->create();
+        $user = User::factory()->create();
+        $ticket = Ticket::factory()->create([
+            'sender_id' => $user->id,
+        ]);
 
         $response = $this->actingAs($user)->get('/redirect/'.$ticket->id);
 
@@ -23,6 +25,7 @@ class RedirectTest extends TestCase
         $response->assertViewHas('ticket', $ticket);
         $response->assertViewIs('tickets.redirection');
 
+        $user->delete();
         $ticket->delete();
 
     }
@@ -41,8 +44,10 @@ class RedirectTest extends TestCase
 
     public function test_redirect_store_auth() : void
     {
-        $user = User::factory()->make();
-        $ticket = Ticket::factory()->create();
+        $user = User::factory()->create();
+        $ticket = Ticket::factory()->create([
+            'sender_id' => $user->id,
+        ]);
         $user_selected = User::factory()->create();
 
         $response = $this->actingAs($user)->post('/redirect/'.$ticket->id, ['user_id' => [$user_selected->id]]);
@@ -55,12 +60,15 @@ class RedirectTest extends TestCase
         $redirect->delete();
         $ticket->delete();
         $user_selected->delete();
+        $user->delete();
     }
 
     public function test_redirect_store_auth_not_valid() : void
     {
-        $user = User::factory()->make();
-        $ticket = Ticket::factory()->create();
+        $user = User::factory()->create();
+        $ticket = Ticket::factory()->create([
+            'sender_id' => $user->id,
+        ]);
 
         $response = $this->from('/redirect/'.$ticket->id)->actingAs($user)->post('/redirect/'.$ticket->id);
 
@@ -72,8 +80,10 @@ class RedirectTest extends TestCase
 
     public function test_redirect_store_multiple_auth() : void
     {
-        $user = User::factory()->make();
-        $ticket = Ticket::factory()->create();
+        $user = User::factory()->create();
+        $ticket = Ticket::factory([
+            'sender_id' => $user->id,
+        ])->create();
         $user_selected = User::factory()->create();
         $user_selected_2 = User::factory()->create();
         $user_selected_3 = User::factory()->create();

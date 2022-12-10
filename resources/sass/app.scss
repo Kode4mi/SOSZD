@@ -436,6 +436,10 @@ $navbarMobileWidth: 100vw;
 
             &__content {
                 height: 49vh;
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+
             }
 
             &__header {
@@ -461,8 +465,21 @@ $navbarMobileWidth: 100vw;
     }
 
     a {
-        color: white;
+        color:black;
     }
+
+ .user_button {
+    background-color: $button-background;
+    color:white;
+    text-decoration: none;
+    border-radius: 15px;
+    padding: 0.5rem 0.5rem 0.3rem 0.5rem;
+
+     a {
+         color: white;
+     }
+
+}
 
     .user_button {
         background-color: $button-background;
@@ -490,8 +507,8 @@ $navbarMobileWidth: 100vw;
         }
 
         button:hover {
-            background-color: white;
-            color: black;
+        background-color: white;
+        color:black;
         }
 
     }
@@ -573,10 +590,8 @@ $navbarMobileWidth: 100vw;
             border: 2px solid yellow;
         }
 
-        &__link:hover,
-        &__dot:hover,
-        &__current-page:hover {
-            background-color: lighten($background_contrast, 20%);
+        &__link:hover, &__dot:hover, &__current-page:hover {
+            background-color: lighten($background_contrast,20%);
         }
 
     }
@@ -678,7 +693,7 @@ $navbarMobileWidth: 100vw;
     }
 
     .user_submit:hover {
-        background-color: darken($button-background, 10%);
+        background-color: darken($button-background,10%);
     }
 
 }

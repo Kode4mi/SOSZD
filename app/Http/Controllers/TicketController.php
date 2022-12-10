@@ -19,7 +19,7 @@ class TicketController extends Controller
         /* @var User $user */
         $user = auth()->user();
 
-        if($user->role === "nauczyciel") {
+        if ($user->role === "nauczyciel") {
             $ticket_id = [];
 
             $tickets = Redirect::where("user_id", $user->id)->get('ticket_id');
@@ -28,9 +28,8 @@ class TicketController extends Controller
                 $ticket_id[$i] = $tickets[$i]["ticket_id"];
             }
 
-            $tickets = Ticket::sortable()->latest()->where('active', 1)->whereIn('id', $ticket_id)->filter(request(['search']))->simplePaginate(12);
-        }
-        else {
+            $tickets = Ticket::sortable()->latest()->where('active', 1)->whereIn('id', $ticket_id)->orWhere('sender_id', $user->id)->filter(request(['search']))->simplePaginate(12);
+        } else {
             $tickets = Ticket::sortable()->latest()->where('active', 1)->filter(request(['search']))->simplePaginate(12);
         }
 
@@ -47,22 +46,54 @@ class TicketController extends Controller
         return view('tickets.create');
     }
 
-    public function show(Ticket $ticket): View | RedirectResponse
+    public function show(Ticket $ticket): View|RedirectResponse
     {
+        $redirect = "";
+
         /* @var User $user */
         $user = auth()->user();
-        if($user->role === "nauczyciel") {
+        if ($user->role === "nauczyciel") {
             $redirect = Redirect::where('ticket_id', $ticket->id)->where('user_id', $user->id)->get();
 
-            if ($redirect->isEmpty()) {
+            if ($ticket->sender_id === $user->id) {
+                $redirect = "";
+            } else if ($redirect->isEmpty()) {
                 return redirect("/tickets")->with("message", __('app.ticket.access_denied'));
+            } else {
+                $redirect = Redirect::find($redirect[0]['id'])->update(['read' => true]);
             }
-
-            Redirect::find($redirect[0]['id'])->update(['read' => true]);
         }
 
+        $redirects = Redirect::where('ticket_id', $ticket->id)->get(['id', 'user_id', 'read'])->toArray();
+
+        $i = 0;
+        $users = [];
+
+        foreach ($redirects as $redirect) {
+            $users[$i] = ['user_id' => $redirect['user_id'], 'read' => $redirect['read']];
+            $i++;
+        }
+
+        $i = 0;
+
+        foreach ($users as $user) {
+            $userData = User::where("id", $user['user_id'])->first(['id', 'first_name', 'last_name'])->toArray();
+            $users[$i] += $userData;
+            $i++;
+        }
+
+        $sender = User::where("id", $ticket->sender_id)->first(['first_name', 'last_name']);
+
+        $redirect = Redirect::where('ticket_id', $ticket['id'])->where('user_id', auth()->user()->id)->first();
+
+        if ($users === []) {
+            $users = User::whereNot('id', auth()->user()->id)->get(['id', 'first_name', 'last_name']);
+        }
         return view('tickets.show', [
             'ticket' => $ticket,
+            'users' => $users,
+            'sender' => $sender,
+            'redirect' => $redirect,
         ]);
     }
 
@@ -85,11 +116,11 @@ class TicketController extends Controller
             ]
         );
 
-        if($request->hasFile('files')) {
+        if ($request->hasFile('files')) {
             $file_names = "";
 
             foreach ($formFields['files'] as $file) {
-                $file_names .= $file->store('files', 'public').";";
+                $file_names .= $file->store('files', 'public') . ";";
             }
 
             $formFields['files'] = $file_names;
@@ -103,9 +134,9 @@ class TicketController extends Controller
             'sender_id' => $user->id,
         ];
 
-        Ticket::create($formFields);
+        $ticket = Ticket::create($formFields);
 
-        return redirect('tickets')->with('message', __('app.ticket.create'));
+        return redirect("ticket/$ticket->id")->with('message', __('app.ticket.create'));
     }
 
 

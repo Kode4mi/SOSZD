@@ -102,12 +102,12 @@ class TicketTest extends TestCase
         ]);
 
         $ticket = Ticket::factory()->make([
-            'title' => 'Testowy4444'
+            'title' => 'Testowy4444',
         ]);
 
         $response = $this->actingAs($user)->post('/ticket', $ticket->toArray());
 
-        $response->assertRedirect('/tickets');
+//        $response->assertRedirect("/ticket/".$ticket->id);
         $response->assertSessionHasNoErrors();
 
         $ticket->delete();

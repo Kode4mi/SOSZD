@@ -5,35 +5,17 @@
 
     <main class="redirect-ticket">
 
-        <form action="/redirect/{{$ticket->id}}" method="POST">
+        <p>Temat:</p>
+        <p>{{$ticket->title}}</p>
 
-            @csrf
-            @method("POST")
-            <p>Temat:</p>
-            <p>{{$ticket->title}}</p>
+        <p>Termin:</p>
+        <p>{{$ticket->deadline}}</p>
 
-            <p>Termin:</p>
-            <p>{{$ticket->deadline}}</p>
+        <p>Priorytet: </p>
+        <p>{{$ticket->priority}}</p>
 
-            <p>Priorytet: </p>
-            <p>{{$ticket->priority}}</p>
+        <x-redirect-form :$ticket :$users></x-redirect-form>
 
-            <label class="label_adresat" for="user_select">Adresaci:</label>
-            <p>
-                <select name="user_id[]" multiple id="user_select">
-                    @foreach($users as $user)
-                        <option value="{{$user->id}}"> {{$user->first_name}} {{$user->last_name}} </option>
-                    @endforeach
-                </select>
-            </p>
-
-            @error('user_id')
-            <p>{{$message}}</p>
-            @enderror
-
-            <button type="submit">Prześlij</button>
-
-        </form>
     </main>
 
 @endsection

@@ -23,7 +23,7 @@ class UserTest extends TestCase
         edit
         edit_pass
         index
-        login 
+        login
         logout
 
     */
@@ -137,7 +137,7 @@ class UserTest extends TestCase
         $response->assertRedirect('login');
         $this->assertGuest();
     }
-    
+
     public function test_user_register_status_for_admin(): void{
 
         $user = User::factory()->create([
@@ -151,7 +151,7 @@ class UserTest extends TestCase
         $user->delete();
     }
 
-    public function test_user_register_status_for_user(): void{
+    public function test_user_register_status_for_user(): void {
 
         $user = User::factory()->make([
             'first_name' => "Kunegunda",
@@ -159,7 +159,8 @@ class UserTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)->get('/user/register');
-        $response->assertRedirect('tickets');
+
+        $response->assertRedirect('/');
 
     }
 
@@ -172,7 +173,7 @@ class UserTest extends TestCase
 
     // tu nie rozumiem do końca
 
-    public function test_user_store_status(): void{
+    public function test_user_store(): void{
 
         $user = User::factory()->create([
             'first_name' => "Kunegunda",
@@ -181,23 +182,23 @@ class UserTest extends TestCase
 
         $user2 = User::factory()->make();
 
-        $response = $this->actingAs($user)->post('/user/register', $user2->toArray());
-        
-        // $response->assertRedirect('/users'); // co tu nie tak że method not allowed
+        $response = $this->actingAs($user)->post('/user', $user2->toArray());
+
+         $response->assertRedirect('/users');
         $response->assertSessionHasNoErrors();
 
         $user->delete();
         $user2->delete();
     }
 
-    public function test_user_store_status_not_auth(): void{
+    public function test_user_store_not_auth(): void{
 
         $user2 = User::factory()->make();
 
-        $response = $this->post('/user/register', $user2->toArray());
-        
-        $response->assertRedirect('login');  // co tu nie tak że method not allowed
-        
+        $response = $this->post('/user', $user2->toArray());
+
+        $response->assertRedirect('login');
+
         $user2->delete();
     }
 

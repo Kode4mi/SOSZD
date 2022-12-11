@@ -115,6 +115,7 @@ class RedirectTest extends TestCase
         $response->assertRedirect('/login');
 
         $ticket->delete();
+        $user_selected->delete();
     }
 
 

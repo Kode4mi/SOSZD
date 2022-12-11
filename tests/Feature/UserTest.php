@@ -4,17 +4,28 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use Tests\TestCase;
+use Illuminate\Support\Str;
 
 class UserTest extends TestCase
 {
     /*
         Do zrobienia:
 
-        login
-        logout
         update - na później
         update_pass
         create
+    */
+
+    /*
+        done:
+
+        auth
+        edit
+        edit_pass
+        index
+        login
+        logout
+
     */
 
 
@@ -104,6 +115,91 @@ class UserTest extends TestCase
         $this->assertFalse(session()->hasOldInput('password'));
         $this->assertGuest();
         $user->delete();
+    }
+
+    public function test_user_logout_status(): void
+    {
+        $user = User::factory()->create([
+            'first_name' => "Kunegunda",
+            'role' => 'admin'
+        ]);
+
+        $response = $this->actingAs($user)->post('/logout');
+        $response->assertRedirect('login');
+        $this->assertGuest();
+        $user->delete();
+    }
+
+    // czy to wgl jest potrzebne????
+    public function test_user_logout_status_not_auth(): void{
+
+        $response = $this->post('/logout');
+        $response->assertRedirect('login');
+        $this->assertGuest();
+    }
+
+    public function test_user_register_status_for_admin(): void{
+
+        $user = User::factory()->create([
+            'first_name' => "Kunegunda",
+            'role' => 'admin'
+        ]);
+
+        $response = $this->actingAs($user)->get('/user/register');
+        $response->assertViewIs('user.create');
+
+        $user->delete();
+    }
+
+    public function test_user_register_status_for_user(): void {
+
+        $user = User::factory()->make([
+            'first_name' => "Kunegunda",
+            'role' => 'nauczyciel'
+        ]);
+
+        $response = $this->actingAs($user)->get('/user/register');
+
+        $response->assertRedirect('/');
+
+    }
+
+    public function test_user_register_status_not_auth(): void{
+
+        $response = $this->get('/user/register');
+        $response->assertRedirect('login');
+    }
+
+
+    // tu nie rozumiem do końca
+
+    public function test_user_store(): void{
+
+        $user = User::factory()->create([
+            'first_name' => "Kunegunda",
+            'role' => 'admin'
+        ]);
+
+        $user2 = User::factory()->make();
+
+        $response = $this->actingAs($user)->post('/user', $user2->toArray());
+
+         $response->assertRedirect('/users');
+        $response->assertSessionHasNoErrors();
+
+        $user->delete();
+        $user2->delete();
+    }
+
+    public function test_user_store_not_auth(): void{
+
+        $user2 = User::factory()->make();
+
+        $response = $this->post('/user', $user2->toArray());
+
+        $response->assertRedirect('login');
+
+        $user2->delete();
     }
 
 }

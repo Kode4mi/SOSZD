@@ -65,11 +65,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('user/edit', [UserController::class, 'edit']);
 
-    Route::get('user/register', [UserController::class, 'register']);
-
     Route::put('user', [UserController::class, 'update']);
-
-    Route::post('user', [UserController::class, 'store']);
 
     Route::get('change-password', [UserController::class, 'editPassword']);
 
@@ -78,6 +74,10 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['admin'])->group(function () {
 
         Route::get('users', [UserController::class, 'index']);
+
+        Route::get('user/register', [UserController::class, 'register']);
+
+        Route::post('user', [UserController::class, 'store']);
 
     });
 });

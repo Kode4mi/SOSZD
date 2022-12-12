@@ -1650,3 +1650,41 @@ $navbarMobileWidth: 100vw;
         background-color: darken($button-background, 10);
     }
 }
+
+.redirect {
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+
+    &__info {
+        flex-grow: 1;
+    }
+
+    &-form {
+        display: flex;
+        flex-direction: column;
+
+        &__select {
+            margin: .8rem 0;
+        }
+
+        &__option {
+            font-size: 1.3rem;
+            padding: .2rem;
+        }
+
+        &__button {
+            background-color: $button-background;
+            color: $button-color;
+            border: none;
+            border-radius: 15px;
+            padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+            width: 10vh;
+            height: 5vh;
+        }
+
+        &__button:hover {
+            background-color: darken($button-background, 10);
+        }
+    }
+}

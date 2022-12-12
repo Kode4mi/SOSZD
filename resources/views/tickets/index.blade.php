@@ -96,7 +96,7 @@
                                 title="Przenieś do aktywnych spraw"
                         @endif
                     >
-                        <i class="fa-solid fa-folder-closed"></i>
+                        <i class="archive-button fa-solid fa-folder-closed"></i>
                     </button>
                 </div>
             </div>

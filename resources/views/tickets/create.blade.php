@@ -8,7 +8,7 @@
         @csrf
 
         <label>Temat:
-            <input type="text" name="title" class="create-ticket__topic" value="{{old('title')}}">
+            <input type="text" name="title" class="create-ticket__topic" value="{{old('title')}}" spellcheck="true">
         </label>
 
         @error('title')
@@ -37,7 +37,7 @@
         @enderror
 
         <label class="create-ticket__label-opis">Opis:
-            <textarea name="description" class="create-ticket__content"> {{old('description')}} </textarea>
+            <textarea spellcheck="true" name="description" class="create-ticket__content"> {{old('description')}} </textarea>
         </label>
 
         @error('description')

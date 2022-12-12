@@ -325,6 +325,14 @@ $navbarMobileWidth: 100vw;
     align-items: center;
     align-content: center;
 
+    .searchbar__button {
+        background-color: $logo_background;
+    }
+
+    .archive-button {
+        color: black;
+    }
+
     @media (max-aspect-ratio: 1/1) {
         width: 100vw;
     }
@@ -511,6 +519,10 @@ $navbarMobileWidth: 100vw;
             color: black;
         }
 
+    }
+
+    .archive-button {
+        color: white;
     }
 
     .user_submit {
@@ -745,6 +757,10 @@ $navbarMobileWidth: 100vw;
             width: 15vh;
         }
 
+        ::file-selector-button {
+            display: none;
+        }
+
         ::-webkit-file-upload-button {
             display: none;
         }
@@ -800,6 +816,13 @@ $navbarMobileWidth: 100vw;
     &__select {
         margin-top: 1vh;
         border-radius: 15px;
+        background-color: white;
+        padding-left: 0.2rem;
+
+        &:hover {
+
+        }
+
     }
 
     &__button {

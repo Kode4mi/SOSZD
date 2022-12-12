@@ -465,21 +465,21 @@ $navbarMobileWidth: 100vw;
     }
 
     a {
-        color:black;
+        color: black;
     }
 
- .user_button {
-    background-color: $button-background;
-    color:white;
-    text-decoration: none;
-    border-radius: 15px;
-    padding: 0.5rem 0.5rem 0.3rem 0.5rem;
+    .user_button {
+        background-color: $button-background;
+        color: white;
+        text-decoration: none;
+        border-radius: 15px;
+        padding: 0.5rem 0.5rem 0.3rem 0.5rem;
 
-     a {
-         color: white;
-     }
+        a {
+            color: white;
+        }
 
-}
+    }
 
     .user_button {
         background-color: $button-background;
@@ -507,8 +507,8 @@ $navbarMobileWidth: 100vw;
         }
 
         button:hover {
-        background-color: white;
-        color:black;
+            background-color: white;
+            color: black;
         }
 
     }
@@ -590,8 +590,10 @@ $navbarMobileWidth: 100vw;
             border: 2px solid yellow;
         }
 
-        &__link:hover, &__dot:hover, &__current-page:hover {
-            background-color: lighten($background_contrast,20%);
+        &__link:hover,
+        &__dot:hover,
+        &__current-page:hover {
+            background-color: lighten($background_contrast, 20%);
         }
 
     }
@@ -693,7 +695,7 @@ $navbarMobileWidth: 100vw;
     }
 
     .user_submit:hover {
-        background-color: darken($button-background,10%);
+        background-color: darken($button-background, 10%);
     }
 
 }
@@ -1523,6 +1525,166 @@ $navbarMobileWidth: 100vw;
             grid-row: 1;
             grid-column: 2;
             font-size: 1.5rem;
+        }
+    }
+}
+
+.reply {
+    display: flex;
+    flex-direction: column;
+
+    font-size: 1.2rem;
+
+    &__header {
+        width: 100%;
+        height: 10%;
+
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+
+        height: 90%;
+    }
+
+    &__original-message {
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+
+        &-text {
+            flex-grow: 1;
+            resize: none;
+            border: none;
+            background-color: #fff;
+            overflow: auto;
+        }
+    }
+
+    &__form {
+        width: 100%;
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+
+        &-message {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            margin-bottom: .5rem;
+
+            &-input {
+                padding: 5px;
+                border-radius: 15px;
+                width: 100%;
+                flex-grow: 1;
+                resize: none;
+            }
+        }
+    }
+
+    &__bottom-container {
+        display: flex;
+        width: 30vh;
+        justify-content: space-between;
+        align-items: center;
+
+        @media (max-aspect-ratio: 1/1) {
+            width: 100%;
+        }
+    }
+
+    &__label-file {
+        width: fit-content;
+        padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+        height: 5vh;
+        display: flex;
+        align-items: center;
+
+
+        @media (max-aspect-ratio: 1/1) {
+            width: 45%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    &__input-file {
+        color: $button-color;
+        background-color: rgb(125, 169, 125);
+        border-radius: 15px;
+        margin-left: .5rem;
+
+        input {
+            border-radius: 0 15px 15px 0;
+            width: 15vh;
+        }
+
+        ::-webkit-file-upload-button {
+            display: none;
+        }
+    }
+
+    &__button {
+        background-color: $button-background;
+        color: $button-color;
+        border: none;
+        border-radius: 15px;
+        padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+        width: 10vh;
+        height: 5vh;
+
+        @media (max-aspect-ratio: 1/1) {
+            height: 100%;
+            width: 45%;
+        }
+    }
+
+    &__button:hover {
+        background-color: darken($button-background, 10);
+    }
+}
+
+.redirect {
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+
+    &__info {
+        flex-grow: 1;
+    }
+
+    &-form {
+        display: flex;
+        flex-direction: column;
+
+        &__select {
+            margin: .8rem 0;
+        }
+
+        &__option {
+            font-size: 1.3rem;
+            padding: .2rem;
+        }
+
+        &__button {
+            background-color: $button-background;
+            color: $button-color;
+            border: none;
+            border-radius: 15px;
+            padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+            width: 10vh;
+            height: 5vh;
+        }
+
+        &__button:hover {
+            background-color: darken($button-background, 10);
         }
     }
 }

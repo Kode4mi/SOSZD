@@ -12,7 +12,7 @@
         <div class="reply__content">    
             <div class="reply__original-message">
                 <p>Opis:</p>
-                <span class="reply__original-message-text">{{$ticket->description}}</span>
+                <textarea disabled class="reply__original-message-text">{{$ticket->description}}</textarea>
                 <hr>
             </div>
             <form class="reply__form" action="/reply/{{$redirect->id}}" method="POST" enctype="multipart/form-data">

@@ -1556,6 +1556,10 @@ $navbarMobileWidth: 100vw;
         flex-direction: column;
 
         &-text {
+            flex-grow: 1;
+            resize: none;
+            border: none;
+            background-color: #fff;
             overflow: auto;
         }
     }

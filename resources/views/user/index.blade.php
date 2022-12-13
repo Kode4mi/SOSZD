@@ -46,6 +46,8 @@
         @endforeach
     </tbody>
 </table>
+        {{$users->links()}}
+
        <button class="user_button"> <a href="{{url('/user/register')}}">Stwórz nowego użytkownika</a> </button>
 
     @else

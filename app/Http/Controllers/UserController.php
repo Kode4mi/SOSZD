@@ -124,7 +124,7 @@ class UserController extends Controller
     public function index(): View
     {
         return view('user.index', [
-            'users' => User::sortable()->filter(request(['search']))->simplePaginate(20)
+            'users' => User::sortable()->filter(request(['search']))->simplePaginate(15)->withQueryString()
         ]);
     }
 

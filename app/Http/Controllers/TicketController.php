@@ -28,9 +28,9 @@ class TicketController extends Controller
                 $ticket_id[$i] = $tickets[$i]["ticket_id"];
             }
 
-            $tickets = Ticket::sortable()->latest()->where('active', 1)->whereIn('id', $ticket_id)->orWhere('sender_id', $user->id)->filter(request(['search']))->simplePaginate(12);
+            $tickets = Ticket::sortable()->latest()->where('active', 1)->whereIn('id', $ticket_id)->orWhere('sender_id', $user->id)->filter(request(['search']))->simplePaginate(12)->withQueryString();
         } else {
-            $tickets = Ticket::sortable()->latest()->where('active', 1)->filter(request(['search']))->simplePaginate(12);
+            $tickets = Ticket::sortable()->latest()->where('active', 1)->filter(request(['search']))->simplePaginate(12)->withQueryString();
         }
 
         return view('tickets.index', [

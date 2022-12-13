@@ -16,7 +16,7 @@ class ArchiveController extends Controller
         $form = "unarchive";
 
         return view('tickets.index', [
-            'tickets' => Ticket::sortable()->where('active', 0)->filter(request(['search']))->simplePaginate(12),
+            'tickets' => Ticket::sortable()->where('active', 0)->filter(request(['search']))->simplePaginate(12)->withQueryString(),
             'users' => User::class,
             'title' => $title,
             'form' => $form

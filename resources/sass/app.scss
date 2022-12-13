@@ -1649,6 +1649,10 @@ $navbarMobileWidth: 100vw;
             width: 15vh;
         }
 
+        ::file-selector-button {
+            display: none;
+        }
+
         ::-webkit-file-upload-button {
             display: none;
         }

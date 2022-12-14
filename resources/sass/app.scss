@@ -443,6 +443,15 @@ $navbarMobileWidth: 100vw;
                 justify-content: space-between;
                 flex-direction: column;
 
+                &-description {
+                    flex-grow: 1;
+
+                    resize: none;
+                    border: none;
+                    background: none;
+
+                    color: #000000;
+                }
             }
 
             &__header {

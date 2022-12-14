@@ -56,10 +56,26 @@
                             </label>
                         </td>
                         <td class="ticket__title">
+                            @if(auth()->user()->id !== $ticket->sender_id && auth()->user()->role !== "admin")
+
+                                @php
+
+                                $redirect = \App\Models\Redirect::where('ticket_id', $ticket->id)->where('user_id', auth()->user()->id)->first('read');
+
+
+                                @endphp
+
+                            @endif
+                            @if(isset($redirect) && !$redirect->read)
+                                <b>
+                            @endif
                             <a href="ticket/{{$ticket->id}}" class="ticket-title">
                                 {{$ticket->title}}
                                 <input type="hidden" value="{{$ticket->id}}" class="id">
                             </a>
+                            @if(isset($redirect) && !$redirect->read)
+                                </b>
+                            @endif
                         </td>
                         <td class="ticket__sender">
 

@@ -259,7 +259,6 @@ $navbarMobileWidth: 100vw;
         height: 6vh;
         text-align: center;
         background-color: $user-background;
-        padding: 1.6rem;
 
         display: flex;
         justify-content: center;
@@ -267,7 +266,7 @@ $navbarMobileWidth: 100vw;
     }
 
     &__logged-user {
-        width: fit-content;
+        width: 15vw;
         padding-right: 1rem;
         padding-left: 1rem;
         font-style: normal;

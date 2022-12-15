@@ -21,9 +21,9 @@
         <hr/>
         <p class="ticket__header-content">Treść:</p>
         <div class="ticket__content">
-            <div class="ticket__content-description">
+            <textarea class="ticket__content-description" disabled>
                 {{$ticket->description}}
-            </div>
+            </textarea>
             <div class="ticket__content-footer">
                 @unless($ticket->files === null)
                     <p class="">Załączniki:</p>

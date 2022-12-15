@@ -197,8 +197,8 @@ $navbarMobileWidth: 100vw;
             top: 1vh;
             left: 1vh;
             height: 7vh;
-            width: 7vh;
-            font-size: 4rem;
+            width: 5vh;
+            font-size: 5vh;
             display: block;
         }
 
@@ -259,7 +259,6 @@ $navbarMobileWidth: 100vw;
         height: 6vh;
         text-align: center;
         background-color: $user-background;
-        padding: 1.6rem;
 
         display: flex;
         justify-content: center;
@@ -267,12 +266,16 @@ $navbarMobileWidth: 100vw;
     }
 
     &__logged-user {
-        width: fit-content;
+        width: 15vw;
         padding-right: 1rem;
         padding-left: 1rem;
         font-style: normal;
         font-weight: 600;
         font-size: 1.1875rem;
+
+        @media (max-aspect-ratio: 1/1) {
+            width: 40vw;
+        }
     }
 
     &__small-font {
@@ -448,6 +451,15 @@ $navbarMobileWidth: 100vw;
                 justify-content: space-between;
                 flex-direction: column;
 
+                &-description {
+                    flex-grow: 1;
+
+                    resize: none;
+                    border: none;
+                    background: none;
+
+                    color: #000000;
+                }
             }
 
             &__header {

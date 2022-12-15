@@ -3,7 +3,7 @@
 @section('content')
     <x-main-title>Przekazywanie sprawy</x-main-title>
 
-    <main class="redirect">
+    <main class="main-window redirect">
         <div class="redirect__info">
             <p>Temat: {{$ticket->title}}</p>
             <hr>

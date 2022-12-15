@@ -2,7 +2,7 @@
 
 @section('content')
     <x-main-title>Zmień swoje dane </x-main-title>
-    <main class="edit_account">
+    <main class="main-window edit_account">
 
         <h3>Zmień swój email</h3>
 
@@ -37,7 +37,7 @@
 
         <button type="submit" class="user_edit__submit-button">Zatwierdź</button>
 
-            <p class="mt-2"><a href="/change-password">Zmień hasło</a></p>
+            <p class="mt-2"><a class="main-window__a" href="/change-password">Zmień hasło</a></p>
 
         </form>
     </main>

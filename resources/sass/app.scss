@@ -349,7 +349,7 @@ $navbarMobileWidth: 100vw;
     }
 
 
-    main {
+    &-window {
         font-family: $primary_font;
         background-color: $frame-background;
         height: 74vh;
@@ -364,19 +364,18 @@ $navbarMobileWidth: 100vw;
             width: 95%;
         }
 
-        table,
-        thead,
-        tbody,
-        td {
+        &__table,
+        &__thead,
+        &__tbody,
+        &__td {
             display: block;
         }
 
-        tr a {
-            text-decoration: none;
+        &__a {
             color: black;
         }
 
-        table {
+        &__table {
             height: 85%;
             width: 100%;
 
@@ -389,7 +388,7 @@ $navbarMobileWidth: 100vw;
 
         }
 
-        thead {
+        &__thead {
             font-style: normal;
             font-weight: 700;
             font-size: 1.75rem;
@@ -398,7 +397,7 @@ $navbarMobileWidth: 100vw;
 
         }
 
-        tbody {
+        &__tbody {
             font-size: 1.1rem;
             overflow: auto;
         }
@@ -480,10 +479,6 @@ $navbarMobileWidth: 100vw;
 
         }
 
-    }
-
-    a {
-        color: black;
     }
 
     .user_button {
@@ -1335,6 +1330,7 @@ $navbarMobileWidth: 100vw;
     &__sorter {
         display: flex;
         flex-wrap: nowrap;
+        color: black;
 
         @media (max-aspect-ratio: 1/1) {
             display: none;

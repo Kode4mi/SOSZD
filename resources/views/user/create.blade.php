@@ -2,7 +2,7 @@
 
 @section('content')
     <x-main-title>Dodaj nowego użytkownika: </x-main-title>
-    <main class="user_main">
+    <main class="main-window user_main">
 
         <form method="POST" action="/user">
 

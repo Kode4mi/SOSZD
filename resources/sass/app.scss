@@ -243,7 +243,7 @@ $navbarMobileWidth: 100vw;
     align-items: flex-start;
     justify-content: flex-end;
 
-    input[type='checkbox'] {
+    &__checkbox {
         display: none;
     }
 
@@ -286,7 +286,7 @@ $navbarMobileWidth: 100vw;
         font-size: 0.9375rem;
     }
 
-    i:hover {
+    &__fontawesome:hover {
         cursor: pointer;
     }
 }
@@ -294,13 +294,15 @@ $navbarMobileWidth: 100vw;
 .header.contrast {
     background-color: $background_contrast ;
 
-    .header__icon {
-        background-color: black;
-        color: white;
-    }
+    .header {
+        &__icon {
+            background-color: black;
+            color: white;
+        }
 
-    i {
-        filter: invert(0%);
+        &__fontawesome {
+            filter: invert(0%);
+        }
     }
 
     ::selection {

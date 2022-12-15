@@ -1,9 +1,9 @@
 <header class="header" id="header">
-    <div class="header__icon header__large-font"><i class="fa-solid fa-a fa-3x"></i></div>
-    <div class="header__icon header__small-font"><i class="fa-solid fa-a fa-2xs"></i></div>
+    <div class="header__icon header__large-font"><i class="header__fontawesome fa-solid fa-a fa-3x"></i></div>
+    <div class="header__icon header__small-font"><i class="header__fontawesome fa-solid fa-a fa-2xs"></i></div>
     <div class="header__icon header__contrast" >
-      <input type="checkbox" id="myCheckbox1" />
-      <label for="myCheckbox1"> <i class="fa-solid fa-circle-half-stroke fa-3x contrast-button"></i> </label>
+      <input class="header__checkbox" type="checkbox" id="myCheckbox1" />
+      <label for="myCheckbox1"> <i class="header__fontawesome fa-solid fa-circle-half-stroke fa-3x contrast-button"></i> </label>
     </div>
     <div class="header__icon header__logged-user">{{auth()->user()->first_name}} {{auth()->user()->last_name}}</div>
 </header>

@@ -205,15 +205,15 @@ $navbarMobileWidth: 100vw;
 .navbar__sidebar.contrast {
     background-color: $background_contrast;
 
-    button {
+    .navbar__sidebar--button {
         background-color: $background_contrast;
         color: white;
         border: 1px solid white;
-    }
 
-    button:hover {
-        background-color: white;
-        color: black;
+        &:hover {
+            background-color: white;
+            color: black;
+        }
     }
 
     ::selection {

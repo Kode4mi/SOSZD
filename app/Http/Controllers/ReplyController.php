@@ -61,10 +61,11 @@ class ReplyController extends Controller
     public function show(Reply $reply): View
     {
 
-        $redirect = Redirect::find($reply->redirect_id)->first();
+        $redirect = Redirect::where("id", $reply->redirect_id)->first();
 
-        $ticket = Ticket::find($redirect->ticket_id)->first();
-        $user = User::find($redirect->user_id)->first();
+        $ticket = Ticket::where("id", $redirect->ticket_id)->first();
+
+        $user = User::where('id', $redirect->user_id)->first();
 
         return View('replies.show', [
             'reply' => $reply,

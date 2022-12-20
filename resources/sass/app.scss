@@ -489,6 +489,12 @@ $navbarMobileWidth: 100vw;
     }
 
     .user_button {
+        @media (min-aspect-ratio: 1/1) {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
         background-color: $button-background;
         color: white;
         text-decoration: none;
@@ -498,15 +504,6 @@ $navbarMobileWidth: 100vw;
         a {
             color: white;
         }
-
-    }
-
-    .user_button {
-        background-color: $button-background;
-        color: white;
-        text-decoration: none;
-        border-radius: 15px;
-        padding: 0.5rem 0.5rem 0.3rem 0.5rem;
     }
 
     .user_button:hover {
@@ -831,9 +828,7 @@ $navbarMobileWidth: 100vw;
         background-color: white;
         padding-left: 0.2rem;
 
-        &:hover {
-
-        }
+        &:hover {}
 
     }
 
@@ -1560,6 +1555,15 @@ $navbarMobileWidth: 100vw;
             grid-row: 1;
             grid-column: 2;
             font-size: 1.5rem;
+        }
+    }
+
+    &__bottom-container {
+        position: relative;
+
+        @media (max-aspect-ratio: 1/1) {
+            display: flex;
+            flex-direction: column-reverse;
         }
     }
 }

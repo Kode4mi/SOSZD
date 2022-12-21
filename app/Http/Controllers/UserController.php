@@ -208,4 +208,36 @@ class UserController extends Controller
     }
 
 
+
+
+    public function show(User $user): View|RedirectResponse
+    {
+        return view('user.show', ['user' => $user]);
+    }
+
+    public function update_user(Request $request): RedirectResponse
+    {
+
+        $user = $request->user_info;
+
+
+        $formFields = $request->validate([
+            'email' => ['required', 'email'],
+            'first_name' => ['required'],
+            'last_name' => ['required'],
+            'role' => ['required'],
+        ],
+            [],
+            // [
+            //     'password' => __('app.password')
+            // ]
+        );
+            
+        DB::table('users')->where(['id' => $user])->update($formFields);
+
+        return redirect()->back()->with('message', __('app.user.edit'));
+
+
+        return redirect()->back()->withErrors(['password' => __('auth.password')]);
+    }
 }

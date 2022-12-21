@@ -39,7 +39,12 @@
     <tbody>
         @foreach($users as $user)
         <tr class="users__row">
-            <td class="users__name">{{$user->last_name}} {{$user->first_name}}</td>
+            <td class="users__name">
+                <a href="user/{{$user->id}}">
+                    {{$user->last_name}} {{$user->first_name}}
+                    <input type="hidden" value="{{$user->id}}" class="id">
+                 </a>
+            </td>
             <td class="users__role">{{$user->role}}</td>
             <td class="users__email">{{$user->email}}</td>
         </tr>

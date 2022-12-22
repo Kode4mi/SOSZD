@@ -372,6 +372,7 @@ $navbarMobileWidth: 100vw;
         }
 
         &__a {
+            cursor: pointer;
             color: black;
         }
 
@@ -681,27 +682,53 @@ $navbarMobileWidth: 100vw;
     }
 }
 
-.user_main {
-    margin-top: 1vh;
+.user {
+    &__main {
+        margin-top: 1vh;
+        font-size: 1.3rem;
 
-    input {
+        @media (max-aspect-ratio: 1/1) {
+            font-size: 2rem;
+        }
+    }
+
+    &__form {
+        height: 50%;
+        width: 100%;
+        margin-top: 10%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        @media (max-aspect-ratio: 1/1) {
+            height: 70%;
+        }
+    }
+
+    &__input {
         padding-left: 0.5vw;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(4, 1fr);
         border-radius: 15px;
         border: 1px solid gray;
+        width: 50%;
+
+        @media (max-aspect-ratio: 1/1) {
+            width: 70%;
+            padding: 1.2rem;
+        }
+
+        &-box {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            height: 60%;
+        }
     }
 
-    label {
-        margin-top: 1vh;
-    }
-
-    input[type=checkbox] {
-        display: inline;
-    }
-
-    .user_submit {
+    &__submit {
         margin-top: 2vh;
         background-color: $button-background;
         color: $button-color;
@@ -709,12 +736,16 @@ $navbarMobileWidth: 100vw;
         border-radius: 15px;
         padding: 0.3rem 0.5rem 0.3rem 0.5rem;
         width: 25vh;
-    }
 
-    .user_submit:hover {
-        background-color: darken($button-background, 10%);
-    }
+        @media (max-aspect-ratio: 1/1) {
+            width: 70%;
+            padding: 5vw;
+        }
 
+        &:hover {
+            background-color: darken($button-background, 10%);
+        }
+    }
 }
 
 .create-ticket {

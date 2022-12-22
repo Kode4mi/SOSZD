@@ -1168,26 +1168,6 @@ $navbarMobileWidth: 100vw;
 
 }
 
-.password_edit {
-    text-align: center;
-
-    input {
-        display: block;
-        margin: auto;
-        border-radius: 15px;
-        border: 1px gray solid;
-        padding: 0.5vh;
-    }
-
-    button {
-        color: $button-color;
-        background-color: $button-background;
-        border-radius: 15px;
-        border: none;
-        padding: 0.6rem 0.9rem 0.6rem 0.9rem;
-    }
-}
-
 .flash-message {
     width: 100%;
 }

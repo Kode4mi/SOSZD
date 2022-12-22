@@ -3,41 +3,31 @@
 @section('content')
     <x-main-title>Zmiana hasła: </x-main-title>
 
-    <main class="main-window">
-        <form action="/change-password" method="POST" class="w-full text-center mt-4 password_edit">
+    <main class="main-window user__main">
+        <form action="/change-password" method="POST" class="user__form">
             @csrf
             @method('POST')
+            <div class="user__input-box">
+                <input class="user__input" type="password" id="old_password" name="old_password" placeholder="Podaj stare hasło" value="">
 
-            <p>
-                <label for="old_password" class="mt-4">Podaj stare hasło</label>
-                <input type="password" id="old_password" name="old_password" value="">
-            </p>
+                @error('old_password')
+                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                @enderror
+                    
+                <input class="user__input" type="password" id="password" name="password" placeholder="Podaj nowe hasło" value="">
 
-            @error('old_password')
-            <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-            @enderror
+                @error('password')
+                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                @enderror
+                
+                <input class="user__input" type="password" id="password_confirmation" name="password_confirmation" placeholder="Powtórz nowe hasło" value="">
 
-            <p>
-                <label for="password" class="mt-4">Podaj nowe hasło</label>
-                <input type="password" id="password" name="password" value="">
-            </p>
-
-            @error('password')
-            <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-            @enderror
-
-            <p>
-                <label for="password_confirmation" class="mt-4">Powtórz nowe hasło</label>
-                <input type="password" id="password_confirmation" name="password_confirmation" value="">
-            </p>
-
-            @error('password_confirmation')
-            <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-            @enderror
-
-            <p>
-                <button type="submit" class="mt-4 submit_password">Zmień hasło</button>
-            </p>
+                @error('password_confirmation')
+                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                @enderror
+            </div>
+            
+            <button type="submit" class="user__submit">Zmień hasło</button>
         </form>
     </main>
 @endsection

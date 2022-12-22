@@ -290,6 +290,12 @@ $navbarMobileWidth: 100vw;
         font-size: 0.9375rem;
     }
 
+    &__small-font:hover, &__large-font:hover, &__contrast:hover {
+        transform:scale(1.1);
+        transition: 0.3s;
+    }
+
+
     i:hover {
         cursor: pointer;
     }

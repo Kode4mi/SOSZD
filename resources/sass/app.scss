@@ -379,6 +379,11 @@ $navbarMobileWidth: 100vw;
             display: block;
         }
 
+        tr:hover td:not(:first-child){
+            font-size:105%;
+            transition: 0.2s;
+        }
+
         tr a {
             text-decoration: none;
             color: black;

@@ -1,6 +1,6 @@
 <nav class="navbar">
     <div class="navbar__logo" id="navbar-logo">
-        <div class="navbar__logo--img">
+        <div class="navbar__logo--img bounce-3">
             <a href="{{url('/tickets')}}">  <img src="{{asset('images/logo-smallest.png')}}" alt="soSZD logo" > </a>
         </div>
     </div>

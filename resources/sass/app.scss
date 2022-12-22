@@ -126,7 +126,12 @@ $navbarMobileWidth: 100vw;
     }
 
     &__logo:hover {
-        background-color: darken($logo_background, 20%);
+        background-color: darken($logo-background,5%);
+    }
+
+    &__logo:hover &__logo--img {
+        transform:scale(1.05);
+        transition:0.3s;
     }
 
     &__sidebar {
@@ -183,7 +188,9 @@ $navbarMobileWidth: 100vw;
     }
 
     &__sidebar--button:hover {
-        background-color: #CDCDCD;
+        background-color: #d5d5d5;
+        transform:scale(1.02);
+        transition:0.1s;
     }
 
     &__sidebar--button1 {
@@ -621,13 +628,6 @@ $navbarMobileWidth: 100vw;
             background-color: black;
             border: 2px solid yellow;
         }
-
-        &__link:hover,
-        &__dot:hover,
-        &__current-page:hover {
-            background-color: lighten($background_contrast, 20%);
-        }
-
     }
 
     ::selection {
@@ -1468,6 +1468,13 @@ $navbarMobileWidth: 100vw;
         }
     }
 
+    &__link:hover {
+        transform:scale(1.1);
+        filter:saturate(200%);
+        transition:0.3s;
+        
+    }
+
     &__dot {
         background-color: #377e6b;
         color: white;
@@ -1477,16 +1484,6 @@ $navbarMobileWidth: 100vw;
         min-width: 1vh;
         height: 1vh;
     }
-
-    &__link:hover,
-    &__dot:hover {
-        background-color: lighten(#4BA68D, 20%);
-    }
-
-    &__current-page:hover {
-        background-color: darken(#204a3f, 5%);
-    }
-
 }
 
 .users {

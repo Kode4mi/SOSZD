@@ -46,10 +46,10 @@
         @endforeach
     </tbody>
 </table>
-        {{$users->links()}}
-
-       <button class="user_button"> <a class="main-window__a" href="{{url('/user/register')}}">Stwórz nowego użytkownika</a> </button>
-
+        <div class="users__bottom-container">
+            {{$users->links()}}
+            <button class="user_button"> <a class="main-window__a" href="{{url('/user/register')}}">Stwórz nowego użytkownika</a> </button>
+        </div>
     @else
         <x-main-title>Brak użytkowników</x-main-title>
 @endif

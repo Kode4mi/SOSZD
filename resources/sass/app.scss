@@ -1168,33 +1168,6 @@ $navbarMobileWidth: 100vw;
 
 }
 
-.user_edit {
-    input {
-        display: block;
-        border-radius: 15px;
-        border: 1px gray solid;
-        padding: 0.5vh;
-    }
-
-    label {
-        margin-top: 0.5vh;
-    }
-
-    &__submit-button {
-        margin-top: 1vh;
-        color: $button-color;
-        background-color: $button-background;
-        border-radius: 15px;
-        border: none;
-        padding: 0.3rem 0.5rem 0.3rem 0.5rem;
-    }
-
-    &__submit-button:hover {
-        background-color: darken($button-background, 10);
-    }
-
-}
-
 .password_edit {
     text-align: center;
 

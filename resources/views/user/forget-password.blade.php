@@ -2,7 +2,7 @@
 
 @section('cont')
 
-    <main class="login">
+    <main class="main-window login">
 
         <form method="POST" action="/forget-password" class="login__form login__form--forget-password">
             @csrf

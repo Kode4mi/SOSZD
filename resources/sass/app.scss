@@ -118,10 +118,6 @@ $navbarMobileWidth: 100vw;
 
         &--img {
             width: 60%;
-
-            a {
-                text-decoration: none;
-            }
         }
     }
 
@@ -138,7 +134,7 @@ $navbarMobileWidth: 100vw;
             width: $navbarMobileWidth;
         }
 
-        ul {
+        &-list {
             list-style: none;
             margin: 0;
             padding: 0;
@@ -150,7 +146,7 @@ $navbarMobileWidth: 100vw;
             align-items: center;
             flex-direction: column;
 
-            li {
+            &-button {
                 margin: 1rem;
             }
 
@@ -209,15 +205,15 @@ $navbarMobileWidth: 100vw;
 .navbar__sidebar.contrast {
     background-color: $background_contrast;
 
-    button {
+    .navbar__sidebar--button {
         background-color: $background_contrast;
         color: white;
         border: 1px solid white;
-    }
 
-    button:hover {
-        background-color: white;
-        color: black;
+        &:hover {
+            background-color: white;
+            color: black;
+        }
     }
 
     ::selection {
@@ -247,7 +243,7 @@ $navbarMobileWidth: 100vw;
     align-items: flex-start;
     justify-content: flex-end;
 
-    input[type='checkbox'] {
+    &__checkbox {
         display: none;
     }
 
@@ -290,7 +286,7 @@ $navbarMobileWidth: 100vw;
         font-size: 0.9375rem;
     }
 
-    i:hover {
+    &__fontawesome:hover {
         cursor: pointer;
     }
 }
@@ -298,13 +294,15 @@ $navbarMobileWidth: 100vw;
 .header.contrast {
     background-color: $background_contrast ;
 
-    .header__icon {
-        background-color: black;
-        color: white;
-    }
+    .header {
+        &__icon {
+            background-color: black;
+            color: white;
+        }
 
-    i {
-        filter: invert(0%);
+        &__fontawesome {
+            filter: invert(0%);
+        }
     }
 
     ::selection {
@@ -351,7 +349,7 @@ $navbarMobileWidth: 100vw;
     }
 
 
-    main {
+    &-window {
         font-family: $primary_font;
         background-color: $frame-background;
         height: 74vh;
@@ -366,19 +364,19 @@ $navbarMobileWidth: 100vw;
             width: 95%;
         }
 
-        table,
-        thead,
-        tbody,
-        td {
+        &__table,
+        &__thead,
+        &__tbody,
+        &__td {
             display: block;
         }
 
-        tr a {
-            text-decoration: none;
+        &__a {
+            cursor: pointer;
             color: black;
         }
 
-        table {
+        &__table {
             height: 85%;
             width: 100%;
 
@@ -391,7 +389,7 @@ $navbarMobileWidth: 100vw;
 
         }
 
-        thead {
+        &__thead {
             font-style: normal;
             font-weight: 700;
             font-size: 1.75rem;
@@ -400,7 +398,7 @@ $navbarMobileWidth: 100vw;
 
         }
 
-        tbody {
+        &__tbody {
             font-size: 1.1rem;
             overflow: auto;
         }
@@ -482,10 +480,6 @@ $navbarMobileWidth: 100vw;
 
         }
 
-    }
-
-    a {
-        color: black;
     }
 
     .user_button {
@@ -685,27 +679,53 @@ $navbarMobileWidth: 100vw;
     }
 }
 
-.user_main {
-    margin-top: 1vh;
+.user {
+    &__main {
+        margin-top: 1vh;
+        font-size: 1.3rem;
 
-    input {
+        @media (max-aspect-ratio: 1/1) {
+            font-size: 2rem;
+        }
+    }
+
+    &__form {
+        height: 50%;
+        width: 100%;
+        margin-top: 10%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        @media (max-aspect-ratio: 1/1) {
+            height: 70%;
+        }
+    }
+
+    &__input {
         padding-left: 0.5vw;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(4, 1fr);
         border-radius: 15px;
         border: 1px solid gray;
+        width: 50%;
+
+        @media (max-aspect-ratio: 1/1) {
+            width: 70%;
+            padding: 1.2rem;
+        }
+
+        &-box {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            height: 60%;
+        }
     }
 
-    label {
-        margin-top: 1vh;
-    }
-
-    input[type=checkbox] {
-        display: inline;
-    }
-
-    .user_submit {
+    &__submit {
         margin-top: 2vh;
         background-color: $button-background;
         color: $button-color;
@@ -713,12 +733,16 @@ $navbarMobileWidth: 100vw;
         border-radius: 15px;
         padding: 0.3rem 0.5rem 0.3rem 0.5rem;
         width: 25vh;
-    }
 
-    .user_submit:hover {
-        background-color: darken($button-background, 10%);
-    }
+        @media (max-aspect-ratio: 1/1) {
+            width: 70%;
+            padding: 5vw;
+        }
 
+        &:hover {
+            background-color: darken($button-background, 10%);
+        }
+    }
 }
 
 .create-ticket {
@@ -1141,53 +1165,6 @@ $navbarMobileWidth: 100vw;
 
 }
 
-.user_edit {
-    input {
-        display: block;
-        border-radius: 15px;
-        border: 1px gray solid;
-        padding: 0.5vh;
-    }
-
-    label {
-        margin-top: 0.5vh;
-    }
-
-    &__submit-button {
-        margin-top: 1vh;
-        color: $button-color;
-        background-color: $button-background;
-        border-radius: 15px;
-        border: none;
-        padding: 0.3rem 0.5rem 0.3rem 0.5rem;
-    }
-
-    &__submit-button:hover {
-        background-color: darken($button-background, 10);
-    }
-
-}
-
-.password_edit {
-    text-align: center;
-
-    input {
-        display: block;
-        margin: auto;
-        border-radius: 15px;
-        border: 1px gray solid;
-        padding: 0.5vh;
-    }
-
-    button {
-        color: $button-color;
-        background-color: $button-background;
-        border-radius: 15px;
-        border: none;
-        padding: 0.6rem 0.9rem 0.6rem 0.9rem;
-    }
-}
-
 .flash-message {
     width: 100%;
 }
@@ -1334,6 +1311,7 @@ $navbarMobileWidth: 100vw;
     &__sorter {
         display: flex;
         flex-wrap: nowrap;
+        color: black;
 
         @media (max-aspect-ratio: 1/1) {
             display: none;

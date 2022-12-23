@@ -2,46 +2,41 @@
 
 @section('content')
     <x-main-title>Dodaj nowego użytkownika: </x-main-title>
-    <main class="user_main">
-
-        <form method="POST" action="/user">
-
+    <main class="main-window user__main">
+        <form class="user__form" method="POST" action="/user">
             @csrf
             @method("POST")
+                
+            <div class="user__input-box" />
+                <input type="text" name="first_name" class="user__input first_name" placeholder="Imie" value="{{old('first_name')}}" />
+
+                @error('first_name')
+                <p>{{$message}}</p>
+                @enderror
+
+                <input type="text" name="last_name" class="user__input last_name" placeholder="Nazwisko" value="{{old('last_name')}}" />
+
+                @error('last_name')
+                <p>{{$message}}</p>
+                @enderror
+
+                <input type="text" name="email" class="user__input email" placeholder="E-mail" value="{{old('email')}}" />
+
+                @error('email')
+                <p>{{$message}}</p>
+                @enderror
+            </div>
 
             <label>
-                Imie: <input type="text" name="first_name" class="first_name" value="{{old('first_name')}}" />
-            </label> <br>
-
-            @error('first_name')
-            <p>{{$message}}</p>
-            @enderror
-
-            <label>
-                Nazwisko: <input type="text" name="last_name" class="last_name" value="{{old('last_name')}}" />
-            </label> <br>
-
-            @error('last_name')
-            <p>{{$message}}</p>
-            @enderror
-
-            <label>
-                Email: <input type="text" name="email" class="email" value="{{old('email')}}" />
-            </label> <br>
-
-            @error('email')
-            <p>{{$message}}</p>
-            @enderror
-
-            <label>
-                Admin? <input type="checkbox" name="role" value="admin" />
-            </label> <br>
+                <input type="checkbox" name="role" class="user__checkbox" value="admin" />
+                Admin 
+            </label>
 
             @error('role')
             <p>{{$message}}</p>
             @enderror
 
-            <button type="submit" class="user_submit">
+            <button type="submit" class="user__submit">
                 Stwórz nowego użytkownika
             </button>
 

@@ -99,3 +99,7 @@ Route::middleware(['guest'])->group(function () {
     Route::put('create-password', [UserController::class, 'submitCreatePassword']);
 
 });
+
+Route::get('kogo/w/tym/tygodniu/jebiemy', static function() {
+    return view('kolo');
+});

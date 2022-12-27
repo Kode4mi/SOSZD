@@ -2,42 +2,36 @@
 
 @section('content')
     <x-main-title>Zmień swoje dane </x-main-title>
-    <main class="edit_account">
+    <main class="main-window edit_account user__main">
 
         <h3>Zmień swój email</h3>
 
-        <form action="/user" method="POST" class="user_edit">
+        <form action="/user" method="POST" class="user__form">
 
         @csrf
         @method("PUT")
 
-        <label>Email:
-            <input type="text" class="user_edit__email" name="email" value="{{auth()->user()->email}}">
-        </label><br>
+            <input type="text" class="user__input" placeholder="E-mail" name="email" value="{{auth()->user()->email}}">
 
             @error('email')
             <p>{{$message}}</p>
             @enderror
 
-        <label>Hasło:
-            <input type="password" class="user_edit__password" name="password">
-        </label><br>
+            <input type="password" class="user__input" placeholder="Hasło" name="password">
 
             @error('password')
             <p>{{$message}}</p>
             @enderror
 
-        <label>Potwierdź hasło:
-            <input type="password" class="user_edit__password-confirm" name="password_confirmation">
-        </label><br>
+            <input type="password" class="user__input" placeholder="Potwierdź hasło" name="password_confirmation">
 
             @error('password_confirmation')
             <p>{{$message}}</p>
             @enderror
 
-        <button type="submit" class="user_edit__submit-button">Zatwierdź</button>
+        <button type="submit" class="user__submit">Zatwierdź</button>
 
-            <p class="mt-2"><a href="/change-password">Zmień hasło</a></p>
+            <p class="mt-2"><a class="main-window__a" href="/change-password">Zmień hasło</a></p>
 
         </form>
     </main>

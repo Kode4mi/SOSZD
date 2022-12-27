@@ -11,6 +11,11 @@
 
 a {
     text-decoration: none;
+    all: unset;
+
+    &:hover {
+        color: inherit;
+    }
 }
 
 img {
@@ -20,4 +25,3 @@ img {
 .color-red {
     color: red;
 }
-

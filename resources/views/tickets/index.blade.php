@@ -3,7 +3,7 @@
 @section('content')
     @if($tickets->count())
         <x-main-title>{{$title}}:</x-main-title>
-        <main>
+        <main class="main-window">
 
             <form action="/tickets" id="search_form" class="searchbar">
                 <input class="form-control  searchbar__input" type="search" aria-label="Wyszukaj"
@@ -16,11 +16,11 @@
                         class="fa-solid fa-magnifying-glass"></i></button>
             </form>
 
-            <table>
+            <table class="main-window__table">
 
-                <thead>
+                <thead class="main-window__thead">
 
-                <tr class="ticket__header-row">
+                <tr class="main-window__tr ticket__header-row">
                     <th class="ticket__select-all"><i class="fa-solid fa-pen-to-square " title="Zaznacz wszystko"></i>
                     </th>
                     <th class="ticket__sorter">@sortablelink('title', 'Tytuł')</th>
@@ -44,18 +44,18 @@
 
                 </thead>
 
-                <tbody>
+                <tbody class="main-window__tbody">
 
                 @foreach($tickets as $ticket)
-                    <tr class="ticket__row">
-                        <td class="table">
+                    <tr class="main-window__tr ticket__row">
+                        <td class="main-window__td table">
                             <label class="table-checkbox">
                                 <input type="checkbox" class="table-checkbox--input" name="id[]" value="{{$ticket->id}}"
                                        form="ticket__form-{{$form}}">
                                 <span class="table-checkbox--checkmark"></span>
                             </label>
                         </td>
-                        <td class="ticket__title">
+                        <td class="main-window__td ticket__title">
                             @if(auth()->user()->id !== $ticket->sender_id && auth()->user()->role !== "admin")
 
                                 @php
@@ -69,7 +69,7 @@
                             @if(isset($redirect) && !$redirect->read)
                                 <b>
                             @endif
-                            <a href="ticket/{{$ticket->id}}" class="ticket-title">
+                            <a href="ticket/{{$ticket->id}}" class="main-window__a ticket-title">
                                 {{$ticket->title}}
                                 <input type="hidden" value="{{$ticket->id}}" class="id">
                             </a>
@@ -77,7 +77,7 @@
                                 </b>
                             @endif
                         </td>
-                        <td class="ticket__sender">
+                        <td class="main-window__td ticket__sender">
 
                             @php
                                 /* @var \App\Models\User $users */
@@ -86,7 +86,7 @@
                             {{$user->first_name}}
                             {{$user->last_name}}
                         </td>
-                        <td class="ticket__deadline
+                        <td class="main-window__td ticket__deadline
                         @if($ticket->deadline < date("Y-m-d H:i"))
                             color-red
                         @endif
@@ -94,7 +94,7 @@
                         >
                             {{$ticket->dateFormat()}}
                         </td>
-                        <td class="ticket__priority">{{$ticket->priority}}</td>
+                        <td class="main-window__td ticket__priority">{{$ticket->priority}}</td>
 
                     </tr>
                 @endforeach

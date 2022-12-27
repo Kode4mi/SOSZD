@@ -3,7 +3,7 @@
 @section('content')
     <x-main-title>Odpowiedz na sprawę pt. {{$ticket->title}}</x-main-title>
 
-    <main class="reply">
+    <main class="main-window reply">
         <div class="reply__header">
             <span class="reply__deadline">Termin: {{$ticket->deadline}}</span>
             <span class="reply__priority">Priorytet: {{$ticket->priority}}</span>

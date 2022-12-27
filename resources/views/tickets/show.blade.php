@@ -2,7 +2,7 @@
 
 @section('content')
     <x-main-title>Sprawa pt. {{$ticket->title}} </x-main-title>
-    <main class="ticket">
+    <main class="main-window ticket">
         <div class="ticket__header">
             <div>
                 <span class="ticket__header--deadline">Termin: {{$ticket->deadline}}</span>
@@ -29,7 +29,7 @@
                     <p class="">Załączniki:</p>
 
                     @foreach($ticket->getFiles() as $file)
-                        <a href="{{asset("storage/".$file)}}" style="color: black;">
+                        <a href="{{asset("storage/".$file)}}" class="main-window__a">
                             <i class="fa-sharp fa-solid fa-paperclip"></i>
                         </a>
                     @endforeach
@@ -52,7 +52,7 @@
                             @endphp
 
                             @if($redirect->hasReply())
-                                <a href="{{url('reply/'.$reply->id)}}"><i
+                                <a href="{{url('reply/'.$reply->id)}}" class="main-window__a"><i
                                         class="fa-sharp fa-solid fa-envelope-circle-check" title="Odpowiedź"></i></a>
                             @else
                                 @if($user['read'] === 1)
@@ -65,7 +65,7 @@
                     @else
                         @unless($redirect === null)
                             @unless($redirect->hasReply())
-                                <a href=" {{url('reply/create/'.$redirect['id'])}} "> <i
+                                <a class="main-window__a" href=" {{url('reply/create/'.$redirect['id'])}} "> <i
                                         class="fa-sharp fa-solid fa-reply" title="Odpowiedz"></i> </a>
                             @else
                                 <span>Odpowiedź została już wysłana</span>
@@ -75,7 +75,7 @@
                 </p>
 
                 @if(auth()->user()->id === $ticket->sender_id && $redirect !== null)
-                    <div><a href="/redirect/{{$ticket->id}}">
+                    <div><a class="main-window__a" href="/redirect/{{$ticket->id}}">
                             <button class="ticket__submit">Prześlij sprawę</button>
                         </a></div>
                 @endif

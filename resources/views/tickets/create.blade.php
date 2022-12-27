@@ -3,7 +3,7 @@
 @section('content')
 <x-main-title>Tworzenie sprawy: </x-main-title>
 
-<main class="create-ticket">
+<main class="main-window create-ticket">
     <form action="/ticket" method="POST" class="create-ticket__form" enctype="multipart/form-data">
         @csrf
 

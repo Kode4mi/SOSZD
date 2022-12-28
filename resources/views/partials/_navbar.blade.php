@@ -1,28 +1,28 @@
 <nav class="navbar">
     <div class="navbar__logo" id="navbar-logo">
-        <div class="navbar__logo--img">
+        <div class="navbar__logo--img bounce-3">
             <a href="{{url('/tickets')}}">  <img src="{{asset('images/logo-smallest.png')}}" alt="soSZD logo" > </a>
         </div>
     </div>
     <aside class="navbar__sidebar">
-        <ul>
-            <li>
+        <ul class="navbar__sidebar-list">
+            <li class="navbar__sidebar-list-button">
                 <a href="{{url('/tickets')}}">  <button class="navbar__sidebar--button navbar__sidebar--button1">Aktualności</button> </a>
             </li>
-            <li>
+            <li class="navbar__sidebar-list-button">
                 <a class="main__frame--create_ticket_button" href="{{url('ticket/create')}}"> <button class="navbar__sidebar--button">Nowa Sprawa</button></a>
             </li>
-            <li>
+            <li class="navbar__sidebar-list-button">
                 <a class="main__frame--archive_button" href="{{url('/archives')}}"> <button class="navbar__sidebar--button navbar__sidebar--button_archive">Archiwum</button></a>
             </li>
-            <li>
+            <li class="navbar__sidebar-list-button">
                 @if(auth()->user()->role === 'admin')
                     <form action="/users" method="GET"><button class="navbar__sidebar--button">Użytkownicy</button></form>
                 @else
                     <form action="/user/edit" method="GET"><button class="navbar__sidebar--button">Konto</button></form>
                 @endif
             </li>
-            <li>
+            <li class="navbar__sidebar-list-button">
                 <form action="/logout" method="POST"> @csrf @method("POST") <button type="submit" class="navbar__sidebar--button">Wyloguj</button> </form>
             </li>
         </ul>

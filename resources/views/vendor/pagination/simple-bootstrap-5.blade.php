@@ -10,7 +10,7 @@
                 </li>
             @else
                 <li class="page-navigator__link page-navigator__link--active">
-                    <a class="page-navigator__inner-link" href="{{ $paginator->previousPageUrl() }}" rel="prev">
+                    <a class="page-navigator__inner-link main-window__a" href="{{ $paginator->previousPageUrl() }}" rel="prev">
                         <i class="fa-solid fa-angle-left"></i>
                     </a>
                 </li>
@@ -27,7 +27,7 @@
             @if ($paginator->hasMorePages())
                 <span class="page-navigator__dot"></span>
                 <li class="page-navigator__link page-navigator__link--active">
-                    <a class="page-navigator__inner-link" href="{{ $paginator->nextPageUrl() }}" rel="next">
+                    <a class="page-navigator__inner-link main-window__a" href="{{ $paginator->nextPageUrl() }}" rel="next">
                         <i class="fa-solid fa-angle-right"></i>
                     </a>
                 </li>

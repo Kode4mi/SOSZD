@@ -71,10 +71,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('change-password', [UserController::class, 'updatePassword']);
 
-    Route::get('user/{user}', [UserController::class, 'show']);
-
-    Route::put('update_user', [UserController::class, 'update_user']);
-
     Route::middleware(['admin'])->group(function () {
 
         Route::get('users', [UserController::class, 'index']);
@@ -83,7 +79,12 @@ Route::middleware(['auth'])->group(function () {
 
         Route::post('user', [UserController::class, 'store']);
 
+        Route::put('user-update', [UserController::class, 'updateByAdmin']);
+
     });
+
+    Route::get('user/{user}', [UserController::class, 'show']);
+
 });
 
 //Logowanie

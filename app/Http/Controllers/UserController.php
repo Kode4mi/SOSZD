@@ -207,37 +207,31 @@ class UserController extends Controller
         return redirect('/login')->with('message', __('app.password_set'));
     }
 
-
-
-
     public function show(User $user): View|RedirectResponse
     {
         return view('user.show', ['user' => $user]);
     }
 
-    public function update_user(Request $request): RedirectResponse
+    public function updateByAdmin(Request $request): RedirectResponse
     {
-
-        $user = $request->user_info;
-
-
         $formFields = $request->validate([
             'email' => ['required', 'email'],
-            'first_name' => ['required'],
-            'last_name' => ['required'],
-            'role' => ['required'],
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'role' => 'nullable',
         ],
             [],
-            // [
-            //     'password' => __('app.password')
-            // ]
+             [
+                 'first_name' => __('app.first_name'),
+                 'last_name' => __('app.last_name'),
+                 'role' => __('app.role')
+             ]
         );
-            
-        DB::table('users')->where(['id' => $user])->update($formFields);
+
+        $user = User::where('email', $formFields['email'])->first();
+
+        $user->update($formFields);
 
         return redirect()->back()->with('message', __('app.user.edit'));
-
-
-        return redirect()->back()->withErrors(['password' => __('auth.password')]);
     }
 }

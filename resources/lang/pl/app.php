@@ -66,7 +66,7 @@ return [
 
     'deadline' => 'termin',
     'priority' => 'priorytet',
-    'role' => 'rola',
+    'role' => 'stanowisko',
 
     'redirected_ticket' => 'Przekazano sprawę',
 

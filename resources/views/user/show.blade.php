@@ -48,7 +48,10 @@
 
 
             <label>Reset hasła?:
-                <button class="user_edit__password" name="password_reset">Resetuj hasło</button>
+                <button type="button"
+                        class="user_edit__password"
+                        onclick="passwordResetForm()"
+                >Wyślij email z resetem hasła</button>
             </label><br>
 
             @error('password_reset')
@@ -58,5 +61,26 @@
             <button type="submit" class="user_edit__submit-button">Zatwierdź</button>
 
         </form>
+
+        <form action="/reset-password-and-send-email"
+              method="POST"
+              id="password-reset-form"
+        >
+            @csrf
+            @method("POST")
+            <input type="hidden" name="user" value="{{$user->id}}">
+        </form>
+
+        <script type="text/javascript">
+            const passwordResetForm = () => {
+                let result = confirm("Czy na pewno chcesz to zrobić?");
+                if(result) {
+                    document.getElementById("password-reset-form").submit();
+                }
+                else
+                    return false;
+            }
+        </script>
+
     </main>
 @endsection

@@ -79,7 +79,13 @@ Route::middleware(['auth'])->group(function () {
 
         Route::post('user', [UserController::class, 'store']);
 
+        Route::put('user-update', [UserController::class, 'updateByAdmin']);
+
+        Route::post('reset-password-and-send-email', [UserController::class, 'resetPasswordAndSendEmail']);
     });
+
+    Route::get('user/{user}', [UserController::class, 'show']);
+
 });
 
 //Logowanie

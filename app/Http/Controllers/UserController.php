@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\forgetPasswordEmailJob;
 use App\Jobs\newUserEmailJob;
 use App\Models\Redirect;
 use App\Models\User;
@@ -207,5 +208,50 @@ class UserController extends Controller
         return redirect('/login')->with('message', __('app.password_set'));
     }
 
+    public function show(User $user): View
+    {
+        return view('user.show', ['user' => $user]);
+    }
 
+    public function updateByAdmin(Request $request): RedirectResponse
+    {
+        $formFields = $request->validate([
+            'email' => ['required', 'email'],
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'role' => 'nullable',
+        ],
+            [],
+             [
+                 'first_name' => __('app.first_name'),
+                 'last_name' => __('app.last_name'),
+                 'role' => __('app.role')
+             ]
+        );
+
+        $user = User::where('email', $formFields['email'])->first();
+
+        $user->update($formFields);
+
+        return redirect()->back()->with('message', __('app.user.edit'));
+    }
+
+    public function resetPasswordAndSendEmail(Request $request) : RedirectResponse {
+
+        $user = User::find($request->user);
+
+        $user->update(['password' => "Podczas resetu"]);
+
+        $token = Str::random(64);
+
+        DB::table('password_resets')->insert([
+            'email' => $user->email,
+            'token' => $token,
+            'created_at' => Carbon::now()
+        ]);
+
+        dispatch(new forgetPasswordEmailJob($token, $user->email));
+
+        return redirect()->back()->with('message', __('app.password_email_sent'));
+    }
 }

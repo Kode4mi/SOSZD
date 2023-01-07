@@ -282,8 +282,6 @@ $navbarMobileWidth: 100vw;
             border-color: transparent transparent transparent black;
         }
 
-        
-
     &__large-font:hover { 
         .tooltipText{
             opacity:1;
@@ -357,6 +355,11 @@ $navbarMobileWidth: 100vw;
 
 .header.contrast {
     background-color: $background_contrast ;
+
+    .tooltipText, .tooltipText2, .tooltipText3 {
+        background-color: #fff;
+        color:#000;
+        }
 
     .header {
         &__icon {
@@ -488,6 +491,11 @@ $navbarMobileWidth: 100vw;
                 scale: 2;
                 margin-left: auto;
                 margin-right: 2vw;
+            }
+
+            .table-footer--button:hover {
+                transform:scale(1.2);
+                transition:0.3s;
             }
 
             .table-footer--links {

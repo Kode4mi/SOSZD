@@ -254,6 +254,58 @@ $navbarMobileWidth: 100vw;
         display: none;
     }
 
+    .tooltipText, .tooltipText2, .tooltipText3 {
+        position:absolute;
+        right:5%;
+        bottom:15%;
+        transform:translateX(-50%);
+        background-color: #000;
+        padding:0.5rem;
+        color:#fff;
+        white-space:nowrap;
+        border-radius:7px;
+        visibility: hidden;
+        opacity:0;
+        transition: opacity 0.5s ease;
+        -webkit-user-select: none;
+        -ms-user-select: none; 
+        user-select: none; 
+        }
+        
+        .tooltipText::after, .tooltipText2::after, .tooltipText3::after {
+            content:"";
+            position:absolute;
+            left:100%;
+            top:50%;
+            border:5px solid;
+            margin-top: -5px;
+            border-color: transparent transparent transparent black;
+        }
+
+        
+
+    &__large-font:hover { 
+        .tooltipText{
+            opacity:1;
+            visibility: visible;
+        }
+    }
+
+    &__small-font:hover { 
+        .tooltipText2{
+            font-size:1rem;
+            opacity:1;
+            visibility: visible;
+        }
+    }
+
+    &__contrast:hover {
+        .tooltipText3{
+            opacity:1;
+            visibility: visible;
+        }
+    }
+
     &__icon {
         margin-top: 1.5vh;
         margin-right: 1.5vw;
@@ -382,7 +434,7 @@ $navbarMobileWidth: 100vw;
             display: block;
         }
 
-        &__tr:hover &__td:not(:first-child){
+        &__tr:hover &__td {
             text-decoration:underline;
         }
 
@@ -1712,3 +1764,5 @@ $navbarMobileWidth: 100vw;
         }
     }
 }
+
+

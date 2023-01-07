@@ -1,7 +1,7 @@
 <header class="header" id="header">
-    <div class="header__icon header__large-font"><i class="header__fontawesome fa-solid fa-a fa-3x"></i></div>
-    <div class="header__icon header__small-font"><i class="header__fontawesome fa-solid fa-a fa-2xs"></i></div>
-    <div class="header__icon header__contrast" >
+    <div class="header__icon header__large-font"><span class="tooltipText">Zwiększ czcionkę</span><i class="header__fontawesome fa-solid fa-a fa-3x"></i></div>
+    <div class="header__icon header__small-font"><span class="tooltipText2">Zmniejsz czcionkę</span><i class="header__fontawesome fa-solid fa-a fa-2xs"></i></div>
+    <div class="header__icon header__contrast" ><span class="tooltipText3">Zmień kontrast</span>
       <input class="header__checkbox" type="checkbox" id="myCheckbox1" />
       <label for="myCheckbox1"> <i class="header__fontawesome fa-solid fa-circle-half-stroke fa-3x contrast-button"></i> </label>
     </div>

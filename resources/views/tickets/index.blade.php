@@ -21,7 +21,7 @@
                 <thead class="main-window__thead">
 
                 <tr class="main-window__tr ticket__header-row">
-                    <th class="ticket__select-all"><i class="fa-solid fa-pen-to-square " title="Zaznacz wszystko"></i>
+                    <th class="ticket__select-all"><x-tooltip-parent tooltip="Zaznacz wszystko"><i class="fa-solid fa-pen-to-square "></i></x-tooltip-parent>
                     </th>
                     <th class="ticket__sorter">@sortablelink('title', 'Tytuł')</th>
                     <th class="ticket__sorter">@sortablelink('sender_id', 'Nadawca')</th>
@@ -60,7 +60,7 @@
 
                                 @php
 
-                                $redirect = \App\Models\Redirect::where('ticket_id', $ticket->id)->where('user_id', auth()->user()->id)->first('read');
+                                    $redirect = \App\Models\Redirect::where('ticket_id', $ticket->id)->where('user_id', auth()->user()->id)->first('read');
 
 
                                 @endphp
@@ -68,12 +68,12 @@
                             @endif
                             @if(isset($redirect) && !$redirect->read)
                                 <b>
-                            @endif
-                            <a href="ticket/{{$ticket->id}}" class="main-window__a ticket-title">
-                                {{$ticket->title}}
-                                <input type="hidden" value="{{$ticket->id}}" class="id">
-                            </a>
-                            @if(isset($redirect) && !$redirect->read)
+                                    @endif
+                                    <a href="ticket/{{$ticket->id}}" class="main-window__a ticket-title">
+                                        {{$ticket->title}}
+                                        <input type="hidden" value="{{$ticket->id}}" class="id">
+                                    </a>
+                                    @if(isset($redirect) && !$redirect->read)
                                 </b>
                             @endif
                         </td>
@@ -105,21 +105,20 @@
             <div class="table-footer">
                 {{$tickets->links()}}
                 <div>
-                    <button type="submit" class="table-footer--button" form="ticket__form-{{$form}}"
-                            @if($form === "archive")
-                                title="Dodaj do archiwum"
-                            @else
-                                title="Przenieś do aktywnych spraw"
-                        @endif
-                    >
-                        <i class="archive-button fa-solid fa-folder-closed"></i>
-                    </button>
+                    @php
+                        if($form === "archive")
+                            $tooltip="Dodaj do archiwum";
+                        else
+                            $tooltip="Przenieś do aktywnych spraw";
+                    @endphp
+                    <x-tooltip-parent tooltip="{{$tooltip}}">
+                        <button type="submit" class="table-footer--button" form="ticket__form-{{$form}}">
+                                <i class="archive-button fa-solid fa-folder-closed"></i>
+                        </button>
+                    </x-tooltip-parent>
                 </div>
             </div>
-
-
         </main>
-
     @else
         <x-main-title>Brak spraw</x-main-title>
     @endif
@@ -131,7 +130,7 @@
 
     <script type="text/javascript">
 
-        if(!isMobile) {
+        if (!isMobile) {
             $(".ticket__row").draggable({
                 helper: function () {
                     return $('<div></div>').append($(this).find('.ticket-title').clone());
@@ -186,7 +185,7 @@
 
         selectSort.addEventListener("change", () => {
 
-            document.cookie = "sort="+selectSort.selectedIndex;
+            document.cookie = "sort=" + selectSort.selectedIndex;
 
             window.location = selectSort.value;
         });

@@ -1,10 +1,11 @@
 <header class="header" id="header">
-    <div class="header__icon header__large-font"><span class="tooltipText">Zwiększ czcionkę</span><i class="header__fontawesome fa-solid fa-a fa-3x"></i></div>
-    <div class="header__icon header__small-font"><span class="tooltipText2">Zmniejsz czcionkę</span><i class="header__fontawesome fa-solid fa-a fa-2xs"></i></div>
-    <div class="header__icon header__contrast" ><span class="tooltipText3">Zmień kontrast</span>
-      <input class="header__checkbox" type="checkbox" id="myCheckbox1" />
+    <x-tooltip-parent class="header__icon header__large-font" tooltip="Zwiększ czcionkę" ><i class="header__fontawesome fa-solid fa-a fa-3x"></i></x-tooltip-parent>
+    <x-tooltip-parent class="header__icon header__small-font" tooltip="Zmniejsz czcionkę"><i class="header__fontawesome fa-solid fa-a fa-2xs"></i></x-tooltip-parent>
+    <x-tooltip-parent class="header__icon header__contrast" tooltip="Zmień kontrast">
+        <input class="header__checkbox" type="checkbox" id="myCheckbox1" />
       <label for="myCheckbox1"> <i class="header__fontawesome fa-solid fa-circle-half-stroke fa-3x contrast-button"></i> </label>
-    </div>
+    </x-tooltip-parent>
+
     <div class="header__icon header__logged-user">{{auth()->user()->first_name}} {{auth()->user()->last_name}}</div>
 </header>
 

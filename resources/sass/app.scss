@@ -360,7 +360,6 @@ $navbarMobileWidth: 100vw;
         width: 70vw;
     }
 
-
     &-window {
         font-family: $primary_font;
         background-color: $frame-background;
@@ -384,8 +383,7 @@ $navbarMobileWidth: 100vw;
         }
 
         &__tr:hover &__td:not(:first-child){
-            font-size:105%;
-            transition: 0.2s;
+            text-decoration:underline;
         }
 
         &__tr &__a {
@@ -862,9 +860,6 @@ $navbarMobileWidth: 100vw;
         border-radius: 15px;
         background-color: white;
         padding-left: 0.2rem;
-
-        &:hover {}
-
     }
 
     &__button {
@@ -1446,7 +1441,7 @@ $navbarMobileWidth: 100vw;
         }
     }
 
-    &__link:hover {
+    &__link--active:hover {
         transform:scale(1.1);
         filter:saturate(200%);
         transition:0.3s;

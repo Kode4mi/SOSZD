@@ -103,6 +103,7 @@ $navbarMobileWidth: 100vw;
         justify-content: center;
         align-items: center;
         z-index: 1;
+        cursor: pointer;
 
         @media (max-aspect-ratio: 1/1) {
             width: $navbarMobileWidth;

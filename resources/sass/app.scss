@@ -1509,6 +1509,8 @@ $navbarMobileWidth: 100vw;
         grid-template-rows: 1fr;
         grid-column-gap: 0;
         grid-row-gap: 0;
+        cursor: pointer;
+
 
         @media (max-aspect-ratio: 1/1) {
             grid-template-columns: 1.5fr 1fr;

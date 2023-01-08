@@ -903,6 +903,7 @@ $navbarMobileWidth: 100vw;
         grid-template-rows: 1fr 2fr 3fr 1fr 2fr;
         grid-column-gap: 0;
         grid-row-gap: 0;
+        border: 3px solid $darkGreen;
 
         text-align: center;
 
@@ -950,6 +951,8 @@ $navbarMobileWidth: 100vw;
         height: 6vh;
         width: 6vh;
         border-radius: 2vh;
+        border: 3px solid $darkerGreen;
+        cursor: pointer;
 
         display: flex;
         justify-content: center;
@@ -957,6 +960,11 @@ $navbarMobileWidth: 100vw;
 
         color: white;
         font-size: 0.7rem;
+
+        &:hover {
+            transform: scale(1.1);
+            transition: 0.3s;
+        }
 
         @media (max-aspect-ratio: 1/1) {
             width: 8vh;

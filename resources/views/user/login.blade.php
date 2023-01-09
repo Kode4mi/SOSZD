@@ -13,9 +13,11 @@
                 </div>
             </div>
             <div class="login__center">
-                <div class="login__logo">
-                    <img src="{{asset('images/logo.png')}}" alt="logo">
-                </div>
+                <a href="{{url('/login')}}">
+                    <div class="login__logo">
+                        <img src="{{asset('images/logo.png')}}" alt="logo">
+                    </div>
+                </a>
             </div>
             <div class="login__center">
                 <div class="login__input-box">

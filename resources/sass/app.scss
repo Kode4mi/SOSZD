@@ -28,38 +28,39 @@ $navbarMobileWidth: 100vw;
 :root {
     overflow: hidden;
     font-size: 16px;
+    font-size: clamp(8px, 0.75vw, 15px);
 
-    @media (max-width: 1850px) {
-        font-size: 15px;
-    }
+    // @media (max-width: 1850px) {
+    //     font-size: 15px;
+    // }
 
-    @media (max-width: 1750px) {
-        font-size: 14px;
-    }
+    // @media (max-width: 1750px) {
+    //     font-size: 14px;
+    // }
 
-    @media (max-width: 1650px) {
-        font-size: 13px;
-    }
+    // @media (max-width: 1650px) {
+    //     font-size: 13px;
+    // }
 
-    @media (max-width: 1550px) {
-        font-size: 12px;
-    }
+    // @media (max-width: 1550px) {
+    //     font-size: 12px;
+    // }
 
-    @media (max-width: 1450px) {
-        font-size: 11px;
-    }
+    // @media (max-width: 1450px) {
+    //     font-size: 11px;
+    // }
 
-    @media (max-width: 1350px) {
-        font-size: 10px;
-    }
+    // @media (max-width: 1350px) {
+    //     font-size: 10px;
+    // }
 
-    @media (max-width: 1200px) {
-        font-size: 9px;
-    }
+    // @media (max-width: 1200px) {
+    //     font-size: 9px;
+    // }
 
-    @media (max-width: 1050px) {
-        font-size: 8px;
-    }
+    // @media (max-width: 1050px) {
+    //     font-size: 8px;
+    // }
 }
 
 .navbar {

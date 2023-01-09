@@ -23,3 +23,47 @@ const hideTooltip = (tooltipParent) => {
     tooltip.classList.remove("visible");
     tooltip.classList.add("hidden");
 }
+
+// Kontrast
+
+const contrastToggle = (contrast) => {
+    const classList = [
+        "header",
+        "main",
+        "navbar__sidebar",
+        "navbar__logo",
+        "page-navigator",
+        "flash-message-content",
+        "login",
+    ];
+
+    if (contrast === "true") {
+        localStorage.setItem('contrast', "true");
+        classList.forEach((item) => {
+            const currentSelector = document.querySelector(`.${item}`);
+
+            if(currentSelector !== null)
+                currentSelector.classList.add("contrast");
+        });
+    } else if (contrast === "false") {
+        localStorage.setItem('contrast', "false");
+        classList.forEach((item) => {
+            const currentSelector = document.querySelector(`.${item}`);
+
+            if(currentSelector !== null)
+                currentSelector.classList.remove("contrast");
+        });
+    }
+
+}
+
+let contrast = localStorage.getItem('contrast') === "true";
+
+contrast && contrastToggle("true");
+
+contrast = !contrast;
+
+document.getElementById('contrast-button').addEventListener('click', () => {
+    contrast = !contrast;
+    contrast ? contrastToggle("false") : contrastToggle("true");
+});

@@ -293,7 +293,9 @@ $navbarMobileWidth: 100vw;
         font-size: 0.9375rem;
     }
 
-    &__small-font:hover, &__large-font:hover, &__contrast:hover {
+    &__small-font:hover,
+    &__large-font:hover,
+    &__contrast:hover {
         transform: scale(1.1);
         transition: 0.3s;
     }
@@ -839,13 +841,12 @@ $navbarMobileWidth: 100vw;
 
     &__topic {
         border: 1px gray solid;
-        margin-left: 0.7vw;
+        width: 100%;
     }
 
     &__deadline {
         border: 1px gray solid;
-        margin-left: 0.5vw;
-        margin-top: 1vh;
+        width: 100%;
     }
 
     &__content {
@@ -1253,17 +1254,17 @@ $navbarMobileWidth: 100vw;
         }
 
         /* On mouse-over, add a grey background color */
-        &:hover input ~ .table-checkbox--checkmark {
+        &:hover input~.table-checkbox--checkmark {
             background-color: #ccc;
         }
 
         /* When the checkbox is checked, add a blue background */
-        & input:checked ~ .table-checkbox--checkmark {
+        & input:checked~.table-checkbox--checkmark {
             background-color: #2196F3;
         }
 
         /* Show the checkmark when checked */
-        & input:checked ~ .table-checkbox--checkmark:after {
+        & input:checked~.table-checkbox--checkmark:after {
             display: block;
         }
 
@@ -1760,8 +1761,3 @@ $navbarMobileWidth: 100vw;
         }
     }
 }
-
-
-
-
-

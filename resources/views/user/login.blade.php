@@ -7,9 +7,9 @@
             @method("POST")
             <div class="login__center">
                 <div class="login__icon-box">
-                    <div class="login__large-font login__icon"><i class="fa-solid fa-a fa-3x"></i></div>
-                    <div class="login__small-font login__icon"><i class="fa-solid fa-a fa-2xs"></i></div>
-                    <div class="login__contrast login__icon" ><i class="fa-solid fa-circle-half-stroke fa-3x" onClick="contrastToggle()"></i></div>
+                    <div class="login__large-font login__icon"><i class="fa-solid fa-a"></i></div>
+                    <div class="login__small-font login__icon"><i class="fa-solid fa-a"></i></div>
+                    <div class="login__contrast login__icon" ><i class="fa-solid fa-circle-half-stroke" onClick="contrastToggle()"></i></div>
                 </div>
             </div>
             <div class="login__center">
@@ -44,6 +44,22 @@
         document.querySelector('.login__contrast').addEventListener("click", function contrastToggle() {
         document.querySelector(".login").classList.toggle("contrast");
         document.querySelector(".flash-message-content").classList.toggle("contrast");
+        });
+
+        document.querySelector('.login__large-font').addEventListener("click", function increaseFontSize() {
+            const rootX  = document.querySelector(":root");
+            let fontSizeOfRoot = window.getComputedStyle(rootX, null).getPropertyValue('font-size');
+            fontSizeOfRoot = parseFloat(fontSizeOfRoot);
+            if(fontSizeOfRoot < 16)
+            rootX.style.fontSize = (fontSizeOfRoot + 1)+"px";
+        });
+
+        document.querySelector('.login__small-font').addEventListener("click", function decreaseFontSize() {
+            const rootX  = document.querySelector(":root");
+            let fontSizeOfRoot = window.getComputedStyle(rootX, null).getPropertyValue('font-size');
+            fontSizeOfRoot = parseFloat(fontSizeOfRoot);
+            if(fontSizeOfRoot > 8)
+            rootX.style.fontSize = (fontSizeOfRoot - 1) +"px";
         });
         </script>
 

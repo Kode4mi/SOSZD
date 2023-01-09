@@ -282,15 +282,15 @@ $navbarMobileWidth: 100vw;
     }
 
     &__small-font {
-        font-size: 3rem;
+        font-size: 3vh;
     }
 
     &__large-font {
-        font-size: 0.93rem;
+        font-size: 5vh;
     }
 
     &__contrast {
-        font-size: 0.9375rem;
+        font-size: 5vh
     }
 
     &__small-font:hover,
@@ -956,21 +956,23 @@ $navbarMobileWidth: 100vw;
         align-items: center;
 
         color: white;
-        font-size: 0.7rem;
 
         @media (max-aspect-ratio: 1/1) {
             width: 8vh;
             height: 8vh;
-            font-size: 1.4rem;
         }
     }
 
     &__small-font {
-        font-size: 1.9rem;
+        font-size: 2.5vh;
+    }
 
-        @media (max-aspect-ratio: 1/1) {
-            font-size: 3.8rem;
-        }
+    &__large-font {
+        font-size: 4.5vh;
+    }
+
+    &__contrast {
+        font-size: 4.5vh
     }
 
     &__logo {

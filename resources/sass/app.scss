@@ -27,40 +27,7 @@ $navbarMobileWidth: 100vw;
 
 :root {
     overflow: hidden;
-    font-size: 16px;
     font-size: clamp(8px, 0.75vw, 15px);
-
-    // @media (max-width: 1850px) {
-    //     font-size: 15px;
-    // }
-
-    // @media (max-width: 1750px) {
-    //     font-size: 14px;
-    // }
-
-    // @media (max-width: 1650px) {
-    //     font-size: 13px;
-    // }
-
-    // @media (max-width: 1550px) {
-    //     font-size: 12px;
-    // }
-
-    // @media (max-width: 1450px) {
-    //     font-size: 11px;
-    // }
-
-    // @media (max-width: 1350px) {
-    //     font-size: 10px;
-    // }
-
-    // @media (max-width: 1200px) {
-    //     font-size: 9px;
-    // }
-
-    // @media (max-width: 1050px) {
-    //     font-size: 8px;
-    // }
 }
 
 .navbar {
@@ -306,16 +273,20 @@ $navbarMobileWidth: 100vw;
 }
 
 .header.contrast {
-    background-color: $background_contrast;
 
     .header {
-        &__icon {
-            background-color: black;
-            color: white;
-        }
 
-        &__fontawesome {
-            filter: invert(0%);
+        &__icon-box {
+            background-color: $background_contrast;
+
+            &_icon {
+                background-color: black;
+                color: white;
+            }
+
+            &__fontawesome {
+                filter: invert(0%);
+            }
         }
     }
 
@@ -1257,17 +1228,17 @@ $navbarMobileWidth: 100vw;
         }
 
         /* On mouse-over, add a grey background color */
-        &:hover input~.table-checkbox--checkmark {
+        &:hover input ~ .table-checkbox--checkmark {
             background-color: #ccc;
         }
 
         /* When the checkbox is checked, add a blue background */
-        & input:checked~.table-checkbox--checkmark {
+        & input:checked ~ .table-checkbox--checkmark {
             background-color: #2196F3;
         }
 
         /* Show the checkmark when checked */
-        & input:checked~.table-checkbox--checkmark:after {
+        & input:checked ~ .table-checkbox--checkmark:after {
             display: block;
         }
 

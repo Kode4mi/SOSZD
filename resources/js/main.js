@@ -7,21 +7,24 @@ Alpine.start()
 
 // Tooltip //
 
-let tooltipParent = document.querySelectorAll(".tooltip-parent");
-tooltipParent.forEach(parent => {
-    parent.addEventListener('mouseenter', (event) => showTooltip(event.target))
-    parent.addEventListener('mouseleave', (event) => hideTooltip(event.target))
-});
 
-const showTooltip = (tooltipParent) => {
-    let tooltip = tooltipParent.querySelector('.tooltip');
-    tooltip.classList.add("visible");
-    tooltip.classList.remove("hidden");
-}
-const hideTooltip = (tooltipParent) => {
-    let tooltip = tooltipParent.querySelector('.tooltip');
-    tooltip.classList.remove("visible");
-    tooltip.classList.add("hidden");
+if(!isMobile) {
+    let tooltipParent = document.querySelectorAll(".tooltip-parent");
+    tooltipParent.forEach(parent => {
+        parent.addEventListener('mouseenter', (event) => showTooltip(event.target))
+        parent.addEventListener('mouseleave', (event) => hideTooltip(event.target))
+    });
+
+    const showTooltip = (tooltipParent) => {
+        let tooltip = tooltipParent.querySelector('.tooltip');
+        tooltip.classList.add("visible");
+        tooltip.classList.remove("hidden");
+    }
+    const hideTooltip = (tooltipParent) => {
+        let tooltip = tooltipParent.querySelector('.tooltip');
+        tooltip.classList.remove("visible");
+        tooltip.classList.add("hidden");
+    }
 }
 
 // Kontrast
@@ -78,7 +81,7 @@ const increaseFontSize = () => {
         fontSizeOfRoot = window.getComputedStyle(root, null).getPropertyValue('font-size');
         fontSizeOfRoot = parseFloat(fontSizeOfRoot);
 
-        if (fontSizeOfRoot < 20) {
+        if (fontSizeOfRoot < 16) {
             const newFontSize = fontSizeOfRoot + 1;
 
             root.style.fontSize = newFontSize + "px";
@@ -88,7 +91,7 @@ const increaseFontSize = () => {
     else {
         fontSizeOfRoot = localStorage.getItem('fontSize');
 
-        if (fontSizeOfRoot < 20) {
+        if (fontSizeOfRoot < 16) {
             const newFontSize = parseFloat(fontSizeOfRoot) + 1;
 
             root.style.fontSize = newFontSize + 'px';

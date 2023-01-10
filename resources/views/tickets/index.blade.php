@@ -7,7 +7,8 @@
 
             <form action="/tickets" id="search_form" class="searchbar">
                 <input class="form-control  searchbar__input" type="search" aria-label="Wyszukaj"
-                       name="search"
+                        placeholder="Wyszukaj..."
+                        name="search"
                        @if(request('search' ?? null))
                            value="{{request('search')}}"
                     @endif

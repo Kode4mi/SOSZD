@@ -28,38 +28,39 @@ $navbarMobileWidth: 100vw;
 :root {
     overflow: hidden;
     font-size: 16px;
+    font-size: clamp(8px, 0.75vw, 15px);
 
-    @media (max-width: 1850px) {
-        font-size: 15px;
-    }
+    // @media (max-width: 1850px) {
+    //     font-size: 15px;
+    // }
 
-    @media (max-width: 1750px) {
-        font-size: 14px;
-    }
+    // @media (max-width: 1750px) {
+    //     font-size: 14px;
+    // }
 
-    @media (max-width: 1650px) {
-        font-size: 13px;
-    }
+    // @media (max-width: 1650px) {
+    //     font-size: 13px;
+    // }
 
-    @media (max-width: 1550px) {
-        font-size: 12px;
-    }
+    // @media (max-width: 1550px) {
+    //     font-size: 12px;
+    // }
 
-    @media (max-width: 1450px) {
-        font-size: 11px;
-    }
+    // @media (max-width: 1450px) {
+    //     font-size: 11px;
+    // }
 
-    @media (max-width: 1350px) {
-        font-size: 10px;
-    }
+    // @media (max-width: 1350px) {
+    //     font-size: 10px;
+    // }
 
-    @media (max-width: 1200px) {
-        font-size: 9px;
-    }
+    // @media (max-width: 1200px) {
+    //     font-size: 9px;
+    // }
 
-    @media (max-width: 1050px) {
-        font-size: 8px;
-    }
+    // @media (max-width: 1050px) {
+    //     font-size: 8px;
+    // }
 }
 
 .navbar {
@@ -281,18 +282,20 @@ $navbarMobileWidth: 100vw;
     }
 
     &__small-font {
-        font-size: 3rem;
+        font-size: 3vh;
     }
 
     &__large-font {
-        font-size: 0.93rem;
+        font-size: 5vh;
     }
 
     &__contrast {
-        font-size: 0.9375rem;
+        font-size: 5vh
     }
 
-    &__small-font:hover, &__large-font:hover, &__contrast:hover {
+    &__small-font:hover,
+    &__large-font:hover,
+    &__contrast:hover {
         transform: scale(1.1);
         transition: 0.3s;
     }
@@ -838,13 +841,12 @@ $navbarMobileWidth: 100vw;
 
     &__topic {
         border: 1px gray solid;
-        margin-left: 0.7vw;
+        width: 100%;
     }
 
     &__deadline {
         border: 1px gray solid;
-        margin-left: 0.5vw;
-        margin-top: 1vh;
+        width: 100%;
     }
 
     &__content {
@@ -954,25 +956,28 @@ $navbarMobileWidth: 100vw;
         align-items: center;
 
         color: white;
-        font-size: 0.7rem;
 
         @media (max-aspect-ratio: 1/1) {
             width: 8vh;
             height: 8vh;
-            font-size: 1.4rem;
         }
     }
 
     &__small-font {
-        font-size: 1.9rem;
+        font-size: 2.5vh;
+    }
 
-        @media (max-aspect-ratio: 1/1) {
-            font-size: 3.8rem;
-        }
+    &__large-font {
+        font-size: 4.5vh;
+    }
+
+    &__contrast {
+        font-size: 4.5vh
     }
 
     &__logo {
         width: 17vw;
+        cursor: pointer;
 
         @media (max-aspect-ratio: 1/1) {
             width: 80vw;
@@ -1252,17 +1257,17 @@ $navbarMobileWidth: 100vw;
         }
 
         /* On mouse-over, add a grey background color */
-        &:hover input ~ .table-checkbox--checkmark {
+        &:hover input~.table-checkbox--checkmark {
             background-color: #ccc;
         }
 
         /* When the checkbox is checked, add a blue background */
-        & input:checked ~ .table-checkbox--checkmark {
+        & input:checked~.table-checkbox--checkmark {
             background-color: #2196F3;
         }
 
         /* Show the checkmark when checked */
-        & input:checked ~ .table-checkbox--checkmark:after {
+        & input:checked~.table-checkbox--checkmark:after {
             display: block;
         }
 
@@ -1759,8 +1764,3 @@ $navbarMobileWidth: 100vw;
         }
     }
 }
-
-
-
-
-

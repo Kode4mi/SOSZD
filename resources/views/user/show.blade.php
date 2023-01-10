@@ -2,30 +2,27 @@
 
 @section('content')
     <x-main-title>Zmień dane użytkownika {{$user->first_name}} {{$user->last_name}}</x-main-title>
-    <main class="edit_account">
-        <form action="/user-update" method="POST" class="user_edit">
+    <main class="main-window edit_account">
+        <form action="/user-update" method="POST" class="user_edit user__form">
 
             @csrf
             @method("PUT")
 
-            <label>Email:
-                <input type="text" class="user_edit__email" name="email" value="{{$user->email}}">
-            </label><br>
+            <input type="text" class="user_edit__email user__input" placeholder="Email" name="email" value="{{$user->email}}">
+            
 
             @error('email')
             <p>{{$message}}</p>
             @enderror
 
-            <label>Imie:
-                <input type="text" class="user_edit__email" name="first_name" value="{{$user->first_name}}">
-            </label><br>
+            <input type="text" class="user_edit__email user__input" placeholder="Imie" name="first_name" value="{{$user->first_name}}">
+            
             @error('first_name')
             <p>{{$message}}</p>
             @enderror
 
-            <label>Nazwisko:
-                <input type="text" class="user_edit__email" name="last_name" value="{{$user->last_name}}">
-            </label><br>
+            <input type="text" class="user_edit__email user__input" placeholder="Nazwisko" name="last_name" value="{{$user->last_name}}">
+            
             @error('last_name')
             <p>{{$message}}</p>
             @enderror
@@ -40,25 +37,21 @@
                     >Admin
                     </option>
                 </select>
-            </label><br>
+            </label>
 
             @error('role')
             <p>{{$message}}</p>
             @enderror
 
-
-            <label>Reset hasła?:
                 <button type="button"
-                        class="user_edit__password"
+                        class="user_edit__password user__submit"
                         onclick="passwordResetForm()"
                 >Wyślij email z resetem hasła</button>
-            </label><br>
-
             @error('password_reset')
             <p>{{$message}}</p>
             @enderror
 
-            <button type="submit" class="user_edit__submit-button">Zatwierdź</button>
+            <button type="submit" class="user_edit__submit-button user__submit">Zatwierdź</button>
 
         </form>
 

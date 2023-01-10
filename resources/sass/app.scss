@@ -242,30 +242,29 @@ $navbarMobileWidth: 100vw;
 }
 
 .header {
-    box-sizing: border-box;
-    background-color: $header-background;
-    height: 9vh;
 
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
-
-    &__checkbox {
-        display: none;
-    }
-
-    &__icon {
-        margin-top: 1.5vh;
-        margin-right: 1.5vw;
-        border-radius: 2vh;
-        width: 6vh;
-        height: 6vh;
-        text-align: center;
-        background-color: $user-background;
+    &__icon-box {
+        box-sizing: border-box;
+        background-color: $header-background;
+        height: 9vh;
 
         display: flex;
-        justify-content: center;
-        align-items: center;
+        align-items: flex-start;
+        justify-content: flex-end;
+
+        &_icon {
+            margin-top: 1.5vh;
+            margin-right: 1.5vw;
+            border-radius: 2vh;
+            width: 6vh;
+            height: 6vh;
+            text-align: center;
+            background-color: $user-background;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     }
 
     &__logged-user {

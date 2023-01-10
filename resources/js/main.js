@@ -26,7 +26,7 @@ const hideTooltip = (tooltipParent) => {
 
 // Kontrast
 
-const contrastToggle = (contrast) => {
+const contrastToggle = (contrastState) => {
     const classList = [
         "header",
         "main",
@@ -37,20 +37,20 @@ const contrastToggle = (contrast) => {
         "login",
     ];
 
-    if (contrast === "true") {
+    if (contrastState) {
         localStorage.setItem('contrast', "true");
         classList.forEach((item) => {
             const currentSelector = document.querySelector(`.${item}`);
 
-            if(currentSelector !== null)
+            if (currentSelector !== null)
                 currentSelector.classList.add("contrast");
         });
-    } else if (contrast === "false") {
+    } else {
         localStorage.setItem('contrast', "false");
         classList.forEach((item) => {
             const currentSelector = document.querySelector(`.${item}`);
 
-            if(currentSelector !== null)
+            if (currentSelector !== null)
                 currentSelector.classList.remove("contrast");
         });
     }
@@ -59,11 +59,81 @@ const contrastToggle = (contrast) => {
 
 let contrast = localStorage.getItem('contrast') === "true";
 
-contrast && contrastToggle("true");
+contrast && contrastToggle(true);
 
 contrast = !contrast;
 
 document.getElementById('contrast-button').addEventListener('click', () => {
     contrast = !contrast;
-    contrast ? contrastToggle("false") : contrastToggle("true");
+    contrast ? contrastToggle(false) : contrastToggle(true);
 });
+
+// Font size
+
+const root = document.querySelector(":root");
+
+const increaseFontSize = () => {
+    let fontSizeOfRoot;
+    if(!localStorage.getItem('fontSize')) {
+        fontSizeOfRoot = window.getComputedStyle(root, null).getPropertyValue('font-size');
+        fontSizeOfRoot = parseFloat(fontSizeOfRoot);
+
+        if (fontSizeOfRoot < 20) {
+            const newFontSize = fontSizeOfRoot + 1;
+
+            root.style.fontSize = newFontSize + "px";
+            localStorage.setItem('fontSize', newFontSize.toString());
+        }
+    }
+    else {
+        fontSizeOfRoot = localStorage.getItem('fontSize');
+
+        if (fontSizeOfRoot < 20) {
+            const newFontSize = parseFloat(fontSizeOfRoot) + 1;
+
+            root.style.fontSize = newFontSize + 'px';
+            localStorage.setItem('fontSize', newFontSize.toString());
+        }
+    }
+
+}
+
+const decreaseFontSize = () => {
+    let fontSizeOfRoot;
+    if(!localStorage.getItem('fontSize')) {
+        fontSizeOfRoot = window.getComputedStyle(root, null).getPropertyValue('font-size');
+        fontSizeOfRoot = parseFloat(fontSizeOfRoot);
+
+        if (fontSizeOfRoot > 8) {
+            const newFontSize = fontSizeOfRoot - 1;
+
+            root.style.fontSize = newFontSize + "px";
+            localStorage.setItem('fontSize', newFontSize.toString());
+        }
+    }
+    else {
+        fontSizeOfRoot = localStorage.getItem('fontSize');
+
+        if (fontSizeOfRoot > 8) {
+            const newFontSize = parseFloat(fontSizeOfRoot) - 1;
+
+            root.style.fontSize = newFontSize + 'px';
+            localStorage.setItem('fontSize', newFontSize.toString());
+        }
+    }
+}
+
+const fontSizeFromStorage = localStorage.getItem('fontSize');
+
+root.style.fontSize = fontSizeFromStorage + 'px';
+
+
+document.getElementById('large-font-button')
+    .addEventListener("click",
+        () => increaseFontSize()
+    );
+
+document.getElementById('small-font-button')
+    .addEventListener("click",
+        () => decreaseFontSize()
+    );

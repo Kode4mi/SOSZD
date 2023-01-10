@@ -6,11 +6,7 @@
             @csrf
             @method("POST")
             <div class="login__center">
-                <div class="login__icon-box">
-                    <div class="login__large-font login__icon"><i class="fa-solid fa-a fa-3x"></i></div>
-                    <div class="login__small-font login__icon"><i class="fa-solid fa-a fa-2xs"></i></div>
-                    <div class="login__contrast login__icon" id="contrast-button"><i class="fa-solid fa-circle-half-stroke fa-3x"></i></div>
-                </div>
+                <x-icon-box-logged-out />
             </div>
             <div class="login__center">
                 <div class="login__logo">

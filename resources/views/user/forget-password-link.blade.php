@@ -6,11 +6,7 @@
             @csrf
             @method("POST")
             <div class="login__center">
-                <div class="login__icon-box">
-                    <div class="login__large-font login__icon"><i class="fa-solid fa-a"></i></div>
-                    <div class="login__small-font login__icon"><i class="fa-solid fa-a"></i></div>
-                    <div class="login__contrast login__icon" ><i class="fa-solid fa-circle-half-stroke" onClick="contrastToggle()"></i></div>
-                </div>
+                <x-icon-box-logged-out />
             </div>
             <div class="login__center">
                 <a href="{{url('/login')}}">
@@ -44,24 +40,6 @@
                 @enderror
             </div>
         </form>
-
-        <script>
-            document.querySelector('.login__large-font').addEventListener("click", function increaseFontSize() {
-                const rootX  = document.querySelector(":root");
-                let fontSizeOfRoot = window.getComputedStyle(rootX, null).getPropertyValue('font-size');
-                fontSizeOfRoot = parseFloat(fontSizeOfRoot);
-                if(fontSizeOfRoot < 16)
-                rootX.style.fontSize = (fontSizeOfRoot + 1)+"px";
-            });
-
-            document.querySelector('.login__small-font').addEventListener("click", function decreaseFontSize() {
-                const rootX  = document.querySelector(":root");
-                let fontSizeOfRoot = window.getComputedStyle(rootX, null).getPropertyValue('font-size');
-                fontSizeOfRoot = parseFloat(fontSizeOfRoot);
-                if(fontSizeOfRoot > 8)
-                rootX.style.fontSize = (fontSizeOfRoot - 1) +"px";
-            });
-        </script>
     </div>
 
 @endsection

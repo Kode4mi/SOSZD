@@ -500,7 +500,6 @@ $navbarMobileWidth: 100vw;
     .sentbox {
         background-color: darken($frame-background,0.1%);
         overflow-y:scroll !important;
-        border-top:1px solid black;
         &__userdata {
             display:block;
             max-height:15vh;

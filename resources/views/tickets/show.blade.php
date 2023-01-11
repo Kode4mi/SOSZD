@@ -21,9 +21,7 @@
         <hr/>
         <p class="ticket__header-content">Treść:</p>
         <div class="ticket__content">
-            <textarea class="ticket__content-description" disabled>
-                {{$ticket->description}}
-            </textarea>
+            <textarea class="ticket__content-description" disabled>{{$ticket->description}}</textarea>
             <div class="ticket__content-footer">
                 @unless($ticket->files === null)
                     <p class="">Załączniki:</p>
@@ -37,12 +35,12 @@
 
 
                 <p class="">
-
+                    <div class="sentbox">
                     @if(!is_array($users))
                         <x-redirect-form :$ticket :$users></x-redirect-form>
                     @elseif($ticket->sender_id === auth()->user()->id && is_array($users))
                         @foreach($users as $user)
-                            {{$user["first_name"]}} {{$user["last_name"]}}
+                            <span class="sentbox__userdata">{{$user["first_name"]}} {{$user["last_name"]}}
 
                             @php
 
@@ -62,6 +60,7 @@
                                 @endif
                             @endif
                         @endforeach
+                    </span>
                     @else
                         @unless($redirect === null)
                             @unless($redirect->hasReply())
@@ -72,6 +71,7 @@
                             @endunless
                         @endunless
                     @endif
+                    </div>
                 </p>
 
                 @if(auth()->user()->id === $ticket->sender_id && $redirect !== null)

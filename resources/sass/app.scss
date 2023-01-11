@@ -498,6 +498,15 @@ $navbarMobileWidth: 100vw;
         background-color: darken($button-background, 10);
     }
 
+    .sentbox {
+        border-top:1px solid black;
+        overflow-y:scroll !important;
+        &__userdata {
+            display:block;
+            max-height:15vh;
+     
+        }
+    }
 }
 
 .main.contrast {

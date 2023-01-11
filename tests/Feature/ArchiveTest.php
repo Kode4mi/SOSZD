@@ -22,8 +22,10 @@ class ArchiveTest extends TestCase
 
     public function test_archive_auth(): void
     {
-        $user = User::factory()->make();
-        $ticket = Ticket::factory()->create();
+        $user = User::factory()->create();
+        $ticket = Ticket::factory()->create([
+            'sender_id' => $user->id
+        ]);
 
         $response = $this->from('/tickets')->actingAs($user)->put('/archive', ['id' => ['id' => $ticket->id]]);
 
@@ -31,13 +33,18 @@ class ArchiveTest extends TestCase
         $response->assertRedirect('/tickets');
 
         $ticket->delete();
+        $user->delete();
     }
 
     public function test_archive_multiple_auth(): void
     {
-        $user = User::factory()->make();
-        $ticket1 = Ticket::factory()->create();
-        $ticket2 = Ticket::factory()->create();
+        $user = User::factory()->create();
+        $ticket1 = Ticket::factory()->create([
+            'sender_id' => $user->id
+        ]);
+        $ticket2 = Ticket::factory()->create([
+            'sender_id' => $user->id
+        ]);
 
         $response = $this->from('/tickets')->actingAs($user)->put('/archive', [
             'id' => [$ticket1->id, $ticket2->id],
@@ -46,6 +53,7 @@ class ArchiveTest extends TestCase
         $response->assertSessionHasNoErrors();
         $response->assertRedirect('/tickets');
 
+        $user->delete();
         $ticket1->delete();
         $ticket2->delete();
     }
@@ -73,9 +81,10 @@ class ArchiveTest extends TestCase
 
     public function test_unarchive_auth(): void
     {
-        $user = User::factory()->make();
+        $user = User::factory()->create();
         $ticket = Ticket::factory()->create([
             'active' => 0,
+            'sender_id' => $user->id
         ]);
 
         $response = $this->from('/archives')->actingAs($user)->put('/unarchive', ['id' => ['id' => $ticket->id]]);
@@ -83,27 +92,30 @@ class ArchiveTest extends TestCase
         $response->assertSessionHasNoErrors();
         $response->assertRedirect('/archives');
 
+        $user->delete();
         $ticket->delete();
     }
 
     public function test_unarchive_multiple_auth(): void
     {
-        $user = User::factory()->make();
+        $user = User::factory()->create();
         $ticket1 = Ticket::factory()->create([
             'active' => 0,
+            'sender_id' => $user->id
         ]);
         $ticket2 = Ticket::factory()->create([
             'active' => 0,
+            'sender_id' => $user->id
         ]);
 
         $response = $this->from('/archives')->actingAs($user)->put('/unarchive', [
             'id' => [0 => $ticket1->id, 1 => $ticket2->id],
-
         ]);
 
         $response->assertSessionHasNoErrors();
         $response->assertRedirect('/archives');
 
+        $user->delete();
         $ticket1->delete();
         $ticket2->delete();
     }

@@ -71,6 +71,7 @@ $navbarMobileWidth: 100vw;
         justify-content: center;
         align-items: center;
         z-index: 1;
+        cursor: pointer;
 
         @media (max-aspect-ratio: 1/1) {
             width: $navbarMobileWidth;
@@ -275,13 +276,13 @@ $navbarMobileWidth: 100vw;
 .header.contrast {
 
     .header {
-
         &__icon-box {
             background-color: $background_contrast;
 
             &_icon {
-                background-color: black;
-                color: white;
+            background-color: black;
+            color: white;
+            border: 2px solid white;
             }
 
             &__fontawesome {
@@ -874,6 +875,7 @@ $navbarMobileWidth: 100vw;
         grid-template-rows: 1fr 2fr 3fr 1fr 2fr;
         grid-column-gap: 0;
         grid-row-gap: 0;
+        border: 3px solid $darkGreen;
 
         text-align: center;
 
@@ -921,12 +923,19 @@ $navbarMobileWidth: 100vw;
         height: 6vh;
         width: 6vh;
         border-radius: 2vh;
+        border: 3px solid $darkerGreen;
+        cursor: pointer;
 
         display: flex;
         justify-content: center;
         align-items: center;
 
         color: white;
+
+        &:hover {
+            transform: scale(1.1);
+            transition: 0.3s;
+        }
 
         @media (max-aspect-ratio: 1/1) {
             width: 8vh;
@@ -1484,6 +1493,8 @@ $navbarMobileWidth: 100vw;
         grid-template-rows: 1fr;
         grid-column-gap: 0;
         grid-row-gap: 0;
+        cursor: pointer;
+
 
         @media (max-aspect-ratio: 1/1) {
             grid-template-columns: 1.5fr 1fr;

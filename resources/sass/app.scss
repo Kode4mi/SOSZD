@@ -507,7 +507,6 @@ $navbarMobileWidth: 100vw;
         &__userdata {
             display:block;
             max-height:15vh;
-     
         }
     }
 }
@@ -1312,6 +1311,10 @@ $navbarMobileWidth: 100vw;
         flex-wrap: nowrap;
         color: black;
 
+        a{ 
+        cursor:pointer;
+        }
+        
         @media (max-aspect-ratio: 1/1) {
             display: none;
         }

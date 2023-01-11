@@ -27,39 +27,7 @@ $navbarMobileWidth: 100vw;
 
 :root {
     overflow: hidden;
-    font-size: 16px;
-
-    @media (max-width: 1850px) {
-        font-size: 15px;
-    }
-
-    @media (max-width: 1750px) {
-        font-size: 14px;
-    }
-
-    @media (max-width: 1650px) {
-        font-size: 13px;
-    }
-
-    @media (max-width: 1550px) {
-        font-size: 12px;
-    }
-
-    @media (max-width: 1450px) {
-        font-size: 11px;
-    }
-
-    @media (max-width: 1350px) {
-        font-size: 10px;
-    }
-
-    @media (max-width: 1200px) {
-        font-size: 9px;
-    }
-
-    @media (max-width: 1050px) {
-        font-size: 8px;
-    }
+    font-size: clamp(8px, 0.75vw, 15px);
 }
 
 .navbar {
@@ -243,30 +211,29 @@ $navbarMobileWidth: 100vw;
 }
 
 .header {
-    box-sizing: border-box;
-    background-color: $header-background;
-    height: 9vh;
 
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
-
-    &__checkbox {
-        display: none;
-    }
-
-    &__icon {
-        margin-top: 1.5vh;
-        margin-right: 1.5vw;
-        border-radius: 2vh;
-        width: 6vh;
-        height: 6vh;
-        text-align: center;
-        background-color: $user-background;
+    &__icon-box {
+        box-sizing: border-box;
+        background-color: $header-background;
+        height: 9vh;
 
         display: flex;
-        justify-content: center;
-        align-items: center;
+        align-items: flex-start;
+        justify-content: flex-end;
+
+        &_icon {
+            margin-top: 1.5vh;
+            margin-right: 1.5vw;
+            border-radius: 2vh;
+            width: 6vh;
+            height: 6vh;
+            text-align: center;
+            background-color: $user-background;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     }
 
     &__logged-user {
@@ -283,18 +250,20 @@ $navbarMobileWidth: 100vw;
     }
 
     &__small-font {
-        font-size: 3rem;
+        font-size: 3vh;
     }
 
     &__large-font {
-        font-size: 0.93rem;
+        font-size: 5vh;
     }
 
     &__contrast {
-        font-size: 0.9375rem;
+        font-size: 5vh
     }
 
-    &__small-font:hover, &__large-font:hover, &__contrast:hover {
+    &__small-font:hover,
+    &__large-font:hover,
+    &__contrast:hover {
         transform: scale(1.1);
         transition: 0.3s;
     }
@@ -305,17 +274,20 @@ $navbarMobileWidth: 100vw;
 }
 
 .header.contrast {
-    background-color: $background_contrast;
 
     .header {
-        &__icon {
+        &__icon-box {
+            background-color: $background_contrast;
+
+            &_icon {
             background-color: black;
             color: white;
             border: 2px solid white;
-        }
+            }
 
-        &__fontawesome {
-            filter: invert(0%);
+            &__fontawesome {
+                filter: invert(0%);
+            }
         }
     }
 
@@ -841,13 +813,12 @@ $navbarMobileWidth: 100vw;
 
     &__topic {
         border: 1px gray solid;
-        margin-left: 0.7vw;
+        width: 100%;
     }
 
     &__deadline {
         border: 1px gray solid;
-        margin-left: 0.5vw;
-        margin-top: 1vh;
+        width: 100%;
     }
 
     &__content {
@@ -960,7 +931,6 @@ $navbarMobileWidth: 100vw;
         align-items: center;
 
         color: white;
-        font-size: 0.7rem;
 
         &:hover {
             transform: scale(1.1);
@@ -970,20 +940,24 @@ $navbarMobileWidth: 100vw;
         @media (max-aspect-ratio: 1/1) {
             width: 8vh;
             height: 8vh;
-            font-size: 1.4rem;
         }
     }
 
     &__small-font {
-        font-size: 1.9rem;
+        font-size: 2.5vh;
+    }
 
-        @media (max-aspect-ratio: 1/1) {
-            font-size: 3.8rem;
-        }
+    &__large-font {
+        font-size: 4.5vh;
+    }
+
+    &__contrast {
+        font-size: 4.5vh
     }
 
     &__logo {
         width: 17vw;
+        cursor: pointer;
 
         @media (max-aspect-ratio: 1/1) {
             width: 80vw;
@@ -1772,8 +1746,3 @@ $navbarMobileWidth: 100vw;
         }
     }
 }
-
-
-
-
-

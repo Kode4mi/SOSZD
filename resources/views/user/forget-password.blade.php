@@ -7,19 +7,15 @@
         <form method="POST" action="/forget-password" class="login__form login__form--forget-password">
             @csrf
             @method('POST')
-
             <div class="login__center">
-                <div class="login__icon-box">
-                    <div class="login__large-font login__icon"><i class="fa-solid fa-a fa-3x"></i></div>
-                    <div class="login__small-font login__icon"><i class="fa-solid fa-a fa-2xs"></i></div>
-                    <div class="login__contrast login__icon"><i class="fa-solid fa-circle-half-stroke fa-3x"
-                                                                onClick="contrastToggle()"></i></div>
-                </div>
+                <x-icon-box-logged-out />
             </div>
             <div class="login__center">
-                <div class="login__logo">
-                    <img src="{{asset('images/logo.png')}}" alt="logo">
-                </div>
+                <a href="{{url('/login')}}">
+                    <div class="login__logo">
+                        <img src="{{asset('images/logo.png')}}" alt="logo">
+                    </div>
+                </a>
             </div>
 
             <p>
@@ -38,7 +34,6 @@
                 @enderror
             </div>
         </form>
-
     </main>
 
 @endsection

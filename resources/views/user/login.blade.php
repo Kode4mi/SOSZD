@@ -6,16 +6,14 @@
             @csrf
             @method("POST")
             <div class="login__center">
-                <div class="login__icon-box">
-                    <div class="login__large-font login__icon"><i class="fa-solid fa-a fa-3x"></i></div>
-                    <div class="login__small-font login__icon"><i class="fa-solid fa-a fa-2xs"></i></div>
-                    <div class="login__contrast login__icon" ><i class="fa-solid fa-circle-half-stroke fa-3x" onClick="contrastToggle()"></i></div>
-                </div>
+                <x-icon-box-logged-out />
             </div>
             <div class="login__center">
-                <div class="login__logo">
-                    <img src="{{asset('images/logo.png')}}" alt="logo">
-                </div>
+                <a href="{{url('/login')}}">
+                    <div class="login__logo">
+                        <img src="{{asset('images/logo.png')}}" alt="logo">
+                    </div>
+                </a>
             </div>
             <div class="login__center">
                 <div class="login__input-box">
@@ -39,13 +37,5 @@
             </div>
         </form>
     </div>
-
-    <script type="text/javascript">
-        document.querySelector('.login__contrast').addEventListener("click", function contrastToggle() {
-        document.querySelector(".login").classList.toggle("contrast");
-        document.querySelector(".flash-message-content").classList.toggle("contrast");
-        });
-        </script>
-
 @endsection
 

@@ -6,16 +6,14 @@
             @csrf
             @method('PUT')
             <div class="login__center">
-                <div class="login__icon-box">
-                    <div class="login__large-font login__icon"><i class="fa-solid fa-a fa-3x"></i></div>
-                    <div class="login__small-font login__icon"><i class="fa-solid fa-a fa-2xs"></i></div>
-                    <div class="login__contrast login__icon" ><i class="fa-solid fa-circle-half-stroke fa-3x" onClick="contrastToggle()"></i></div>
-                </div>
+                <x-icon-box-logged-out />
             </div>
             <div class="login__center">
-                <div class="login__logo">
-                    <img src="{{asset('images/logo.png')}}" alt="logo">
-                </div>
+                <a href="{{url('/login')}}">
+                    <div class="login__logo">
+                        <img src="{{asset('images/logo.png')}}" alt="logo">
+                    </div>
+                </a>
             </div>
             <div class="login__center">
                 <div class="login__input-box">
@@ -36,7 +34,7 @@
                 <p class="login__errormessage">{{$message}}</p>
                 @enderror
             </div>
-            
+
             <input type="hidden" name="token" value="{{$token}}">
         </form>
     </div>

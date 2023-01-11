@@ -3,13 +3,11 @@
 @section('content')
 <x-main-title>Tworzenie sprawy: </x-main-title>
 
-<main class="create-ticket">
+<main class="main-window create-ticket">
     <form action="/ticket" method="POST" class="create-ticket__form" enctype="multipart/form-data">
         @csrf
 
-        <label>Temat:
-            <input type="text" name="title" class="create-ticket__topic" value="{{old('title')}}" spellcheck="true">
-        </label>
+            <input type="text" name="title" class="create-ticket__topic" placeholder="Temat" value="{{old('title')}}" spellcheck="true">
 
         @error('title')
             <p>{{$message}}</p>
@@ -36,8 +34,8 @@
         <p>{{$message}}</p>
         @enderror
 
-        <label class="create-ticket__label-opis">Opis:
-            <textarea spellcheck="true" name="description" class="create-ticket__content"> {{old('description')}} </textarea>
+        <label class="create-ticket__label-opis">
+            <textarea spellcheck="true" name="description" class="create-ticket__content" placeholder="Opis...">{{old('description')}}</textarea>
         </label>
 
         @error('description')

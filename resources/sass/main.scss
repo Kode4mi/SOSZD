@@ -11,6 +11,11 @@
 
 a {
     text-decoration: none;
+    all: unset;
+
+    &:hover {
+        color: inherit;
+    }
 }
 
 img {
@@ -21,3 +26,12 @@ img {
     color: red;
 }
 
+.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+}

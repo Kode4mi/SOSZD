@@ -15,7 +15,7 @@
     @if(!\App\Http\Controllers\Controller::isMobile())
         <script src="{{ asset('js/desktop.js') }}"></script>
     @endif
-    <script src="{{ asset('js/alpine.js') }}" defer></script>
+    <script src="{{ asset('js/main.js') }}" defer></script>
 
 </head>
 <body>

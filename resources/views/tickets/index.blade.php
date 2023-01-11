@@ -3,11 +3,12 @@
 @section('content')
     @if($tickets->count())
         <x-main-title>{{$title}}:</x-main-title>
-        <main>
+        <main class="main-window">
 
             <form action="/tickets" id="search_form" class="searchbar">
                 <input class="form-control  searchbar__input" type="search" aria-label="Wyszukaj"
-                       name="search"
+                        placeholder="Wyszukaj..."
+                        name="search"
                        @if(request('search' ?? null))
                            value="{{request('search')}}"
                     @endif
@@ -16,12 +17,12 @@
                         class="fa-solid fa-magnifying-glass"></i></button>
             </form>
 
-            <table>
+            <table class="main-window__table">
 
-                <thead>
+                <thead class="main-window__thead">
 
-                <tr class="ticket__header-row">
-                    <th class="ticket__select-all"><i class="fa-solid fa-pen-to-square " title="Zaznacz wszystko"></i>
+                <tr class="main-window__tr ticket__header-row">
+                    <th class="ticket__select-all"><x-tooltip-parent tooltip="Zaznacz wszystko"><i class="fa-solid fa-pen-to-square "></i></x-tooltip-parent>
                     </th>
                     <th class="ticket__sorter">@sortablelink('title', 'Tytuł')</th>
                     <th class="ticket__sorter">@sortablelink('sender_id', 'Nadawca')</th>
@@ -44,23 +45,23 @@
 
                 </thead>
 
-                <tbody>
+                <tbody class="main-window__tbody">
 
                 @foreach($tickets as $ticket)
-                    <tr class="ticket__row">
-                        <td class="table">
+                    <tr class="main-window__tr ticket__row">
+                        <td class="main-window__td table">
                             <label class="table-checkbox">
                                 <input type="checkbox" class="table-checkbox--input" name="id[]" value="{{$ticket->id}}"
                                        form="ticket__form-{{$form}}">
                                 <span class="table-checkbox--checkmark"></span>
                             </label>
                         </td>
-                        <td class="ticket__title">
+                        <td class="main-window__td ticket__title">
                             @if(auth()->user()->id !== $ticket->sender_id && auth()->user()->role !== "admin")
 
                                 @php
 
-                                $redirect = \App\Models\Redirect::where('ticket_id', $ticket->id)->where('user_id', auth()->user()->id)->first('read');
+                                    $redirect = \App\Models\Redirect::where('ticket_id', $ticket->id)->where('user_id', auth()->user()->id)->first('read');
 
 
                                 @endphp
@@ -68,16 +69,16 @@
                             @endif
                             @if(isset($redirect) && !$redirect->read)
                                 <b>
-                            @endif
-                            <a href="ticket/{{$ticket->id}}" class="ticket-title">
-                                {{$ticket->title}}
-                                <input type="hidden" value="{{$ticket->id}}" class="id">
-                            </a>
-                            @if(isset($redirect) && !$redirect->read)
+                                    @endif
+                                    <a href="ticket/{{$ticket->id}}" class="main-window__a ticket-title">
+                                        {{$ticket->title}}
+                                        <input type="hidden" value="{{$ticket->id}}" class="id">
+                                    </a>
+                                    @if(isset($redirect) && !$redirect->read)
                                 </b>
                             @endif
                         </td>
-                        <td class="ticket__sender">
+                        <td class="main-window__td ticket__sender">
 
                             @php
                                 /* @var \App\Models\User $users */
@@ -86,7 +87,7 @@
                             {{$user->first_name}}
                             {{$user->last_name}}
                         </td>
-                        <td class="ticket__deadline
+                        <td class="main-window__td ticket__deadline
                         @if($ticket->deadline < date("Y-m-d H:i"))
                             color-red
                         @endif
@@ -94,7 +95,7 @@
                         >
                             {{$ticket->dateFormat()}}
                         </td>
-                        <td class="ticket__priority">{{$ticket->priority}}</td>
+                        <td class="main-window__td ticket__priority">{{$ticket->priority}}</td>
 
                     </tr>
                 @endforeach
@@ -105,21 +106,20 @@
             <div class="table-footer">
                 {{$tickets->links()}}
                 <div>
-                    <button type="submit" class="table-footer--button" form="ticket__form-{{$form}}"
-                            @if($form === "archive")
-                                title="Dodaj do archiwum"
-                            @else
-                                title="Przenieś do aktywnych spraw"
-                        @endif
-                    >
-                        <i class="archive-button fa-solid fa-folder-closed"></i>
-                    </button>
+                    @php
+                        if($form === "archive")
+                            $tooltip="Dodaj do archiwum";
+                        else
+                            $tooltip="Przenieś do aktywnych spraw";
+                    @endphp
+                    <x-tooltip-parent tooltip="{{$tooltip}}">
+                        <button type="submit" class="table-footer--button" form="ticket__form-{{$form}}">
+                                <i class="archive-button fa-solid fa-folder-closed"></i>
+                        </button>
+                    </x-tooltip-parent>
                 </div>
             </div>
-
-
         </main>
-
     @else
         <x-main-title>Brak spraw</x-main-title>
     @endif
@@ -131,7 +131,7 @@
 
     <script type="text/javascript">
 
-        if(!isMobile) {
+        if (!isMobile) {
             $(".ticket__row").draggable({
                 helper: function () {
                     return $('<div></div>').append($(this).find('.ticket-title').clone());
@@ -186,7 +186,7 @@
 
         selectSort.addEventListener("change", () => {
 
-            document.cookie = "sort="+selectSort.selectedIndex;
+            document.cookie = "sort=" + selectSort.selectedIndex;
 
             window.location = selectSort.value;
         });

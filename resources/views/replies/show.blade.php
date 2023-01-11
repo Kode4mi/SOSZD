@@ -2,7 +2,7 @@
 
 @section('content')
     <x-main-title>Odp do sprawy: {{$ticket->title}} </x-main-title>
-    <main class="ticket">
+    <main class="main-window ticket">
         <div class="ticket__header">
             <div>
                 <span class="ticket__header--deadline">Termin: {{$ticket->deadline}}</span>
@@ -27,7 +27,7 @@
                     <p class="">Załączniki:</p>
 
                     @foreach($reply->getFiles() as $file)
-                        <a href="{{asset("storage/".$file)}}" style="color: black;">Plik
+                        <a class="main-window__a" href="{{asset("storage/".$file)}}">Plik
                             {{--                    <img src="{{asset("storage/".$file)}}" alt="Załącznik" width="100px"/>--}}
                         </a>
                     @endforeach

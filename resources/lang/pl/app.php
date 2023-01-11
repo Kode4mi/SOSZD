@@ -26,6 +26,8 @@ return [
     'password_change' => 'Zmieniono hasło',
     'password_set' => 'Ustawiono hasło',
 
+    'password_email_sent' => 'Wysłano email z zresetowanym hasłem',
+
     //Często wykorzystywane nazwy pól
 
     'title' => 'tytuł',
@@ -66,7 +68,7 @@ return [
 
     'deadline' => 'termin',
     'priority' => 'priorytet',
-    'role' => 'rola',
+    'role' => 'stanowisko',
 
     'redirected_ticket' => 'Przekazano sprawę',
 

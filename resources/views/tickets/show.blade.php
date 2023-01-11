@@ -35,10 +35,11 @@
 
 
                 <p class="">
-                    <div class="sentbox">
+                
                     @if(!is_array($users))
                         <x-redirect-form :$ticket :$users></x-redirect-form>
                     @elseif($ticket->sender_id === auth()->user()->id && is_array($users))
+                    <div class="sentbox">
                         @foreach($users as $user)
                             <span class="sentbox__userdata">{{$user["first_name"]}} {{$user["last_name"]}}
 
@@ -59,8 +60,9 @@
                                     <i class="fa-sharp fa-solid fa-paper-plane" title="Wysłano"></i>
                                 @endif
                             @endif
+                        </span>
                         @endforeach
-                    </span>
+                   
                     @else
                         @unless($redirect === null)
                             @unless($redirect->hasReply())

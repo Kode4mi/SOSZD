@@ -500,10 +500,18 @@ $navbarMobileWidth: 100vw;
     .sentbox {
         background-color: darken($frame-background,0.1%);
         overflow-y:scroll !important;
+        font-size:1.4rem;
+        max-height:15vh;
+        border: 1px solid black;
+
         &__userdata {
             display:block;
-            max-height:15vh;
+           
+            &:hover{
+                background-color: rgb(217, 217, 217);
+            }
         }
+        
     }
 }
 

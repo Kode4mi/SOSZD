@@ -13,7 +13,6 @@ class TicketController extends Controller
 {
     public function index(): View
     {
-
         /* @var User $user */
         $user = auth()->user();
         $title = "Aktualne sprawy";

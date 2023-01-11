@@ -11,6 +11,27 @@ use Illuminate\Http\Request;
 
 class ArchiveController extends Controller
 {
+    private function setActive($ids, $user, $active) : void {
+        foreach ($ids as $id) {
+            $ticket = Ticket::find($id);
+            if($user->id === $ticket->sender_id) {
+                if ($ticket->active !== $active) {
+                    $ticket->update([
+                        'active' => $active,
+                    ]);
+                }
+            }
+            else {
+                $redirect = Redirect::whereUserIdAndTicketId($user->id, $ticket->id)->first();
+                if ($redirect->active !== $active) {
+                    $redirect->update([
+                        'active' => $active,
+                    ]);
+                }
+            }
+        }
+    }
+
     public function index(): View
     {
         /* @var User $user */
@@ -46,24 +67,7 @@ class ArchiveController extends Controller
             'id' => 'required'
         ]);
 
-        foreach ($formFields['id'] as $id) {
-            $ticket = Ticket::find($id);
-            if($user->id === $ticket->sender_id) {
-                if ($ticket->active !== 0) {
-                    $ticket->update([
-                        'active' => 0,
-                    ]);
-                }
-            }
-            else {
-                $redirect = Redirect::whereUserIdAndTicketId($user->id, $ticket->id)->first();
-                if ($redirect->active !== 0) {
-                    $redirect->update([
-                        'active' => 0,
-                    ]);
-                }
-            }
-        }
+        $this->setActive($formFields['id'], $user, 0);
 
         return redirect()->back()->with('message', __('app.archive'));
     }
@@ -77,24 +81,7 @@ class ArchiveController extends Controller
             'id' => 'required'
         ]);
 
-        foreach ($formFields['id'] as $id) {
-            $ticket = Ticket::find($id);
-            if($user->id === $ticket->sender_id) {
-                if ($ticket->active !== 1) {
-                    $ticket->update([
-                        'active' => 1,
-                    ]);
-                }
-            }
-            else {
-                $redirect = Redirect::whereUserIdAndTicketId($user->id, $ticket->id)->first();
-                if ($redirect->active !== 1) {
-                    $redirect->update([
-                        'active' => 1,
-                    ]);
-                }
-            }
-        }
+        $this->setActive($formFields['id'], $user, 1);
 
         return redirect()->back()->with('message', __('app.un_archive'));
     }

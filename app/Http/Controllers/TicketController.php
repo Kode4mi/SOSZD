@@ -13,25 +13,24 @@ class TicketController extends Controller
 {
     public function index(): View
     {
-        $title = "Aktualne sprawy";
-        $form = "archive";
 
         /* @var User $user */
         $user = auth()->user();
+        $title = "Aktualne sprawy";
+        $form = "archive";
+        $ticket_id = [];
 
-        if ($user->role === "nauczyciel") {
-            $ticket_id = [];
+        $tickets = Redirect::whereUserIdAndActive($user->id, true)->get('ticket_id');
 
-            $tickets = Redirect::where("user_id", $user->id)->get('ticket_id');
-
-            for ($i = 0, $iMax = count($tickets); $i < $iMax; $i++) {
-                $ticket_id[$i] = $tickets[$i]["ticket_id"];
-            }
-
-            $tickets = Ticket::sortable()->latest()->where('active', 1)->whereIn('id', $ticket_id)->orWhere('sender_id', $user->id)->filter(request(['search']))->simplePaginate(15)->withQueryString();
-        } else {
-            $tickets = Ticket::sortable()->latest()->where('active', 1)->filter(request(['search']))->simplePaginate(15)->withQueryString();
+        for ($i = 0, $iMax = count($tickets); $i < $iMax; $i++) {
+            $ticket_id[$i] = $tickets[$i]["ticket_id"];
         }
+
+        $tickets = Ticket::sortable()->latest()
+            ->whereIn('id', $ticket_id)
+            ->orWhere('sender_id', $user->id)
+            ->where('active', true)->filter(request(['search']))
+            ->simplePaginate(15)->withQueryString();
 
         return view('tickets.index', [
             'tickets' => $tickets,

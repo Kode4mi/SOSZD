@@ -96,6 +96,7 @@ $navbarMobileWidth: 100vw;
     &__logo:hover &__logo--img {
         transform: scale(1.05);
         transition: 0.3s;
+        cursor:pointer;
     }
 
     &__sidebar {
@@ -203,10 +204,6 @@ $navbarMobileWidth: 100vw;
     ::selection {
         background: rgb(59, 245, 245);
     }
-}
-
-.navbar__logo.contrast:hover {
-    background-color: lighten($background_contrast, 20%);
 }
 
 .header {

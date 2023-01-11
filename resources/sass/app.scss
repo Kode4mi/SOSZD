@@ -258,7 +258,7 @@ $navbarMobileWidth: 100vw;
     }
 
     &__contrast {
-        font-size: 5vh
+        font-size: 4.5vh;
     }
 
     &__small-font:hover,
@@ -280,9 +280,9 @@ $navbarMobileWidth: 100vw;
             background-color: $background_contrast;
 
             &_icon {
-            background-color: black;
-            color: white;
-            border: 2px solid white;
+                background-color: black;
+                color: white;
+                border: 2px solid white;
             }
 
             &__fontawesome {

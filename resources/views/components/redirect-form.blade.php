@@ -21,17 +21,30 @@
 
     <script type="text/javascript">
 
-        let arr = document.getElementsByClassName("redirect-form__option");
+        const arr = document.getElementsByClassName("redirect-form__option");
+        const resultList = document.getElementById("user_list");
         let selected = [];
         let sliced = [];
         let list = [];
 
-        for (let i = 0; i < arr.length; i++) {
-            list.push({name: arr.item(i).textContent, id: arr.item(i).value});
-        }
+        window.onload = () => {
+            for (let i = 0; i < arr.length; i++) {
+                list.push({name: arr.item(i).textContent, id: arr.item(i).value});
+            }
+
+            list = list.sort((a, b) => {
+                return a.name.localeCompare(b.name);
+            });
+
+            resultList.innerHTML = "";
+
+            list.forEach((user) =>
+                resultList.innerHTML += `<li class="redirect-form__option" onclick="addToSelected(${user.id})">${user.name}</li>`
+            );
+        };
 
         const updateResult = (query) => {
-            let resultList = document.getElementById("user_list");
+
             resultList.innerHTML = "";
 
             list.map((user) => {
@@ -43,18 +56,39 @@
             })
         }
 
-        const addToSelected = (id) => {
-            selected.push(id);
-            const index = list.map(user => user.id).indexOf(id);
-            sliced.push(list.splice(index, 1));
+        const updateLists = () => {
+            list = list.sort((a, b) => {
+                return a.name.localeCompare(b.name);
+            });
 
             document.querySelector(".input-selected").innerHTML = `<input type="hidden" value="${selected}" name="user_id"/>`;
 
             updateResult(document.querySelector(".user-input").value);
 
             document.querySelector(".selected-list").innerHTML = sliced.map((item) => {
-                return item[0].name;
+                return item[0].name+`<i class="fa-solid fa-trash" onclick="removeFromSelected(${item[0].id})"></i>`;
             });
+        }
+
+        const removeFromSelected = (id) => {
+            const index = sliced.map(user => user[0].id).indexOf(id);
+            const userToAdd = sliced.splice(index, 1);
+
+            const indexSelected = selected.map(user => user).indexOf(id);
+            selected.splice(indexSelected, 1);
+
+            list.push(userToAdd[0][0]);
+
+
+            updateLists();
+        }
+
+        const addToSelected = (id) => {
+            selected.push(id);
+            const index = list.map(user => user.id).indexOf(id);
+            sliced.push(list.splice(index, 1));
+
+            updateLists();
         }
 
 

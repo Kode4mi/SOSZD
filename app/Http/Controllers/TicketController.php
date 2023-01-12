@@ -49,6 +49,15 @@ class TicketController extends Controller
     public function show(Ticket $ticket): View|RedirectResponse
     {
         $redirect = "";
+        $form = "";
+
+        if($ticket->active) {
+            $form = "archive";
+        }
+        else {
+            $form = "unarchive";
+        }
+
 
         /* @var User $user */
         $user = auth()->user();
@@ -94,6 +103,7 @@ class TicketController extends Controller
             'users' => $users,
             'sender' => $sender,
             'redirect' => $redirect,
+            'form' => $form
         ]);
     }
 

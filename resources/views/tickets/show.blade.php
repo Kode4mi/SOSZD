@@ -80,6 +80,28 @@
                         </a></div>
                 @endif
 
+                @php
+                    if($form === "archive") {
+                        $tooltip="Dodaj do archiwum";
+                        $title = "Zarchiwizuj";
+                    }
+                    else {
+                        $tooltip="Przenieś do aktywnych spraw";
+                        $title = "Od archiwizuj";
+                    }
+                @endphp
+
+                <x-tooltip-parent tooltip="{{$tooltip}}">
+                    <form method="POST" action="/{{$form}}">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" name="id[]" value="{{$ticket->id}}">
+                            <button type="submit" class="table-footer--button">
+                                {{$title}}
+                            </button>
+                        </form>
+                    </x-tooltip-parent>
+
             </div>
         </div>
     </main>

@@ -19,6 +19,7 @@ return [
     'user' => [
         'create' => "Stworzono nowego użytkownika",
         'edit' => 'Zmieniono dane użytkownika',
+        'delete' => 'Usunięto użytkownika'
     ],
 
     'old_password' => 'Stare hasło niepoprawne',

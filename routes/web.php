@@ -33,7 +33,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('ticket/create', [TicketController::class, 'create']);
 
-    Route::get('ticket/{ticket}', [TicketController::class, 'show']);
+    Route::get('ticket/{slug}', [TicketController::class, 'show']);
 
     Route::post('ticket', [TicketController::class, 'store']);
 

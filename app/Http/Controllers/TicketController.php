@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TicketController extends Controller
 {
@@ -50,6 +51,8 @@ class TicketController extends Controller
     {
         $redirect = "";
 
+    
+
         /* @var User $user */
         $user = auth()->user();
         if ($user->role === "nauczyciel") {
@@ -81,7 +84,7 @@ class TicketController extends Controller
             $users[$i] += $userData;
             $i++;
         }
-
+        
         $sender = User::where("id", $ticket->sender_id)->first(['first_name', 'last_name']);
 
         $redirect = Redirect::where('ticket_id', $ticket['id'])->where('user_id', auth()->user()->id)->first();
@@ -89,13 +92,21 @@ class TicketController extends Controller
         if ($users === []) {
             $users = User::whereNot('id', auth()->user()->id)->get(['id', 'first_name', 'last_name']);
         }
+
+        $slug = Ticket::where('slug', $ticket->slug);
+        
         return view('tickets.show', [
             'ticket' => $ticket,
             'users' => $users,
             'sender' => $sender,
             'redirect' => $redirect,
-        ]);
+        ])->with('slug', $slug);
     }
+
+        // public function show($slug){
+        //     $game = Game::where('slug', $slug)->first();
+        //     return view('game.show')->with('game', $game);
+        // }
 
     public function store(Request $request): RedirectResponse
     {
@@ -134,10 +145,17 @@ class TicketController extends Controller
             'sender_id' => $user->id,
         ];
 
+        $slug = $request->id."-".$request->title.$request->created_at;
+
+        $formFields += [
+            'slug' => md5($slug),
+        ];
+
         $ticket = Ticket::create($formFields);
 
-        return redirect("ticket/$ticket->id")->with('message', __('app.ticket.create'));
+        return redirect("ticket/$ticket->slug")->with('message', __('app.ticket.create'));
     }
+
 
 
 }

@@ -70,7 +70,7 @@
                             @if(isset($redirect) && !$redirect->read)
                                 <b>
                                     @endif
-                                    <a href="ticket/{{$ticket->id}}" class="main-window__a ticket-title">
+                                    <a href="ticket/{{$ticket->slug}}" class="main-window__a ticket-title">
                                         {{$ticket->title}}
                                         <input type="hidden" value="{{$ticket->id}}" class="id">
                                     </a>

@@ -7,6 +7,7 @@ use App\Models\Redirect;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use App\Models\Ticket;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,12 +18,24 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(20)->create();
 
+    
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
 
-        Ticket::factory(40)->create();
+        $tickets=Ticket::factory(40)->make();
+        $id = 1;
+        
+
+        foreach ($tickets as $ticket) {
+            $slug = $id."-".$ticket->title.$ticket->created_at;
+            Ticket::factory()->create([
+                'slug' => md5($slug)
+            ]);
+            
+            $id++;
+        }
 
         User::factory()->create([
             'first_name' => "Renata",

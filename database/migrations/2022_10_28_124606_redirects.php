@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');  // tworzenie klucza obcego do tabeli 'users'
             $table->boolean('read')->default(false);
             $table->timestamps();
+            $table->string('slug');
         });
 
     }

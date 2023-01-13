@@ -39,9 +39,9 @@ Route::middleware(['auth'])->group(function () {
 
 // Redirect
 
-    Route::get('redirect/{ticket}', [RedirectController::class, 'index'])->middleware('creator');
+    Route::get('redirect/{slug}', [RedirectController::class, 'index'])->middleware('creator');
 
-    Route::post('redirect/{ticket}', [RedirectController::class, 'store'])->middleware('creator');
+    Route::post('redirect/{slug}', [RedirectController::class, 'store'])->middleware('creator');
 
 // Reply
 

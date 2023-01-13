@@ -65,9 +65,18 @@ class DatabaseSeeder extends Seeder
             $id++;
         }
 
-        Redirect::factory(15)->create();
+        $redirects = Redirect::factory(15)->make();
 
-        
+        $id = 1;
+
+        foreach ($redirects as $re) {
+            $slug = $id."-".$re->ticket_id."-".$re->user_id;
+            Redirect::factory()->create([
+                'slug' => md5($slug),
+            ]);
+            
+            $id++;
+        }
 
     }
 }

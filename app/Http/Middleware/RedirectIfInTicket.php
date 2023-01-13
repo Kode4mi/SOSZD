@@ -11,6 +11,10 @@ class RedirectIfInTicket
 {
     public function handle(Request $request, Closure $next) : Response|RedirectResponse
     {
+        //dd($request);
+
+        // dd($request->ticket);
+        
         if($request->ticket->sender_id === auth()->user()->id) {
             return $next($request);
         }

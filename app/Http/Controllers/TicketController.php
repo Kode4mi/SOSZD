@@ -47,10 +47,11 @@ class TicketController extends Controller
         return view('tickets.create');
     }
 
-    public function show(Ticket $ticket): View|RedirectResponse
+    public function show($slug): View|RedirectResponse
     {
         $redirect = "";
 
+        $ticket = Ticket::where('slug', $slug)->first();
     
 
         /* @var User $user */

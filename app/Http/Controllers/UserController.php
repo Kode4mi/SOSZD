@@ -169,6 +169,12 @@ class UserController extends Controller
 
             dispatch(new newUserEmailJob($token, $formFields['email']));
 
+
+            $slug = $request->id."-".$request->first_name."-".$request->last_name;
+
+            $formFields += ["slug" => $slug];
+
+
             User::create($formFields);
 
             return redirect('/users')->with('message', __('app.user.create'));
@@ -208,8 +214,10 @@ class UserController extends Controller
         return redirect('/login')->with('message', __('app.password_set'));
     }
 
-    public function show(User $user): View
+    public function show(String $slug): View
     {
+        $user = User::where('slug', $slug)->first();
+
         return view('user.show', ['user' => $user]);
     }
 

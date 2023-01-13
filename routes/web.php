@@ -84,7 +84,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('reset-password-and-send-email', [UserController::class, 'resetPasswordAndSendEmail']);
     });
 
-    Route::get('user/{user}', [UserController::class, 'show']);
+    Route::get('user/{slug}', [UserController::class, 'show']);
 
 });
 

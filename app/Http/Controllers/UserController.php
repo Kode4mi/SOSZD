@@ -169,13 +169,15 @@ class UserController extends Controller
 
             dispatch(new newUserEmailJob($token, $formFields['email']));
 
+            $formFields += [
+                'slug' => "placeholder"
+            ];
 
-            $slug = $request->id."-".$request->first_name."-".$request->last_name;
+            $user = User::create($formFields);
 
-            $formFields += ["slug" => $slug];
+            $slug = md5($user->id.$user->first_name.$user->last_name.$user->created_at);
 
-
-            User::create($formFields);
+            $user->update(["slug" => $slug]);
 
             return redirect('/users')->with('message', __('app.user.create'));
         }

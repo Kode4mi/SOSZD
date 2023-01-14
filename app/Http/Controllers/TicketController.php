@@ -52,7 +52,7 @@ class TicketController extends Controller
         $redirect = "";
 
         $ticket = Ticket::where('slug', $slug)->first();
-    
+
 
         /* @var User $user */
         $user = auth()->user();
@@ -85,7 +85,7 @@ class TicketController extends Controller
             $users[$i] += $userData;
             $i++;
         }
-        
+
         $sender = User::where("id", $ticket->sender_id)->first(['first_name', 'last_name']);
 
         $redirect = Redirect::where('ticket_id', $ticket['id'])->where('user_id', auth()->user()->id)->first();
@@ -95,7 +95,7 @@ class TicketController extends Controller
         }
 
         $slug = Ticket::where('slug', $ticket->slug);
-        
+
         return view('tickets.show', [
             'ticket' => $ticket,
             'users' => $users,
@@ -144,15 +144,14 @@ class TicketController extends Controller
 
         $formFields += [
             'sender_id' => $user->id,
-        ];
-
-        $slug = $request->id."-".$request->title.$request->created_at;
-
-        $formFields += [
-            'slug' => md5($slug),
+            'slug' => "placeholder"
         ];
 
         $ticket = Ticket::create($formFields);
+
+        $slug = md5($ticket->id."-".$ticket->title.$ticket->created_at);
+
+        $ticket->update(['slug' => $slug]);
 
         return redirect("ticket/$ticket->slug")->with('message', __('app.ticket.create'));
     }

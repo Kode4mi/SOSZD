@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
             $id++;
         }
 
-    
+
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
@@ -54,14 +54,14 @@ class DatabaseSeeder extends Seeder
 
         $tickets=Ticket::factory(40)->make();
         $id = 1;
-        
+
 
         foreach ($tickets as $ticket) {
             $slug = $id."-".$ticket->title.$ticket->created_at;
             Ticket::factory()->create([
                 'slug' => md5($slug)
             ]);
-            
+
             $id++;
         }
 
@@ -74,7 +74,7 @@ class DatabaseSeeder extends Seeder
             Redirect::factory()->create([
                 'slug' => md5($slug),
             ]);
-            
+
             $id++;
         }
 

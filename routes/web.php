@@ -45,11 +45,11 @@ Route::middleware(['auth'])->group(function () {
 
 // Reply
 
-    Route::get('reply/{reply}', [ReplyController::class, 'show']);
+    Route::get('reply/{slug}', [ReplyController::class, 'show']);
 
-    Route::get('reply/create/{redirect}', [ReplyController::class, 'create']);
+    Route::get('reply/create/{slug}', [ReplyController::class, 'create']);
 
-    Route::post('reply/{redirect}', [ReplyController::class, 'store']);
+    Route::post('reply/{slug}', [ReplyController::class, 'store']);
 
 // Archive
 

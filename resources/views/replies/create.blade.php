@@ -15,7 +15,7 @@
                 <textarea disabled class="reply__original-message-text">{{$ticket->description}}</textarea>
                 <hr>
             </div>
-            <form class="reply__form" action="/reply/{{$redirect->id}}" method="POST" enctype="multipart/form-data">
+            <form class="reply__form" action="/reply/{{$redirect->slug}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method("POST")
                 <div class="reply__form-message">

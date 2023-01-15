@@ -41,7 +41,7 @@
         @foreach($users as $user)
         <tr class="main-window__tr users__row">
             <td class="main-window__td users__name">
-                <a href="user/{{$user->id}}">
+                <a href="user/{{$user->slug}}">
                     {{$user->last_name}} {{$user->first_name}}
                  </a>
             </td>

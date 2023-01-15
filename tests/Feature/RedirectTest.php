@@ -19,7 +19,7 @@ class RedirectTest extends TestCase
             'sender_id' => $user->id,
         ]);
 
-        $response = $this->actingAs($user)->get('/redirect/'.$ticket->id);
+        $response = $this->actingAs($user)->get('/redirect/'.$ticket->slug);
 
         $response->assertSuccessful();
         $response->assertViewHas('ticket', $ticket);
@@ -50,9 +50,9 @@ class RedirectTest extends TestCase
         ]);
         $user_selected = User::factory()->create();
 
-        $response = $this->actingAs($user)->post('/redirect/'.$ticket->id, ['user_id' => [$user_selected->id]]);
+        $response = $this->actingAs($user)->post('/redirect/'.$ticket->slug, ['user_id' => [$user_selected->id]]);
 
-        $response->assertRedirect('/ticket/'.$ticket->id);
+        $response->assertRedirect('/ticket/'.$ticket->slug);
         $response->assertSessionHas('message', __('app.redirected_ticket'));
 
 
@@ -70,10 +70,10 @@ class RedirectTest extends TestCase
             'sender_id' => $user->id,
         ]);
 
-        $response = $this->from('/redirect/'.$ticket->id)->actingAs($user)->post('/redirect/'.$ticket->id);
+        $response = $this->from('/redirect/'.$ticket->slug)->actingAs($user)->post('/redirect/'.$ticket->slug);
 
         $response->assertSessionHasErrors('user_id', 'required');
-        $response->assertRedirect('/redirect/'.$ticket->id);
+        $response->assertRedirect('/redirect/'.$ticket->slug);
 
         $ticket->delete();
     }
@@ -89,13 +89,13 @@ class RedirectTest extends TestCase
         $user_selected_3 = User::factory()->create();
         $user_selected_4 = User::factory()->create();
 
-        $response = $this->actingAs($user)->post('/redirect/'.$ticket->id, ['user_id' => [$user_selected->id, $user_selected_2->id, $user_selected_3->id, $user_selected_4->id]]);
+        $response = $this->actingAs($user)->post('/redirect/'.$ticket->slug, ['user_id' => [$user_selected->id, $user_selected_2->id, $user_selected_3->id, $user_selected_4->id]]);
 
-        $response->assertRedirect('/ticket/'.$ticket->id);
+        $response->assertRedirect('/ticket/'.$ticket->slug);
         $response->assertSessionHas('message', __('app.redirected_ticket'));
 
-
         $redirect = Redirect::where('ticket_id', $ticket->id)->where('user_id', $user_selected->id)->first();
+
         $redirect->delete();
         $ticket->delete();
         $user_selected->delete();

@@ -57,7 +57,7 @@ class ReplyController extends Controller
             $redirect = Reply::create($formFields);
 
             $slug = md5($redirect->id."-".$redirect->redirect_id);
-            
+
             $redirect->update(['slug' => $slug]);
 
             return redirect("tickets")->with("message", __('app.reply.sent'));
@@ -66,21 +66,28 @@ class ReplyController extends Controller
         return redirect("tickets")->with("message", __('app.cant_do_that'));
     }
 
-    public function show(String $slug): View
+    public function show(String $slug): View|RedirectResponse
     {
+
         $reply = Reply::where('slug', $slug)->first();
 
         $redirect = Redirect::where("id", $reply->redirect_id)->first();
 
         $ticket = Ticket::where("id", $redirect->ticket_id)->first();
 
-        $user = User::where('id', $redirect->user_id)->first();
+        $auth_user = auth()->user()->id;
 
-        return View('replies.show', [
-            'reply' => $reply,
-            'ticket' => $ticket,
-            'user' => $user
-        ]);
+        if($ticket->sender_id === $auth_user || $redirect->user_id === $auth_user) {
+            $user = User::where('id', $redirect->user_id)->first();
+
+            return View('replies.show', [
+                'reply' => $reply,
+                'ticket' => $ticket,
+                'user' => $user
+            ]);
+        }
+
+        return redirect("tickets")->with('message', __("app.access_denied"));
     }
 
 

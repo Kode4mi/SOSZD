@@ -19,7 +19,7 @@ class ReplyController extends Controller
         /** @var User $user */
         $user = auth()->user();
 
-        if ((!$redirect->hasReply() && $user->id === $redirect->user_id) || $user->role === "admin") {
+        if (!$redirect->hasReply() && $user->id === $redirect->user_id) {
             return View('replies.create', [
                 'redirect' => $redirect,
                 'ticket' => Ticket::find($redirect->ticket_id),

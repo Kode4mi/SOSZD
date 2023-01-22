@@ -35,7 +35,7 @@
                     @endforeach
                 @endunless
 
-
+                
                 <p class="">
 
                     @if(!is_array($users))
@@ -62,46 +62,55 @@
                                 @endif
                             @endif
                         @endforeach
+                        <div class="ticket__buttons">
                     @else
                         @unless($redirect === null)
                             @unless($redirect->hasReply())
-                                <a class="main-window__a" href=" {{url('reply/create/'.$redirect['id'])}} "> <i
-                                        class="fa-sharp fa-solid fa-reply" title="Odpowiedz"></i> </a>
+                            <div class="ticket__buttons">
+                                <a class="main-window__a" href=" {{url('reply/create/'.$redirect['id'])}} ">
+                                    <button class="ticket__anwser"> 
+                                        Odpowiedz
+                                    </button>
+                                </a>
                             @else
-                                <span>Odpowiedź została już wysłana</span>
+                                <div class="ticket__buttons">
+                                    <button class="ticket__anwser ticket__anwser--disabled" disabled> 
+                                        Odpowiedź wysłano
+                                    </button>
                             @endunless
                         @endunless
                     @endif
                 </p>
 
                 @if(auth()->user()->id === $ticket->sender_id && $redirect !== null)
-                    <div><a class="main-window__a" href="/redirect/{{$ticket->id}}">
+                    <div>
+                        <a class="main-window__a" href="/redirect/{{$ticket->id}}">
                             <button class="ticket__submit">Prześlij sprawę</button>
-                        </a></div>
+                        </a>
+                    </div>
                 @endif
 
                 @php
                     if($form === "archive") {
                         $tooltip="Dodaj do archiwum";
                         $title = "Zarchiwizuj";
-                    }
-                    else {
-                        $tooltip="Przenieś do aktywnych spraw";
-                        $title = "Od archiwizuj";
-                    }
+                        }
+                        else {
+                            $tooltip="Przenieś do aktywnych spraw";
+                            $title = "Od archiwizuj";
+                        }
                 @endphp
-
                 <x-tooltip-parent tooltip="{{$tooltip}}">
                     <form method="POST" action="/{{$form}}">
                         @csrf
                         @method('PUT')
                         <input type="hidden" name="id[]" value="{{$ticket->id}}">
-                            <button type="submit" class="table-footer--button">
+                            <button type="submit" class="ticket__archive">
                                 {{$title}}
                             </button>
-                        </form>
-                    </x-tooltip-parent>
-
+                    </form>
+                </x-tooltip-parent>
+                </div>
             </div>
         </div>
     </main>

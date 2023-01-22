@@ -50,9 +50,16 @@ class TicketController extends Controller
     public function show($slug): View|RedirectResponse
     {
         $redirect = "";
+        $form = "";
 
         $ticket = Ticket::where('slug', $slug)->first();
 
+        if($ticket->active) {
+            $form = "archive";
+        }
+        else {
+            $form = "unarchive";
+        }
 
         /* @var User $user */
         $user = auth()->user();
@@ -101,6 +108,7 @@ class TicketController extends Controller
             'users' => $users,
             'sender' => $sender,
             'redirect' => $redirect,
+            'form' => $form
         ])->with('slug', $slug);
     }
 

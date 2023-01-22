@@ -264,4 +264,12 @@ class UserController extends Controller
 
         return redirect()->back()->with('message', __('app.password_email_sent'));
     }
+
+    public function delete(User $user) : RedirectResponse {
+
+        $user->delete();
+
+        return redirect('users')->with('message', __('app.user.delete'));
+    }
+
 }

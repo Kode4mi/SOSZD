@@ -424,6 +424,48 @@ $navbarMobileWidth: 100vw;
 
         .ticket {
 
+            &__buttons {
+                display: flex;
+            }
+
+            &__anwser {
+                background-color: #529e63;
+                color: $button-color;
+                border: none;
+                height: fit-content;
+                border-radius: 15px;
+                padding: 0.5rem 0.5rem 0.3rem 0.5rem;
+                width: fit-content;
+                margin-right: 1vh;
+
+                &:hover {
+                    background-color: darken(#529e63, 10);
+                }
+
+                &--disabled {
+                    background-color: #8eb396;
+
+                    &:hover {
+                        background-color: #8eb396;
+                    }
+                }
+            }
+
+            &__archive {
+                background-color: #529e9b;
+                color: $button-color;
+                border: none;
+                height: fit-content;
+                border-radius: 15px;
+                padding: 0.5rem 0.5rem 0.3rem 0.5rem;
+                width: fit-content;
+                margin-right: 1vh;
+
+                &:hover {
+                    background-color: darken(#529e9b, 10);
+                }
+            }
+
             &__submit {
                 background-color: $button-background;
                 color: $button-color;
@@ -432,6 +474,7 @@ $navbarMobileWidth: 100vw;
                 border-radius: 15px;
                 padding: 0.5rem 0.5rem 0.3rem 0.5rem;
                 width: fit-content;
+                margin-right: 1vh;
             }
 
             &__submit:hover {
@@ -729,6 +772,26 @@ $navbarMobileWidth: 100vw;
 
         &:hover {
             background-color: darken($button-background, 10%);
+        }
+    }
+
+    &__delete {
+        margin-top: 2vh;
+        background-color: #9b3c3c;
+        color: $button-color;
+        border: none;
+        border-radius: 15px;
+        padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+        font-size: 1.2em;
+        width: 25vh;
+
+        @media (max-aspect-ratio: 1/1) {
+            width: 70%;
+            padding: 5vw;
+        }
+
+        &:hover {
+            background-color: darken(#9b3c3c, 10%);
         }
     }
 }
@@ -1237,17 +1300,17 @@ $navbarMobileWidth: 100vw;
         }
 
         /* On mouse-over, add a grey background color */
-        &:hover input ~ .table-checkbox--checkmark {
+        &:hover input~.table-checkbox--checkmark {
             background-color: #ccc;
         }
 
         /* When the checkbox is checked, add a blue background */
-        & input:checked ~ .table-checkbox--checkmark {
+        & input:checked~.table-checkbox--checkmark {
             background-color: #2196F3;
         }
 
         /* Show the checkmark when checked */
-        & input:checked ~ .table-checkbox--checkmark:after {
+        & input:checked~.table-checkbox--checkmark:after {
             display: block;
         }
 

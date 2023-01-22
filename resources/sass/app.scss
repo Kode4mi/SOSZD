@@ -774,6 +774,26 @@ $navbarMobileWidth: 100vw;
             background-color: darken($button-background, 10%);
         }
     }
+
+    &__delete {
+        margin-top: 2vh;
+        background-color: #9b3c3c;
+        color: $button-color;
+        border: none;
+        border-radius: 15px;
+        padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+        font-size: 1.2em;
+        width: 25vh;
+
+        @media (max-aspect-ratio: 1/1) {
+            width: 70%;
+            padding: 5vw;
+        }
+
+        &:hover {
+            background-color: darken(#9b3c3c, 10%);
+        }
+    }
 }
 
 .create-ticket {

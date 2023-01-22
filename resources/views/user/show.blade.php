@@ -46,7 +46,7 @@
             <p>{{$message}}</p>
             @enderror
 
-            <button type="submit" class="user_edit__submit-button user__submit">Zatwierdź</button>
+            <button type="submit" class="user__submit">Zatwierdź</button>
 
             <button type="button"
                     class="user_edit__password user__submit"
@@ -59,7 +59,7 @@
 
 
             <button type="button"
-                    class="user_edit__submit-button user__submit"
+                    class="user__delete"
                     onclick="deletionForm()"
                     >
                 Usuń użytkownika

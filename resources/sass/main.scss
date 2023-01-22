@@ -35,3 +35,24 @@ img {
     opacity: 0;
     visibility: hidden;
 }
+
+.bounce {
+    animation: bounce 1s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-10px); }
+}
+
+.shake {
+    animation: shake 1s ease-in-out infinite;
+}
+
+@keyframes shake {
+    0% { transform: rotate(4deg); }
+    33% { transform: rotate(-4deg); }
+    66% { transform: rotate(-4deg); }
+    100% { transform: rotate(4deg); }
+}

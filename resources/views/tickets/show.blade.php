@@ -52,7 +52,7 @@
                             @endphp
 
                             @if($redirect->hasReply())
-                                <a href="{{url('reply/'.$reply->id)}}" class="main-window__a"><i
+                                <a href="{{url('reply/'.$reply->slug)}}" class="main-window__a"><i
                                         class="fa-sharp fa-solid fa-envelope-circle-check" title="Odpowiedź"></i></a>
                             @else
                                 @if($user['read'] === 1)
@@ -67,12 +67,11 @@
                         @unless($redirect === null)
                             @unless($redirect->hasReply())
                             <div class="ticket__buttons">
-                                <a class="main-window__a" href=" {{url('reply/create/'.$redirect['id'])}} ">
+                                <a class="main-window__a" href=" {{url('reply/create/'.$redirect['slug'])}} ">
                                     <button class="ticket__anwser"> 
                                         Odpowiedz
                                     </button>
                                 </a>
-                            @else
                                 <div class="ticket__buttons">
                                     <button class="ticket__anwser ticket__anwser--disabled" disabled> 
                                         Odpowiedź wysłano
@@ -84,7 +83,7 @@
 
                 @if(auth()->user()->id === $ticket->sender_id && $redirect !== null)
                     <div>
-                        <a class="main-window__a" href="/redirect/{{$ticket->id}}">
+                        <a class="main-window__a" href="/redirect/{{$ticket->slug}}">
                             <button class="ticket__submit">Prześlij sprawę</button>
                         </a>
                     </div>

@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TicketController extends Controller
 {
@@ -46,7 +47,7 @@ class TicketController extends Controller
         return view('tickets.create');
     }
 
-    public function show(Ticket $ticket): View|RedirectResponse
+    public function show($slug): View|RedirectResponse
     {
         $redirect = "";
         $form = "";
@@ -57,6 +58,9 @@ class TicketController extends Controller
         else {
             $form = "unarchive";
         }
+
+
+        $ticket = Ticket::where('slug', $slug)->first();
 
 
         /* @var User $user */
@@ -98,14 +102,22 @@ class TicketController extends Controller
         if ($users === []) {
             $users = User::whereNot('id', auth()->user()->id)->get(['id', 'first_name', 'last_name']);
         }
+
+        $slug = Ticket::where('slug', $ticket->slug);
+
         return view('tickets.show', [
             'ticket' => $ticket,
             'users' => $users,
             'sender' => $sender,
             'redirect' => $redirect,
             'form' => $form
-        ]);
+        ])->with('slug', $slug);
     }
+
+        // public function show($slug){
+        //     $game = Game::where('slug', $slug)->first();
+        //     return view('game.show')->with('game', $game);
+        // }
 
     public function store(Request $request): RedirectResponse
     {
@@ -142,12 +154,18 @@ class TicketController extends Controller
 
         $formFields += [
             'sender_id' => $user->id,
+            'slug' => "placeholder"
         ];
 
         $ticket = Ticket::create($formFields);
 
-        return redirect("ticket/$ticket->id")->with('message', __('app.ticket.create'));
+        $slug = md5($ticket->id."-".$ticket->title.$ticket->created_at);
+
+        $ticket->update(['slug' => $slug]);
+
+        return redirect("ticket/$ticket->slug")->with('message', __('app.ticket.create'));
     }
+
 
 
 }

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->text('message');
             $table->string('files')->nullable();
             $table->timestamps();
+            $table->string('slug');
         });
     }
 

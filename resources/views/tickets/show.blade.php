@@ -72,6 +72,7 @@
                                         Odpowiedz
                                     </button>
                                 </a>
+                                else
                                 <div class="ticket__buttons">
                                     <button class="ticket__anwser ticket__anwser--disabled" disabled> 
                                         Odpowiedź wysłano

@@ -52,16 +52,14 @@ class TicketController extends Controller
         $redirect = "";
         $form = "";
 
+        $ticket = Ticket::where('slug', $slug)->first();
+
         if($ticket->active) {
             $form = "archive";
         }
         else {
             $form = "unarchive";
         }
-
-
-        $ticket = Ticket::where('slug', $slug)->first();
-
 
         /* @var User $user */
         $user = auth()->user();

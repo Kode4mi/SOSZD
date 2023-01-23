@@ -1,4 +1,4 @@
-<form class="redirect-form" action="/redirect/{{$ticket->id}}" method="POST">
+<form class="redirect-form" action="/redirect/{{$ticket->slug}}" method="POST">
 
     @csrf
     @method("POST")

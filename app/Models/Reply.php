@@ -20,7 +20,7 @@ class Reply extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['redirect_id', 'message', 'files'];
+    protected $fillable = ['redirect_id', 'message', 'files', 'slug'];
 
     public function redirect(): Relation
     {

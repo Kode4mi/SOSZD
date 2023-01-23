@@ -20,6 +20,7 @@ return new class extends Migration
             $table->boolean('active')->default(true);
             $table->string('files')->nullable();
             $table->timestamps();
+            $table->string('slug');
         });
     }
 

@@ -38,7 +38,7 @@ class ForgotPasswordController extends Controller
 
         dispatch(new forgetPasswordEmailJob($token, $formFields['email']));
 
-        return back()->with('message', __('passwords.sent'));
+        return redirect('login')->with('message', __('passwords.sent'));
     }
 
     public function showResetPassword($token) : View {

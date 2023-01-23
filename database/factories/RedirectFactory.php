@@ -18,6 +18,7 @@ class RedirectFactory extends Factory
         return [
             'ticket_id' => $this->faker->numberBetween(1, 20),
             'user_id' => $this->faker->numberBetween(1,6),
+            'slug' => md5($this->faker->randomNumber(9, true))
         ];
     }
 }

@@ -11,8 +11,10 @@ use Illuminate\Http\Request;
 
 class RedirectController extends Controller
 {
-    public function index(Ticket $ticket): View
+    public function index(String $slug): View
     {
+        $ticket = Ticket::where('slug', $slug)->first();
+
         $redirect = Redirect::where('ticket_id', $ticket->id)->distinct()->get('user_id');
 
         $users = User::whereNotIn('id', $redirect)->whereNot('id', auth()->user()->id)->get(['id', 'first_name', 'last_name']);
@@ -23,8 +25,10 @@ class RedirectController extends Controller
         ]);
     }
 
-    public function store(Request $request, Ticket $ticket): RedirectResponse
+    public function store(Request $request, String $slug_ticket): RedirectResponse
     {
+        $ticket = Ticket::where('slug', $slug_ticket)->first();
+
         $formFields = $request->validate([
             'user_id' => 'required'
         ], [], [
@@ -34,10 +38,14 @@ class RedirectController extends Controller
         $userTab = explode(",", $formFields['user_id']);
 
         foreach ($userTab as $user) {
-            $redirect = ['user_id' => $user, 'ticket_id' => $ticket->id];
-            Redirect::create($redirect);
-        }
+            $redirect = ['user_id' => $user, 'ticket_id' => $ticket->id, 'slug'=> 'placeholder'];
+            $redirect = Redirect::create($redirect);
+            
+            $slug = md5($redirect->id.$redirect->user_id.$redirect->ticket_id.$redirect->created_at);
 
-        return redirect('ticket/' . $ticket->id)->with('message', __('app.redirected_ticket'));
+            $redirect->update(['slug' => $slug]);
+        } 
+
+        return redirect('ticket/' . $ticket->slug)->with('message', __('app.redirected_ticket'));
     }
 }

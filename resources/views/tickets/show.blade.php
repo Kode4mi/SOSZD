@@ -21,9 +21,7 @@
         <hr/>
         <p class="ticket__header-content">Treść:</p>
         <div class="ticket__content">
-            <textarea class="ticket__content-description" disabled>
-                {{$ticket->description}}
-            </textarea>
+            <textarea class="ticket__content-description" disabled>{{$ticket->description}}</textarea>
             <div class="ticket__content-footer">
                 @unless($ticket->files === null)
                     <p class="">Załączniki:</p>
@@ -35,7 +33,7 @@
                     @endforeach
                 @endunless
 
-                
+
                 <p class="">
 
                     @if(!is_array($users))
@@ -68,13 +66,13 @@
                             @unless($redirect->hasReply())
                             <div class="ticket__buttons">
                                 <a class="main-window__a" href=" {{url('reply/create/'.$redirect['slug'])}} ">
-                                    <button class="ticket__anwser"> 
+                                    <button class="ticket__anwser">
                                         Odpowiedz
                                     </button>
                                 </a>
-                                else
+                            @else
                                 <div class="ticket__buttons">
-                                    <button class="ticket__anwser ticket__anwser--disabled" disabled> 
+                                    <button class="ticket__anwser ticket__anwser--disabled" disabled>
                                         Odpowiedź wysłano
                                     </button>
                             @endunless

@@ -47,7 +47,7 @@
 
             <label class="create-ticket__input-file create-ticket__label-file">
                 <i class="fa-solid fa-paperclip"></i>
-                <input type="file" name="files[]" class="create-ticket__input-file" multiple value="{{old('files')}}">
+                <input type="file" name="files[]" class="create-ticket__input-file" multiple value="{{old('files')}}" />
             </label>
 
             @error('files')

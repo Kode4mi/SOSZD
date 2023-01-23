@@ -35,14 +35,16 @@ class RedirectController extends Controller
             'user_id' => __('app.user_id')
         ]);
 
-        foreach ($formFields['user_id'] as $user) {
+        $userTab = explode(",", $formFields['user_id']);
+
+        foreach ($userTab as $user) {
             $redirect = ['user_id' => $user, 'ticket_id' => $ticket->id, 'slug'=> 'placeholder'];
             $redirect = Redirect::create($redirect);
-
+            
             $slug = md5($redirect->id.$redirect->user_id.$redirect->ticket_id.$redirect->created_at);
 
             $redirect->update(['slug' => $slug]);
-        }
+        } 
 
         return redirect('ticket/' . $ticket->slug)->with('message', __('app.redirected_ticket'));
     }

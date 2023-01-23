@@ -19,11 +19,11 @@ class ForgotPasswordController extends Controller
         return view('user.forget-password');
     }
 
-    public function submitForgetPassword(Request $request) : RedirectResponse
+    public function submitForgetPassword(Request $request): RedirectResponse
     {
         $formFields = $request->validate([
             'email' => 'required|email|exists:users',
-            ],
+        ],
             [
                 'exists' => __('passwords.user')
             ]);
@@ -41,29 +41,29 @@ class ForgotPasswordController extends Controller
         return redirect('login')->with('message', __('passwords.sent'));
     }
 
-    public function showResetPassword($token) : View {
+    public function showResetPassword($token): View
+    {
         return view('user.forget-password-link', ['token' => $token]);
     }
 
-    public function submitResetPassword(Request $request, string $token) : RedirectResponse
+    public function submitResetPassword(Request $request, string $token): RedirectResponse
     {
 
         $formFields = $request->validate([
             'email' => 'required|email|exists:users',
             'password' => 'required|confirmed',
         ],
-        [
-            'exists' => __('passwords.user')
-        ],
             [
-             'password' => __('app.password')
+                'exists' => __('passwords.user')
+            ],
+            [
+                'password' => __('app.password')
             ]
         );
 
         $user = User::where('email', $formFields['email'])->first();
 
-        if(Hash::check($formFields['password'], $user->password))
-        {
+        if (Hash::check($formFields['password'], $user->password)) {
             return redirect()->back()->with('message', __('app.new_password'));
         }
 
@@ -74,8 +74,8 @@ class ForgotPasswordController extends Controller
             ])
             ->first();
 
-        if(!$updatePassword){
-            return redirect()->back()->withErrors(['email' =>__('passwords.token')]);
+        if (!$updatePassword) {
+            return redirect()->back()->withErrors(['email' => __('passwords.token')]);
         }
 
         $user->update(['password' => bcrypt($formFields['password'])]);

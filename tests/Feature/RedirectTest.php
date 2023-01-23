@@ -50,7 +50,7 @@ class RedirectTest extends TestCase
         ]);
         $user_selected = User::factory()->create();
 
-        $response = $this->actingAs($user)->post('/redirect/'.$ticket->slug, ['user_id' => [$user_selected->id]]);
+        $response = $this->actingAs($user)->post('/redirect/'.$ticket->slug, ['user_id' => $user_selected->id]);
 
         $response->assertRedirect('/ticket/'.$ticket->slug);
         $response->assertSessionHas('message', __('app.redirected_ticket'));
@@ -89,7 +89,7 @@ class RedirectTest extends TestCase
         $user_selected_3 = User::factory()->create();
         $user_selected_4 = User::factory()->create();
 
-        $response = $this->actingAs($user)->post('/redirect/'.$ticket->slug, ['user_id' => [$user_selected->id, $user_selected_2->id, $user_selected_3->id, $user_selected_4->id]]);
+        $response = $this->actingAs($user)->post('/redirect/'.$ticket->slug, ['user_id' => $user_selected->id, $user_selected_2->id, $user_selected_3->id, $user_selected_4->id]);
 
 
         $response->assertRedirect('/ticket/'.$ticket->slug);

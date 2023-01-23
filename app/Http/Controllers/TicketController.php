@@ -8,30 +8,29 @@ use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TicketController extends Controller
 {
     public function index(): View
     {
-        $title = "Aktualne sprawy";
-        $form = "archive";
-
         /* @var User $user */
         $user = auth()->user();
+        $title = "Aktualne sprawy";
+        $form = "archive";
+        $ticket_id = [];
 
-        if ($user->role === "nauczyciel") {
-            $ticket_id = [];
+        $tickets = Redirect::whereUserIdAndActive($user->id, true)->get('ticket_id');
 
-            $tickets = Redirect::where("user_id", $user->id)->get('ticket_id');
-
-            for ($i = 0, $iMax = count($tickets); $i < $iMax; $i++) {
-                $ticket_id[$i] = $tickets[$i]["ticket_id"];
-            }
-
-            $tickets = Ticket::sortable()->latest()->where('active', 1)->whereIn('id', $ticket_id)->orWhere('sender_id', $user->id)->filter(request(['search']))->simplePaginate(12)->withQueryString();
-        } else {
-            $tickets = Ticket::sortable()->latest()->where('active', 1)->filter(request(['search']))->simplePaginate(12)->withQueryString();
+        for ($i = 0, $iMax = count($tickets); $i < $iMax; $i++) {
+            $ticket_id[$i] = $tickets[$i]["ticket_id"];
         }
+
+        $tickets = Ticket::sortable()->latest()
+            ->whereIn('id', $ticket_id)
+            ->orWhere('sender_id', $user->id)
+            ->where('active', true)->filter(request(['search']))
+            ->simplePaginate(15)->withQueryString();
 
         return view('tickets.index', [
             'tickets' => $tickets,
@@ -46,9 +45,19 @@ class TicketController extends Controller
         return view('tickets.create');
     }
 
-    public function show(Ticket $ticket): View|RedirectResponse
+    public function show($slug): View|RedirectResponse
     {
         $redirect = "";
+        $form = "";
+
+        $ticket = Ticket::where('slug', $slug)->first();
+
+        if($ticket->active) {
+            $form = "archive";
+        }
+        else {
+            $form = "unarchive";
+        }
 
         /* @var User $user */
         $user = auth()->user();
@@ -89,13 +98,22 @@ class TicketController extends Controller
         if ($users === []) {
             $users = User::whereNot('id', auth()->user()->id)->get(['id', 'first_name', 'last_name']);
         }
+
+        $slug = Ticket::where('slug', $ticket->slug);
+
         return view('tickets.show', [
             'ticket' => $ticket,
             'users' => $users,
             'sender' => $sender,
             'redirect' => $redirect,
-        ]);
+            'form' => $form
+        ])->with('slug', $slug);
     }
+
+        // public function show($slug){
+        //     $game = Game::where('slug', $slug)->first();
+        //     return view('game.show')->with('game', $game);
+        // }
 
     public function store(Request $request): RedirectResponse
     {
@@ -132,12 +150,18 @@ class TicketController extends Controller
 
         $formFields += [
             'sender_id' => $user->id,
+            'slug' => "placeholder"
         ];
 
         $ticket = Ticket::create($formFields);
 
-        return redirect("ticket/$ticket->id")->with('message', __('app.ticket.create'));
+        $slug = md5($ticket->id."-".$ticket->title.$ticket->created_at);
+
+        $ticket->update(['slug' => $slug]);
+
+        return redirect("ticket/$ticket->slug")->with('message', __('app.ticket.create'));
     }
+
 
 
 }

@@ -15,7 +15,7 @@ class TicketFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    #[ArrayShape(['title' => "string", 'description' => "string", 'deadline' => "string", 'priority' => "int", "sender_id" => "int"])]
+    #[ArrayShape(['title' => "string", 'description' => "string", 'deadline' => "string", 'priority' => "int", "sender_id" => "int", "slug" => "mixed"])]
     public function definition(): array
     {
         return [
@@ -24,6 +24,7 @@ class TicketFactory extends Factory
             'deadline' => date("Y-m-d H:i:s", strtotime('+1 day')),
             'priority' => $this->faker->numberBetween(1,4),
             'sender_id' => 1,
+            'slug' => md5($this->faker->randomNumber(9, true))
         ];
     }
 }

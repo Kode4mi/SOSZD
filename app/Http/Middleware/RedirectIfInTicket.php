@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Ticket;
 use Closure;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -11,7 +12,9 @@ class RedirectIfInTicket
 {
     public function handle(Request $request, Closure $next) : Response|RedirectResponse
     {
-        if($request->ticket->sender_id === auth()->user()->id) {
+        $ticket = Ticket::whereSlug($request->slug)->first();
+
+        if($ticket->sender_id === auth()->user()->id) {
             return $next($request);
         }
 

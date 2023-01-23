@@ -69,7 +69,7 @@ class ArchiveController extends Controller
 
         $this->setActive($formFields['id'], $user, 0);
 
-        return redirect()->back()->with('message', __('app.archive'));
+        return redirect('tickets')->with('message', __('app.archive'));
     }
 
     public function unarchive(Request $request) : RedirectResponse {
@@ -83,6 +83,6 @@ class ArchiveController extends Controller
 
         $this->setActive($formFields['id'], $user, 1);
 
-        return redirect()->back()->with('message', __('app.un_archive'));
+        return redirect('archives')->with('message', __('app.un_archive'));
     }
 }

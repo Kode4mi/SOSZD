@@ -40,7 +40,7 @@ class TicketTest extends TestCase
            'user_id' => $user->id,
         ]);
 
-        $response = $this->actingAs($user)->get('/ticket/'.$ticket->id);
+        $response = $this->actingAs($user)->get('/ticket/'.$ticket->slug);
 
         $response->assertSuccessful();
 
@@ -58,7 +58,7 @@ class TicketTest extends TestCase
 
         $ticket = Ticket::factory()->create();
 
-        $response = $this->actingAs($user)->get('/ticket/'.$ticket->id);
+        $response = $this->actingAs($user)->get('/ticket/'.$ticket->slug);
 
         $response->assertRedirect("/tickets");
 

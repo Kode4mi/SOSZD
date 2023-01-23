@@ -21,7 +21,7 @@ class Redirect extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id','ticket_id','read','active'];
+    protected $fillable = ['user_id','ticket_id','read','active','slug'];
 
     public function ticket() : Relation
     {

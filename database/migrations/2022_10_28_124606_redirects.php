@@ -18,6 +18,7 @@ return new class extends Migration
             $table->boolean('read')->default(false);
             $table->boolean('active')->default(true);
             $table->timestamps();
+            $table->string('slug');
         });
 
     }

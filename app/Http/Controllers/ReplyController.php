@@ -12,13 +12,14 @@ use Illuminate\View\View;
 
 class ReplyController extends Controller
 {
-
-    public function create(Redirect $redirect): RedirectResponse|View
+    public function create(String $slug): RedirectResponse|View
     {
+        $redirect = Redirect::where('slug', $slug)->first();
+
         /** @var User $user */
         $user = auth()->user();
 
-        if ((!$redirect->hasReply() && $user->id === $redirect->user_id) || $user->role === "admin") {
+        if (!$redirect->hasReply() && $user->id === $redirect->user_id) {
             return View('replies.create', [
                 'redirect' => $redirect,
                 'ticket' => Ticket::find($redirect->ticket_id),
@@ -27,8 +28,10 @@ class ReplyController extends Controller
         return redirect('tickets')->with('message', __('app.cant_do_that'));
     }
 
-    public function store(Request $request, Redirect $redirect): RedirectResponse
+    public function store(Request $request, String $slug): RedirectResponse
     {
+        $redirect = Redirect::where('slug', $slug)->first();
+
         /** @var User $user */
         $user = auth()->user();
 
@@ -50,7 +53,12 @@ class ReplyController extends Controller
 
             $formFields = array_merge($formFields, ['redirect_id' => $redirect->id]);
 
-            Reply::create($formFields);
+            $formFields += ['slug'=> 'placeholder'];
+            $redirect = Reply::create($formFields);
+
+            $slug = md5($redirect->id."-".$redirect->redirect_id);
+
+            $redirect->update(['slug' => $slug]);
 
             return redirect("tickets")->with("message", __('app.reply.sent'));
         }
@@ -58,20 +66,28 @@ class ReplyController extends Controller
         return redirect("tickets")->with("message", __('app.cant_do_that'));
     }
 
-    public function show(Reply $reply): View
+    public function show(String $slug): View|RedirectResponse
     {
+
+        $reply = Reply::where('slug', $slug)->first();
 
         $redirect = Redirect::where("id", $reply->redirect_id)->first();
 
         $ticket = Ticket::where("id", $redirect->ticket_id)->first();
 
-        $user = User::where('id', $redirect->user_id)->first();
+        $auth_user = auth()->user()->id;
 
-        return View('replies.show', [
-            'reply' => $reply,
-            'ticket' => $ticket,
-            'user' => $user
-        ]);
+        if($ticket->sender_id === $auth_user || $redirect->user_id === $auth_user) {
+            $user = User::where('id', $redirect->user_id)->first();
+
+            return View('replies.show', [
+                'reply' => $reply,
+                'ticket' => $ticket,
+                'user' => $user
+            ]);
+        }
+
+        return redirect("tickets")->with('message', __("app.access_denied"));
     }
 
 

@@ -33,23 +33,23 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('ticket/create', [TicketController::class, 'create']);
 
-    Route::get('ticket/{ticket}', [TicketController::class, 'show']);
+    Route::get('ticket/{slug}', [TicketController::class, 'show']);
 
     Route::post('ticket', [TicketController::class, 'store']);
 
 // Redirect
 
-    Route::get('redirect/{ticket}', [RedirectController::class, 'index'])->middleware('creator');
+    Route::get('redirect/{slug}', [RedirectController::class, 'index'])->middleware('creator');
 
-    Route::post('redirect/{ticket}', [RedirectController::class, 'store'])->middleware('creator');
+    Route::post('redirect/{slug}', [RedirectController::class, 'store'])->middleware('creator');
 
 // Reply
 
-    Route::get('reply/{reply}', [ReplyController::class, 'show']);
+    Route::get('reply/{slug}', [ReplyController::class, 'show']);
 
-    Route::get('reply/create/{redirect}', [ReplyController::class, 'create']);
+    Route::get('reply/create/{slug}', [ReplyController::class, 'create']);
 
-    Route::post('reply/{redirect}', [ReplyController::class, 'store']);
+    Route::post('reply/{slug}', [ReplyController::class, 'store']);
 
 // Archive
 
@@ -79,12 +79,14 @@ Route::middleware(['auth'])->group(function () {
 
         Route::post('user', [UserController::class, 'store']);
 
+        Route::delete('user/{user}', [UserController::class, 'delete']);
+
         Route::put('user-update', [UserController::class, 'updateByAdmin']);
 
         Route::post('reset-password-and-send-email', [UserController::class, 'resetPasswordAndSendEmail']);
     });
 
-    Route::get('user/{user}', [UserController::class, 'show']);
+    Route::get('user/{slug}', [UserController::class, 'show']);
 
 });
 

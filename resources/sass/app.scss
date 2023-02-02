@@ -97,6 +97,7 @@ $navbarMobileWidth: 100vw;
     &__logo:hover &__logo--img {
         transform: scale(1.05);
         transition: 0.3s;
+        cursor:pointer;
     }
 
     &__sidebar {
@@ -204,10 +205,6 @@ $navbarMobileWidth: 100vw;
     ::selection {
         background: rgb(59, 245, 245);
     }
-}
-
-.navbar__logo.contrast:hover {
-    background-color: lighten($background_contrast, 20%);
 }
 
 .header {
@@ -532,6 +529,7 @@ $navbarMobileWidth: 100vw;
         text-decoration: none;
         border-radius: 15px;
         padding: 0.5rem 0.5rem 0.3rem 0.5rem;
+        cursor: pointer;
 
         a {
             color: white;
@@ -542,6 +540,24 @@ $navbarMobileWidth: 100vw;
         background-color: darken($button-background, 10);
     }
 
+
+    
+    .sentbox {
+        background-color: darken($frame-background,0.1%);
+        overflow-y:scroll !important;
+        font-size:1.4rem;
+        max-height:15vh;
+        border: 1px solid black;
+
+        &__userdata {
+            display:block;
+           
+            &:hover{
+                background-color: rgb(217, 217, 217);
+            }
+        }
+        
+    }
 }
 
 .main.contrast {
@@ -944,6 +960,7 @@ $navbarMobileWidth: 100vw;
 
         width: 69vw;
         height: 72vh;
+        border:3px solid $darkGreen;
 
         background-color: $darkGreen;
         border-radius: 1.8vh;
@@ -1371,6 +1388,10 @@ $navbarMobileWidth: 100vw;
         flex-wrap: nowrap;
         color: black;
 
+        a{ 
+        cursor:pointer;
+        }
+        
         @media (max-aspect-ratio: 1/1) {
             display: none;
         }

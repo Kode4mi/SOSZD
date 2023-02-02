@@ -21,9 +21,7 @@
         <hr/>
         <p class="ticket__header-content">Treść:</p>
         <div class="ticket__content">
-            <textarea class="ticket__content-description" disabled>
-                {{$ticket->description}}
-            </textarea>
+            <textarea class="ticket__content-description" disabled>{{$ticket->description}}</textarea>
             <div class="ticket__content-footer">
                 @unless($ticket->files === null)
                     <p class="">Załączniki:</p>
@@ -35,14 +33,15 @@
                     @endforeach
                 @endunless
 
-                
-                <p class="">
 
+                <p class="">
+                
                     @if(!is_array($users))
                         <x-redirect-form :$ticket :$users></x-redirect-form>
                     @elseif($ticket->sender_id === auth()->user()->id && is_array($users))
+                    <div class="sentbox">
                         @foreach($users as $user)
-                            {{$user["first_name"]}} {{$user["last_name"]}}
+                            <span class="sentbox__userdata">{{$user["first_name"]}} {{$user["last_name"]}}
 
                             @php
 
@@ -61,6 +60,7 @@
                                     <i class="fa-sharp fa-solid fa-paper-plane" title="Wysłano"></i>
                                 @endif
                             @endif
+                        </span>
                         @endforeach
                         <div class="ticket__buttons">
                     @else
@@ -68,18 +68,19 @@
                             @unless($redirect->hasReply())
                             <div class="ticket__buttons">
                                 <a class="main-window__a" href=" {{url('reply/create/'.$redirect['slug'])}} ">
-                                    <button class="ticket__anwser"> 
+                                    <button class="ticket__anwser">
                                         Odpowiedz
                                     </button>
                                 </a>
-                                else
+                            @else
                                 <div class="ticket__buttons">
-                                    <button class="ticket__anwser ticket__anwser--disabled" disabled> 
+                                    <button class="ticket__anwser ticket__anwser--disabled" disabled>
                                         Odpowiedź wysłano
                                     </button>
                             @endunless
                         @endunless
                     @endif
+                    </div>
                 </p>
 
                 @if(auth()->user()->id === $ticket->sender_id && $redirect !== null)

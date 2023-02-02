@@ -6,8 +6,8 @@
         <form class="user__form" method="POST" action="/user">
             @csrf
             @method("POST")
-                
-            <div class="user__input-box" />
+
+            <div class="user__input-box">
                 <input type="text" name="first_name" class="user__input first_name" placeholder="Imie" value="{{old('first_name')}}" />
 
                 @error('first_name')
@@ -29,7 +29,7 @@
 
             <label>
                 <input type="checkbox" name="role" class="user__checkbox" value="admin" />
-                Admin 
+                Admin
             </label>
 
             @error('role')

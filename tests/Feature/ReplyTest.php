@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\Redirect;
 use App\Models\Reply;
+use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -15,8 +16,10 @@ class ReplyTest extends TestCase
     public function test_reply_show_status_with_correct_credentials() : void
     {
         $user = User::factory()->create();
+        $ticket = Ticket::factory()->create();
         $redirect = Redirect::factory()->create([
             'user_id' => $user->id,
+            'ticket_id' => $ticket->id
         ]);
         $reply = Reply::factory()->create([
             'redirect_id' => $redirect->id,
@@ -30,13 +33,16 @@ class ReplyTest extends TestCase
         $user->delete();
         $reply->delete();
         $redirect->delete();
+        $ticket->delete();
     }
 
     public function test_reply_show_status_with_incorrect_credentials() : void
     {
         $user = User::factory()->make();
+        $ticket = Ticket::factory()->create();
         $redirect = Redirect::factory()->create([
             'user_id' => 1,
+            'ticket_id' => $ticket->id
         ]);
         $reply = Reply::factory()->create([
             'redirect_id' => $redirect->id,
@@ -49,13 +55,16 @@ class ReplyTest extends TestCase
 
         $reply->delete();
         $redirect->delete();
+        $ticket->delete();
     }
 
     public function test_reply_create_status_with_correct_credentials() : void
     {
         $user = User::factory()->create();
+        $ticket = Ticket::factory()->create();
         $redirect = Redirect::factory()->create([
             'user_id' => $user->id,
+            'ticket_id' => $ticket->id
         ]);
 
         $response = $this->actingAs($user)->get("reply/create/".$redirect->slug);
@@ -65,13 +74,16 @@ class ReplyTest extends TestCase
 
         $user->delete();
         $redirect->delete();
+        $ticket->delete();
     }
 
     public function test_reply_create_status_with_incorrect_credentials() : void
     {
         $user = User::factory()->make();
+        $ticket = Ticket::factory()->create();
         $redirect = Redirect::factory()->create([
             'user_id' => 1,
+            'ticket_id' => $ticket->id
         ]);
 
         $response = $this->actingAs($user)->get("reply/create/".$redirect->slug);
@@ -80,13 +92,16 @@ class ReplyTest extends TestCase
         $response->assertSessionHas('message', __('app.cant_do_that'));
 
         $redirect->delete();
+        $ticket->delete();
     }
 
     public function test_reply_create_status_when_already_replayed() : void
     {
         $user = User::factory()->create();
+        $ticket = Ticket::factory()->create();
         $redirect = Redirect::factory()->create([
             'user_id' => $user->id,
+            'ticket_id' => $ticket->id
         ]);
         $reply = Reply::factory()->create([
             'redirect_id' => $redirect->id
@@ -99,13 +114,16 @@ class ReplyTest extends TestCase
 
         $user->delete();
         $redirect->delete();
+        $ticket->delete();
     }
 
     public function test_reply_store_with_correct_credentials() : void
     {
         $user = User::factory()->create();
+        $ticket = Ticket::factory()->create();
         $redirect = Redirect::factory()->create([
             'user_id' => $user->id,
+            'ticket_id' => $ticket->id
         ]);
 
         $response = $this->actingAs($user)->post("reply/".$redirect->slug, ['message' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque viverra, mauris id porttitor iaculis, mauris lectus maximus velit, vitae dapibus sem est vel dui. Etiam sit amet sem vulputate, pulvinar erat et, fringilla tortor. Phasellus egestas vitae tortor in fringilla. Proin ac odio facilisis, varius odio in, interdum arcu."]);
@@ -115,13 +133,16 @@ class ReplyTest extends TestCase
 
         $user->delete();
         $redirect->delete();
+        $ticket->delete();
     }
 
     public function test_reply_store_with_incorrect_credentials() : void
     {
         $user = User::factory()->create();
+        $ticket = Ticket::factory()->create();
         $redirect = Redirect::factory()->create([
             'user_id' => 1,
+            'ticket_id' => $ticket->id
         ]);
 
         $response = $this->actingAs($user)->post("reply/".$redirect->slug, ['message' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque viverra, mauris id porttitor iaculis, mauris lectus maximus velit, vitae dapibus sem est vel dui. Etiam sit amet sem vulputate, pulvinar erat et, fringilla tortor. Phasellus egestas vitae tortor in fringilla. Proin ac odio facilisis, varius odio in, interdum arcu."]);
@@ -131,6 +152,7 @@ class ReplyTest extends TestCase
 
         $user->delete();
         $redirect->delete();
+        $ticket->delete();
     }
 
 }

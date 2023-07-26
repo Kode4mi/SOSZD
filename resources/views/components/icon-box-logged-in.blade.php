@@ -11,7 +11,7 @@
         <i class="header__fontawesome fa-solid fa-circle-half-stroke contrast-button"></i>
     </x-tooltip-parent>
     <div class="header__icon-box_icon header__logged-user">
-        <a href=
+        <a class="cursor-pointer" href=
                @if(auth()->user()->role === 'admin')
                "/user/{{auth()->user()->slug}}"
                 @else

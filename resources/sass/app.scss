@@ -423,6 +423,10 @@ $navbarMobileWidth: 100vw;
 
             &__buttons {
                 display: flex;
+                justify-content: flex-start;
+                flex-direction: column;
+                margin: 1rem 0;
+                gap: 0.5rem
             }
 
             &__anwser {
@@ -541,7 +545,7 @@ $navbarMobileWidth: 100vw;
     }
 
 
-    
+
     .sentbox {
         background-color: darken($frame-background,0.1%);
         overflow-y:scroll !important;
@@ -551,12 +555,12 @@ $navbarMobileWidth: 100vw;
 
         &__userdata {
             display:block;
-           
+
             &:hover{
                 background-color: rgb(217, 217, 217);
             }
         }
-        
+
     }
 }
 
@@ -881,7 +885,7 @@ $navbarMobileWidth: 100vw;
 
     &__topic,
     &__deadline {
-        padding: 3px;
+        padding: 0.4rem;
         border-radius: 15px;
         width: 25vw;
 
@@ -1388,10 +1392,10 @@ $navbarMobileWidth: 100vw;
         flex-wrap: nowrap;
         color: black;
 
-        a{ 
+        a{
         cursor:pointer;
         }
-        
+
         @media (max-aspect-ratio: 1/1) {
             display: none;
         }
@@ -1770,6 +1774,7 @@ $navbarMobileWidth: 100vw;
         &__option {
             font-size: 1.3rem;
             padding: .2rem;
+            cursor: pointer;
         }
 
         &__button {

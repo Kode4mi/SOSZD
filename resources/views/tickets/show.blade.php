@@ -34,8 +34,6 @@
                 @endunless
 
 
-                <p class="">
-                
                     @if(!is_array($users))
                         <x-redirect-form :$ticket :$users></x-redirect-form>
                     @elseif($ticket->sender_id === auth()->user()->id && is_array($users))
@@ -62,33 +60,30 @@
                             @endif
                         </span>
                         @endforeach
-                        <div class="ticket__buttons">
+                    </div>
                     @else
                         @unless($redirect === null)
                             @unless($redirect->hasReply())
-                            <div class="ticket__buttons">
+                                <div class="ticket__buttons">
                                 <a class="main-window__a" href=" {{url('reply/create/'.$redirect['slug'])}} ">
                                     <button class="ticket__anwser">
                                         Odpowiedz
                                     </button>
                                 </a>
                             @else
-                                <div class="ticket__buttons">
+                                        <div class="ticket__buttons">
                                     <button class="ticket__anwser ticket__anwser--disabled" disabled>
                                         Odpowiedź wysłano
                                     </button>
                             @endunless
                         @endunless
                     @endif
-                    </div>
-                </p>
 
                 @if(auth()->user()->id === $ticket->sender_id && $redirect !== null)
-                    <div>
+                   <div class="ticket__buttons">
                         <a class="main-window__a" href="/redirect/{{$ticket->slug}}">
                             <button class="ticket__submit">Prześlij sprawę</button>
                         </a>
-                    </div>
                 @endif
 
                 @php
@@ -111,7 +106,8 @@
                             </button>
                     </form>
                 </x-tooltip-parent>
-                </div>
+                    </div>
+                                </div>
             </div>
         </div>
     </main>

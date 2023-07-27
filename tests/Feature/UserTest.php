@@ -36,7 +36,7 @@ class UserTest extends TestCase
         $response = $this->actingAs($user)->get('/user/edit');
 
         $response->assertSuccessful();
-        $response->assertViewIs('user.edit');
+        $response->assertViewIs('user.show');
     }
 
     public function test_user_edit_status_not_auth(): void

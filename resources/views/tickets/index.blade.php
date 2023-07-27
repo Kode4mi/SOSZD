@@ -131,71 +131,71 @@
 
     <script type="text/javascript">
 
-        if (!isMobile) {
+        {{--if (!isMobile) {--}}
 
-            const form = "{{$form}}";
+        {{--    const form = "{{$form}}";--}}
 
-            const btnArchive = $(".navbar__sidebar--button_archive");
-            const btnUnarchive = $(".navbar__sidebar--button1");
+        {{--    const btnArchive = $(".navbar__sidebar--button_archive");--}}
+        {{--    const btnUnarchive = $(".navbar__sidebar--button1");--}}
 
-            $(".ticket__row").draggable({
-                start: function () {
-                    console.log("start");
-                    if(form === "archive") {
-                        btnArchive.addClass('bounce');
-                    }
-                    else {
-                        btnUnarchive.addClass('bounce');
-                    }
+        {{--    $(".ticket__row").draggable({--}}
+        {{--        start: function () {--}}
+        {{--            console.log("start");--}}
+        {{--            if(form === "archive") {--}}
+        {{--                btnArchive.addClass('bounce');--}}
+        {{--            }--}}
+        {{--            else {--}}
+        {{--                btnUnarchive.addClass('bounce');--}}
+        {{--            }--}}
 
-                },
-                drag: function () {
-                    $('.dragging-title').addClass('shake');
-                },
-                stop: function() {
-                    if(form === "archive") {
-                        btnArchive.removeClass('bounce');
-                    }
-                    else {
-                        btnUnarchive.removeClass('bounce');
-                    }
+        {{--        },--}}
+        {{--        drag: function () {--}}
+        {{--            $('.dragging-title').addClass('shake');--}}
+        {{--        },--}}
+        {{--        stop: function() {--}}
+        {{--            if(form === "archive") {--}}
+        {{--                btnArchive.removeClass('bounce');--}}
+        {{--            }--}}
+        {{--            else {--}}
+        {{--                btnUnarchive.removeClass('bounce');--}}
+        {{--            }--}}
 
-                },
-                helper: function () {
-                    return $('<div class="dragging-title"></div>').append($(this).find('.ticket-title').clone());
-                }
-            });
+        {{--        },--}}
+        {{--        helper: function () {--}}
+        {{--            return $('<div class="dragging-title"></div>').append($(this).find('.ticket-title').clone());--}}
+        {{--        }--}}
+        {{--    });--}}
 
-            if(form === "archive") {
-                btnArchive.droppable({
-                    accept: '.ticket__row',
-                    drop: function (event, ui) {
-                        sendArchiveForm(event, ui, form)
-                    },
-                });
-            }
-            else {
-                btnUnarchive.droppable({
-                    accept: '.ticket__row',
-                    drop: function (event, ui) {
-                        sendArchiveForm(event, ui, form)
-                    },
-                });
-            }
+        {{--    if(form === "archive") {--}}
+        {{--        btnArchive.droppable({--}}
+        {{--            accept: '.ticket__row',--}}
+        {{--            drop: function (event, ui) {--}}
+        {{--                sendArchiveForm(event, ui, form)--}}
+        {{--            },--}}
+        {{--        });--}}
+        {{--    }--}}
+        {{--    else {--}}
+        {{--        btnUnarchive.droppable({--}}
+        {{--            accept: '.ticket__row',--}}
+        {{--            drop: function (event, ui) {--}}
+        {{--                sendArchiveForm(event, ui, form)--}}
+        {{--            },--}}
+        {{--        });--}}
+        {{--    }--}}
 
-            function sendArchiveForm(event, ui, str) {
-                let draggable = ui.draggable;
-                const obj = draggable.clone();
-                const id = obj.find('.id').val();
+        {{--    function sendArchiveForm(event, ui, str) {--}}
+        {{--        let draggable = ui.draggable;--}}
+        {{--        const obj = draggable.clone();--}}
+        {{--        const id = obj.find('.id').val();--}}
 
-                const form = $("#ticket__form-" + str);
+        {{--        const form = $("#ticket__form-" + str);--}}
 
-                form.append(" <input type='hidden' name='id[]' value=" + id + " />");
+        {{--        form.append(" <input type='hidden' name='id[]' value=" + id + " />");--}}
 
-                form.submit();
-            }
+        {{--        form.submit();--}}
+        {{--    }--}}
 
-        }
+        {{--}--}}
 
 
         if (!document.querySelectorAll('.table-footer--links')[0]) {

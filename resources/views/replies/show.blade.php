@@ -31,7 +31,7 @@
                             {{--                    <img src="{{asset("storage/".$file)}}" alt="Załącznik" width="100px"/>--}}
                         </a>
                     @endforeach
-                    @endunless
+            @endunless
                 </div>
         </div>
     </main>

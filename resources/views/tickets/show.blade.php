@@ -36,10 +36,12 @@
 
                     @if(!is_array($users))
                         <x-redirect-form :$ticket :$users></x-redirect-form>
+                        <div class="ticket__buttons">
                     @elseif($ticket->sender_id === auth()->user()->id && is_array($users))
                     <div class="sentbox">
                         @foreach($users as $user)
-                            <span class="sentbox__userdata">{{$user["first_name"]}} {{$user["last_name"]}}
+                            <div class="sentbox__userdata">
+                                <span class="sentbox__userdata-text">{{$user["first_name"]}} {{$user["last_name"]}}</span>
 
                             @php
 
@@ -49,16 +51,23 @@
                             @endphp
 
                             @if($redirect->hasReply())
-                                <a href="{{url('reply/'.$reply->slug)}}" class="main-window__a"><i
-                                        class="fa-sharp fa-solid fa-envelope-circle-check" title="Odpowiedź"></i></a>
+                                <a href="{{url('reply/'.$reply->slug)}}" class="main-window__a">
+                                    <x-tooltip-parent tooltip="Odpowiedź">
+                                        <i class="fa-sharp fa-solid fa-envelope-circle-check cursor-pointer"></i>
+                                    </x-tooltip-parent>
+                                </a>
                             @else
                                 @if($user['read'] === 1)
-                                    <i class="fa-sharp fa-solid fa-envelope-open" title="Otwarto"></i>
+                                        <x-tooltip-parent tooltip="Otwarto">
+                                            <i class="fa-sharp fa-solid fa-envelope-open cursor-pointer"></i>
+                                        </x-tooltip-parent>
                                 @else
-                                    <i class="fa-sharp fa-solid fa-paper-plane" title="Wysłano"></i>
+                                        <x-tooltip-parent tooltip="Wysłano">
+                                            <i class="fa-sharp fa-solid fa-paper-plane cursor-pointer" title="Wysłano"></i>
+                                        </x-tooltip-parent>
                                 @endif
                             @endif
-                        </span>
+                        </div>
                         @endforeach
                     </div>
                     @else
@@ -88,8 +97,8 @@
 
                 @php
                     if($form === "archive") {
-                        $tooltip="Dodaj do archiwum";
-                        $title = "Zarchiwizuj";
+                            $tooltip="Dodaj do archiwum";
+                            $title = "Zarchiwizuj";
                         }
                         else {
                             $tooltip="Przenieś do aktywnych spraw";
@@ -107,7 +116,7 @@
                     </form>
                 </x-tooltip-parent>
                     </div>
-                                </div>
+                </div>
             </div>
         </div>
     </main>

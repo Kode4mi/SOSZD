@@ -16,9 +16,9 @@ use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
-    public function edit(): View
+    public function show(): View
     {
-        return view('user.edit');
+        return view('user.show');
     }
 
 
@@ -216,11 +216,11 @@ class UserController extends Controller
         return redirect('/login')->with('message', __('app.password_set'));
     }
 
-    public function show(String $slug): View
+    public function edit(String $slug): View
     {
         $user = User::where('slug', $slug)->first();
 
-        return view('user.show', ['user' => $user]);
+        return view('user.edit', ['user' => $user]);
     }
 
     public function updateByAdmin(Request $request): RedirectResponse

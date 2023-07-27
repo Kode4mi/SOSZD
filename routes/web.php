@@ -63,7 +63,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('logout', [UserController::class, 'logout']);
 
-    Route::get('user/edit', [UserController::class, 'edit']);
+    Route::get('user/edit', [UserController::class, 'show']);
 
     Route::put('user', [UserController::class, 'update']);
 
@@ -86,7 +86,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('reset-password-and-send-email', [UserController::class, 'resetPasswordAndSendEmail']);
     });
 
-    Route::get('user/{slug}', [UserController::class, 'show']);
+    Route::get('user/{slug}', [UserController::class, 'edit']);
 
 });
 

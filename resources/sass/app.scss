@@ -677,7 +677,7 @@ $navbarMobileWidth: 100vw;
         }
 
         &__submit:hover {
-            background-color: ligthen($background_contrast, 20%);
+            background-color: lighten($background_contrast, 20%);
             border: 1px solid white;
         }
     }
@@ -741,25 +741,34 @@ $navbarMobileWidth: 100vw;
     }
 
     &__form {
-        height: 50%;
-        width: 100%;
-        margin-top: 10%;
+        margin: 0 25%;
+        height: 100%;
 
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
 
         @media (max-aspect-ratio: 1/1) {
             height: 70%;
         }
+
+        &-label {
+            align-self: flex-start;
+        }
+
+        &-title {
+            margin-bottom: 1.5rem;
+        }
+
     }
 
     &__input {
         padding-left: 0.5vw;
         border-radius: 15px;
         border: 1px solid gray;
-        width: 50%;
+        width: 100%;
+        margin: 0.5rem 0;
 
         @media (max-aspect-ratio: 1/1) {
             width: 70%;
@@ -783,7 +792,7 @@ $navbarMobileWidth: 100vw;
         border: none;
         border-radius: 15px;
         padding: 0.3rem 0.5rem 0.3rem 0.5rem;
-        width: 25vh;
+        width: 25vw;
 
         @media (max-aspect-ratio: 1/1) {
             width: 70%;
@@ -803,7 +812,7 @@ $navbarMobileWidth: 100vw;
         border-radius: 15px;
         padding: 0.3rem 0.5rem 0.3rem 0.5rem;
         font-size: 1.2em;
-        width: 25vh;
+        width: 25vw;
 
         @media (max-aspect-ratio: 1/1) {
             width: 70%;

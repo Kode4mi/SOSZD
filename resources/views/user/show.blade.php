@@ -1,107 +1,34 @@
 @extends('templates.layout')
 
 @section('content')
-    <x-main-title>Zmień dane użytkownika {{$user->first_name}} {{$user->last_name}}</x-main-title>
-    <main class="main-window edit_account">
-        <form action="/user-update" method="POST" class="user_edit user__form">
+    <x-main-title>Zmień swoje dane </x-main-title>
+    <main class="main-window edit_account user__main">
+
+        <form action="/user" method="POST" class="user__form">
 
             @csrf
             @method("PUT")
+            <h3 class="user__form-title">Zmień podstawowe dane swojego konta SOSZD:</h3>
 
-            <input type="text" class="user_edit__email user__input" placeholder="Email" name="email"
-                   value="{{$user->email}}">
-
+            <label for="email" class="user__form-label">Zmień e-mail:</label>
+            <input type="text" class="user__input" placeholder="E-mail" name="email" id="email" value="{{auth()->user()->email}}">
 
             @error('email')
             <p>{{$message}}</p>
             @enderror
 
-            <input type="text" class="user_edit__email user__input" placeholder="Imie" name="first_name"
-                   value="{{$user->first_name}}">
+            <label for="password" class="user__form-label">Wprowadź swoje hasło:</label>
+            <input type="password" id="password" class="user__input" placeholder="Wprowadź swoje hasło, aby zmienić e-mail" name="password_confirmation">
 
-            @error('first_name')
+            @error('password_confirmation')
             <p>{{$message}}</p>
             @enderror
 
-            <input type="text" class="user_edit__email user__input" placeholder="Nazwisko" name="last_name"
-                   value="{{$user->last_name}}">
+            <button type="submit" class="user__submit">Zatwierdź e-mail</button>
+            <hr />
 
-            @error('last_name')
-            <p>{{$message}}</p>
-            @enderror
-
-            <label>Stanowisko:
-                <select name="role">
-                    <option value="nauczyciel">Nauczyciel</option>
-                    <option value="admin"
-                            @if($user->role === "admin")
-                                selected
-                        @endif
-                    >Admin
-                    </option>
-                </select>
-            </label>
-
-            @error('role')
-            <p>{{$message}}</p>
-            @enderror
-
-            <button type="submit" class="user__submit">Zatwierdź</button>
-
-            <button type="button"
-                    class="user_edit__password user__submit"
-                    onclick="passwordResetForm()"
-            >Wyślij email z resetem hasła
-            </button>
-            @error('password_reset')
-            <p>{{$message}}</p>
-            @enderror
-
-
-            <button type="button"
-                    class="user__delete"
-                    onclick="deletionForm()"
-                    >
-                Usuń użytkownika
-            </button>
-
+            <p class="mt-2"><a class="main-window__a cursor-pointer" href="/change-password">Zmień hasło</a></p>
 
         </form>
-
-        <form method="POST"
-              action="/user/{{$user->id}}"
-              id="user-delete-form"
-        >
-            @csrf
-            @method('DELETE')
-        </form>
-
-        <form action="/reset-password-and-send-email"
-              method="POST"
-              id="password-reset-form"
-        >
-            @csrf
-            @method("POST")
-            <input type="hidden" name="user" value="{{$user->id}}">
-        </form>
-
-        <script type="text/javascript">
-            const passwordResetForm = () => {
-                let result = confirm("Czy na pewno chcesz to zrobić?");
-                if (result) {
-                    document.getElementById("password-reset-form").submit();
-                } else
-                    return false;
-            }
-
-            const deletionForm = () => {
-                let result = confirm("Czy na pewno chcesz to zrobić?");
-                if (result) {
-                    document.getElementById("user-delete-form").submit();
-                } else
-                    return false;
-            }
-        </script>
-
     </main>
 @endsection
